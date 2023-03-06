@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>About me</title>
+    <link>https://steffenhaeussler.github.io/</link>
+    <description>Recent content on About me</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 05 Mar 2023 23:31:07 +0100</lastBuildDate><atom:link href="https://steffenhaeussler.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>First</title>
+      <link>https://steffenhaeussler.github.io/projects/first/</link>
+      <pubDate>Sun, 05 Mar 2023 23:31:07 +0100</pubDate>
+      
+      <guid>https://steffenhaeussler.github.io/projects/first/</guid>
+      <description>test</description>
+    </item>
+    
+    <item>
+      <title>The importance of building things by yourself</title>
+      <link>https://steffenhaeussler.github.io/posts/first/</link>
+      <pubDate>Sun, 05 Mar 2023 23:30:58 +0100</pubDate>
+      
+      <guid>https://steffenhaeussler.github.io/posts/first/</guid>
+      <description>Hi,
+In this initial post, I want to draft the development of my FastAPI.
+At the beginning of my career as a Data Scientist, I ran into the typical problem of model deployment to production. In a team of two scientists, I had the chance to write a micro-service with Flask from scratch out of necessity.
+My first service followed strongly the example of Miguel Grinbergs great tutorial. The reason was simple, I couldn&amp;rsquo;t code at this time.</description>
+    </item>
+    
+    <item>
+      <title>Archives</title>
+      <link>https://steffenhaeussler.github.io/archives/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://steffenhaeussler.github.io/archives/</guid>
+      <description>archives</description>
+    </item>
+    
+  </channel>
+</rss>
