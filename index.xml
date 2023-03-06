@@ -23,9 +23,9 @@
       
       <guid>https://steffenhaeussler.github.io/posts/first/</guid>
       <description>Hi,
-In this initial post, I want to draft the development of my FastAPI.
+In this initial post, I want to draft the development of my FastAPI skeleton.
 At the beginning of my career as a Data Scientist, I ran into the typical problem of model deployment to production. In a team of two scientists, I had the chance to write a micro-service with Flask from scratch out of necessity.
-My first service followed strongly the example of Miguel Grinbergs great tutorial. The reason was simple, I couldn&amp;rsquo;t code at this time.</description>
+My first service followed strongly the example of Miguel Grinbergs great tutorial. The reason was simple, I couldn&amp;rsquo;t write proper code at this time.</description>
     </item>
     
     
