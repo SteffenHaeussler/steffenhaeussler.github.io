@@ -11,16 +11,7 @@
     <loc>https://steffenhaeussler.github.io/projects/</loc>
     <lastmod>2023-03-05T23:31:07+01:00</lastmod>
   </url><url>
-    <loc>https://steffenhaeussler.github.io/categories/</loc>
-    <lastmod>2023-03-05T23:30:58+01:00</lastmod>
-  </url><url>
-    <loc>https://steffenhaeussler.github.io/categories/engineering/</loc>
-    <lastmod>2023-03-05T23:30:58+01:00</lastmod>
-  </url><url>
-    <loc>https://steffenhaeussler.github.io/tags/fastapi/</loc>
-    <lastmod>2023-03-05T23:30:58+01:00</lastmod>
-  </url><url>
-    <loc>https://steffenhaeussler.github.io/tags/opinion/</loc>
+    <loc>https://steffenhaeussler.github.io/tags/engineering/</loc>
     <lastmod>2023-03-05T23:30:58+01:00</lastmod>
   </url><url>
     <loc>https://steffenhaeussler.github.io/posts/</loc>
@@ -29,12 +20,14 @@
     <loc>https://steffenhaeussler.github.io/tags/</loc>
     <lastmod>2023-03-05T23:30:58+01:00</lastmod>
   </url><url>
-    <loc>https://steffenhaeussler.github.io/categories/tech/</loc>
+    <loc>https://steffenhaeussler.github.io/tags/tech/</loc>
     <lastmod>2023-03-05T23:30:58+01:00</lastmod>
   </url><url>
     <loc>https://steffenhaeussler.github.io/posts/first/</loc>
     <lastmod>2023-03-05T23:30:58+01:00</lastmod>
   </url><url>
     <loc>https://steffenhaeussler.github.io/archives/</loc>
+  </url><url>
+    <loc>https://steffenhaeussler.github.io/categories/</loc>
   </url>
 </urlset>
