@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Projects on About me</title>
+    <link>https://steffenhaeussler.github.io/projects/</link>
+    <description>Recent content in Projects on About me</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 05 Mar 2023 23:31:07 +0100</lastBuildDate><atom:link href="https://steffenhaeussler.github.io/projects/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>First</title>
+      <link>https://steffenhaeussler.github.io/projects/first/</link>
+      <pubDate>Sun, 05 Mar 2023 23:31:07 +0100</pubDate>
+      
+      <guid>https://steffenhaeussler.github.io/projects/first/</guid>
+      <description>test</description>
+    </item>
+    
+  </channel>
+</rss>

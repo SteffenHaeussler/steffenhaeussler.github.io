@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>The importance of building things by yourself | About me</title>
+<meta name="keywords" content="tech, engineering">
+<meta name="description" content="Hi,
+In this initial post, I want to draft the development of my FastAPI skeleton.
+At the beginning of my career as a Data Scientist, I ran into the typical problem of model deployment to production. In a team of two scientists, I had the chance to write a micro-service with Flask from scratch out of necessity.
+My first service followed strongly the example of Miguel Grinbergs great tutorial. The reason was simple, I couldn&rsquo;t write proper code at this time.">
+<meta name="author" content="">
+<link rel="canonical" href="https://steffenhaeussler.github.io/posts/first/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.38543ae4b8e264d5fd3444f5e0ee9e36fba2060d580b5ee7046c7723c02525d5.css" integrity="sha256-OFQ65LjiZNX9NET14O6eNvuiBg1YC17nBGx3I8AlJdU=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://steffenhaeussler.github.io/assets/seedling.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://steffenhaeussler.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://steffenhaeussler.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://steffenhaeussler.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://steffenhaeussler.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="The importance of building things by yourself" />
+<meta property="og:description" content="Hi,
+In this initial post, I want to draft the development of my FastAPI skeleton.
+At the beginning of my career as a Data Scientist, I ran into the typical problem of model deployment to production. In a team of two scientists, I had the chance to write a micro-service with Flask from scratch out of necessity.
+My first service followed strongly the example of Miguel Grinbergs great tutorial. The reason was simple, I couldn&rsquo;t write proper code at this time." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://steffenhaeussler.github.io/posts/first/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-03-05T23:30:58+01:00" />
+<meta property="article:modified_time" content="2023-03-05T23:30:58+01:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="The importance of building things by yourself"/>
+<meta name="twitter:description" content="Hi,
+In this initial post, I want to draft the development of my FastAPI skeleton.
+At the beginning of my career as a Data Scientist, I ran into the typical problem of model deployment to production. In a team of two scientists, I had the chance to write a micro-service with Flask from scratch out of necessity.
+My first service followed strongly the example of Miguel Grinbergs great tutorial. The reason was simple, I couldn&rsquo;t write proper code at this time."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://steffenhaeussler.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "The importance of building things by yourself",
+      "item": "https://steffenhaeussler.github.io/posts/first/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "The importance of building things by yourself",
+  "name": "The importance of building things by yourself",
+  "description": "Hi,\nIn this initial post, I want to draft the development of my FastAPI skeleton.\nAt the beginning of my career as a Data Scientist, I ran into the typical problem of model deployment to production. In a team of two scientists, I had the chance to write a micro-service with Flask from scratch out of necessity.\nMy first service followed strongly the example of Miguel Grinbergs great tutorial. The reason was simple, I couldn\u0026rsquo;t write proper code at this time.",
+  "keywords": [
+    "tech", "engineering"
+  ],
+  "articleBody": "Hi,\nIn this initial post, I want to draft the development of my FastAPI skeleton.\nAt the beginning of my career as a Data Scientist, I ran into the typical problem of model deployment to production. In a team of two scientists, I had the chance to write a micro-service with Flask from scratch out of necessity.\nMy first service followed strongly the example of Miguel Grinbergs great tutorial. The reason was simple, I couldn’t write proper code at this time. Besides no experience and the great help of my co-workers, I could write a production-ready micro-service in a few weeks with the following features:\nendpoint versioning proper error handling background streaming to s3 via kafka config dependent on the deployment environment prometheus integration This basic Flask app ran for more than 3 years in production for multiple projects, before I converted it into the FastAPI skeleton. With more experience, my skeleton supports now:\nproper logging in multi-threaded and asynchronous code multi-stage docker build a response timer poetry integration To summarize, this micro-service is rock solid for model serving or handling stateless requests. It works as a swiss army knife for me over many years. In a very urgent case of firefighting, it helped me to write an app and put it into production in two weeks. Also, I could transfer the main ideas of this micro-service to other deployment services like kserve. Thanks to FastAPIs integration of OpenAPI, I used it several times to orchestrate discussions between teams for designing APIs.\nWith the continuous development of this API over several years, I grew as an engineer and became more confident in my skill set. This development was only possible due to the additional effort at the beginning of my career. Afterward, the slow incremental improvement took place over the years whenever I hit some limitations. Independent of your current skill set, take responsibility and build things, even if you don’t know how. You will learn on your way and benefit from it!\n",
+  "wordCount" : "333",
+  "inLanguage": "en",
+  "datePublished": "2023-03-05T23:30:58+01:00",
+  "dateModified": "2023-03-05T23:30:58+01:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://steffenhaeussler.github.io/posts/first/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "About me",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://steffenhaeussler.github.io/assets/seedling.png"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://steffenhaeussler.github.io/" accesskey="h" title="About me (Alt + H)">About me</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://steffenhaeussler.github.io/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://steffenhaeussler.github.io/projects/" title="Projects">
+                    <span>Projects</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://steffenhaeussler.github.io/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://steffenhaeussler.github.io/archives/" title="Archives">
+                    <span>Archives</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://steffenhaeussler.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://steffenhaeussler.github.io/posts/">Posts</a></div>
+    <h1 class="post-title">
+      The importance of building things by yourself
+    </h1>
+    <div class="post-meta"><span title='2023-03-05 23:30:58 +0100 CET'>March 5, 2023</span>&nbsp;·&nbsp;2 min
+
+</div>
+  </header> 
+  <div class="post-content"><p>Hi,</p>
+<p>In this initial post, I want to draft the development of my <a href="https://github.com/SteffenHaeussler/fastapi_skeleton/">FastAPI skeleton</a>.</p>
+<p>At the beginning of my career as a Data Scientist, I ran into the typical problem of model deployment to production.
+In a team of two scientists, I had the chance to write a micro-service <a href="https://github.com/SteffenHaeussler/flask_skeleton">with Flask from scratch</a> out of necessity.</p>
+<p>My first service followed strongly the example of <a href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world">Miguel Grinbergs great tutorial</a>. The reason was simple, I couldn&rsquo;t write proper code at this time. Besides no experience and the great help of my co-workers, I could write a production-ready micro-service in a few weeks with the following features:</p>
+<ul>
+<li>endpoint versioning</li>
+<li>proper error handling</li>
+<li>background streaming to s3 via kafka</li>
+<li>config dependent on the deployment environment</li>
+<li>prometheus integration</li>
+</ul>
+<p>This basic Flask app ran for more than 3 years in production for multiple projects, before I converted it into the <a href="https://github.com/SteffenHaeussler/fastapi_skeleton">FastAPI skeleton</a>.
+With more experience, my skeleton supports now:</p>
+<ul>
+<li>proper logging in multi-threaded and asynchronous code</li>
+<li>multi-stage docker build</li>
+<li>a response timer</li>
+<li>poetry integration</li>
+</ul>
+<p>To summarize, this micro-service is rock solid for model serving or handling stateless requests. It works as a swiss army knife for me over many years. In a very urgent case of firefighting, it helped me to write an app and put it into production in two weeks. Also, I could transfer the main ideas of this micro-service to other deployment services like kserve. Thanks to FastAPIs integration of OpenAPI, I used it several times to orchestrate discussions between teams for designing APIs.</p>
+<p>With the continuous development of this API over several years, I grew as an engineer and became more confident in my skill set. This development was only possible due to the additional effort at the beginning of my career. Afterward, the slow incremental improvement took place over the years whenever I hit some limitations. Independent of your current skill set, take responsibility and build things, even if you don&rsquo;t know how. You will learn on your way and benefit from it!</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://steffenhaeussler.github.io/tags/tech/">tech</a></li>
+      <li><a href="https://steffenhaeussler.github.io/tags/engineering/">engineering</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://steffenhaeussler.github.io/">About me</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>
