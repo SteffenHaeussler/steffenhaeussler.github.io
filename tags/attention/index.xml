@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>attention on About me</title>
+    <link>https://steffenhaeussler.github.io/tags/attention/</link>
+    <description>Recent content in attention on About me</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 18 Mar 2023 10:30:58 +0100</lastBuildDate><atom:link href="https://steffenhaeussler.github.io/tags/attention/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Understanding scaled-dot product attention and multi-head attention</title>
+      <link>https://steffenhaeussler.github.io/posts/attention_layer/</link>
+      <pubDate>Sat, 18 Mar 2023 10:30:58 +0100</pubDate>
+      
+      <guid>https://steffenhaeussler.github.io/posts/attention_layer/</guid>
+      <description>Hi,
+This post is a summary of my implementation of the scaled-dot product attention and multi-head attention. Please have a look at the colab implementation for a step through guide.
+Even though this post is five years too late, the best way of reviving knowledge is to write about it. Transformers are in transforming the world via ChatGPT, Bart, or LLama. The core of the transformer architecture is the self-attention layer.</description>
+    </item>
+    
+  </channel>
+</rss>
