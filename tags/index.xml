@@ -6,7 +6,34 @@
     <description>Recent content in Tags on About me</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 08 Apr 2023 10:30:58 +0100</lastBuildDate><atom:link href="https://steffenhaeussler.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 10 Apr 2023 10:30:58 +0100</lastBuildDate><atom:link href="https://steffenhaeussler.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>machine learning</title>
+      <link>https://steffenhaeussler.github.io/tags/machine-learning/</link>
+      <pubDate>Mon, 10 Apr 2023 10:30:58 +0100</pubDate>
+      
+      <guid>https://steffenhaeussler.github.io/tags/machine-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nlp</title>
+      <link>https://steffenhaeussler.github.io/tags/nlp/</link>
+      <pubDate>Mon, 10 Apr 2023 10:30:58 +0100</pubDate>
+      
+      <guid>https://steffenhaeussler.github.io/tags/nlp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>transformer</title>
+      <link>https://steffenhaeussler.github.io/tags/transformer/</link>
+      <pubDate>Mon, 10 Apr 2023 10:30:58 +0100</pubDate>
+      
+      <guid>https://steffenhaeussler.github.io/tags/transformer/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>data science</title>
       <link>https://steffenhaeussler.github.io/tags/data-science/</link>
@@ -17,29 +44,11 @@
     </item>
     
     <item>
-      <title>machine learning</title>
-      <link>https://steffenhaeussler.github.io/tags/machine-learning/</link>
-      <pubDate>Sat, 08 Apr 2023 10:30:58 +0100</pubDate>
-      
-      <guid>https://steffenhaeussler.github.io/tags/machine-learning/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>attention</title>
       <link>https://steffenhaeussler.github.io/tags/attention/</link>
       <pubDate>Sat, 18 Mar 2023 10:30:58 +0100</pubDate>
       
       <guid>https://steffenhaeussler.github.io/tags/attention/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>transformer</title>
-      <link>https://steffenhaeussler.github.io/tags/transformer/</link>
-      <pubDate>Sat, 18 Mar 2023 10:30:58 +0100</pubDate>
-      
-      <guid>https://steffenhaeussler.github.io/tags/transformer/</guid>
       <description></description>
     </item>
     
