@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>data science on About me</title>
-    <link>https://steffenhaeussler.github.io/tags/data-science/</link>
-    <description>Recent content in data science on About me</description>
+    <title>training on About me</title>
+    <link>https://steffenhaeussler.github.io/tags/training/</link>
+    <description>Recent content in training on About me</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 10 Apr 2023 10:30:58 +0100</lastBuildDate><atom:link href="https://steffenhaeussler.github.io/tags/data-science/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 10 Apr 2023 10:30:58 +0100</lastBuildDate><atom:link href="https://steffenhaeussler.github.io/tags/training/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Cookie-cutter Problems</title>
       <link>https://steffenhaeussler.github.io/posts/cookiecutter/</link>
@@ -25,17 +25,6 @@ Recently, I started to put some scripts together and run them against a Kaggle d
       <guid>https://steffenhaeussler.github.io/projects/cookiecutter/</guid>
       <description>Hi,
 Recently, I started to put some scripts together and run them against a Kaggle dataset. I decided to train my skills on an unseen dataset. Training keeps me sharp, and I need it to complement my skill set. For the last 2,5 years, I struggled in a small team with NLP problems, where I worked mostly on engineering tasks. My understanding in this area is not where I wanted to be.</description>
-    </item>
-    
-    <item>
-      <title>Stratified multi-label split</title>
-      <link>https://steffenhaeussler.github.io/posts/multi_label_split/</link>
-      <pubDate>Sat, 08 Apr 2023 10:30:58 +0100</pubDate>
-      
-      <guid>https://steffenhaeussler.github.io/posts/multi_label_split/</guid>
-      <description>Hi,
-This post is a short overview of a stratified multi-label train-test split. Please look at the colab implementation for a step through guide.
-Sometimes you step into work problems, which justify a small post. I already saw colleagues struggling to balance the train-test split for multi-label classification. In classification problems, we have often a dataset with an imbalanced number of classes. In general, it is desired to keep the proportions of each label for the train and test sets as observed as in the original dataset.</description>
     </item>
     
   </channel>

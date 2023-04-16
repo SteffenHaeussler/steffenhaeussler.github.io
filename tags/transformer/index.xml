@@ -6,11 +6,11 @@
     <description>Recent content in transformer on About me</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 10 Apr 2023 10:30:58 +0100</lastBuildDate><atom:link href="https://steffenhaeussler.github.io/tags/transformer/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 15 Apr 2023 10:30:58 +0100</lastBuildDate><atom:link href="https://steffenhaeussler.github.io/tags/transformer/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Training a language model from scratch</title>
       <link>https://steffenhaeussler.github.io/posts/llm/</link>
-      <pubDate>Mon, 10 Apr 2023 10:30:58 +0100</pubDate>
+      <pubDate>Sat, 15 Apr 2023 10:30:58 +0100</pubDate>
       
       <guid>https://steffenhaeussler.github.io/posts/llm/</guid>
       <description>Hi,
@@ -21,7 +21,7 @@ A language model is trained on large amounts of textual data to understand the p
     <item>
       <title>Training a language model from scratch</title>
       <link>https://steffenhaeussler.github.io/projects/llm/</link>
-      <pubDate>Mon, 10 Apr 2023 10:30:58 +0100</pubDate>
+      <pubDate>Sat, 15 Apr 2023 10:30:58 +0100</pubDate>
       
       <guid>https://steffenhaeussler.github.io/projects/llm/</guid>
       <description>Hi,
