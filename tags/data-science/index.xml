@@ -9,6 +9,16 @@
     <lastBuildDate>Mon, 10 Apr 2023 10:30:58 +0100</lastBuildDate><atom:link href="https://steffenhaeussler.github.io/tags/data-science/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Cookie-cutter Problems</title>
+      <link>https://steffenhaeussler.github.io/posts/cookiecutter/</link>
+      <pubDate>Mon, 10 Apr 2023 10:30:58 +0100</pubDate>
+      
+      <guid>https://steffenhaeussler.github.io/posts/cookiecutter/</guid>
+      <description>Hi,
+Recently, I started to put some scripts together and run them against a Kaggle dataset. I decided to train my skills on an unseen dataset. Training keeps me sharp, and I need it to complement my skill set. For the last 2,5 years, I struggled in a small team with NLP problems, where I worked mostly on engineering tasks. My understanding in this area is not where I wanted to be.</description>
+    </item>
+    
+    <item>
+      <title>Cookie-cutter Problems</title>
       <link>https://steffenhaeussler.github.io/projects/cookiecutter/</link>
       <pubDate>Mon, 10 Apr 2023 10:30:58 +0100</pubDate>
       
