@@ -102,8 +102,8 @@ In my previous job, I spent hours debugging internal data transformations to fig
   "keywords": [
     "engineering", "microservice", "api"
   ],
-  "articleBody": "Hi,\nIn my previous job, I spent hours debugging internal data transformations to figure out the received data from an external API was faulty. This issue would not appeared with schema validation. My fault was that I trusted the incoming data and didn’t check for data consistency. Learning from mistakes and saving time, I would set up a small example for JSON validation via Pydantic. FastAPI relies heavily on pydantic and I use it for validating the incoming request and outgoing response. Anyway, not in every project FastAPI is used.\nI would simulate a simple interference service based on my previous work. The service will receive an OCR as a simple request and will respond with a prediction. Anyway, the code can be accessed via colab.\nData Model As a first step, I would define the data model of our endpoint. The PredictionRequest expects a requestId, an ocr_body, and a model configuration.\nThe model configuration uses default values based on the service configuration. In this example, I use for the model_config a dictionary. Still, there can be an issue where you want to change the config with your request. For example, when you want multiple predictions or change the probability threshold for your predictions.\nThe ocr_body is defined as a list of an OCR class. Also, we expect at least one entry in the ocr_body. The OCR itself has the structure of a value and the region of the value in the document.\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 from typing import Optional, List from pydantic import BaseModel, conlist model_config = {\"n_pred\": 1, \"threshold\": 0.5} class ModelConfig(BaseModel): n_pred: int = model_config[\"n_pred\"] threshold: float = model_config[\"threshold\"] class Region(BaseModel): left: float top: float height: float width: float page: int class OCR(BaseModel): value: str region: Region class PredictionRequest(BaseModel): requestId: str ocr_body: conlist(OCR, min_length=1) configuration: ModelConfig = ModelConfig() You can check the data model in the following way:\n1 2 3 4 5 6 7 8 9 10 11 12 ocr_body = [{\"value\": \"test_ocr\", \"region\": {\"left\": 0, \"top\": 0, \"height\": 0.0, \"width\": 0.2, \"page\": 1} }, ] request_body = {\"requestId\": \"test\", \"ocr_body\": ocr_body} assert PredictionRequest(**request_body) For the configuration field, the default values will be used.\nOptional Fields Sometimes, we want to have optional fields in the json. Let’s assume, that we don’t want to use default values for the configuration, but also don’t want to have the configuration explicitly in the schema. We want to have the configuration optional. There is a solution proppsed by mubtasimfuad. The code will define a decorator for the pydantic BaseModel.\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 from typing import Optional import inspect from pydantic import create_model def optional(*fields): def dec(cls): fields_dict = {} for field in fields: field_info = cls.__annotations__.get(field) if field_info is not None: fields_dict[field] = (Optional[field_info], None) OptionalModel = create_model(cls.__name__, **fields_dict) OptionalModel.__module__ = cls.__module__ return OptionalModel if fields and inspect.isclass(fields[0]) and issubclass(fields[0], BaseModel): cls = fields[0] fields = cls.__annotations__ return dec(cls) return dec , which can be used in the same way:\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 from typing import Optional, List from pydantic import BaseModel, conlist model_config = {\"n_pred\": 1, \"threshold\": 0.5} class ModelConfig(BaseModel): n_pred: int = model_config[\"n_pred\"] threshold: float = model_config[\"threshold\"] class Region(BaseModel): left: float top: float height: float width: float page: int class OCR(BaseModel): value: str region: Region class PredictionRequest(BaseModel): requestId: str ocr_body: conlist(OCR, min_length=1) configuration: ModelConfig = ModelConfig() You can check the data model in the following way:\n1 2 3 4 5 6 7 8 class Config(BaseModel): n_pred: int threshold: float @optional(\"configuration\") class PredictionRequestv2(BaseModel): requestId: str configuration: Config and allows following json schema without any default values:\n1 2 3 request_body = {\"requestId\": \"test\"} assert PredictionRequestv2(**request_body) ",
-  "wordCount" : "673",
+  "articleBody": "Hi,\nIn my previous job, I spent hours debugging internal data transformations to figure out the received data from an external API was faulty. This issue would not appeared with schema validation. My fault was that I trusted the incoming data and didn’t check for data consistency. Learning from mistakes and saving time, I would set up a small example for JSON validation via Pydantic. FastAPI relies heavily on pydantic and I use it for validating the incoming request and outgoing response. Anyway, not in every project FastAPI is used.\nI would simulate a simple interference service based on my previous work. The service will receive an OCR as a simple request and will respond with a prediction. Anyway, the code can be accessed via colab.\nData Model As a first step, I would define the data model of our endpoint. The PredictionRequest expects a requestId, an ocr_body, and a model configuration.\nThe model configuration uses default values based on the service configuration. In this example, I use for the model_config a dictionary. Still, there can be an issue where you want to change the config with your request. For example, when you want multiple predictions or change the probability threshold for your predictions.\nThe ocr_body is defined as a list of an OCR class. Also, we expect at least one entry in the ocr_body. The OCR itself has the structure of a value and the region of the value in the document.\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 from typing import Optional, List from pydantic import BaseModel, conlist model_config = {\"n_pred\": 1, \"threshold\": 0.5} class ModelConfig(BaseModel): n_pred: int = model_config[\"n_pred\"] threshold: float = model_config[\"threshold\"] class Region(BaseModel): left: float top: float height: float width: float page: int class OCR(BaseModel): value: str region: Region class PredictionRequest(BaseModel): requestId: str ocr_body: conlist(OCR, min_length=1) configuration: ModelConfig = ModelConfig() You can check the data model in the following way:\n1 2 3 4 5 6 7 8 9 10 11 12 ocr_body = [{\"value\": \"test_ocr\", \"region\": {\"left\": 0, \"top\": 0, \"height\": 0.0, \"width\": 0.2, \"page\": 1} }, ] request_body = {\"requestId\": \"test\", \"ocr_body\": ocr_body} assert PredictionRequest(**request_body) For the configuration field, the default values will be used.\nOptional Fields Sometimes, we want to have optional fields in the json. Let’s assume, that we don’t want to use default values for the configuration, but also don’t want to have the configuration explicitly in the schema. We want to have the configuration optional. There is a solution proppsed by mubtasimfuad. The code will define a decorator for the pydantic BaseModel.\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 from typing import Optional import inspect from pydantic import create_model def optional(*fields): def dec(cls): fields_dict = {} for field in fields: field_info = cls.__annotations__.get(field) if field_info is not None: fields_dict[field] = (Optional[field_info], None) OptionalModel = create_model(cls.__name__, **fields_dict) OptionalModel.__module__ = cls.__module__ return OptionalModel if fields and inspect.isclass(fields[0]) and issubclass(fields[0], BaseModel): cls = fields[0] fields = cls.__annotations__ return dec(cls) return dec , which can be used in the same way:\n1 2 3 4 5 6 7 8 class Config(BaseModel): n_pred: int threshold: float @optional(\"configuration\") class PredictionRequestv2(BaseModel): requestId: str configuration: Config and allows following json schema without any default values:\n1 2 3 request_body = {\"requestId\": \"test\"} assert PredictionRequestv2(**request_body) ",
+  "wordCount" : "577",
   "inLanguage": "en",
   "datePublished": "2023-08-07T10:30:50+02:00",
   "dateModified": "2023-08-07T10:30:50+02:00",
@@ -194,7 +194,7 @@ In my previous job, I spent hours debugging internal data transformations to fig
     <h1 class="post-title">
       Endpoint validation
     </h1>
-    <div class="post-meta"><span title='2023-08-07 10:30:50 +0200 CEST'>August 7, 2023</span>&nbsp;·&nbsp;4 min
+    <div class="post-meta"><span title='2023-08-07 10:30:50 +0200 CEST'>August 7, 2023</span>&nbsp;·&nbsp;3 min
 
 </div>
   </header> 
@@ -360,75 +360,6 @@ In my previous job, I spent hours debugging internal data transformations to fig
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>, which can be used in the same way:</p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> typing <span style="color:#f92672">import</span> Optional, List
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> pydantic <span style="color:#f92672">import</span> BaseModel, conlist
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>model_config <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;n_pred&#34;</span>: <span style="color:#ae81ff">1</span>,
-</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;threshold&#34;</span>: <span style="color:#ae81ff">0.5</span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ModelConfig</span>(BaseModel):
-</span></span><span style="display:flex;"><span>    n_pred: int <span style="color:#f92672">=</span> model_config[<span style="color:#e6db74">&#34;n_pred&#34;</span>]
-</span></span><span style="display:flex;"><span>    threshold: float <span style="color:#f92672">=</span> model_config[<span style="color:#e6db74">&#34;threshold&#34;</span>]
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Region</span>(BaseModel):
-</span></span><span style="display:flex;"><span>    left: float
-</span></span><span style="display:flex;"><span>    top: float
-</span></span><span style="display:flex;"><span>    height: float
-</span></span><span style="display:flex;"><span>    width: float
-</span></span><span style="display:flex;"><span>    page: int
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">OCR</span>(BaseModel):
-</span></span><span style="display:flex;"><span>    value: str
-</span></span><span style="display:flex;"><span>    region: Region
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PredictionRequest</span>(BaseModel):
-</span></span><span style="display:flex;"><span>    requestId: str
-</span></span><span style="display:flex;"><span>    ocr_body: conlist(OCR, min_length<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
-</span></span><span style="display:flex;"><span>    configuration: ModelConfig <span style="color:#f92672">=</span> ModelConfig()
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>You can check the data model in the following way:</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1

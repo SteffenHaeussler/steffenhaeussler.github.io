@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>data engineering on About me</title>
+    <link>https://steffenhaeussler.github.io/tags/data-engineering/</link>
+    <description>Recent content in data engineering on About me</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 27 Apr 2023 10:30:58 +0100</lastBuildDate><atom:link href="https://steffenhaeussler.github.io/tags/data-engineering/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Fast data transfer to or from s3</title>
+      <link>https://steffenhaeussler.github.io/posts/s3/</link>
+      <pubDate>Thu, 27 Apr 2023 10:30:58 +0100</pubDate>
+      
+      <guid>https://steffenhaeussler.github.io/posts/s3/</guid>
+      <description>Hi,
+This post is an homage to a stackoverflow post copying data from s3. This shared work saved me a lot of time. I believe that individuals who share their work do not receive sufficient recognition.
+The problem is that I have multiple Gb of data separated into thousands of files. Those files are selected for download by the semi-automated pipeline for model training. So the number of files to download varies from pipeline run to pipeline run.</description>
+    </item>
+    
+  </channel>
+</rss>
