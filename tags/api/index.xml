@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>api on About me</title>
+    <link>https://steffenhaeussler.github.io/tags/api/</link>
+    <description>Recent content in api on About me</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 07 Aug 2023 10:30:50 +0200</lastBuildDate><atom:link href="https://steffenhaeussler.github.io/tags/api/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Endpoint validation</title>
+      <link>https://steffenhaeussler.github.io/posts/pydantic/</link>
+      <pubDate>Mon, 07 Aug 2023 10:30:50 +0200</pubDate>
+      
+      <guid>https://steffenhaeussler.github.io/posts/pydantic/</guid>
+      <description>Hi,
+In my previous job, I spent hours debugging internal data transformations to figure out the received data from an external API was faulty. This issue would not appeared with schema validation. My fault was that I trusted the incoming data and didn’t check for data consistency. Learning from mistakes and saving time, I would set up a small example for JSON validation via Pydantic. FastAPI relies heavily on pydantic and I use it for validating the incoming request and outgoing response.</description>
+    </item>
+    
+  </channel>
+</rss>
