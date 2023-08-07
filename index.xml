@@ -6,16 +6,15 @@
     <description>Recent content on About me</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 27 Apr 2023 10:30:58 +0100</lastBuildDate><atom:link href="https://steffenhaeussler.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 07 Aug 2023 10:30:50 +0200</lastBuildDate><atom:link href="https://steffenhaeussler.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Fast data transfer to or from s3</title>
-      <link>https://steffenhaeussler.github.io/posts/s3/</link>
-      <pubDate>Thu, 27 Apr 2023 10:30:58 +0100</pubDate>
+      <title>Endpoint validation</title>
+      <link>https://steffenhaeussler.github.io/posts/pydantic/</link>
+      <pubDate>Mon, 07 Aug 2023 10:30:50 +0200</pubDate>
       
-      <guid>https://steffenhaeussler.github.io/posts/s3/</guid>
+      <guid>https://steffenhaeussler.github.io/posts/pydantic/</guid>
       <description>Hi,
-This post is an homage to a stackoverflow post copying data from s3. This shared work saved me a lot of time. I believe that individuals who share their work do not receive sufficient recognition.
-The problem is that I have multiple Gb of data separated into thousands of files. Those files are selected for download by the semi-automated pipeline for model training. So the number of files to download varies from pipeline run to pipeline run.</description>
+In my previous job, I spent hours debugging internal data transformations to figure out the received data from an external API was faulty. This issue would not appeared with schema validation. My fault was that I trusted the incoming data and didn’t check for data consistency. Learning from mistakes and saving time, I would set up a small example for JSON validation via Pydantic. FastAPI relies heavily on pydantic and I use it for validating the incoming request and outgoing response.</description>
     </item>
     
     <item>
