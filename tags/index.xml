@@ -6,7 +6,43 @@
     <description>Recent content in Tags on About me</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 07 Aug 2023 10:30:50 +0200</lastBuildDate><atom:link href="https://steffenhaeussler.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 15 Aug 2023 00:30:58 +0100</lastBuildDate><atom:link href="https://steffenhaeussler.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>analysis</title>
+      <link>https://steffenhaeussler.github.io/tags/analysis/</link>
+      <pubDate>Tue, 15 Aug 2023 00:30:58 +0100</pubDate>
+      
+      <guid>https://steffenhaeussler.github.io/tags/analysis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>deep learning</title>
+      <link>https://steffenhaeussler.github.io/tags/deep-learning/</link>
+      <pubDate>Tue, 15 Aug 2023 00:30:58 +0100</pubDate>
+      
+      <guid>https://steffenhaeussler.github.io/tags/deep-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>machine learning</title>
+      <link>https://steffenhaeussler.github.io/tags/machine-learning/</link>
+      <pubDate>Tue, 15 Aug 2023 00:30:58 +0100</pubDate>
+      
+      <guid>https://steffenhaeussler.github.io/tags/machine-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>time-series</title>
+      <link>https://steffenhaeussler.github.io/tags/time-series/</link>
+      <pubDate>Tue, 15 Aug 2023 00:30:58 +0100</pubDate>
+      
+      <guid>https://steffenhaeussler.github.io/tags/time-series/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>api</title>
       <link>https://steffenhaeussler.github.io/tags/api/</link>
@@ -49,15 +85,6 @@
       <pubDate>Thu, 27 Apr 2023 10:30:58 +0100</pubDate>
       
       <guid>https://steffenhaeussler.github.io/tags/data-engineering/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>machine learning</title>
-      <link>https://steffenhaeussler.github.io/tags/machine-learning/</link>
-      <pubDate>Sat, 15 Apr 2023 10:30:58 +0100</pubDate>
-      
-      <guid>https://steffenhaeussler.github.io/tags/machine-learning/</guid>
       <description></description>
     </item>
     

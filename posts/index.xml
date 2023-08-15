@@ -6,7 +6,17 @@
     <description>Recent content in Posts on About me</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 07 Aug 2023 10:30:50 +0200</lastBuildDate><atom:link href="https://steffenhaeussler.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 15 Aug 2023 00:30:58 +0100</lastBuildDate><atom:link href="https://steffenhaeussler.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Learning about time-series analysis</title>
+      <link>https://steffenhaeussler.github.io/posts/time_series/</link>
+      <pubDate>Tue, 15 Aug 2023 00:30:58 +0100</pubDate>
+      
+      <guid>https://steffenhaeussler.github.io/posts/time_series/</guid>
+      <description>Hi,
+Recently, I had to work on a simple time-series analysis. I performed poorly since I never worked with time-series before. I believe in a deterministic world, and in general, I prefer to find the causality of a specific data behavior prior to a simple way of empiristic modeling. However, I understand the need for time-series analysis as not enough data available, the underlying processes understood, the complexity bearable, or the time/need for a proper process understanding.</description>
+    </item>
+    
     <item>
       <title>Endpoint validation</title>
       <link>https://steffenhaeussler.github.io/posts/pydantic/</link>
