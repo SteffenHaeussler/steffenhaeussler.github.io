@@ -6,7 +6,27 @@
     <description>Recent content in transformer on About me</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 15 Apr 2023 10:30:58 +0100</lastBuildDate><atom:link href="https://steffenhaeussler.github.io/tags/transformer/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 28 Aug 2023 10:30:58 +0100</lastBuildDate><atom:link href="https://steffenhaeussler.github.io/tags/transformer/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Implementing a transformer network from scratch</title>
+      <link>https://steffenhaeussler.github.io/posts/transformer/</link>
+      <pubDate>Mon, 28 Aug 2023 10:30:58 +0100</pubDate>
+      
+      <guid>https://steffenhaeussler.github.io/posts/transformer/</guid>
+      <description>Hi,
+This post is about my implementation of an encoder transformer network from scratch as a follow-up of understanding the attention layer together with the colab implementation. I use a simplified dataset, where I don&amp;rsquo;t expect great results. My approach is building something from scratch to understand it in depth. I faced many challenges during my implementation, so I aligned my code to the BertSequenceClassifier from huggingface. My biggest challenge was to get the network to train.</description>
+    </item>
+    
+    <item>
+      <title>Implementing a transformer network from scratch</title>
+      <link>https://steffenhaeussler.github.io/projects/transformer/</link>
+      <pubDate>Mon, 28 Aug 2023 10:30:58 +0100</pubDate>
+      
+      <guid>https://steffenhaeussler.github.io/projects/transformer/</guid>
+      <description>Hi,
+This post is about my implementation of an encoder transformer network from scratch as a follow-up of understanding the attention layer together with the colab implementation. I use a simplified dataset, where I don&amp;rsquo;t expect great results. My approach is building something from scratch to understand it in depth. I faced many challenges during my implementation, so I aligned my code to the BertSequenceClassifier from huggingface. My biggest challenge was to get the network to train.</description>
+    </item>
+    
     <item>
       <title>Training a language model from scratch</title>
       <link>https://steffenhaeussler.github.io/posts/llm/</link>
