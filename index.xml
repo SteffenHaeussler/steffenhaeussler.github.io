@@ -6,9 +6,19 @@
     <description>Recent content on About me</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 28 Aug 2023 10:30:58 +0100</lastBuildDate><atom:link href="https://steffenhaeussler.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 21 Nov 2023 10:30:58 +0100</lastBuildDate><atom:link href="https://steffenhaeussler.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Implementing a transformer network from scratch</title>
+      <title>Model explainability</title>
+      <link>https://steffenhaeussler.github.io/posts/model_explainability/</link>
+      <pubDate>Tue, 21 Nov 2023 10:30:58 +0100</pubDate>
+      
+      <guid>https://steffenhaeussler.github.io/posts/model_explainability/</guid>
+      <description>Hi,
+Some months have passed since my last post. Model explainability is easy for simple models (linear regression, decision trees), and some tools exist for more complex algorithms (ensemble trees). I want to dig into the tools to interpret more complex models with this post. Therefore, I highly recommend the book Interpretable Machine Learning by Christoph Molnar for a deeper theoretical understanding. All different approaches for model explanability are shown with a RandomForest model in this kaggle notebook.</description>
+    </item>
+    
+    <item>
+      <title>Implementing a Transformer Network from scratch</title>
       <link>https://steffenhaeussler.github.io/posts/transformer/</link>
       <pubDate>Mon, 28 Aug 2023 10:30:58 +0100</pubDate>
       
@@ -18,7 +28,7 @@ This post is about my implementation of an encoder transformer network from scra
     </item>
     
     <item>
-      <title>Implementing a transformer network from scratch</title>
+      <title>Implementing a Transformer Network from scratch</title>
       <link>https://steffenhaeussler.github.io/projects/transformer/</link>
       <pubDate>Mon, 28 Aug 2023 10:30:58 +0100</pubDate>
       
