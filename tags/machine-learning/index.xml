@@ -6,7 +6,17 @@
     <description>Recent content in machine learning on About me</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 21 Nov 2023 10:30:58 +0100</lastBuildDate><atom:link href="https://steffenhaeussler.github.io/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 08 Dec 2023 10:30:58 +0100</lastBuildDate><atom:link href="https://steffenhaeussler.github.io/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Deep Learning model explainability</title>
+      <link>https://steffenhaeussler.github.io/posts/dl_model_explainability/</link>
+      <pubDate>Fri, 08 Dec 2023 10:30:58 +0100</pubDate>
+      
+      <guid>https://steffenhaeussler.github.io/posts/dl_model_explainability/</guid>
+      <description>Hi,
+In my first post, I looked into the explainability of classical machine learning models. As a next step, I&amp;rsquo;m interested in the explainability of neural networks. Model explainability is easy for simple models (linear regression, decision trees), and some tools exist for more complex algorithms (ensemble trees). Therefore, I highly recommend the book Interpretable Machine Learning by Christoph Molnar for a deeper theoretical understanding. All different approaches for model explanability are shown with a PyTorch model in this kaggle notebook.</description>
+    </item>
+    
     <item>
       <title>Model explainability</title>
       <link>https://steffenhaeussler.github.io/posts/model_explainability/</link>
