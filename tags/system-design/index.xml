@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>System Design on About me</title>
+    <link>https://steffenhaeussler.github.io/tags/system-design/</link>
+    <description>Recent content in System Design on About me</description>
+    <generator>Hugo -- 0.140.1</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 27 Dec 2024 10:30:58 +0100</lastBuildDate>
+    <atom:link href="https://steffenhaeussler.github.io/tags/system-design/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Overview of RAG (Retrieval-Augmented Generation) systems</title>
+      <link>https://steffenhaeussler.github.io/posts/2024-12-27-overview/rag_overview/</link>
+      <pubDate>Fri, 27 Dec 2024 10:30:58 +0100</pubDate>
+      <guid>https://steffenhaeussler.github.io/posts/2024-12-27-overview/rag_overview/</guid>
+      <description>&lt;p&gt;Hi,&lt;/p&gt;
+&lt;p&gt;It’s been a while since my last post, mostly because of my own laziness. Over the past year, I’ve been working on several projects, one of which is a small RAG (Retrieval-Augmented Generation) system. I implemented it to combine external knowledge (in this case internal safety documents) with a large language model (LLM). This approach allows the use of data that the LLM wasn&amp;rsquo;t trained on and also helps reduce hallucinations.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

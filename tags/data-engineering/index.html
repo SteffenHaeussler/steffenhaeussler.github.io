@@ -5,12 +5,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>data engineering | About me</title>
+<title>Data Engineering | About me</title>
 <meta name="keywords" content="">
 <meta name="description" content="">
 <meta name="author" content="">
 <link rel="canonical" href="https://steffenhaeussler.github.io/tags/data-engineering/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.fb1f72c043d79eb7fc23a358b7843ebc2a418a4dcdec49e500cdfe86dafa1eb2.css" integrity="sha256-&#43;x9ywEPXnrf8I6NYt4Q&#43;vCpBik3N7EnlAM3&#43;htr6HrI=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.c32c3fa257f14f25741bf9b4bf26c500e50fe88bb7915cdb5f59134fcd019ee5.css" integrity="sha256-wyw/olfxTyV0G/m0vybFAOUP6Iu3kVzbX1kTT80BnuU=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://steffenhaeussler.github.io/assets/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://steffenhaeussler.github.io/assets/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://steffenhaeussler.github.io/assets/favicon-32x32.png">
@@ -19,6 +19,7 @@
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <link rel="alternate" type="application/rss+xml" href="https://steffenhaeussler.github.io/tags/data-engineering/index.xml">
+<link rel="alternate" hreflang="en" href="https://steffenhaeussler.github.io/tags/data-engineering/">
 <noscript>
     <style>
         #theme-toggle,
@@ -36,7 +37,7 @@
                 --secondary: rgb(155, 156, 157);
                 --tertiary: rgb(65, 66, 68);
                 --content: rgb(196, 196, 197);
-                --hljs-bg: rgb(46, 46, 51);
+                --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
             }
@@ -56,14 +57,14 @@
 
     </style>
 </noscript>
-<meta property="og:title" content="data engineering" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://steffenhaeussler.github.io/tags/data-engineering/" />
-
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="data engineering"/>
-<meta name="twitter:description" content=""/>
+<meta property="og:url" content="https://steffenhaeussler.github.io/tags/data-engineering/">
+  <meta property="og:site_name" content="About me">
+  <meta property="og:title" content="Data Engineering">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Data Engineering">
+<meta name="twitter:description" content="">
 
 </head>
 
@@ -104,17 +105,14 @@
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
+                <ul class="lang-switch"><li>|</li>
+                </ul>
             </div>
         </div>
         <ul id="menu">
             <li>
                 <a href="https://steffenhaeussler.github.io/posts/" title="Posts">
                     <span>Posts</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://steffenhaeussler.github.io/projects/" title="Projects">
-                    <span>Projects</span>
                 </a>
             </li>
             <li>
@@ -133,27 +131,29 @@
 <main class="main"> 
 <header class="page-header"><div class="breadcrumbs"><a href="https://steffenhaeussler.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://steffenhaeussler.github.io/tags/">Tags</a></div>
   <h1>
-    data engineering
+    Data Engineering
   </h1>
 </header>
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
-    <h2>Fast data transfer to or from s3
+    <h2 class="entry-hint-parent">Fast data transfer to or from s3
     </h2>
   </header>
   <div class="entry-content">
     <p>Hi,
 This post is an homage to a stackoverflow post copying data from s3. This shared work saved me a lot of time. I believe that individuals who share their work do not receive sufficient recognition.
-The problem is that I have multiple Gb of data separated into thousands of files. Those files are selected for download by the semi-automated pipeline for model training. So the number of files to download varies from pipeline run to pipeline run....</p>
+The problem is that I have multiple Gb of data separated into thousands of files. Those files are selected for download by the semi-automated pipeline for model training. So the number of files to download varies from pipeline run to pipeline run. Also, this makes any data preparation obsolete. The solution from the official boto3 documentation for copying data from s3 takes too long. Even with asynchronous execution in the download, it will take a few hours to download those files. Imagine a scenario where you want to fine-tune a deep learning model on a machine with multiple GPUs, but you have to wait several hours for the data to be copied 😱. Any preprocessing steps are not feasible since the data is filtered upon request. Additionally, downloading the data via aws cli is not an option, as there is much more data in the s3 buckets than requested for model training. The simplest approach is to increase the throughput. And here is the beauty, directly copy&#43;pasted from Pierre D:
+...</p>
   </div>
   <footer class="entry-footer"><span title='2023-04-27 10:30:58 +0100 +0100'>April 27, 2023</span>&nbsp;·&nbsp;3 min</footer>
-  <a class="entry-link" aria-label="post link to Fast data transfer to or from s3" href="https://steffenhaeussler.github.io/posts/s3/"></a>
+  <a class="entry-link" aria-label="post link to Fast data transfer to or from s3" href="https://steffenhaeussler.github.io/posts/2023-04-27-s3/s3/"></a>
 </article>
     </main>
     
 <footer class="footer">
-    <span>&copy; 2023 <a href="https://steffenhaeussler.github.io/">About me</a></span>
+        <span>&copy; 2024 <a href="https://steffenhaeussler.github.io/">About me</a></span> · 
+
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &

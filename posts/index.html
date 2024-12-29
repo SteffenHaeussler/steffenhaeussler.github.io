@@ -10,7 +10,7 @@
 <meta name="description" content="Posts - About me">
 <meta name="author" content="">
 <link rel="canonical" href="https://steffenhaeussler.github.io/posts/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.fb1f72c043d79eb7fc23a358b7843ebc2a418a4dcdec49e500cdfe86dafa1eb2.css" integrity="sha256-&#43;x9ywEPXnrf8I6NYt4Q&#43;vCpBik3N7EnlAM3&#43;htr6HrI=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.c32c3fa257f14f25741bf9b4bf26c500e50fe88bb7915cdb5f59134fcd019ee5.css" integrity="sha256-wyw/olfxTyV0G/m0vybFAOUP6Iu3kVzbX1kTT80BnuU=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://steffenhaeussler.github.io/assets/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://steffenhaeussler.github.io/assets/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://steffenhaeussler.github.io/assets/favicon-32x32.png">
@@ -19,6 +19,7 @@
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <link rel="alternate" type="application/rss+xml" href="https://steffenhaeussler.github.io/posts/index.xml">
+<link rel="alternate" hreflang="en" href="https://steffenhaeussler.github.io/posts/">
 <noscript>
     <style>
         #theme-toggle,
@@ -36,7 +37,7 @@
                 --secondary: rgb(155, 156, 157);
                 --tertiary: rgb(65, 66, 68);
                 --content: rgb(196, 196, 197);
-                --hljs-bg: rgb(46, 46, 51);
+                --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
             }
@@ -56,14 +57,14 @@
 
     </style>
 </noscript>
-<meta property="og:title" content="Posts" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://steffenhaeussler.github.io/posts/" />
-
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Posts"/>
-<meta name="twitter:description" content=""/>
+<meta property="og:url" content="https://steffenhaeussler.github.io/posts/">
+  <meta property="og:site_name" content="About me">
+  <meta property="og:title" content="Posts">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Posts">
+<meta name="twitter:description" content="">
 
 
 <script type="application/ld+json">
@@ -119,17 +120,14 @@
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
+                <ul class="lang-switch"><li>|</li>
+                </ul>
             </div>
         </div>
         <ul id="menu">
             <li>
                 <a href="https://steffenhaeussler.github.io/posts/" title="Posts">
                     <span class="active">Posts</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://steffenhaeussler.github.io/projects/" title="Projects">
-                    <span>Projects</span>
                 </a>
             </li>
             <li>
@@ -154,136 +152,145 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2>Deep Learning model explainability
+    <h2 class="entry-hint-parent">Overview of RAG (Retrieval-Augmented Generation) systems
     </h2>
   </header>
   <div class="entry-content">
     <p>Hi,
-In my first post, I looked into the explainability of classical machine learning models. As a next step, I’m interested in the explainability of neural networks. Model explainability is easy for simple models (linear regression, decision trees), and some tools exist for more complex algorithms (ensemble trees). Therefore, I highly recommend the book Interpretable Machine Learning by Christoph Molnar for a deeper theoretical understanding. All different approaches for model explanability are shown with a PyTorch model in this kaggle notebook....</p>
+It’s been a while since my last post, mostly because of my own laziness. Over the past year, I’ve been working on several projects, one of which is a small RAG (Retrieval-Augmented Generation) system. I implemented it to combine external knowledge (in this case internal safety documents) with a large language model (LLM). This approach allows the use of data that the LLM wasn’t trained on and also helps reduce hallucinations.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-12-27 10:30:58 +0100 CET'>December 27, 2024</span>&nbsp;·&nbsp;4 min</footer>
+  <a class="entry-link" aria-label="post link to Overview of RAG (Retrieval-Augmented Generation) systems" href="https://steffenhaeussler.github.io/posts/2024-12-27-overview/rag_overview/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Deep Learning model explainability
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Hi,
+In my first post, I looked into the explainability of classical machine learning models. As a next step, I’m interested in the explainability of neural networks. Model explainability is easy for simple models (linear regression, decision trees), and some tools exist for more complex algorithms (ensemble trees). Therefore, I highly recommend the book Interpretable Machine Learning by Christoph Molnar for a deeper theoretical understanding. All different approaches for model explanability are shown with a PyTorch model in this kaggle notebook.
+...</p>
   </div>
   <footer class="entry-footer"><span title='2023-12-08 10:30:58 +0100 CET'>December 8, 2023</span>&nbsp;·&nbsp;7 min</footer>
-  <a class="entry-link" aria-label="post link to Deep Learning model explainability" href="https://steffenhaeussler.github.io/posts/dl_model_explainability/"></a>
+  <a class="entry-link" aria-label="post link to Deep Learning model explainability" href="https://steffenhaeussler.github.io/posts/2023-12-08-dl-explainability/dl_model_explainability/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2>Model explainability
+    <h2 class="entry-hint-parent">Model explainability
     </h2>
   </header>
   <div class="entry-content">
     <p>Hi,
-Some months have passed since my last post. Model explainability is easy for simple models (linear regression, decision trees), and some tools exist for more complex algorithms (ensemble trees). I want to dig into the tools to interpret more complex models with this post. Therefore, I highly recommend the book Interpretable Machine Learning by Christoph Molnar for a deeper theoretical understanding. All different approaches for model explanability are shown with a RandomForest model in this kaggle notebook....</p>
+Some months have passed since my last post. Model explainability is easy for simple models (linear regression, decision trees), and some tools exist for more complex algorithms (ensemble trees). I want to dig into the tools to interpret more complex models with this post. Therefore, I highly recommend the book Interpretable Machine Learning by Christoph Molnar for a deeper theoretical understanding. All different approaches for model explanability are shown with a RandomForest model in this kaggle notebook.
+...</p>
   </div>
   <footer class="entry-footer"><span title='2023-11-21 10:30:58 +0100 CET'>November 21, 2023</span>&nbsp;·&nbsp;5 min</footer>
-  <a class="entry-link" aria-label="post link to Model explainability" href="https://steffenhaeussler.github.io/posts/model_explainability/"></a>
+  <a class="entry-link" aria-label="post link to Model explainability" href="https://steffenhaeussler.github.io/posts/2023-11-21-explainability/model_explainability/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2>Implementing a Transformer Network from scratch
+    <h2 class="entry-hint-parent">Implementing a Transformer Network from scratch
     </h2>
   </header>
   <div class="entry-content">
     <p>Hi,
-This post is about my implementation of an encoder transformer network from scratch as a follow-up of understanding the attention layer together with the colab implementation. I use a simplified dataset, where I don’t expect great results. My approach is building something from scratch to understand it in depth. I faced many challenges during my implementation, so I aligned my code to the BertSequenceClassifier from huggingface. My biggest challenge was to get the network to train....</p>
+This post is about my implementation of an encoder transformer network from scratch as a follow-up of understanding the attention layer together with the colab implementation. I use a simplified dataset, where I don’t expect great results. My approach is building something from scratch to understand it in depth. I faced many challenges during my implementation, so I aligned my code to the BertSequenceClassifier from huggingface. My biggest challenge was to get the network to train. This challenge took me several months of low focus and a proper de- and reconstruction of the architecture. Minor issues were missing skip connections and some data preparation issues.
+...</p>
   </div>
   <footer class="entry-footer"><span title='2023-08-28 10:30:58 +0100 +0100'>August 28, 2023</span>&nbsp;·&nbsp;6 min</footer>
-  <a class="entry-link" aria-label="post link to Implementing a Transformer Network from scratch" href="https://steffenhaeussler.github.io/posts/transformer/"></a>
+  <a class="entry-link" aria-label="post link to Implementing a Transformer Network from scratch" href="https://steffenhaeussler.github.io/posts/2023-08-28-transformer/transformer/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2>Learning about time-series analysis
+    <h2 class="entry-hint-parent">Learning about time-series analysis
     </h2>
   </header>
   <div class="entry-content">
     <p>Hi,
-Recently, I had to work on a simple time-series analysis. I performed poorly since I never worked with time-series before. I believe in a deterministic world, and in general, I prefer to find the causality of a specific data behavior prior to a simple way of empiristic modeling. However, I understand the need for time-series analysis as not enough data available, the underlying processes understood, the complexity bearable, or the time/need for a proper process understanding....</p>
+Recently, I had to work on a simple time-series analysis. I performed poorly since I never worked with time-series before. I believe in a deterministic world, and in general, I prefer to find the causality of a specific data behavior prior to a simple way of empiristic modeling. However, I understand the need for time-series analysis as not enough data available, the underlying processes understood, the complexity bearable, or the time/need for a proper process understanding. The goal is to make a prediction based on the previously observed observations. In a traditional sense (Arima), you look at the trend, seasonality, and cycles - in the more modern way, you throw the data into a model architecture (deep learning). In this context, I should mention the famous paper Statistical Modeling: The Two Cultures, while I prefer to use algorithmic models and treat the data mechanism as unknown. I would add that the underlying data mechanism is deterministic, and we should use collected data to get improved models. Anyway, let’s use the many resources in the time-series field to get better in this field.
+...</p>
   </div>
   <footer class="entry-footer"><span title='2023-08-15 00:30:58 +0100 +0100'>August 15, 2023</span>&nbsp;·&nbsp;3 min</footer>
-  <a class="entry-link" aria-label="post link to Learning about time-series analysis" href="https://steffenhaeussler.github.io/posts/time_series/"></a>
+  <a class="entry-link" aria-label="post link to Learning about time-series analysis" href="https://steffenhaeussler.github.io/posts/2023-08-15-timeseries/time_series/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2>Endpoint validation
+    <h2 class="entry-hint-parent">Endpoint validation
     </h2>
   </header>
   <div class="entry-content">
     <p>Hi,
-In my previous job, I spent hours debugging internal data transformations to figure out the received data from an external API was faulty. This issue would not appeared with schema validation. My fault was that I trusted the incoming data and didn’t check for data consistency. Learning from mistakes and saving time, I would set up a small example for JSON validation via Pydantic. FastAPI relies heavily on pydantic and I use it for validating the incoming request and outgoing response....</p>
+In my previous job, I spent hours debugging internal data transformations to figure out the received data from an external API was faulty. This issue would not appeared with schema validation. My fault was that I trusted the incoming data and didn’t check for data consistency. Learning from mistakes and saving time, I would set up a small example for JSON validation via Pydantic. FastAPI relies heavily on pydantic and I use it for validating the incoming request and outgoing response. Anyway, not in every project FastAPI is used.
+...</p>
   </div>
   <footer class="entry-footer"><span title='2023-08-07 10:30:50 +0200 CEST'>August 7, 2023</span>&nbsp;·&nbsp;3 min</footer>
-  <a class="entry-link" aria-label="post link to Endpoint validation" href="https://steffenhaeussler.github.io/posts/pydantic/"></a>
+  <a class="entry-link" aria-label="post link to Endpoint validation" href="https://steffenhaeussler.github.io/posts/2023-08-07-pydantic/pydantic/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2>Fast data transfer to or from s3
+    <h2 class="entry-hint-parent">Fast data transfer to or from s3
     </h2>
   </header>
   <div class="entry-content">
     <p>Hi,
 This post is an homage to a stackoverflow post copying data from s3. This shared work saved me a lot of time. I believe that individuals who share their work do not receive sufficient recognition.
-The problem is that I have multiple Gb of data separated into thousands of files. Those files are selected for download by the semi-automated pipeline for model training. So the number of files to download varies from pipeline run to pipeline run....</p>
+The problem is that I have multiple Gb of data separated into thousands of files. Those files are selected for download by the semi-automated pipeline for model training. So the number of files to download varies from pipeline run to pipeline run. Also, this makes any data preparation obsolete. The solution from the official boto3 documentation for copying data from s3 takes too long. Even with asynchronous execution in the download, it will take a few hours to download those files. Imagine a scenario where you want to fine-tune a deep learning model on a machine with multiple GPUs, but you have to wait several hours for the data to be copied 😱. Any preprocessing steps are not feasible since the data is filtered upon request. Additionally, downloading the data via aws cli is not an option, as there is much more data in the s3 buckets than requested for model training. The simplest approach is to increase the throughput. And here is the beauty, directly copy&#43;pasted from Pierre D:
+...</p>
   </div>
   <footer class="entry-footer"><span title='2023-04-27 10:30:58 +0100 +0100'>April 27, 2023</span>&nbsp;·&nbsp;3 min</footer>
-  <a class="entry-link" aria-label="post link to Fast data transfer to or from s3" href="https://steffenhaeussler.github.io/posts/s3/"></a>
+  <a class="entry-link" aria-label="post link to Fast data transfer to or from s3" href="https://steffenhaeussler.github.io/posts/2023-04-27-s3/s3/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2>Training a language model from scratch
+    <h2 class="entry-hint-parent">Training a language model from scratch
     </h2>
   </header>
   <div class="entry-content">
     <p>Hi,
 This post is a short overview over a work project, where I trained a language model for invoices. This so-called base model is then fine-tuned for text classification on customer data. Due to data privacy, a non-disclosure agreement, ISO 27001 and SOAP2, I’m not allowed to publish any results. Believe me, it works like 🚀✨🪐.
-A language model is trained on large amounts of textual data to understand the patterns and structure of language....</p>
+A language model is trained on large amounts of textual data to understand the patterns and structure of language. The primary goal of a language model is to predict the probability of the next word or sequence of words in a sentence given the previous words.
+...</p>
   </div>
   <footer class="entry-footer"><span title='2023-04-15 10:30:58 +0100 +0100'>April 15, 2023</span>&nbsp;·&nbsp;14 min</footer>
-  <a class="entry-link" aria-label="post link to Training a language model from scratch" href="https://steffenhaeussler.github.io/posts/llm/"></a>
+  <a class="entry-link" aria-label="post link to Training a language model from scratch" href="https://steffenhaeussler.github.io/posts/2023-04-21-training/llm/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2>Cookie-cutter Problems
+    <h2 class="entry-hint-parent">Cookie-cutter Problems
     </h2>
   </header>
   <div class="entry-content">
     <p>Hi,
-Recently, I started to put some scripts together and run them against a Kaggle dataset. I decided to train my skills on an unseen dataset. Training keeps me sharp, and I need it to complement my skill set. For the last 2,5 years, I struggled in a small team with NLP problems, where I worked mostly on engineering tasks. My understanding in this area is not where I wanted to be....</p>
+Recently, I started to put some scripts together and run them against a Kaggle dataset. I decided to train my skills on an unseen dataset. Training keeps me sharp, and I need it to complement my skill set. For the last 2,5 years, I struggled in a small team with NLP problems, where I worked mostly on engineering tasks. My understanding in this area is not where I wanted to be. And on top, I follow this natural human process called forgetting things. For example, I definitely can’t write all relevant stochiometric formulas of the chemo-lithotrophic denitrification by memory. This was very important during my Ph.D. When did I start to forget relevant information? It’s funny to think back. 🤷
+...</p>
   </div>
   <footer class="entry-footer"><span title='2023-04-10 10:30:58 +0100 +0100'>April 10, 2023</span>&nbsp;·&nbsp;2 min</footer>
-  <a class="entry-link" aria-label="post link to Cookie-cutter Problems" href="https://steffenhaeussler.github.io/posts/cookiecutter/"></a>
+  <a class="entry-link" aria-label="post link to Cookie-cutter Problems" href="https://steffenhaeussler.github.io/posts/2023-04-10-cookie/cookiecutter/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2>Stratified multi-label split
+    <h2 class="entry-hint-parent">Stratified multi-label split
     </h2>
   </header>
   <div class="entry-content">
     <p>Hi,
 This post is a short overview of a stratified multi-label train-test split. Please look at the colab implementation for a step through guide.
-Sometimes you step into work problems, which justify a small post. I already saw colleagues struggling to balance the train-test split for multi-label classification. In classification problems, we have often a dataset with an imbalanced number of classes. In general, it is desired to keep the proportions of each label for the train and test sets as observed as in the original dataset....</p>
+Sometimes you step into work problems, which justify a small post. I already saw colleagues struggling to balance the train-test split for multi-label classification. In classification problems, we have often a dataset with an imbalanced number of classes. In general, it is desired to keep the proportions of each label for the train and test sets as observed as in the original dataset. This stratified train-test split works well with single-label classification problems. For multi-label classification it is unclear how stratified sampling should be performed. Therefor Sechidis et al. 2011 and Szymanski and Kajdanowicz 2017 developed an algorithm to provide balanced datasets for multi-label classification. The documentation of their algorithm can be found in the scikit-multilearn package and on github.
+...</p>
   </div>
   <footer class="entry-footer"><span title='2023-04-08 10:30:58 +0100 +0100'>April 8, 2023</span>&nbsp;·&nbsp;3 min</footer>
-  <a class="entry-link" aria-label="post link to Stratified multi-label split" href="https://steffenhaeussler.github.io/posts/multi_label_split/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>Understanding scaled-dot product attention and multi-head attention
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Hi,
-This post is a summary of my implementation of the scaled-dot product attention and multi-head attention. Please have a look at the colab implementation for a step through guide.
-Even though this post is five years too late, the best way of reviving knowledge is to write about it. Transformers are in transforming the world via ChatGPT, Bart, or LLama. The core of the transformer architecture is the self-attention layer....</p>
-  </div>
-  <footer class="entry-footer"><span title='2023-03-18 10:30:58 +0100 CET'>March 18, 2023</span>&nbsp;·&nbsp;3 min</footer>
-  <a class="entry-link" aria-label="post link to Understanding scaled-dot product attention and multi-head attention" href="https://steffenhaeussler.github.io/posts/attention_layer/"></a>
+  <a class="entry-link" aria-label="post link to Stratified multi-label split" href="https://steffenhaeussler.github.io/posts/2023-04-09-stratified/multi_label_split/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
@@ -294,7 +301,8 @@ Even though this post is five years too late, the best way of reviving knowledge
     </main>
     
 <footer class="footer">
-    <span>&copy; 2023 <a href="https://steffenhaeussler.github.io/">About me</a></span>
+        <span>&copy; 2024 <a href="https://steffenhaeussler.github.io/">About me</a></span> · 
+
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
