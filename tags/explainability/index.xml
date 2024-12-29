@@ -1,31 +1,28 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>explainability on About me</title>
+    <title>Explainability on About me</title>
     <link>https://steffenhaeussler.github.io/tags/explainability/</link>
-    <description>Recent content in explainability on About me</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Explainability on About me</description>
+    <generator>Hugo -- 0.140.1</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 08 Dec 2023 10:30:58 +0100</lastBuildDate><atom:link href="https://steffenhaeussler.github.io/tags/explainability/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 08 Dec 2023 10:30:58 +0100</lastBuildDate>
+    <atom:link href="https://steffenhaeussler.github.io/tags/explainability/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Deep Learning model explainability</title>
-      <link>https://steffenhaeussler.github.io/posts/dl_model_explainability/</link>
+      <link>https://steffenhaeussler.github.io/posts/2023-12-08-dl-explainability/dl_model_explainability/</link>
       <pubDate>Fri, 08 Dec 2023 10:30:58 +0100</pubDate>
-      
-      <guid>https://steffenhaeussler.github.io/posts/dl_model_explainability/</guid>
-      <description>Hi,
-In my first post, I looked into the explainability of classical machine learning models. As a next step, I&amp;rsquo;m interested in the explainability of neural networks. Model explainability is easy for simple models (linear regression, decision trees), and some tools exist for more complex algorithms (ensemble trees). Therefore, I highly recommend the book Interpretable Machine Learning by Christoph Molnar for a deeper theoretical understanding. All different approaches for model explanability are shown with a PyTorch model in this kaggle notebook.</description>
+      <guid>https://steffenhaeussler.github.io/posts/2023-12-08-dl-explainability/dl_model_explainability/</guid>
+      <description>&lt;p&gt;Hi,&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://steffenhaeussler.github.io/posts/model_explainability/&#34;&gt;In my first post&lt;/a&gt;, I looked into the explainability of classical machine learning models. As a next step, I&amp;rsquo;m interested in the explainability of neural networks.  Model explainability is easy for simple models (linear regression, decision trees), and some tools exist for more complex algorithms (ensemble trees). Therefore, I highly recommend the book &lt;a href=&#34;https://christophm.github.io/interpretable-ml-book/&#34;&gt;Interpretable Machine Learning by Christoph Molnar&lt;/a&gt; for a deeper theoretical understanding. All different approaches for model explanability are shown with a PyTorch model &lt;a href=&#34;https://www.kaggle.com/code/steffenhaeussler/mohs-hardness-model-explainer-for-neuralnets/notebook&#34;&gt;in this kaggle notebook&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Model explainability</title>
-      <link>https://steffenhaeussler.github.io/posts/model_explainability/</link>
+      <link>https://steffenhaeussler.github.io/posts/2023-11-21-explainability/model_explainability/</link>
       <pubDate>Tue, 21 Nov 2023 10:30:58 +0100</pubDate>
-      
-      <guid>https://steffenhaeussler.github.io/posts/model_explainability/</guid>
-      <description>Hi,
-Some months have passed since my last post. Model explainability is easy for simple models (linear regression, decision trees), and some tools exist for more complex algorithms (ensemble trees). I want to dig into the tools to interpret more complex models with this post. Therefore, I highly recommend the book Interpretable Machine Learning by Christoph Molnar for a deeper theoretical understanding. All different approaches for model explanability are shown with a RandomForest model in this kaggle notebook.</description>
+      <guid>https://steffenhaeussler.github.io/posts/2023-11-21-explainability/model_explainability/</guid>
+      <description>&lt;p&gt;Hi,&lt;/p&gt;
+&lt;p&gt;Some months have passed since my last post. Model explainability is easy for simple models (linear regression, decision trees), and some tools exist for more complex algorithms (ensemble trees). I want to dig into the tools to interpret more complex models with this post. Therefore, I highly recommend the book &lt;a href=&#34;https://christophm.github.io/interpretable-ml-book/&#34;&gt;Interpretable Machine Learning by Christoph Molnar&lt;/a&gt; for a deeper theoretical understanding. All different approaches for model explanability are shown with a RandomForest model &lt;a href=&#34;https://www.kaggle.com/code/steffenhaeussler/mohs-hardness-model-explainer/notebook&#34;&gt;in this kaggle notebook&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>
