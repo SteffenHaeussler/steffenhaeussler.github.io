@@ -5,12 +5,13 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Cookie-cutter Problems | About me</title>
-<meta name="keywords" content="data science, training, machine learning">
+<title>Get embeddings for multiple data sources | About me</title>
+<meta name="keywords" content="machine learning, system design">
 <meta name="description" content="Hi,
-Recently, I started to put some scripts together and run them against a Kaggle dataset. I decided to train my skills on an unseen dataset. Training keeps me sharp, and I need it to complement my skill set. For the last 2,5 years, I struggled in a small team with NLP problems, where I worked mostly on engineering tasks. My understanding in this area is not where I wanted to be. And on top, I follow this natural human process called forgetting things. For example, I definitely can&rsquo;t write all relevant stochiometric formulas of the chemo-lithotrophic denitrification by memory. This was very important during my Ph.D. When did I start to forget relevant information? It&rsquo;s funny to think back.  🤷">
+Following my first short post about RAGs, I would like to provide a brief overview about embeddings, which are used to find similiar objects in a vector database. To better understand how various transformer models handle different input data types, I created this notebook. I explore therefor, text, image, audio and video data.
+I’ve chosen to skip the more traditional text embeddings (TF-IDF, Word2Vec or GloVe), because there are already very good tutorials available. Additionally, I plan to discuss the training of embedding models in a separate blog post. For this post, I use mostly pretrained classification models, where I use the last layer before the prediction head as embedding.">
 <meta name="author" content="">
-<link rel="canonical" href="https://steffenhaeussler.github.io/posts/2023-04-10-cookie/cookiecutter/">
+<link rel="canonical" href="https://steffenhaeussler.github.io/posts/2025-01-02-embeddings/embeddings/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.c32c3fa257f14f25741bf9b4bf26c500e50fe88bb7915cdb5f59134fcd019ee5.css" integrity="sha256-wyw/olfxTyV0G/m0vybFAOUP6Iu3kVzbX1kTT80BnuU=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://steffenhaeussler.github.io/assets/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://steffenhaeussler.github.io/assets/favicon-16x16.png">
@@ -19,7 +20,7 @@ Recently, I started to put some scripts together and run them against a Kaggle d
 <link rel="mask-icon" href="https://steffenhaeussler.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="https://steffenhaeussler.github.io/posts/2023-04-10-cookie/cookiecutter/">
+<link rel="alternate" hreflang="en" href="https://steffenhaeussler.github.io/posts/2025-01-02-embeddings/embeddings/">
 <noscript>
     <style>
         #theme-toggle,
@@ -57,33 +58,24 @@ Recently, I started to put some scripts together and run them against a Kaggle d
 
     </style>
 </noscript>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css"
-    integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"
-    integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4"
-    crossorigin="anonymous"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"
-    integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
-    onload="renderMathInElement(document.body);"></script>
-
-
-<meta property="og:url" content="https://steffenhaeussler.github.io/posts/2023-04-10-cookie/cookiecutter/">
+<meta property="og:url" content="https://steffenhaeussler.github.io/posts/2025-01-02-embeddings/embeddings/">
   <meta property="og:site_name" content="About me">
-  <meta property="og:title" content="Cookie-cutter Problems">
+  <meta property="og:title" content="Get embeddings for multiple data sources">
   <meta property="og:description" content="Hi,
-Recently, I started to put some scripts together and run them against a Kaggle dataset. I decided to train my skills on an unseen dataset. Training keeps me sharp, and I need it to complement my skill set. For the last 2,5 years, I struggled in a small team with NLP problems, where I worked mostly on engineering tasks. My understanding in this area is not where I wanted to be. And on top, I follow this natural human process called forgetting things. For example, I definitely can’t write all relevant stochiometric formulas of the chemo-lithotrophic denitrification by memory. This was very important during my Ph.D. When did I start to forget relevant information? It’s funny to think back. 🤷">
+Following my first short post about RAGs, I would like to provide a brief overview about embeddings, which are used to find similiar objects in a vector database. To better understand how various transformer models handle different input data types, I created this notebook. I explore therefor, text, image, audio and video data.
+I’ve chosen to skip the more traditional text embeddings (TF-IDF, Word2Vec or GloVe), because there are already very good tutorials available. Additionally, I plan to discuss the training of embedding models in a separate blog post. For this post, I use mostly pretrained classification models, where I use the last layer before the prediction head as embedding.">
   <meta property="og:locale" content="en-us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2023-04-10T10:30:58+01:00">
-    <meta property="article:modified_time" content="2023-04-10T10:30:58+01:00">
-    <meta property="article:tag" content="Data Science">
-    <meta property="article:tag" content="Training">
+    <meta property="article:published_time" content="2025-01-02T10:30:58+01:00">
+    <meta property="article:modified_time" content="2025-01-02T10:30:58+01:00">
     <meta property="article:tag" content="Machine Learning">
+    <meta property="article:tag" content="System Design">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Cookie-cutter Problems">
+<meta name="twitter:title" content="Get embeddings for multiple data sources">
 <meta name="twitter:description" content="Hi,
-Recently, I started to put some scripts together and run them against a Kaggle dataset. I decided to train my skills on an unseen dataset. Training keeps me sharp, and I need it to complement my skill set. For the last 2,5 years, I struggled in a small team with NLP problems, where I worked mostly on engineering tasks. My understanding in this area is not where I wanted to be. And on top, I follow this natural human process called forgetting things. For example, I definitely can&rsquo;t write all relevant stochiometric formulas of the chemo-lithotrophic denitrification by memory. This was very important during my Ph.D. When did I start to forget relevant information? It&rsquo;s funny to think back.  🤷">
+Following my first short post about RAGs, I would like to provide a brief overview about embeddings, which are used to find similiar objects in a vector database. To better understand how various transformer models handle different input data types, I created this notebook. I explore therefor, text, image, audio and video data.
+I’ve chosen to skip the more traditional text embeddings (TF-IDF, Word2Vec or GloVe), because there are already very good tutorials available. Additionally, I plan to discuss the training of embedding models in a separate blog post. For this post, I use mostly pretrained classification models, where I use the last layer before the prediction head as embedding.">
 
 
 <script type="application/ld+json">
@@ -100,8 +92,8 @@ Recently, I started to put some scripts together and run them against a Kaggle d
     {
       "@type": "ListItem",
       "position":  2 ,
-      "name": "Cookie-cutter Problems",
-      "item": "https://steffenhaeussler.github.io/posts/2023-04-10-cookie/cookiecutter/"
+      "name": "Get embeddings for multiple data sources",
+      "item": "https://steffenhaeussler.github.io/posts/2025-01-02-embeddings/embeddings/"
     }
   ]
 }
@@ -110,20 +102,20 @@ Recently, I started to put some scripts together and run them against a Kaggle d
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "Cookie-cutter Problems",
-  "name": "Cookie-cutter Problems",
-  "description": "Hi,\nRecently, I started to put some scripts together and run them against a Kaggle dataset. I decided to train my skills on an unseen dataset. Training keeps me sharp, and I need it to complement my skill set. For the last 2,5 years, I struggled in a small team with NLP problems, where I worked mostly on engineering tasks. My understanding in this area is not where I wanted to be. And on top, I follow this natural human process called forgetting things. For example, I definitely can\u0026rsquo;t write all relevant stochiometric formulas of the chemo-lithotrophic denitrification by memory. This was very important during my Ph.D. When did I start to forget relevant information? It\u0026rsquo;s funny to think back. 🤷\n",
+  "headline": "Get embeddings for multiple data sources",
+  "name": "Get embeddings for multiple data sources",
+  "description": "Hi,\nFollowing my first short post about RAGs, I would like to provide a brief overview about embeddings, which are used to find similiar objects in a vector database. To better understand how various transformer models handle different input data types, I created this notebook. I explore therefor, text, image, audio and video data.\nI’ve chosen to skip the more traditional text embeddings (TF-IDF, Word2Vec or GloVe), because there are already very good tutorials available. Additionally, I plan to discuss the training of embedding models in a separate blog post. For this post, I use mostly pretrained classification models, where I use the last layer before the prediction head as embedding.\n",
   "keywords": [
-    "data science", "training", "machine learning"
+    "machine learning", "system design"
   ],
-  "articleBody": "Hi,\nRecently, I started to put some scripts together and run them against a Kaggle dataset. I decided to train my skills on an unseen dataset. Training keeps me sharp, and I need it to complement my skill set. For the last 2,5 years, I struggled in a small team with NLP problems, where I worked mostly on engineering tasks. My understanding in this area is not where I wanted to be. And on top, I follow this natural human process called forgetting things. For example, I definitely can’t write all relevant stochiometric formulas of the chemo-lithotrophic denitrification by memory. This was very important during my Ph.D. When did I start to forget relevant information? It’s funny to think back. 🤷\nAnyway, the next question is about handling my training process. Should I put my training on this page and make it generally accessible to the public or not? Public presentation adds some pressure, which I like. Based on the pressure of a possible evaluation, I will put more effort into my training. So, I will add some descriptions to the code and try to understand it. Also, I stop lying to myself by copy-pasting the solutions from others. Copy-paste rarely works when you need to describe the solution. On the other side, why should I add my poor code/understanding in public? There is the fear of not being good enough. What if my knowledge is outdated, shallow, or just wrong? Especially as a career switcher, this is problematic. I worked through MOOCs and read many books, papers, blogs, and code lines. Learning took me countless hours, but my knowledge always felt shallow.\nIn my opinion, this is not necessarily bad when you don’t know specific information. Knowledge changes over time, and everyone has full-time work and social life. Staying up-to-date is hard work, and forgetting nothing seems impossible. It is more valuable to evaluate the process of approaching a problem. The first part is honesty. What do I know - where are my weaknesses - which area needs my attention? If you are not honest with yourself, you can’t learn. Afterward, when you are clear about your knowledge, you can specify your gaps and try to close them. In my view, the learning process is the most valuable professional trait. That’s the main reason why I will add my training here:\nStandard procedure Outdated CNN for text classification Transformer implementation Thank you for your attention.\n",
-  "wordCount" : "406",
+  "articleBody": "Hi,\nFollowing my first short post about RAGs, I would like to provide a brief overview about embeddings, which are used to find similiar objects in a vector database. To better understand how various transformer models handle different input data types, I created this notebook. I explore therefor, text, image, audio and video data.\nI’ve chosen to skip the more traditional text embeddings (TF-IDF, Word2Vec or GloVe), because there are already very good tutorials available. Additionally, I plan to discuss the training of embedding models in a separate blog post. For this post, I use mostly pretrained classification models, where I use the last layer before the prediction head as embedding.\nThis is a brief overview of the embedding component of a RAG system. Just have a look.\nThank you for your attention.\n",
+  "wordCount" : "133",
   "inLanguage": "en",
-  "datePublished": "2023-04-10T10:30:58+01:00",
-  "dateModified": "2023-04-10T10:30:58+01:00",
+  "datePublished": "2025-01-02T10:30:58+01:00",
+  "dateModified": "2025-01-02T10:30:58+01:00",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://steffenhaeussler.github.io/posts/2023-04-10-cookie/cookiecutter/"
+    "@id": "https://steffenhaeussler.github.io/posts/2025-01-02-embeddings/embeddings/"
   },
   "publisher": {
     "@type": "Organization",
@@ -203,21 +195,16 @@ Recently, I started to put some scripts together and run them against a Kaggle d
   <header class="post-header">
     <div class="breadcrumbs"><a href="https://steffenhaeussler.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://steffenhaeussler.github.io/posts/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
-      Cookie-cutter Problems
+      Get embeddings for multiple data sources
     </h1>
-    <div class="post-meta"><span title='2023-04-10 10:30:58 +0100 +0100'>April 10, 2023</span>&nbsp;·&nbsp;2 min
+    <div class="post-meta"><span title='2025-01-02 10:30:58 +0100 CET'>January 2, 2025</span>&nbsp;·&nbsp;1 min
 
 </div>
   </header> 
   <div class="post-content"><p>Hi,</p>
-<p>Recently, I started to put some scripts together and run them against a Kaggle dataset. I decided to train my skills on an unseen dataset. Training keeps me sharp, and I need it to complement my skill set. For the last 2,5 years, I struggled in a small team with NLP problems, where I worked mostly on engineering tasks. My understanding in this area is not where I wanted to be. And on top, I follow this natural human process called forgetting things. For example, I definitely can&rsquo;t write all relevant stochiometric formulas of the chemo-lithotrophic denitrification by memory. This was very important during my Ph.D. When did I start to forget relevant information? It&rsquo;s funny to think back.  🤷</p>
-<p>Anyway, the next question is about handling my training process. Should I put my training on this page and make it generally accessible to the public or not? Public presentation adds some pressure, which I like. Based on the pressure of a possible evaluation, I will put more effort into my training. So, I will add some descriptions to the code and try to understand it. Also, I stop lying to myself by copy-pasting the solutions from others. Copy-paste rarely works when you need to describe the solution. On the other side, why should I add my poor code/understanding in public? There is the fear of not being good enough. What if my knowledge is outdated, shallow, or just wrong? Especially as a career switcher, this is problematic. I worked through MOOCs and read many books, papers, blogs, and code lines. Learning took me countless hours, but my knowledge always felt shallow.</p>
-<p>In my opinion, this is not necessarily bad when you don&rsquo;t know specific information. Knowledge changes over time, and everyone has full-time work and social life. Staying up-to-date is hard work, and forgetting nothing seems impossible. It is more valuable to evaluate the process of approaching a problem. The first part is honesty. What do I know - where are my weaknesses - which area needs my attention? If you are not honest with yourself, you can&rsquo;t learn. Afterward, when you are clear about your knowledge, you can specify your gaps and try to close them. In my view, the learning process is the most valuable professional trait. That&rsquo;s the main reason why I will add my training here:</p>
-<ul>
-<li><a href="https://www.kaggle.com/steffenhaeussler/dna-sequence-classification-part-1">Standard procedure</a></li>
-<li><a href="https://www.kaggle.com/steffenhaeussler/dna-sequence-classification-part-2">Outdated CNN for text classification</a></li>
-<li><a href="https://www.kaggle.com/steffenhaeussler/dna-sequence-classification-part-3">Transformer implementation</a></li>
-</ul>
+<p>Following my first short post about <a href="https://steffenhaeussler.github.io/posts/2024-12-27-overview/rag_overview/">RAGs</a>, I would like to provide a brief overview about embeddings, which are used to find similiar objects in a vector database. To better understand how various transformer models handle different input data types, I created this <a href="https://www.kaggle.com/code/steffenhaeussler/get-embeddings-for-multiple-data-types">notebook</a>. I explore therefor, text, image, audio and video data.</p>
+<p>I’ve chosen to skip the more traditional text embeddings (TF-IDF, Word2Vec or GloVe), because there are already very good tutorials available. Additionally, I plan to discuss the training of embedding models in a separate blog post. For this post, I use mostly pretrained classification models, where I use the last layer before the prediction head as embedding.</p>
+<p>This is a brief overview of the embedding component of a RAG system. Just have a look.</p>
 <p>Thank you for your attention.</p>
 
 
@@ -225,9 +212,8 @@ Recently, I started to put some scripts together and run them against a Kaggle d
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://steffenhaeussler.github.io/tags/data-science/">Data Science</a></li>
-      <li><a href="https://steffenhaeussler.github.io/tags/training/">Training</a></li>
       <li><a href="https://steffenhaeussler.github.io/tags/machine-learning/">Machine Learning</a></li>
+      <li><a href="https://steffenhaeussler.github.io/tags/system-design/">System Design</a></li>
     </ul>
   </footer>
 </article>
