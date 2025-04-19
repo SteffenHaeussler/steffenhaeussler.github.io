@@ -3,25 +3,31 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://steffenhaeussler.github.io/</loc>
-    <lastmod>2025-01-02T10:30:58+01:00</lastmod>
+    <lastmod>2025-04-19T10:30:58+01:00</lastmod>
+  </url><url>
+    <loc>https://steffenhaeussler.github.io/tags/algorithm/</loc>
+    <lastmod>2025-04-19T10:30:58+01:00</lastmod>
+  </url><url>
+    <loc>https://steffenhaeussler.github.io/tags/machine-learning/</loc>
+    <lastmod>2025-04-19T10:30:58+01:00</lastmod>
+  </url><url>
+    <loc>https://steffenhaeussler.github.io/tags/nlp/</loc>
+    <lastmod>2025-04-19T10:30:58+01:00</lastmod>
+  </url><url>
+    <loc>https://steffenhaeussler.github.io/posts/</loc>
+    <lastmod>2025-04-19T10:30:58+01:00</lastmod>
+  </url><url>
+    <loc>https://steffenhaeussler.github.io/tags/</loc>
+    <lastmod>2025-04-19T10:30:58+01:00</lastmod>
+  </url><url>
+    <loc>https://steffenhaeussler.github.io/posts/2025-04-19-ann/ann/</loc>
+    <lastmod>2025-04-19T10:30:58+01:00</lastmod>
   </url><url>
     <loc>https://steffenhaeussler.github.io/posts/2025-01-02-embeddings/embeddings/</loc>
     <lastmod>2025-01-02T10:30:58+01:00</lastmod>
   </url><url>
-    <loc>https://steffenhaeussler.github.io/tags/machine-learning/</loc>
-    <lastmod>2025-01-02T10:30:58+01:00</lastmod>
-  </url><url>
-    <loc>https://steffenhaeussler.github.io/posts/</loc>
-    <lastmod>2025-01-02T10:30:58+01:00</lastmod>
-  </url><url>
     <loc>https://steffenhaeussler.github.io/tags/system-design/</loc>
     <lastmod>2025-01-02T10:30:58+01:00</lastmod>
-  </url><url>
-    <loc>https://steffenhaeussler.github.io/tags/</loc>
-    <lastmod>2025-01-02T10:30:58+01:00</lastmod>
-  </url><url>
-    <loc>https://steffenhaeussler.github.io/tags/nlp/</loc>
-    <lastmod>2024-12-27T10:30:58+01:00</lastmod>
   </url><url>
     <loc>https://steffenhaeussler.github.io/posts/2024-12-27-overview/rag_overview/</loc>
     <lastmod>2024-12-27T10:30:58+01:00</lastmod>
