@@ -6,8 +6,17 @@
     <description>Recent content in Machine Learning on About me</description>
     <generator>Hugo -- 0.140.1</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 02 Jan 2025 10:30:58 +0100</lastBuildDate>
+    <lastBuildDate>Sat, 19 Apr 2025 10:30:58 +0100</lastBuildDate>
     <atom:link href="https://steffenhaeussler.github.io/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Understanding approximate nearest neighbor algorithm</title>
+      <link>https://steffenhaeussler.github.io/posts/2025-04-19-ann/ann/</link>
+      <pubDate>Sat, 19 Apr 2025 10:30:58 +0100</pubDate>
+      <guid>https://steffenhaeussler.github.io/posts/2025-04-19-ann/ann/</guid>
+      <description>&lt;p&gt;Hi,&lt;/p&gt;
+&lt;p&gt;This post is about the approximate nearest neighbor (ANN) algorithm. The code for this post is &lt;a href=&#34;https://www.kaggle.com/code/steffenhaeussler/understanding-approx-nearest-neighbor-algorithm&#34;&gt;here&lt;/a&gt;, where I provide an example of using a framework and a python implementation. Most python implementation were written with the help of a LLM. I&amp;rsquo;m amazed, how helpful they are for learning new things. I see them like a drunken professor, which with the right approach will be a very helpful tool.&lt;/p&gt;
+&lt;p&gt;As a next step in understanding RAGs, I want to have a closer look at approximate nearest neighbor algorithms. Basically, the purpose is to find the closest vector to a query vector in a database. Since I&amp;rsquo;m also interested into the implementation, I follow mostly this amazing blog post. Vector search is the basic component of vector databases and their main purpose. ANN algorithms are looking for a close match instead of an exact match. This loss of accuracy allows an improvement of efficieny, which allows the search through much bigger datasets, high-dimensional data and real-time apllications.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Get embeddings for multiple data sources</title>
       <link>https://steffenhaeussler.github.io/posts/2025-01-02-embeddings/embeddings/</link>
