@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 <title>Understanding approximate nearest neighbor algorithm | About me</title>
 <meta name="keywords" content="machine learning, algorithm, nlp">
 <meta name="description" content="Hi,
 This post is about the approximate nearest neighbor (ANN) algorithm. The code for this post is here, where I provide an example of using a framework and a python implementation. Most python implementation were written with the help of a LLM. I&rsquo;m amazed, how helpful they are for learning new things. I see them like a drunken professor, which with the right approach will be a very helpful tool.
 As a next step in understanding RAGs, I want to have a closer look at approximate nearest neighbor algorithms. Basically, the purpose is to find the closest vector to a query vector in a database. Since I&rsquo;m also interested into the implementation, I follow mostly this amazing blog post. Vector search is the basic component of vector databases and their main purpose. ANN algorithms are looking for a close match instead of an exact match. This loss of accuracy allows an improvement of efficieny, which allows the search through much bigger datasets, high-dimensional data and real-time apllications.">
 <meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/posts/2025-04-19-ann/ann/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.c32c3fa257f14f25741bf9b4bf26c500e50fe88bb7915cdb5f59134fcd019ee5.css" integrity="sha256-wyw/olfxTyV0G/m0vybFAOUP6Iu3kVzbX1kTT80BnuU=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/assets/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/assets/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/assets/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link rel="canonical" href="https://steffenhaeussler.github.io/posts/2025-04-19-ann/ann/">
+<link crossorigin="anonymous" href="https://steffenhaeussler.github.io/assets/css/stylesheet.c32c3fa257f14f25741bf9b4bf26c500e50fe88bb7915cdb5f59134fcd019ee5.css" integrity="sha256-wyw/olfxTyV0G/m0vybFAOUP6Iu3kVzbX1kTT80BnuU=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://steffenhaeussler.github.io/assets/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://steffenhaeussler.github.io/assets/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://steffenhaeussler.github.io/assets/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://steffenhaeussler.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://steffenhaeussler.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/2025-04-19-ann/ann/">
+<link rel="alternate" hreflang="en" href="https://steffenhaeussler.github.io/posts/2025-04-19-ann/ann/">
 <noscript>
     <style>
         #theme-toggle,
@@ -58,7 +58,76 @@ As a next step in understanding RAGs, I want to have a closer look at approximat
 
     </style>
 </noscript>
+<meta property="og:url" content="https://steffenhaeussler.github.io/posts/2025-04-19-ann/ann/">
+  <meta property="og:site_name" content="About me">
+  <meta property="og:title" content="Understanding approximate nearest neighbor algorithm">
+  <meta property="og:description" content="Hi,
+This post is about the approximate nearest neighbor (ANN) algorithm. The code for this post is here, where I provide an example of using a framework and a python implementation. Most python implementation were written with the help of a LLM. I’m amazed, how helpful they are for learning new things. I see them like a drunken professor, which with the right approach will be a very helpful tool.
+As a next step in understanding RAGs, I want to have a closer look at approximate nearest neighbor algorithms. Basically, the purpose is to find the closest vector to a query vector in a database. Since I’m also interested into the implementation, I follow mostly this amazing blog post. Vector search is the basic component of vector databases and their main purpose. ANN algorithms are looking for a close match instead of an exact match. This loss of accuracy allows an improvement of efficieny, which allows the search through much bigger datasets, high-dimensional data and real-time apllications.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-04-19T10:30:58+01:00">
+    <meta property="article:modified_time" content="2025-04-19T10:30:58+01:00">
+    <meta property="article:tag" content="Machine Learning">
+    <meta property="article:tag" content="Algorithm">
+    <meta property="article:tag" content="Nlp">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Understanding approximate nearest neighbor algorithm">
+<meta name="twitter:description" content="Hi,
+This post is about the approximate nearest neighbor (ANN) algorithm. The code for this post is here, where I provide an example of using a framework and a python implementation. Most python implementation were written with the help of a LLM. I&rsquo;m amazed, how helpful they are for learning new things. I see them like a drunken professor, which with the right approach will be a very helpful tool.
+As a next step in understanding RAGs, I want to have a closer look at approximate nearest neighbor algorithms. Basically, the purpose is to find the closest vector to a query vector in a database. Since I&rsquo;m also interested into the implementation, I follow mostly this amazing blog post. Vector search is the basic component of vector databases and their main purpose. ANN algorithms are looking for a close match instead of an exact match. This loss of accuracy allows an improvement of efficieny, which allows the search through much bigger datasets, high-dimensional data and real-time apllications.">
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://steffenhaeussler.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Understanding approximate nearest neighbor algorithm",
+      "item": "https://steffenhaeussler.github.io/posts/2025-04-19-ann/ann/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Understanding approximate nearest neighbor algorithm",
+  "name": "Understanding approximate nearest neighbor algorithm",
+  "description": "Hi,\nThis post is about the approximate nearest neighbor (ANN) algorithm. The code for this post is here, where I provide an example of using a framework and a python implementation. Most python implementation were written with the help of a LLM. I\u0026rsquo;m amazed, how helpful they are for learning new things. I see them like a drunken professor, which with the right approach will be a very helpful tool.\nAs a next step in understanding RAGs, I want to have a closer look at approximate nearest neighbor algorithms. Basically, the purpose is to find the closest vector to a query vector in a database. Since I\u0026rsquo;m also interested into the implementation, I follow mostly this amazing blog post. Vector search is the basic component of vector databases and their main purpose. ANN algorithms are looking for a close match instead of an exact match. This loss of accuracy allows an improvement of efficieny, which allows the search through much bigger datasets, high-dimensional data and real-time apllications.\n",
+  "keywords": [
+    "machine learning", "algorithm", "nlp"
+  ],
+  "articleBody": "Hi,\nThis post is about the approximate nearest neighbor (ANN) algorithm. The code for this post is here, where I provide an example of using a framework and a python implementation. Most python implementation were written with the help of a LLM. I’m amazed, how helpful they are for learning new things. I see them like a drunken professor, which with the right approach will be a very helpful tool.\nAs a next step in understanding RAGs, I want to have a closer look at approximate nearest neighbor algorithms. Basically, the purpose is to find the closest vector to a query vector in a database. Since I’m also interested into the implementation, I follow mostly this amazing blog post. Vector search is the basic component of vector databases and their main purpose. ANN algorithms are looking for a close match instead of an exact match. This loss of accuracy allows an improvement of efficieny, which allows the search through much bigger datasets, high-dimensional data and real-time apllications.\nThis improved efficiency is based on indexes, which are pre-processed data-structures of embeddings. This also includes dimension reduction of the intitial embedding. There are multiple techniques, how the embedding can be indexed for a fast retrieval. To get a retrieval, there are multiple approaches to calculate the distance between two embeddings (e.g. cosine distance, euclidean distance). To get an extensive list of almost all metrics, please have a look at the NMSLIB manual here.\nFor this post, there will be ashort introduction for:\nhash-based indexing tree-based indexing graph-based indexing cluster-based indexing The ressources for this post are:\nVector Database 101: Everything You Need to Know Faiss: The Missing Manual Gemini 2.5 pro for consulting and coding (honestly, I don’t know, how to cite LLMs or mark the parts, where they helped me) As always, look at the code and the ressources. I’m sparse with graphics, but sometimes they make it much easier to understand the concept.\nGraph-based Indexing (e.g. HNSW) Hierarchical Navigable Small World uses a graph for approximity nearest neighbor search. A “proximity graph” is used, which links two vertices based on their closeness (e.g. euclidean distance). There are two fundamental techniques, which contribute to HNSW. It’s a probability skip list and navigable small world graphs.\nA probability skip list allows fast search, while using a linked list for easy and fast insertion of new elements. This is done by adding multiple layers of linked lists, where intermediate nodes are skipped in the low layers. This allows a fast search by following the skips until the target is found.\nNavigable small world graphs are proximity graphs, which include long-range and short-range links to reduce search times. Each graph has an pre-defined entry-point, which connects to several vertices. Via greedy routing the closest vertice to the search query will selected until a local minimum is detected.\nHNSW combines the hierarchical multi-layers from the skip list with the long-range (sparse) and short-range (dense) links of the NSW graph. Please look at one of the references. With the visual explanation from those blogs, it is much easier to grasp the concept og HNSW.\nRessources:\nHierarchical Navigable Small Worlds Understanding HNSWlib: A Graph-based Library for Fast Approximate Nearest Neighbor Search Skip Lists: A Probabilistic Alternative to Balanced Trees by Pugh 1990 Approximate nearest neighbor algorithm based on navigable small world graphs by Malkov et al. 2014 Cluster-based Indexing (e.g. product quantization) Product quantization is a way to cluster chunks of a vector. This reduces the total size of the database by reducing the overall precision of the vectors. This is different from PCA, which reduce the dimension of a vector. The idea is, that the algorithm looks at each dimension separately and “bins” each value into discrete buckets. The search will performed over the quantized vectors, which results in reduced memory consumption and a speed-up.\nBasically, the vector is split into subvectors. Each subvector is quantized by k-means and will be represented by the index of its closest centroid.\nI look into three different way of PQ\nsimple PQ Inverted File + Product Quantization, which introduces a better data structure to achieve a much denser subdivision of the search space Optimized Product Quantization with minimizing quantization distortions Ressources:\nProduct Quantization Scalar Quantization and Product Quantization Product Quantization for Similarity Search Product Quantization for Nearest Neighbor Search by Jegou et al. 2011 The Inverted Multi-Index by Babenko et al. 2012 Optimized Product Quantization by Ge et al. 2013 Hash-based Indexing (e.g. LSH) Locality sensitive hashing is an approximate technique, which puts similiar data points into same buckets or locations with high probability. For retrieval, you only need to explore a small subset instead of the whole dataset. LSH addresses this by increasing the likelihood of hash value collisions for similiar inputs. By those collisions similiar embeddings will be grouped together.\nLSH works in three major steps:\nShingling (converting the documents into a set of characters of length k) - not needed here, since we already use embeddings Minhashing (calculates similiarity between two data points by assigning Minhash signatures) Locality sensitive hashing (clustering similar items together) Ressources:\nLSH Algorithm and Implementation LSH guide Locality Sensitive Hashing (LSH): The Illustrated Guide Near-Optimal Hashing Algorithms for Approximate Nearest Neighbor in High Dimensions, Andoni and Indyk 2006 Approximate Nearest Neighbor with Locality Sensitive Hashing Tree-based Indexing (e.g. Annoy) Approximate Nearest Neighbors Oh Yeah (Annoy) is an algorithm, which uses a forest of trees to search for the nearest neighbor. Annoy is an optimized approach and hard to implement by yourself. To keep in mind, annoy was published by spotify, which was replaced by Voyager. Anyway, traditional tree-based approaches like KD-Trees suffer from the high dimensionality. The sklearn inbuild version of a kd-tree takes 3 sec to get the approx. nearest neighbors for 10 samples. The documentation of annoy is a bit sparse.\nThe core idea is to recursively partition the data. During the build phase, the data is divided at each node based on different criteria (e.g., splitting along a dimension like in kd-trees, partitioning by distance to chosen centers like in ball trees, or splitting based on a random projection like in RP trees). This splitting continues until the nodes contain a certain number of points.\nFor the query phase, the search traverses the tree. Starting at the root, the algorithm uses the node’s splitting criteria to decide which child branch is most likely to contain the nearest neighbors for the given query point.\nRessources:\nImplementing Approximate Nearest Neighbor Search with KD-Trees KD-Tree Random Projection This is a brief overview of approximate nearest neighbor algorithms. I hope, you find it helpful. You can find the code for an example dataset here.\nThank you for your attention.\n",
+  "wordCount" : "1116",
+  "inLanguage": "en",
+  "datePublished": "2025-04-19T10:30:58+01:00",
+  "dateModified": "2025-04-19T10:30:58+01:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://steffenhaeussler.github.io/posts/2025-04-19-ann/ann/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "About me",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://steffenhaeussler.github.io/assets/favicon.ico"
+    }
+  }
+}
+</script>
 </head>
 
 <body class="" id="top">
@@ -76,7 +145,7 @@ As a next step in understanding RAGs, I want to have a closer look at approximat
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="About me (Alt + H)">About me</a>
+            <a href="https://steffenhaeussler.github.io/" accesskey="h" title="About me (Alt + H)">About me</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -104,17 +173,17 @@ As a next step in understanding RAGs, I want to have a closer look at approximat
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/posts/" title="Posts">
+                <a href="https://steffenhaeussler.github.io/posts/" title="Posts">
                     <span>Posts</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/tags/" title="Tags">
+                <a href="https://steffenhaeussler.github.io/tags/" title="Tags">
                     <span>Tags</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/archives/" title="Archives">
+                <a href="https://steffenhaeussler.github.io/archives/" title="Archives">
                     <span>Archives</span>
                 </a>
             </li>
@@ -125,7 +194,7 @@ As a next step in understanding RAGs, I want to have a closer look at approximat
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/posts/">Posts</a></div>
+    <div class="breadcrumbs"><a href="https://steffenhaeussler.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://steffenhaeussler.github.io/posts/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
       Understanding approximate nearest neighbor algorithm
     </h1>
@@ -218,16 +287,16 @@ The documentation of annoy is a bit sparse.</p>
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://localhost:1313/tags/machine-learning/">Machine Learning</a></li>
-      <li><a href="http://localhost:1313/tags/algorithm/">Algorithm</a></li>
-      <li><a href="http://localhost:1313/tags/nlp/">Nlp</a></li>
+      <li><a href="https://steffenhaeussler.github.io/tags/machine-learning/">Machine Learning</a></li>
+      <li><a href="https://steffenhaeussler.github.io/tags/algorithm/">Algorithm</a></li>
+      <li><a href="https://steffenhaeussler.github.io/tags/nlp/">Nlp</a></li>
     </ul>
   </footer>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="http://localhost:1313/">About me</a></span> · 
+        <span>&copy; 2025 <a href="https://steffenhaeussler.github.io/">About me</a></span> · 
 
     <span>
         Powered by
