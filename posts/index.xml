@@ -2,26 +2,34 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Posts on About me</title>
-    <link>https://steffenhaeussler.github.io/posts/</link>
+    <link>http://localhost:1313/posts/</link>
     <description>Recent content in Posts on About me</description>
     <generator>Hugo -- 0.140.1</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 19 Apr 2025 10:30:58 +0100</lastBuildDate>
-    <atom:link href="https://steffenhaeussler.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Evaluation of RAG systems</title>
+      <link>http://localhost:1313/posts/2025-04-30-metrics/metrics/</link>
+      <pubDate>Sat, 19 Apr 2025 10:30:58 +0100</pubDate>
+      <guid>http://localhost:1313/posts/2025-04-30-metrics/metrics/</guid>
+      <description>&lt;p&gt;Hi,&lt;/p&gt;
+&lt;p&gt;RAGs are complex systems. This is obvious, when you try to evaluate them. There are multiple aspects, which need to be checked. Here, I try to look into different approaches to get a better understanding and problems, when facing RAG systems. RAG system evaluation involves two distinct parts: retrieval and generation part. For retrieval, context relevance and noise robustness are key factors in assessing quality, while for generation part, key factors like answer faithfulness, answer relevance, negative rejection, information integration, and counterfactual robustness are important (&lt;a href=&#34;https://arxiv.org/pdf/2312.10997#page=14&#34;&gt;Gao et al. 2024&lt;/a&gt;).&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Understanding approximate nearest neighbor algorithm</title>
-      <link>https://steffenhaeussler.github.io/posts/2025-04-19-ann/ann/</link>
+      <link>http://localhost:1313/posts/2025-04-19-ann/ann/</link>
       <pubDate>Sat, 19 Apr 2025 10:30:58 +0100</pubDate>
-      <guid>https://steffenhaeussler.github.io/posts/2025-04-19-ann/ann/</guid>
+      <guid>http://localhost:1313/posts/2025-04-19-ann/ann/</guid>
       <description>&lt;p&gt;Hi,&lt;/p&gt;
 &lt;p&gt;This post is about the approximate nearest neighbor (ANN) algorithm. The code for this post is &lt;a href=&#34;https://www.kaggle.com/code/steffenhaeussler/understanding-approx-nearest-neighbor-algorithm&#34;&gt;here&lt;/a&gt;, where I provide an example of using a framework and a python implementation. Most python implementation were written with the help of a LLM. I&amp;rsquo;m amazed, how helpful they are for learning new things. I see them like a drunken professor, which with the right approach will be a very helpful tool.&lt;/p&gt;
 &lt;p&gt;As a next step in understanding RAGs, I want to have a closer look at approximate nearest neighbor algorithms. Basically, the purpose is to find the closest vector to a query vector in a database. Since I&amp;rsquo;m also interested into the implementation, I follow mostly this amazing blog post. Vector search is the basic component of vector databases and their main purpose. ANN algorithms are looking for a close match instead of an exact match. This loss of accuracy allows an improvement of efficieny, which allows the search through much bigger datasets, high-dimensional data and real-time apllications.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Short example of Information Retrieval</title>
-      <link>https://steffenhaeussler.github.io/posts/2025-03-10-retrieval/retrieval/</link>
+      <link>http://localhost:1313/posts/2025-03-10-retrieval/retrieval/</link>
       <pubDate>Mon, 10 Mar 2025 10:30:58 +0100</pubDate>
-      <guid>https://steffenhaeussler.github.io/posts/2025-03-10-retrieval/retrieval/</guid>
+      <guid>http://localhost:1313/posts/2025-03-10-retrieval/retrieval/</guid>
       <description>&lt;p&gt;Hi,&lt;/p&gt;
 &lt;p&gt;Some time ago, I did a small project on information retrieval. I think, it\s a good idea to share it with all its shortcomings.
 Here is the &lt;a href=&#34;https://www.kaggle.com/code/steffenhaeussler/examples-for-information-retrieval&#34;&gt;code&lt;/a&gt;. Sadly, the LLM part doesn&amp;rsquo;t work with the quantized model, so I commented it out.
@@ -29,93 +37,93 @@ The project is a small information retrieval of a FAQ, where I want to map the c
     </item>
     <item>
       <title>Get embeddings for multiple data sources</title>
-      <link>https://steffenhaeussler.github.io/posts/2025-01-02-embeddings/embeddings/</link>
+      <link>http://localhost:1313/posts/2025-01-02-embeddings/embeddings/</link>
       <pubDate>Thu, 02 Jan 2025 10:30:58 +0100</pubDate>
-      <guid>https://steffenhaeussler.github.io/posts/2025-01-02-embeddings/embeddings/</guid>
+      <guid>http://localhost:1313/posts/2025-01-02-embeddings/embeddings/</guid>
       <description>&lt;p&gt;Hi,&lt;/p&gt;
 &lt;p&gt;Following my first short post about &lt;a href=&#34;https://steffenhaeussler.github.io/posts/2024-12-27-overview/rag_overview/&#34;&gt;RAGs&lt;/a&gt;, I would like to provide a brief overview about embeddings, which are used to find similiar objects in a vector database. To better understand how various transformer models handle different input data types, I created this &lt;a href=&#34;https://www.kaggle.com/code/steffenhaeussler/get-embeddings-for-multiple-data-types&#34;&gt;notebook&lt;/a&gt;. I explore therefor, text, image, audio and video data.&lt;/p&gt;
 &lt;p&gt;I’ve chosen to skip the more traditional text embeddings (TF-IDF, Word2Vec or GloVe), because there are already very good tutorials available. Additionally, I plan to discuss the training of embedding models in a separate blog post. For this post, I use mostly pretrained classification models, where I use the last layer before the prediction head as embedding.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Overview of RAG (Retrieval-Augmented Generation) systems</title>
-      <link>https://steffenhaeussler.github.io/posts/2024-12-27-overview/rag_overview/</link>
+      <link>http://localhost:1313/posts/2024-12-27-overview/rag_overview/</link>
       <pubDate>Fri, 27 Dec 2024 10:30:58 +0100</pubDate>
-      <guid>https://steffenhaeussler.github.io/posts/2024-12-27-overview/rag_overview/</guid>
+      <guid>http://localhost:1313/posts/2024-12-27-overview/rag_overview/</guid>
       <description>&lt;p&gt;Hi,&lt;/p&gt;
 &lt;p&gt;It’s been a while since my last post, mostly because of my own laziness. Over the past year, I’ve been working on several projects, one of which is a small RAG (Retrieval-Augmented Generation) system. I implemented it to combine external knowledge (in this case internal safety documents) with a large language model (LLM). This approach allows the use of data that the LLM wasn&amp;rsquo;t trained on and also helps reduce hallucinations.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Deep Learning model explainability</title>
-      <link>https://steffenhaeussler.github.io/posts/2023-12-08-dl-explainability/dl_model_explainability/</link>
+      <link>http://localhost:1313/posts/2023-12-08-dl-explainability/dl_model_explainability/</link>
       <pubDate>Fri, 08 Dec 2023 10:30:58 +0100</pubDate>
-      <guid>https://steffenhaeussler.github.io/posts/2023-12-08-dl-explainability/dl_model_explainability/</guid>
+      <guid>http://localhost:1313/posts/2023-12-08-dl-explainability/dl_model_explainability/</guid>
       <description>&lt;p&gt;Hi,&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://steffenhaeussler.github.io/posts/model_explainability/&#34;&gt;In my first post&lt;/a&gt;, I looked into the explainability of classical machine learning models. As a next step, I&amp;rsquo;m interested in the explainability of neural networks.  Model explainability is easy for simple models (linear regression, decision trees), and some tools exist for more complex algorithms (ensemble trees). Therefore, I highly recommend the book &lt;a href=&#34;https://christophm.github.io/interpretable-ml-book/&#34;&gt;Interpretable Machine Learning by Christoph Molnar&lt;/a&gt; for a deeper theoretical understanding. All different approaches for model explanability are shown with a PyTorch model &lt;a href=&#34;https://www.kaggle.com/code/steffenhaeussler/mohs-hardness-model-explainer-for-neuralnets/notebook&#34;&gt;in this kaggle notebook&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Model explainability</title>
-      <link>https://steffenhaeussler.github.io/posts/2023-11-21-explainability/model_explainability/</link>
+      <link>http://localhost:1313/posts/2023-11-21-explainability/model_explainability/</link>
       <pubDate>Tue, 21 Nov 2023 10:30:58 +0100</pubDate>
-      <guid>https://steffenhaeussler.github.io/posts/2023-11-21-explainability/model_explainability/</guid>
+      <guid>http://localhost:1313/posts/2023-11-21-explainability/model_explainability/</guid>
       <description>&lt;p&gt;Hi,&lt;/p&gt;
 &lt;p&gt;Some months have passed since my last post. Model explainability is easy for simple models (linear regression, decision trees), and some tools exist for more complex algorithms (ensemble trees). I want to dig into the tools to interpret more complex models with this post. Therefore, I highly recommend the book &lt;a href=&#34;https://christophm.github.io/interpretable-ml-book/&#34;&gt;Interpretable Machine Learning by Christoph Molnar&lt;/a&gt; for a deeper theoretical understanding. All different approaches for model explanability are shown with a RandomForest model &lt;a href=&#34;https://www.kaggle.com/code/steffenhaeussler/mohs-hardness-model-explainer/notebook&#34;&gt;in this kaggle notebook&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Implementing a Transformer Network from scratch</title>
-      <link>https://steffenhaeussler.github.io/posts/2023-08-28-transformer/transformer/</link>
+      <link>http://localhost:1313/posts/2023-08-28-transformer/transformer/</link>
       <pubDate>Mon, 28 Aug 2023 10:30:58 +0100</pubDate>
-      <guid>https://steffenhaeussler.github.io/posts/2023-08-28-transformer/transformer/</guid>
+      <guid>http://localhost:1313/posts/2023-08-28-transformer/transformer/</guid>
       <description>&lt;p&gt;Hi,&lt;/p&gt;
 &lt;p&gt;This post is about my implementation of an &lt;a href=&#34;https://www.kaggle.com/code/steffenhaeussler/dna-sequence-classification-part-4&#34;&gt;encoder transformer network from scratch&lt;/a&gt; as a follow-up &lt;a href=&#34;https://steffenhaeussler.github.io/posts/attention_layer/&#34;&gt;of understanding the attention layer&lt;/a&gt; together with the &lt;a href=&#34;https://colab.research.google.com/drive/1sE0B4NOAu9kqUTpuHIp1EYlD5JCAw4Gq?usp=sharing&#34;&gt;colab implementation&lt;/a&gt;. I use a simplified dataset, where I don&amp;rsquo;t expect great results. My approach is building something from scratch to understand it in depth. I faced many challenges during my implementation, so I aligned my code to the &lt;a href=&#34;https://huggingface.co/docs/transformers/model_doc/bert#transformers.BertForSequenceClassification&#34;&gt;BertSequenceClassifier from huggingface&lt;/a&gt;. My biggest challenge was to get the network to train. This challenge took me several months of low focus and a proper de- and reconstruction of the architecture. Minor issues were missing skip connections and some data preparation issues.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Learning about time-series analysis</title>
-      <link>https://steffenhaeussler.github.io/posts/2023-08-15-timeseries/time_series/</link>
+      <link>http://localhost:1313/posts/2023-08-15-timeseries/time_series/</link>
       <pubDate>Tue, 15 Aug 2023 00:30:58 +0100</pubDate>
-      <guid>https://steffenhaeussler.github.io/posts/2023-08-15-timeseries/time_series/</guid>
+      <guid>http://localhost:1313/posts/2023-08-15-timeseries/time_series/</guid>
       <description>&lt;p&gt;Hi,&lt;/p&gt;
 &lt;p&gt;Recently, I had to work on a simple time-series analysis. I performed poorly since I never worked with time-series before.
 I believe in a deterministic world, and in general, I prefer to find the causality of a specific data behavior prior to a simple way of empiristic modeling. However, I understand the need for time-series analysis as not enough data available, the underlying processes understood, the complexity bearable, or the time/need for a proper process understanding. The goal is to make a prediction based on the previously observed observations. In a traditional sense (Arima), you look at the trend, seasonality, and cycles - in the more modern way, you throw the data into a model architecture (deep learning). In this context, I should mention the famous paper &lt;a href=&#34;https://projecteuclid.org/journals/statistical-science/volume-16/issue-3/Statistical-Modeling--The-Two-Cultures-with-comments-and-a/10.1214/ss/1009213726.pdf&#34;&gt;Statistical Modeling: The Two Cultures&lt;/a&gt;, while I prefer to use algorithmic models and treat the data mechanism as unknown. I would add that the underlying data mechanism is deterministic, and we should use collected data to get improved models. Anyway, let&amp;rsquo;s use the many resources in the time-series field to get better in this field.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Endpoint validation</title>
-      <link>https://steffenhaeussler.github.io/posts/2023-08-07-pydantic/pydantic/</link>
+      <link>http://localhost:1313/posts/2023-08-07-pydantic/pydantic/</link>
       <pubDate>Mon, 07 Aug 2023 10:30:50 +0200</pubDate>
-      <guid>https://steffenhaeussler.github.io/posts/2023-08-07-pydantic/pydantic/</guid>
+      <guid>http://localhost:1313/posts/2023-08-07-pydantic/pydantic/</guid>
       <description>&lt;p&gt;Hi,&lt;/p&gt;
 &lt;p&gt;In my previous job, I spent hours debugging internal data transformations to figure out the received data from an external API was faulty. This issue would not appeared with schema validation. My fault was that I trusted the incoming data and didn’t check for data consistency. Learning from mistakes and saving time, I would set up a small example for JSON validation via Pydantic. FastAPI relies heavily on pydantic and I use it for validating the incoming request and outgoing response. Anyway, not in every project FastAPI is used.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Fast data transfer to or from s3</title>
-      <link>https://steffenhaeussler.github.io/posts/2023-04-27-s3/s3/</link>
+      <link>http://localhost:1313/posts/2023-04-27-s3/s3/</link>
       <pubDate>Thu, 27 Apr 2023 10:30:58 +0100</pubDate>
-      <guid>https://steffenhaeussler.github.io/posts/2023-04-27-s3/s3/</guid>
+      <guid>http://localhost:1313/posts/2023-04-27-s3/s3/</guid>
       <description>&lt;p&gt;Hi,&lt;/p&gt;
 &lt;p&gt;This post is an homage to a &lt;a href=&#34;https://stackoverflow.com/questions/56639630/how-can-i-increase-my-aws-s3-upload-speed-when-using-boto3/61809946#61809946&#34;&gt;stackoverflow post&lt;/a&gt; copying data from s3. This shared work saved me a lot of time. I believe that individuals who share their work do not receive sufficient recognition.&lt;/p&gt;
 &lt;p&gt;The problem is that I have multiple Gb of data separated into thousands of files. Those files are selected for download by the semi-automated pipeline for model training. So the number of files to download varies from pipeline run to pipeline run. Also, this makes any data preparation obsolete. The solution from the &lt;a href=&#34;https://boto3.amazonaws.com/v1/documentation/api/latest/guide/s3-example-download-file.html&#34;&gt;official boto3 documentation&lt;/a&gt; for copying data from s3 takes too long. Even with &lt;a href=&#34;https://docs.python.org/3/library/concurrent.futures.html&#34;&gt;asynchronous execution&lt;/a&gt; in the download, it will take a few hours to download those files.  Imagine a scenario where you want to fine-tune a deep learning model on a machine with multiple GPUs, but you have to wait several hours for the data to be copied 😱. Any preprocessing steps are not feasible since the data is filtered upon request. Additionally, downloading the data via aws cli is not an option, as there is much more data in the s3 buckets than requested for model training. The simplest approach is to increase the throughput. And here is the beauty, directly copy+pasted from &lt;a href=&#34;https://stackoverflow.com/questions/56639630/how-can-i-increase-my-aws-s3-upload-speed-when-using-boto3/61809946#61809946&#34;&gt;Pierre D&lt;/a&gt;:&lt;/p&gt;</description>
     </item>
     <item>
       <title>Training a language model from scratch</title>
-      <link>https://steffenhaeussler.github.io/posts/2023-04-21-training/llm/</link>
+      <link>http://localhost:1313/posts/2023-04-21-training/llm/</link>
       <pubDate>Sat, 15 Apr 2023 10:30:58 +0100</pubDate>
-      <guid>https://steffenhaeussler.github.io/posts/2023-04-21-training/llm/</guid>
+      <guid>http://localhost:1313/posts/2023-04-21-training/llm/</guid>
       <description>&lt;p&gt;Hi,&lt;/p&gt;
 &lt;p&gt;This post is a short overview over a &lt;a href=&#34;https://www.kaggle.com/code/steffenhaeussler/train-a-language-model-from-scratch/notebook&#34;&gt;work project&lt;/a&gt;, where I trained a language model for invoices. This so-called base model is then fine-tuned for text classification on customer data. Due to data privacy, a non-disclosure agreement, ISO 27001 and SOAP2, I&amp;rsquo;m not allowed to publish any results. Believe me, it works like 🚀✨🪐.&lt;/p&gt;
 &lt;p&gt;A language model is trained on large amounts of textual data to understand the patterns and structure of language. The primary goal of a language model is to predict the probability of the next word or sequence of words in a sentence given the previous words.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Cookie-cutter Problems</title>
-      <link>https://steffenhaeussler.github.io/posts/2023-04-10-cookie/cookiecutter/</link>
+      <link>http://localhost:1313/posts/2023-04-10-cookie/cookiecutter/</link>
       <pubDate>Mon, 10 Apr 2023 10:30:58 +0100</pubDate>
-      <guid>https://steffenhaeussler.github.io/posts/2023-04-10-cookie/cookiecutter/</guid>
+      <guid>http://localhost:1313/posts/2023-04-10-cookie/cookiecutter/</guid>
       <description>&lt;p&gt;Hi,&lt;/p&gt;
 &lt;p&gt;Recently, I started to put some scripts together and run them against a Kaggle dataset. I decided to train my skills on an unseen dataset. Training keeps me sharp, and I need it to complement my skill set. For the last 2,5 years, I struggled in a small team with NLP problems, where I worked mostly on engineering tasks. My understanding in this area is not where I wanted to be. And on top, I follow this natural human process called forgetting things. For example, I definitely can&amp;rsquo;t write all relevant stochiometric formulas of the chemo-lithotrophic denitrification by memory. This was very important during my Ph.D. When did I start to forget relevant information? It&amp;rsquo;s funny to think back.  🤷&lt;/p&gt;</description>
     </item>
     <item>
       <title>Stratified multi-label split</title>
-      <link>https://steffenhaeussler.github.io/posts/2023-04-09-stratified/multi_label_split/</link>
+      <link>http://localhost:1313/posts/2023-04-09-stratified/multi_label_split/</link>
       <pubDate>Sat, 08 Apr 2023 10:30:58 +0100</pubDate>
-      <guid>https://steffenhaeussler.github.io/posts/2023-04-09-stratified/multi_label_split/</guid>
+      <guid>http://localhost:1313/posts/2023-04-09-stratified/multi_label_split/</guid>
       <description>&lt;p&gt;Hi,&lt;/p&gt;
 &lt;p&gt;This post is a short overview of a stratified multi-label train-test split. Please look at the &lt;a href=&#34;https://colab.research.google.com/drive/1SdJKRef4sZYowuddGIOzN8PVGH9PngyF?usp=sharing&#34;&gt;colab implementation&lt;/a&gt; for a step through guide.&lt;/p&gt;
 &lt;p&gt;Sometimes you step into work problems, which justify a small post. I already saw colleagues struggling to balance the train-test split for multi-label classification.
@@ -123,18 +131,18 @@ In classification problems, we have often a dataset with an imbalanced number of
     </item>
     <item>
       <title>Understanding scaled-dot product attention and multi-head attention</title>
-      <link>https://steffenhaeussler.github.io/posts/2023-03-19-attention/attention_layer/</link>
+      <link>http://localhost:1313/posts/2023-03-19-attention/attention_layer/</link>
       <pubDate>Sat, 18 Mar 2023 10:30:58 +0100</pubDate>
-      <guid>https://steffenhaeussler.github.io/posts/2023-03-19-attention/attention_layer/</guid>
+      <guid>http://localhost:1313/posts/2023-03-19-attention/attention_layer/</guid>
       <description>&lt;p&gt;Hi,&lt;/p&gt;
 &lt;p&gt;This post is a summary of my implementation of the scaled-dot product attention and multi-head attention. Please have a look at the &lt;a href=&#34;https://colab.research.google.com/drive/1sE0B4NOAu9kqUTpuHIp1EYlD5JCAw4Gq?usp=sharing&#34;&gt;colab implementation&lt;/a&gt; for a step through guide.&lt;/p&gt;
 &lt;p&gt;Even though this post is five years too late, the best way of reviving knowledge is to write about it. Transformers are in transforming the world via ChatGPT, Bart, or LLama. The core of the transformer architecture is the self-attention layer. There are many attention mechanisms (listed in this &lt;a href=&#34;https://lilianweng.github.io/posts/2018-06-24-attention/&#34;&gt;great post by Lilian Weng&lt;/a&gt;), but the scaled-dot product attention layer is used in general (&lt;a href=&#34;https://proceedings.neurips.cc/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf&#34;&gt;Vaswani et al. 2017&lt;/a&gt;). For a visual explanation of the transformer, look at the great post from &lt;a href=&#34;https://jalammar.github.io/illustrated-transformer/&#34;&gt;Jay Alammar&lt;/a&gt;. Please check &lt;a href=&#34;https://www.youtube.com/watch?v=kCc8FmEb1nY&#34;&gt;Andrej Karpathy&amp;rsquo;s video&lt;/a&gt; for the full implementation of a transformer from scratch.&lt;/p&gt;</description>
     </item>
     <item>
       <title>The importance of building things by yourself</title>
-      <link>https://steffenhaeussler.github.io/posts/2023-03-05-first/first/</link>
+      <link>http://localhost:1313/posts/2023-03-05-first/first/</link>
       <pubDate>Sun, 05 Mar 2023 23:30:58 +0100</pubDate>
-      <guid>https://steffenhaeussler.github.io/posts/2023-03-05-first/first/</guid>
+      <guid>http://localhost:1313/posts/2023-03-05-first/first/</guid>
       <description>&lt;p&gt;Hi,&lt;/p&gt;
 &lt;p&gt;In this initial post, I want to draft the development of my &lt;a href=&#34;https://github.com/SteffenHaeussler/fastapi_skeleton/&#34;&gt;FastAPI skeleton&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;At the beginning of my career as a Data Scientist, I ran into the typical problem of model deployment to production.
