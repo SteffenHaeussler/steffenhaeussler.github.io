@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto">
 
-<head><meta charset="utf-8">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="noindex, nofollow">
 <title>Stratified multi-label split | About me</title>
 <meta name="keywords" content="data science, machine learning">
 <meta name="description" content="Hi,
@@ -12,16 +12,16 @@ This post is a short overview of a stratified multi-label train-test split. Plea
 Sometimes you step into work problems, which justify a small post. I already saw colleagues struggling to balance the train-test split for multi-label classification.
 In classification problems, we have often a dataset with an imbalanced number of classes. In general, it is desired to keep the proportions of each label for the train and test sets as observed as in the original dataset. This stratified train-test split works well with single-label classification problems. For multi-label classification it is unclear how stratified sampling should be performed. Therefor Sechidis et al. 2011 and Szymanski and Kajdanowicz 2017 developed an algorithm to provide balanced datasets for multi-label classification. The documentation of their algorithm can be found in the scikit-multilearn package and on github.">
 <meta name="author" content="">
-<link rel="canonical" href="https://steffenhaeussler.github.io/posts/2023-04-09-stratified/multi_label_split/">
-<link crossorigin="anonymous" href="https://steffenhaeussler.github.io/assets/css/stylesheet.c32c3fa257f14f25741bf9b4bf26c500e50fe88bb7915cdb5f59134fcd019ee5.css" integrity="sha256-wyw/olfxTyV0G/m0vybFAOUP6Iu3kVzbX1kTT80BnuU=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://steffenhaeussler.github.io/assets/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://steffenhaeussler.github.io/assets/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://steffenhaeussler.github.io/assets/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://steffenhaeussler.github.io/apple-touch-icon.png">
-<link rel="mask-icon" href="https://steffenhaeussler.github.io/safari-pinned-tab.svg">
+<link rel="canonical" href="http://localhost:1313/posts/2023-04-09-stratified/multi_label_split/">
+<link crossorigin="anonymous" href="http://localhost:1313/assets/css/stylesheet.a6264de45f1158af551cf2fe7595e8651c772fa1286f4c0483059a3e826a3049.css" integrity="sha256-piZN5F8RWK9VHPL&#43;dZXoZRx3L6Eob0wEgwWaPoJqMEk=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/assets/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/assets/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/assets/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="https://steffenhaeussler.github.io/posts/2023-04-09-stratified/multi_label_split/">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/2023-04-09-stratified/multi_label_split/">
 <noscript>
     <style>
         #theme-toggle,
@@ -59,76 +59,7 @@ In classification problems, we have often a dataset with an imbalanced number of
 
     </style>
 </noscript>
-<meta property="og:url" content="https://steffenhaeussler.github.io/posts/2023-04-09-stratified/multi_label_split/">
-  <meta property="og:site_name" content="About me">
-  <meta property="og:title" content="Stratified multi-label split">
-  <meta property="og:description" content="Hi,
-This post is a short overview of a stratified multi-label train-test split. Please look at the colab implementation for a step through guide.
-Sometimes you step into work problems, which justify a small post. I already saw colleagues struggling to balance the train-test split for multi-label classification. In classification problems, we have often a dataset with an imbalanced number of classes. In general, it is desired to keep the proportions of each label for the train and test sets as observed as in the original dataset. This stratified train-test split works well with single-label classification problems. For multi-label classification it is unclear how stratified sampling should be performed. Therefor Sechidis et al. 2011 and Szymanski and Kajdanowicz 2017 developed an algorithm to provide balanced datasets for multi-label classification. The documentation of their algorithm can be found in the scikit-multilearn package and on github.">
-  <meta property="og:locale" content="en-us">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2023-04-08T10:30:58+01:00">
-    <meta property="article:modified_time" content="2023-04-08T10:30:58+01:00">
-    <meta property="article:tag" content="Data Science">
-    <meta property="article:tag" content="Machine Learning">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Stratified multi-label split">
-<meta name="twitter:description" content="Hi,
-This post is a short overview of a stratified multi-label train-test split. Please look at the colab implementation for a step through guide.
-Sometimes you step into work problems, which justify a small post. I already saw colleagues struggling to balance the train-test split for multi-label classification.
-In classification problems, we have often a dataset with an imbalanced number of classes. In general, it is desired to keep the proportions of each label for the train and test sets as observed as in the original dataset. This stratified train-test split works well with single-label classification problems. For multi-label classification it is unclear how stratified sampling should be performed. Therefor Sechidis et al. 2011 and Szymanski and Kajdanowicz 2017 developed an algorithm to provide balanced datasets for multi-label classification. The documentation of their algorithm can be found in the scikit-multilearn package and on github.">
 
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "Posts",
-      "item": "https://steffenhaeussler.github.io/posts/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  2 ,
-      "name": "Stratified multi-label split",
-      "item": "https://steffenhaeussler.github.io/posts/2023-04-09-stratified/multi_label_split/"
-    }
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Stratified multi-label split",
-  "name": "Stratified multi-label split",
-  "description": "Hi,\nThis post is a short overview of a stratified multi-label train-test split. Please look at the colab implementation for a step through guide.\nSometimes you step into work problems, which justify a small post. I already saw colleagues struggling to balance the train-test split for multi-label classification. In classification problems, we have often a dataset with an imbalanced number of classes. In general, it is desired to keep the proportions of each label for the train and test sets as observed as in the original dataset. This stratified train-test split works well with single-label classification problems. For multi-label classification it is unclear how stratified sampling should be performed. Therefor Sechidis et al. 2011 and Szymanski and Kajdanowicz 2017 developed an algorithm to provide balanced datasets for multi-label classification. The documentation of their algorithm can be found in the scikit-multilearn package and on github.\n",
-  "keywords": [
-    "data science", "machine learning"
-  ],
-  "articleBody": "Hi,\nThis post is a short overview of a stratified multi-label train-test split. Please look at the colab implementation for a step through guide.\nSometimes you step into work problems, which justify a small post. I already saw colleagues struggling to balance the train-test split for multi-label classification. In classification problems, we have often a dataset with an imbalanced number of classes. In general, it is desired to keep the proportions of each label for the train and test sets as observed as in the original dataset. This stratified train-test split works well with single-label classification problems. For multi-label classification it is unclear how stratified sampling should be performed. Therefor Sechidis et al. 2011 and Szymanski and Kajdanowicz 2017 developed an algorithm to provide balanced datasets for multi-label classification. The documentation of their algorithm can be found in the scikit-multilearn package and on github.\nStratified multi-label split Please have a look at the colab notebook. For the rest of the post, I follow the package tutorial based on this multi-label dataset Boutell et al. 2004. The dataset comes with an initial split between train and test.\n1 2 3 4 5 from skmultilearn.dataset import load_dataset X,y, _, _ = load_dataset('scene', 'undivided') _, original_y_train, _, _ = load_dataset('scene', 'train') _, original_y_test, _, _ = load_dataset('scene', 'test') The original train and test size is 1211 and 1196 data points. The label distribution looks like this:\nn label (0, 0) (0, 3) (0, 4) (0, 5) (1, 1) (2, 2) (2, 3) (2, 4) (3, 3) (3, 4) (3, 5) (4, 4) (4, 5) (5, 5) train 227 0 21 12 165 197 8 6 196 27 1 277 1 224 test 200 1 17 7 199 200 16 8 237 49 5 256 0 207 It is obvious, that some of the labels are imbalanced. Especially label 1 (1,1) and label 3 (3,3) are skewed. For a comparison, let’s have a look, how the iterative train test split improves this problem.\n1 X_train, y_train, X_test, y_test = iterative_train_test_split(X, y, test_size = 0.5) The original train and test size is 1204 and 1203 data points. The label distribution looks like this:\nn label (0, 0) (0, 3) (0, 4) (0, 5) (1, 1) (2, 2) (2, 3) (2, 4) (3, 3) (3, 4) (3, 5) (4, 4) (4, 5) (5, 5) train 214 0 19 9 182 198 12 7 217 38 3 266 1 215 test 213 1 19 10 182 198 12 7 216 38 3 267 0 216 It is obvious, that this split is balanced or stratified.\nThank you for your attention.\n",
-  "wordCount" : "433",
-  "inLanguage": "en",
-  "datePublished": "2023-04-08T10:30:58+01:00",
-  "dateModified": "2023-04-08T10:30:58+01:00",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://steffenhaeussler.github.io/posts/2023-04-09-stratified/multi_label_split/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "About me",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://steffenhaeussler.github.io/assets/favicon.ico"
-    }
-  }
-}
-</script>
 </head>
 
 <body class="" id="top">
@@ -146,7 +77,7 @@ In classification problems, we have often a dataset with an imbalanced number of
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://steffenhaeussler.github.io/" accesskey="h" title="About me (Alt + H)">About me</a>
+            <a href="http://localhost:1313/" accesskey="h" title="About me (Alt + H)">About me</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -174,17 +105,17 @@ In classification problems, we have often a dataset with an imbalanced number of
         </div>
         <ul id="menu">
             <li>
-                <a href="https://steffenhaeussler.github.io/posts/" title="Posts">
+                <a href="http://localhost:1313/posts/" title="Posts">
                     <span>Posts</span>
                 </a>
             </li>
             <li>
-                <a href="https://steffenhaeussler.github.io/tags/" title="Tags">
+                <a href="http://localhost:1313/tags/" title="Tags">
                     <span>Tags</span>
                 </a>
             </li>
             <li>
-                <a href="https://steffenhaeussler.github.io/archives/" title="Archives">
+                <a href="http://localhost:1313/archives/" title="Archives">
                     <span>Archives</span>
                 </a>
             </li>
@@ -195,7 +126,7 @@ In classification problems, we have often a dataset with an imbalanced number of
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="https://steffenhaeussler.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://steffenhaeussler.github.io/posts/">Posts</a></div>
+    <div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/posts/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
       Stratified multi-label split
     </h1>
@@ -359,15 +290,15 @@ For a comparison, let&rsquo;s have a look, how the iterative train test split im
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://steffenhaeussler.github.io/tags/data-science/">Data Science</a></li>
-      <li><a href="https://steffenhaeussler.github.io/tags/machine-learning/">Machine Learning</a></li>
+      <li><a href="http://localhost:1313/tags/data-science/">Data Science</a></li>
+      <li><a href="http://localhost:1313/tags/machine-learning/">Machine Learning</a></li>
     </ul>
   </footer>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="https://steffenhaeussler.github.io/">About me</a></span> · 
+        <span>&copy; 2025 <a href="http://localhost:1313/">About me</a></span> · 
 
     <span>
         Powered by
