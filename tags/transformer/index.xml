@@ -2,34 +2,34 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Transformer on About me</title>
-    <link>https://steffenhaeussler.github.io/tags/transformer/</link>
+    <link>http://localhost:1313/tags/transformer/</link>
     <description>Recent content in Transformer on About me</description>
-    <generator>Hugo -- 0.140.1</generator>
+    <generator>Hugo -- 0.147.5</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 28 Aug 2023 10:30:58 +0100</lastBuildDate>
-    <atom:link href="https://steffenhaeussler.github.io/tags/transformer/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/transformer/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Implementing a Transformer Network from scratch</title>
-      <link>https://steffenhaeussler.github.io/posts/2023-08-28-transformer/transformer/</link>
+      <link>http://localhost:1313/posts/2023-08-28-transformer/transformer/</link>
       <pubDate>Mon, 28 Aug 2023 10:30:58 +0100</pubDate>
-      <guid>https://steffenhaeussler.github.io/posts/2023-08-28-transformer/transformer/</guid>
+      <guid>http://localhost:1313/posts/2023-08-28-transformer/transformer/</guid>
       <description>&lt;p&gt;Hi,&lt;/p&gt;
 &lt;p&gt;This post is about my implementation of an &lt;a href=&#34;https://www.kaggle.com/code/steffenhaeussler/dna-sequence-classification-part-4&#34;&gt;encoder transformer network from scratch&lt;/a&gt; as a follow-up &lt;a href=&#34;https://steffenhaeussler.github.io/posts/attention_layer/&#34;&gt;of understanding the attention layer&lt;/a&gt; together with the &lt;a href=&#34;https://colab.research.google.com/drive/1sE0B4NOAu9kqUTpuHIp1EYlD5JCAw4Gq?usp=sharing&#34;&gt;colab implementation&lt;/a&gt;. I use a simplified dataset, where I don&amp;rsquo;t expect great results. My approach is building something from scratch to understand it in depth. I faced many challenges during my implementation, so I aligned my code to the &lt;a href=&#34;https://huggingface.co/docs/transformers/model_doc/bert#transformers.BertForSequenceClassification&#34;&gt;BertSequenceClassifier from huggingface&lt;/a&gt;. My biggest challenge was to get the network to train. This challenge took me several months of low focus and a proper de- and reconstruction of the architecture. Minor issues were missing skip connections and some data preparation issues.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Training a language model from scratch</title>
-      <link>https://steffenhaeussler.github.io/posts/2023-04-21-training/llm/</link>
+      <link>http://localhost:1313/posts/2023-04-21-training/llm/</link>
       <pubDate>Sat, 15 Apr 2023 10:30:58 +0100</pubDate>
-      <guid>https://steffenhaeussler.github.io/posts/2023-04-21-training/llm/</guid>
+      <guid>http://localhost:1313/posts/2023-04-21-training/llm/</guid>
       <description>&lt;p&gt;Hi,&lt;/p&gt;
 &lt;p&gt;This post is a short overview over a &lt;a href=&#34;https://www.kaggle.com/code/steffenhaeussler/train-a-language-model-from-scratch/notebook&#34;&gt;work project&lt;/a&gt;, where I trained a language model for invoices. This so-called base model is then fine-tuned for text classification on customer data. Due to data privacy, a non-disclosure agreement, ISO 27001 and SOAP2, I&amp;rsquo;m not allowed to publish any results. Believe me, it works like 🚀✨🪐.&lt;/p&gt;
 &lt;p&gt;A language model is trained on large amounts of textual data to understand the patterns and structure of language. The primary goal of a language model is to predict the probability of the next word or sequence of words in a sentence given the previous words.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Understanding scaled-dot product attention and multi-head attention</title>
-      <link>https://steffenhaeussler.github.io/posts/2023-03-19-attention/attention_layer/</link>
+      <link>http://localhost:1313/posts/2023-03-19-attention/attention_layer/</link>
       <pubDate>Sat, 18 Mar 2023 10:30:58 +0100</pubDate>
-      <guid>https://steffenhaeussler.github.io/posts/2023-03-19-attention/attention_layer/</guid>
+      <guid>http://localhost:1313/posts/2023-03-19-attention/attention_layer/</guid>
       <description>&lt;p&gt;Hi,&lt;/p&gt;
 &lt;p&gt;This post is a summary of my implementation of the scaled-dot product attention and multi-head attention. Please have a look at the &lt;a href=&#34;https://colab.research.google.com/drive/1sE0B4NOAu9kqUTpuHIp1EYlD5JCAw4Gq?usp=sharing&#34;&gt;colab implementation&lt;/a&gt; for a step through guide.&lt;/p&gt;
 &lt;p&gt;Even though this post is five years too late, the best way of reviving knowledge is to write about it. Transformers are in transforming the world via ChatGPT, Bart, or LLama. The core of the transformer architecture is the self-attention layer. There are many attention mechanisms (listed in this &lt;a href=&#34;https://lilianweng.github.io/posts/2018-06-24-attention/&#34;&gt;great post by Lilian Weng&lt;/a&gt;), but the scaled-dot product attention layer is used in general (&lt;a href=&#34;https://proceedings.neurips.cc/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf&#34;&gt;Vaswani et al. 2017&lt;/a&gt;). For a visual explanation of the transformer, look at the great post from &lt;a href=&#34;https://jalammar.github.io/illustrated-transformer/&#34;&gt;Jay Alammar&lt;/a&gt;. Please check &lt;a href=&#34;https://www.youtube.com/watch?v=kCc8FmEb1nY&#34;&gt;Andrej Karpathy&amp;rsquo;s video&lt;/a&gt; for the full implementation of a transformer from scratch.&lt;/p&gt;</description>

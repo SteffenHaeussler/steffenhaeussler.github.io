@@ -2,35 +2,35 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Nlp on About me</title>
-    <link>https://steffenhaeussler.github.io/tags/nlp/</link>
+    <link>http://localhost:1313/tags/nlp/</link>
     <description>Recent content in Nlp on About me</description>
-    <generator>Hugo -- 0.140.1</generator>
+    <generator>Hugo -- 0.147.5</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 19 Apr 2025 10:30:58 +0100</lastBuildDate>
-    <atom:link href="https://steffenhaeussler.github.io/tags/nlp/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 30 Apr 2025 10:30:58 +0100</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/nlp/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Evaluation of RAG systems</title>
-      <link>https://steffenhaeussler.github.io/posts/2025-04-30-metrics/metrics/</link>
-      <pubDate>Sat, 19 Apr 2025 10:30:58 +0100</pubDate>
-      <guid>https://steffenhaeussler.github.io/posts/2025-04-30-metrics/metrics/</guid>
+      <link>http://localhost:1313/posts/2025-07-30-hackerroom/hackerroom/</link>
+      <pubDate>Wed, 30 Apr 2025 10:30:58 +0100</pubDate>
+      <guid>http://localhost:1313/posts/2025-07-30-hackerroom/hackerroom/</guid>
       <description>&lt;p&gt;Hi,&lt;/p&gt;
 &lt;p&gt;The implementation of this article is &lt;a href=&#34;https://www.kaggle.com/code/steffenhaeussler/evaluation-of-rag-systems&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;RAGs are complex systems. This is obvious, when you try to evaluate them. There are multiple aspects, which need to be checked. Here, I try to look into different approaches to get a better understanding and problems, when facing RAG systems. RAG system evaluation involves two distinct parts: retrieval and generation part. For retrieval, context relevance and noise robustness are key factors in assessing quality, while for generation part, key factors like answer faithfulness, answer relevance, negative rejection, information integration, and counterfactual robustness are important (&lt;a href=&#34;https://arxiv.org/pdf/2312.10997#page=14&#34;&gt;Gao et al. 2024&lt;/a&gt;).&lt;/p&gt;</description>
     </item>
     <item>
       <title>Understanding approximate nearest neighbor algorithm</title>
-      <link>https://steffenhaeussler.github.io/posts/2025-04-19-ann/ann/</link>
+      <link>http://localhost:1313/posts/2025-04-19-ann/ann/</link>
       <pubDate>Sat, 19 Apr 2025 10:30:58 +0100</pubDate>
-      <guid>https://steffenhaeussler.github.io/posts/2025-04-19-ann/ann/</guid>
+      <guid>http://localhost:1313/posts/2025-04-19-ann/ann/</guid>
       <description>&lt;p&gt;Hi,&lt;/p&gt;
 &lt;p&gt;This post is about the approximate nearest neighbor (ANN) algorithm. The code for this post is &lt;a href=&#34;https://www.kaggle.com/code/steffenhaeussler/understanding-approx-nearest-neighbor-algorithm&#34;&gt;here&lt;/a&gt;, where I provide an example of using a framework and a python implementation. Most python implementation were written with the help of a LLM. I&amp;rsquo;m amazed, how helpful they are for learning new things. I see them like a drunken professor, which with the right approach will be a very helpful tool.&lt;/p&gt;
 &lt;p&gt;As a next step in understanding RAGs, I want to have a closer look at approximate nearest neighbor algorithms. Basically, the purpose is to find the closest vector to a query vector in a database. Since I&amp;rsquo;m also interested into the implementation, I follow mostly this amazing blog post. Vector search is the basic component of vector databases and their main purpose. ANN algorithms are looking for a close match instead of an exact match. This loss of accuracy allows an improvement of efficieny, which allows the search through much bigger datasets, high-dimensional data and real-time apllications.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Short example of Information Retrieval</title>
-      <link>https://steffenhaeussler.github.io/posts/2025-03-10-retrieval/retrieval/</link>
+      <link>http://localhost:1313/posts/2025-03-10-retrieval/retrieval/</link>
       <pubDate>Mon, 10 Mar 2025 10:30:58 +0100</pubDate>
-      <guid>https://steffenhaeussler.github.io/posts/2025-03-10-retrieval/retrieval/</guid>
+      <guid>http://localhost:1313/posts/2025-03-10-retrieval/retrieval/</guid>
       <description>&lt;p&gt;Hi,&lt;/p&gt;
 &lt;p&gt;Some time ago, I did a small project on information retrieval. I think, it\s a good idea to share it with all its shortcomings.
 Here is the &lt;a href=&#34;https://www.kaggle.com/code/steffenhaeussler/examples-for-information-retrieval&#34;&gt;code&lt;/a&gt;. Sadly, the LLM part doesn&amp;rsquo;t work with the quantized model, so I commented it out.
@@ -38,17 +38,17 @@ The project is a small information retrieval of a FAQ, where I want to map the c
     </item>
     <item>
       <title>Overview of RAG (Retrieval-Augmented Generation) systems</title>
-      <link>https://steffenhaeussler.github.io/posts/2024-12-27-overview/rag_overview/</link>
+      <link>http://localhost:1313/posts/2024-12-27-overview/rag_overview/</link>
       <pubDate>Fri, 27 Dec 2024 10:30:58 +0100</pubDate>
-      <guid>https://steffenhaeussler.github.io/posts/2024-12-27-overview/rag_overview/</guid>
+      <guid>http://localhost:1313/posts/2024-12-27-overview/rag_overview/</guid>
       <description>&lt;p&gt;Hi,&lt;/p&gt;
 &lt;p&gt;It’s been a while since my last post, mostly because of my own laziness. Over the past year, I’ve been working on several projects, one of which is a small RAG (Retrieval-Augmented Generation) system. I implemented it to combine external knowledge (in this case internal safety documents) with a large language model (LLM). This approach allows the use of data that the LLM wasn&amp;rsquo;t trained on and also helps reduce hallucinations.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Training a language model from scratch</title>
-      <link>https://steffenhaeussler.github.io/posts/2023-04-21-training/llm/</link>
+      <link>http://localhost:1313/posts/2023-04-21-training/llm/</link>
       <pubDate>Sat, 15 Apr 2023 10:30:58 +0100</pubDate>
-      <guid>https://steffenhaeussler.github.io/posts/2023-04-21-training/llm/</guid>
+      <guid>http://localhost:1313/posts/2023-04-21-training/llm/</guid>
       <description>&lt;p&gt;Hi,&lt;/p&gt;
 &lt;p&gt;This post is a short overview over a &lt;a href=&#34;https://www.kaggle.com/code/steffenhaeussler/train-a-language-model-from-scratch/notebook&#34;&gt;work project&lt;/a&gt;, where I trained a language model for invoices. This so-called base model is then fine-tuned for text classification on customer data. Due to data privacy, a non-disclosure agreement, ISO 27001 and SOAP2, I&amp;rsquo;m not allowed to publish any results. Believe me, it works like 🚀✨🪐.&lt;/p&gt;
 &lt;p&gt;A language model is trained on large amounts of textual data to understand the patterns and structure of language. The primary goal of a language model is to predict the probability of the next word or sequence of words in a sentence given the previous words.&lt;/p&gt;</description>

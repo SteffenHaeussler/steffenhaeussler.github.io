@@ -2,119 +2,125 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://steffenhaeussler.github.io/</loc>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2025-07-30T10:30:58+01:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/agents/</loc>
+    <lastmod>2025-07-30T10:30:58+01:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/2025-04-30-metrics/metrics/</loc>
+    <lastmod>2025-07-30T10:30:58+01:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/machine-learning/</loc>
+    <lastmod>2025-07-30T10:30:58+01:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/</loc>
+    <lastmod>2025-07-30T10:30:58+01:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/system-design/</loc>
+    <lastmod>2025-07-30T10:30:58+01:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2025-07-30T10:30:58+01:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/2025-07-30-hackerroom/hackerroom/</loc>
+    <lastmod>2025-04-30T10:30:58+01:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/nlp/</loc>
+    <lastmod>2025-04-30T10:30:58+01:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/algorithm/</loc>
     <lastmod>2025-04-19T10:30:58+01:00</lastmod>
   </url><url>
-    <loc>https://steffenhaeussler.github.io/tags/algorithm/</loc>
+    <loc>http://localhost:1313/posts/2025-04-19-ann/ann/</loc>
     <lastmod>2025-04-19T10:30:58+01:00</lastmod>
   </url><url>
-    <loc>https://steffenhaeussler.github.io/posts/2025-04-30-metrics/metrics/</loc>
-    <lastmod>2025-04-19T10:30:58+01:00</lastmod>
-  </url><url>
-    <loc>https://steffenhaeussler.github.io/tags/machine-learning/</loc>
-    <lastmod>2025-04-19T10:30:58+01:00</lastmod>
-  </url><url>
-    <loc>https://steffenhaeussler.github.io/tags/nlp/</loc>
-    <lastmod>2025-04-19T10:30:58+01:00</lastmod>
-  </url><url>
-    <loc>https://steffenhaeussler.github.io/posts/</loc>
-    <lastmod>2025-04-19T10:30:58+01:00</lastmod>
-  </url><url>
-    <loc>https://steffenhaeussler.github.io/tags/system-design/</loc>
-    <lastmod>2025-04-19T10:30:58+01:00</lastmod>
-  </url><url>
-    <loc>https://steffenhaeussler.github.io/tags/</loc>
-    <lastmod>2025-04-19T10:30:58+01:00</lastmod>
-  </url><url>
-    <loc>https://steffenhaeussler.github.io/posts/2025-04-19-ann/ann/</loc>
-    <lastmod>2025-04-19T10:30:58+01:00</lastmod>
-  </url><url>
-    <loc>https://steffenhaeussler.github.io/posts/2025-03-10-retrieval/retrieval/</loc>
+    <loc>http://localhost:1313/posts/2025-03-10-retrieval/retrieval/</loc>
     <lastmod>2025-03-10T10:30:58+01:00</lastmod>
   </url><url>
-    <loc>https://steffenhaeussler.github.io/posts/2025-01-02-embeddings/embeddings/</loc>
+    <loc>http://localhost:1313/posts/2025-01-02-embeddings/embeddings/</loc>
     <lastmod>2025-01-02T10:30:58+01:00</lastmod>
   </url><url>
-    <loc>https://steffenhaeussler.github.io/posts/2024-12-27-overview/rag_overview/</loc>
+    <loc>http://localhost:1313/posts/2024-12-27-overview/rag_overview/</loc>
     <lastmod>2024-12-27T10:30:58+01:00</lastmod>
   </url><url>
-    <loc>https://steffenhaeussler.github.io/tags/data-science/</loc>
+    <loc>http://localhost:1313/tags/data-science/</loc>
     <lastmod>2023-12-08T10:30:58+01:00</lastmod>
   </url><url>
-    <loc>https://steffenhaeussler.github.io/tags/deep-learning/</loc>
+    <loc>http://localhost:1313/tags/deep-learning/</loc>
     <lastmod>2023-12-08T10:30:58+01:00</lastmod>
   </url><url>
-    <loc>https://steffenhaeussler.github.io/posts/2023-12-08-dl-explainability/dl_model_explainability/</loc>
+    <loc>http://localhost:1313/posts/2023-12-08-dl-explainability/dl_model_explainability/</loc>
     <lastmod>2023-12-08T10:30:58+01:00</lastmod>
   </url><url>
-    <loc>https://steffenhaeussler.github.io/tags/explainability/</loc>
+    <loc>http://localhost:1313/tags/explainability/</loc>
     <lastmod>2023-12-08T10:30:58+01:00</lastmod>
   </url><url>
-    <loc>https://steffenhaeussler.github.io/posts/2023-11-21-explainability/model_explainability/</loc>
+    <loc>http://localhost:1313/posts/2023-11-21-explainability/model_explainability/</loc>
     <lastmod>2023-11-21T10:30:58+01:00</lastmod>
   </url><url>
-    <loc>https://steffenhaeussler.github.io/tags/attention/</loc>
+    <loc>http://localhost:1313/tags/attention/</loc>
     <lastmod>2023-08-28T10:30:58+01:00</lastmod>
   </url><url>
-    <loc>https://steffenhaeussler.github.io/posts/2023-08-28-transformer/transformer/</loc>
+    <loc>http://localhost:1313/posts/2023-08-28-transformer/transformer/</loc>
     <lastmod>2023-08-28T10:30:58+01:00</lastmod>
   </url><url>
-    <loc>https://steffenhaeussler.github.io/tags/transformer/</loc>
+    <loc>http://localhost:1313/tags/transformer/</loc>
     <lastmod>2023-08-28T10:30:58+01:00</lastmod>
   </url><url>
-    <loc>https://steffenhaeussler.github.io/tags/analysis/</loc>
+    <loc>http://localhost:1313/tags/analysis/</loc>
     <lastmod>2023-08-15T00:30:58+01:00</lastmod>
   </url><url>
-    <loc>https://steffenhaeussler.github.io/posts/2023-08-15-timeseries/time_series/</loc>
+    <loc>http://localhost:1313/posts/2023-08-15-timeseries/time_series/</loc>
     <lastmod>2023-08-15T00:30:58+01:00</lastmod>
   </url><url>
-    <loc>https://steffenhaeussler.github.io/tags/time-series/</loc>
+    <loc>http://localhost:1313/tags/time-series/</loc>
     <lastmod>2023-08-15T00:30:58+01:00</lastmod>
   </url><url>
-    <loc>https://steffenhaeussler.github.io/tags/api/</loc>
+    <loc>http://localhost:1313/tags/api/</loc>
     <lastmod>2023-08-07T10:30:50+02:00</lastmod>
   </url><url>
-    <loc>https://steffenhaeussler.github.io/posts/2023-08-07-pydantic/pydantic/</loc>
+    <loc>http://localhost:1313/posts/2023-08-07-pydantic/pydantic/</loc>
     <lastmod>2023-08-07T10:30:50+02:00</lastmod>
   </url><url>
-    <loc>https://steffenhaeussler.github.io/tags/engineering/</loc>
+    <loc>http://localhost:1313/tags/engineering/</loc>
     <lastmod>2023-08-07T10:30:50+02:00</lastmod>
   </url><url>
-    <loc>https://steffenhaeussler.github.io/tags/microservice/</loc>
+    <loc>http://localhost:1313/tags/microservice/</loc>
     <lastmod>2023-08-07T10:30:50+02:00</lastmod>
   </url><url>
-    <loc>https://steffenhaeussler.github.io/tags/aws/</loc>
+    <loc>http://localhost:1313/tags/aws/</loc>
     <lastmod>2023-04-27T10:30:58+01:00</lastmod>
   </url><url>
-    <loc>https://steffenhaeussler.github.io/tags/data-engineering/</loc>
+    <loc>http://localhost:1313/tags/data-engineering/</loc>
     <lastmod>2023-04-27T10:30:58+01:00</lastmod>
   </url><url>
-    <loc>https://steffenhaeussler.github.io/posts/2023-04-27-s3/s3/</loc>
+    <loc>http://localhost:1313/posts/2023-04-27-s3/s3/</loc>
     <lastmod>2023-04-27T10:30:58+01:00</lastmod>
   </url><url>
-    <loc>https://steffenhaeussler.github.io/posts/2023-04-21-training/llm/</loc>
+    <loc>http://localhost:1313/posts/2023-04-21-training/llm/</loc>
     <lastmod>2023-04-15T10:30:58+01:00</lastmod>
   </url><url>
-    <loc>https://steffenhaeussler.github.io/posts/2023-04-10-cookie/cookiecutter/</loc>
+    <loc>http://localhost:1313/posts/2023-04-10-cookie/cookiecutter/</loc>
     <lastmod>2023-04-10T10:30:58+01:00</lastmod>
   </url><url>
-    <loc>https://steffenhaeussler.github.io/tags/training/</loc>
+    <loc>http://localhost:1313/tags/training/</loc>
     <lastmod>2023-04-10T10:30:58+01:00</lastmod>
   </url><url>
-    <loc>https://steffenhaeussler.github.io/posts/2023-04-09-stratified/multi_label_split/</loc>
+    <loc>http://localhost:1313/posts/2023-04-09-stratified/multi_label_split/</loc>
     <lastmod>2023-04-08T10:30:58+01:00</lastmod>
   </url><url>
-    <loc>https://steffenhaeussler.github.io/posts/2023-03-19-attention/attention_layer/</loc>
+    <loc>http://localhost:1313/posts/2023-03-19-attention/attention_layer/</loc>
     <lastmod>2023-03-18T10:30:58+01:00</lastmod>
   </url><url>
-    <loc>https://steffenhaeussler.github.io/tags/tech/</loc>
+    <loc>http://localhost:1313/tags/tech/</loc>
     <lastmod>2023-03-05T23:30:58+01:00</lastmod>
   </url><url>
-    <loc>https://steffenhaeussler.github.io/posts/2023-03-05-first/first/</loc>
+    <loc>http://localhost:1313/posts/2023-03-05-first/first/</loc>
     <lastmod>2023-03-05T23:30:58+01:00</lastmod>
   </url><url>
-    <loc>https://steffenhaeussler.github.io/archives/</loc>
+    <loc>http://localhost:1313/archives/</loc>
   </url><url>
-    <loc>https://steffenhaeussler.github.io/categories/</loc>
+    <loc>http://localhost:1313/categories/</loc>
   </url>
 </urlset>

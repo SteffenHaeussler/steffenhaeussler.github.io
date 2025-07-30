@@ -1,26 +1,27 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto">
 
-<head><meta charset="utf-8">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="index, follow">
-<title>Evaluation of RAG systems | About me</title>
-<meta name="keywords" content="machine learning, system design, nlp">
+<meta name="robots" content="noindex, nofollow">
+<title>Building Agents &amp; LLM Workflows | About me</title>
+<meta name="keywords" content="machine learning, system design, agents">
 <meta name="description" content="Hi,
-The implementation of this article is here.
-RAGs are complex systems. This is obvious, when you try to evaluate them. There are multiple aspects, which need to be checked. Here, I try to look into different approaches to get a better understanding and problems, when facing RAG systems. RAG system evaluation involves two distinct parts: retrieval and generation part. For retrieval, context relevance and noise robustness are key factors in assessing quality, while for generation part, key factors like answer faithfulness, answer relevance, negative rejection, information integration, and counterfactual robustness are important (Gao et al. 2024).">
+Over the last three months, I&rsquo;ve been working on Agents and LLM workflows. I had the opportunity to do this as part of a residency program at Merantix.
+I&rsquo;m deeply thankful for the opportunity and would highly recommend the program to others. Being surrounded by people with shared goals was incredibly motivating and inspiring.
+I already miss the discussions and the knowledge exchange. Unlike typical work environments, here the participants were truly aligned, and everyone learned from each other.">
 <meta name="author" content="">
-<link rel="canonical" href="https://steffenhaeussler.github.io/posts/2025-04-30-metrics/metrics/">
-<link crossorigin="anonymous" href="https://steffenhaeussler.github.io/assets/css/stylesheet.c32c3fa257f14f25741bf9b4bf26c500e50fe88bb7915cdb5f59134fcd019ee5.css" integrity="sha256-wyw/olfxTyV0G/m0vybFAOUP6Iu3kVzbX1kTT80BnuU=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://steffenhaeussler.github.io/assets/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://steffenhaeussler.github.io/assets/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://steffenhaeussler.github.io/assets/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://steffenhaeussler.github.io/apple-touch-icon.png">
-<link rel="mask-icon" href="https://steffenhaeussler.github.io/safari-pinned-tab.svg">
+<link rel="canonical" href="http://localhost:1313/posts/2025-04-30-metrics/metrics/">
+<link crossorigin="anonymous" href="http://localhost:1313/assets/css/stylesheet.a6264de45f1158af551cf2fe7595e8651c772fa1286f4c0483059a3e826a3049.css" integrity="sha256-piZN5F8RWK9VHPL&#43;dZXoZRx3L6Eob0wEgwWaPoJqMEk=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/assets/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/assets/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/assets/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="https://steffenhaeussler.github.io/posts/2025-04-30-metrics/metrics/">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/2025-04-30-metrics/metrics/">
 <noscript>
     <style>
         #theme-toggle,
@@ -58,76 +59,7 @@ RAGs are complex systems. This is obvious, when you try to evaluate them. There 
 
     </style>
 </noscript>
-<meta property="og:url" content="https://steffenhaeussler.github.io/posts/2025-04-30-metrics/metrics/">
-  <meta property="og:site_name" content="About me">
-  <meta property="og:title" content="Evaluation of RAG systems">
-  <meta property="og:description" content="Hi,
-The implementation of this article is here.
-RAGs are complex systems. This is obvious, when you try to evaluate them. There are multiple aspects, which need to be checked. Here, I try to look into different approaches to get a better understanding and problems, when facing RAG systems. RAG system evaluation involves two distinct parts: retrieval and generation part. For retrieval, context relevance and noise robustness are key factors in assessing quality, while for generation part, key factors like answer faithfulness, answer relevance, negative rejection, information integration, and counterfactual robustness are important (Gao et al. 2024).">
-  <meta property="og:locale" content="en-us">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2025-04-19T10:30:58+01:00">
-    <meta property="article:modified_time" content="2025-04-19T10:30:58+01:00">
-    <meta property="article:tag" content="Machine Learning">
-    <meta property="article:tag" content="System Design">
-    <meta property="article:tag" content="Nlp">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Evaluation of RAG systems">
-<meta name="twitter:description" content="Hi,
-The implementation of this article is here.
-RAGs are complex systems. This is obvious, when you try to evaluate them. There are multiple aspects, which need to be checked. Here, I try to look into different approaches to get a better understanding and problems, when facing RAG systems. RAG system evaluation involves two distinct parts: retrieval and generation part. For retrieval, context relevance and noise robustness are key factors in assessing quality, while for generation part, key factors like answer faithfulness, answer relevance, negative rejection, information integration, and counterfactual robustness are important (Gao et al. 2024).">
 
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "Posts",
-      "item": "https://steffenhaeussler.github.io/posts/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  2 ,
-      "name": "Evaluation of RAG systems",
-      "item": "https://steffenhaeussler.github.io/posts/2025-04-30-metrics/metrics/"
-    }
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Evaluation of RAG systems",
-  "name": "Evaluation of RAG systems",
-  "description": "Hi,\nThe implementation of this article is here.\nRAGs are complex systems. This is obvious, when you try to evaluate them. There are multiple aspects, which need to be checked. Here, I try to look into different approaches to get a better understanding and problems, when facing RAG systems. RAG system evaluation involves two distinct parts: retrieval and generation part. For retrieval, context relevance and noise robustness are key factors in assessing quality, while for generation part, key factors like answer faithfulness, answer relevance, negative rejection, information integration, and counterfactual robustness are important (Gao et al. 2024).\n",
-  "keywords": [
-    "machine learning", "system design", "nlp"
-  ],
-  "articleBody": "Hi,\nThe implementation of this article is here.\nRAGs are complex systems. This is obvious, when you try to evaluate them. There are multiple aspects, which need to be checked. Here, I try to look into different approaches to get a better understanding and problems, when facing RAG systems. RAG system evaluation involves two distinct parts: retrieval and generation part. For retrieval, context relevance and noise robustness are key factors in assessing quality, while for generation part, key factors like answer faithfulness, answer relevance, negative rejection, information integration, and counterfactual robustness are important (Gao et al. 2024).\nRetrieval aspects:\nContext relevance: Ensures that retrieved information is precise and directly related to the query. Noise robustness: Measures the system’s ability to ignore unrelated or irrelevant documents. Generation aspects:\nAnswer faithfulness: Ensures that the generated answers remain true to the retrieved context. Answer relevance: Assesses whether the generated response directly addresses the user query. Negative rejection: Evaluates the system’s ability to refrain from answering when insufficient reliable information is available. Information integration: Measures the system’s capability to synthesize knowledge from multiple sources. Counterfactual robustness: Ensures the identification and dismissal of incorrect or misleading information. The evaluation can be done in multiple ways. Often text overlap, semantic similarity or a classification are used as a traditional method. Also a LLM-as-a-Judge is used for each of those different aspects. Additional, the LLM-as-a-judge is part of available frameworks. As a framework, I only look into DeepEval. (I try to avoid the langchain universe.) Information integration and Counterfactual robustness are complex metrics, which only can be evaluated with a LLM-as-a-judge. LLM-as-a-judge needs careful prompting and evaluation. The evaluation is often not binary. The LLM-as-a-judge is a complex system, which needs to be evaluated itself.\nRessoures:\nRetrieval-Augmented Generation for Large Language Models: A Survey (Gao et al. 2024) Evaluation of Retrieval-Augmented Generation: A Survey (Yu et al. 2024)) A Survey on LLM-as-a-Judge (Gu et al. 2025) Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena (Zheng et al. 2023) Guides:\nDeepEval HuggingFace pinecone Qdrant Frameworks:\nDeepEval RAGAs TruLens LangSmith Context relevance Context relevance measures wheter the retrieved information contains the answer of the user query. The context relevance focus before the answer generation. This impacts the quality of the generated answer. Irrelevant context can lead to hallucinations or incorrect answers. The relevance is not binary. It can be relevant, partially relevant, tangentially related, or irrelevant.\nThere are two options to evaluate the context relevance:\nsimilarity score via a threshold LLM-as-a-judge Noise robustness Noise robustness measures the system’s ability to ignore unrelated or irrelevant documents. It assesses if the generator can effectively ignore the noise. This is important, since retireval systems are imperfect. Noise is not only off-topic information. It can also be outdated, contradictory, repetetive, redundant or slightly related information. A robust RAG system should be able to handle irrelevant information (noise). Poor noise robustness can lead to hallucinations in the generated answer.\nThe metrics are the same as before:\nsemantic similarity (tricky, since hard to measure) LLM-as-a-judge Answer faithfulness Answer faithfulness ensures that the generated answers remain true to the retrieved context. This measures, whether the generated answer is based on the information present in the retrieved context. A faithful answer doesn’t contradict the context or introduce external information or facts that are missing in the context. This is important, since the purpose of a RAG is to answer based on the information of the knowledge base and not hallucinate the answer. An answer can be relevant to the user query but still unfaithful if it makes claims not supported by the retrieved context. This is a common problem, since LLMs are trained on a lot of data and can easily mix up internal information. Evaluation is hard, since LLM often paraphrase the context. So token overlap is not a good metric.\nFaithfulness can be evaluatet by:\nmeasuring the token overlap between answer and context via metrics (ROGUE, BLEU) natural language inference models (depends on model biases and domain specificity) LLM-as-a-judge Answer relevance Answer relevance ensures that the generated answers directly addresses the user query. The evaluation is, if the answer is on-topic and provides the information the user was actually asking for. For example, the answer faithfulness ignores in its evaluation the original user question. It differs from context relevance, since a relevant context can still lead to an irrelevant answer. It differs from answer faithfulness, since an answer can be faithful to the context but not relevant to the user query. Answer relevance can be seen as the closest proxy for the user satisfaction. If the answer is not relevant to the query, the system has failed regardless how relevant or faithful the answer was.\nRelevance can be evaluated by:\nsementic similiarity LLM-as-a-judge Negative rejection Negative rejection evaluates the system’s ability to refrain from answering when insufficient reliable information is available. This means, that the RAG system correctly identifies, when it can’t answer a query based on the retrieved context. This can be caused by irrelevant or contradictory information, insufficient context, or the query being out of scope. The rejection is important, since it prevents the system from hallucinating or providing incorrect information. A rejection is a sign of robustness and reliability. A RAG system that rejects queries when it doesn’t have enough information is more trustworthy than one that tries to answer everything.\nNegative rejection can be evaluated via:\nzero-shot classification LLM-as-a-judge Information integration This metric becomes critical when the answer isn’t neatly contained in one retrieved context but requires combining multiple documents. Information integration measures the system’s capability to synthesize knowledge from multiple sources. The focus is, how well the system combines retrieved documents with the generated response to produce a coherent, accurate, and contextually relevant answer. It’s about merging external info into the final output effectively. This includes the synthesis of different facts, conflict resolution, selection of relevant information and summarization with de-duplication. But also how contradicting information are handled.\nSince this is a complex task, a LLM-as-a-judge is the most practible approach to evaluate the LLM generation. Still this needs a lot of manual calibration and testing.\nCounterfactual robustness Counterfactual robustness ensures the identification and dismissal of incorrect or misleading information. It evaluates, how the LLM answer change based on counterfactual information or get confused and produce nonsensical or unrelated hallucinations. Counterfactual robustness tests, if the the answer is based on the provided context, even if the context is deliberately wrong. It differs from faithfulness by checking to known incorrect context. A system can be “faithful” to counterfacts, which is not the goal. A robust system should ideally reflect the information, highlight the counterfactual information if possible. Counterfactual changes can be made by changing entities, alter attributes, flip statements or modify relationships. It really is stress-testing the system’s reliance on context vs. internal knowledge.\nCounterfactual robustness tests, how much the generation relies on the retrieval part. This is another complex metric, which needs a LLM-as-a-judge for evaluation.\nConclusion RAG systems are complicated and need a lot of testing and needs a good dataset. The LLM-as-a-judge seems for me to be the best and most reliable approach, although it needs a lot of manual testing and calibration. The evaluation of RAG systems is an ongoing research area and this is a short summary of different aspects. I hope this article gives you a better understanding of the different aspects and challenges of RAG system evaluation.\nThank you for your attention.\n",
-  "wordCount" : "1237",
-  "inLanguage": "en",
-  "datePublished": "2025-04-19T10:30:58+01:00",
-  "dateModified": "2025-04-19T10:30:58+01:00",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://steffenhaeussler.github.io/posts/2025-04-30-metrics/metrics/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "About me",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://steffenhaeussler.github.io/assets/favicon.ico"
-    }
-  }
-}
-</script>
 </head>
 
 <body class="" id="top">
@@ -145,7 +77,7 @@ RAGs are complex systems. This is obvious, when you try to evaluate them. There 
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://steffenhaeussler.github.io/" accesskey="h" title="About me (Alt + H)">About me</a>
+            <a href="http://localhost:1313/" accesskey="h" title="About me (Alt + H)">About me</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -173,17 +105,17 @@ RAGs are complex systems. This is obvious, when you try to evaluate them. There 
         </div>
         <ul id="menu">
             <li>
-                <a href="https://steffenhaeussler.github.io/posts/" title="Posts">
+                <a href="http://localhost:1313/posts/" title="Posts">
                     <span>Posts</span>
                 </a>
             </li>
             <li>
-                <a href="https://steffenhaeussler.github.io/tags/" title="Tags">
+                <a href="http://localhost:1313/tags/" title="Tags">
                     <span>Tags</span>
                 </a>
             </li>
             <li>
-                <a href="https://steffenhaeussler.github.io/archives/" title="Archives">
+                <a href="http://localhost:1313/archives/" title="Archives">
                     <span>Archives</span>
                 </a>
             </li>
@@ -194,97 +126,47 @@ RAGs are complex systems. This is obvious, when you try to evaluate them. There 
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="https://steffenhaeussler.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://steffenhaeussler.github.io/posts/">Posts</a></div>
+    <div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/posts/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
-      Evaluation of RAG systems
+      Building Agents &amp; LLM Workflows
     </h1>
-    <div class="post-meta"><span title='2025-04-19 10:30:58 +0100 +0100'>April 19, 2025</span>&nbsp;·&nbsp;6 min
+    <div class="post-meta"><span title='2025-07-30 10:30:58 +0100 +0100'>July 30, 2025</span>&nbsp;·&nbsp;2 min
 
 </div>
   </header> 
   <div class="post-content"><p>Hi,</p>
-<p>The implementation of this article is <a href="https://www.kaggle.com/code/steffenhaeussler/evaluation-of-rag-systems">here</a>.</p>
-<p>RAGs are complex systems. This is obvious, when you try to evaluate them. There are multiple aspects, which need to be checked. Here, I try to look into different approaches to get a better understanding and problems, when facing RAG systems. RAG system evaluation involves two distinct parts: retrieval and generation part. For retrieval, context relevance and noise robustness are key factors in assessing quality, while for generation part, key factors like answer faithfulness, answer relevance, negative rejection, information integration, and counterfactual robustness are important (<a href="https://arxiv.org/pdf/2312.10997#page=14">Gao et al. 2024</a>).</p>
-<p>Retrieval aspects:</p>
+<p>Over the last three months, I&rsquo;ve been working on Agents and LLM workflows. I had the opportunity to do this as part of a <a href="https://www.merantix-aicampus.com/hacker-room">residency program</a> at <a href="https://www.merantix-aicampus.com/">Merantix</a>.
+I&rsquo;m deeply thankful for the opportunity and would highly recommend the program to others. Being surrounded by people with shared goals was incredibly motivating and inspiring.
+I already miss the discussions and the knowledge exchange. Unlike typical work environments, here the participants were truly aligned, and everyone learned from each other.</p>
+<p>My result of the last three months: <a href="https://github.com/SteffenHaeussler/sim_agent">link</a></p>
+<h2 id="i-worked-on">I worked on:<a hidden class="anchor" aria-hidden="true" href="#i-worked-on">#</a></h2>
 <ul>
-<li>Context relevance: Ensures that retrieved information is precise and directly related to the query.</li>
-<li>Noise robustness: Measures the system’s ability to ignore unrelated or irrelevant documents.</li>
+<li>implementing a tool-based agent</li>
+<li>experimenting with LLM workflows</li>
+<li>adding an LLM-as-a-judge evaluation framework</li>
+<li>building an event-driven architecture around the agent and workflows</li>
 </ul>
-<p>Generation aspects:</p>
+<p>To support this, I created a custom environment with <a href="https://github.com/SteffenHaeussler/sim_api">APIs</a>, <a href="hthttps://github.com/SteffenHaeussler/sim_ragy">RAG</a>,<a href="https://github.com/SteffenHaeussler/sim_frontend">UI</a> and <a href="https://github.com/SteffenHaeussler/sim_project">synthetic data</a> stored in a database.</p>
+<h2 id="my-learnings">My learnings:<a hidden class="anchor" aria-hidden="true" href="#my-learnings">#</a></h2>
 <ul>
-<li>Answer faithfulness: Ensures that the generated answers remain true to the retrieved context.</li>
-<li>Answer relevance: Assesses whether the generated response directly addresses the user query.</li>
-<li>Negative rejection: Evaluates the system’s ability to refrain from answering when insufficient reliable information is available.</li>
-<li>Information integration: Measures the system’s capability to synthesize knowledge from multiple sources.</li>
-<li>Counterfactual robustness: Ensures the identification and dismissal of incorrect or misleading information.</li>
+<li>Agents will be the next step of automation - the challenge is setting them up efficiently</li>
+<li>Evaluation will be the backbone of effective agents - getting this right is hard but essential</li>
+<li>Claude Code is awesome - both a blessing and a curse</li>
+<li>Building something people actually want is hard - technology alone isn&rsquo;t enough</li>
 </ul>
-<p>The evaluation can be done in multiple ways. Often text overlap, semantic similarity or a classification are used as a traditional method. Also a LLM-as-a-Judge is used for each of those different aspects. Additional, the LLM-as-a-judge is part of available frameworks. As a framework, I only look into DeepEval. (I try to avoid the langchain universe.) Information integration and Counterfactual robustness are complex metrics, which only can be evaluated with a LLM-as-a-judge. LLM-as-a-judge needs careful prompting and evaluation. The evaluation is often not binary. The LLM-as-a-judge is a complex system, which needs to be evaluated itself.</p>
-<p>Ressoures:</p>
+<h2 id="what-i-can-improve">What I can improve:<a hidden class="anchor" aria-hidden="true" href="#what-i-can-improve">#</a></h2>
 <ul>
-<li>Retrieval-Augmented Generation for Large Language Models: A Survey (<a href="https://arxiv.org/pdf/2312.10997#page=14">Gao et al. 2024</a>)</li>
-<li>Evaluation of Retrieval-Augmented Generation: A Survey (<a href="https://arxiv.org/pdf/2405.07437">Yu et al. 2024</a>))</li>
-<li>A Survey on LLM-as-a-Judge (<a href="https://arxiv.org/pdf/2411.15594">Gu et al. 2025</a>)</li>
-<li>Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena (<a href="https://proceedings.neurips.cc/paper_files/paper/2023/file/91f18a1287b398d378ef22505bf41832-Paper-Datasets_and_Benchmarks.pdf">Zheng et al. 2023</a>)</li>
+<li>Spend less time on glue code - if the product has no value, nothing else matters</li>
+<li>Invest more time in networking - conversations help to uncover real needs</li>
+<li>Focus on core technical challenges - this is where learning and value starts for me.</li>
+<li>Sharpen on product thinking - do I just like the idea or does it really solve a problem?</li>
 </ul>
-<p>Guides:</p>
+<h2 id="next-steps">Next steps:<a hidden class="anchor" aria-hidden="true" href="#next-steps">#</a></h2>
 <ul>
-<li><a href="https://github.com/confident-ai/deepeval">DeepEval</a></li>
-<li><a href="https://huggingface.co/learn/cookbook/en/rag_evaluation">HuggingFace</a></li>
-<li><a href="https://www.pinecone.io/learn/series/vector-databases-in-production-for-busy-engineers/rag-evaluation/">pinecone</a></li>
-<li><a href="https://qdrant.tech/blog/rag-evaluation-guide/">Qdrant</a></li>
+<li>Dedicate more time on ideation</li>
+<li>Explore LLM-as-a-judge with open-weight models for less biased, probability-based evaluation</li>
+<li>Keep solving real problems - learning happens by doing</li>
 </ul>
-<p>Frameworks:</p>
-<ul>
-<li><a href="https://www.deepeval.com/guides/guides-rag-evaluation">DeepEval</a></li>
-<li><a href="https://github.com/explodinggradients/ragas">RAGAs</a></li>
-<li><a href="https://www.trulens.org/">TruLens</a></li>
-<li><a href="https://docs.smith.langchain.com/">LangSmith</a></li>
-</ul>
-<h2 id="context-relevance">Context relevance<a hidden class="anchor" aria-hidden="true" href="#context-relevance">#</a></h2>
-<p>Context relevance measures wheter the retrieved information contains the answer of the user query. The context relevance focus before the answer generation. This impacts the quality of the generated answer. Irrelevant context can lead to hallucinations or incorrect answers. The relevance is not binary. It can be relevant, partially relevant, tangentially related, or irrelevant.</p>
-<p>There are two options to evaluate the context relevance:</p>
-<ul>
-<li>similarity score via a threshold</li>
-<li>LLM-as-a-judge</li>
-</ul>
-<h2 id="noise-robustness">Noise robustness<a hidden class="anchor" aria-hidden="true" href="#noise-robustness">#</a></h2>
-<p>Noise robustness measures the system’s ability to ignore unrelated or irrelevant documents. It assesses if the generator can effectively ignore the noise. This is important, since retireval systems are imperfect.
-Noise is not only off-topic information. It can also be outdated, contradictory, repetetive, redundant or slightly related information. A robust RAG system should be able to handle irrelevant information (noise). Poor noise robustness can lead to hallucinations in the generated answer.</p>
-<p>The metrics are the same as before:</p>
-<ul>
-<li>semantic similarity (tricky, since hard to measure)</li>
-<li>LLM-as-a-judge</li>
-</ul>
-<h2 id="answer-faithfulness">Answer faithfulness<a hidden class="anchor" aria-hidden="true" href="#answer-faithfulness">#</a></h2>
-<p>Answer faithfulness ensures that the generated answers remain true to the retrieved context. This measures, whether the generated answer is based on the information present in the retrieved context. A faithful answer doesn&rsquo;t contradict the context or introduce external information or facts that are missing in the context. This is important, since the purpose of a RAG is to answer based on the information of the knowledge base and not hallucinate the answer. An answer can be relevant to the user query but still unfaithful if it makes claims not supported by the retrieved context. This is a common problem, since LLMs are trained on a lot of data and can easily mix up internal information. Evaluation is hard, since LLM often paraphrase the context. So token overlap is not a good metric.</p>
-<p>Faithfulness can be evaluatet by:</p>
-<ul>
-<li>measuring the token overlap between answer and context via metrics (ROGUE, BLEU)</li>
-<li>natural language inference models (depends on model biases and domain specificity)</li>
-<li>LLM-as-a-judge</li>
-</ul>
-<h2 id="answer-relevance">Answer relevance<a hidden class="anchor" aria-hidden="true" href="#answer-relevance">#</a></h2>
-<p>Answer relevance ensures that the generated answers directly addresses the user query. The evaluation is, if the answer is on-topic and provides the information the user was actually asking for. For example, the answer faithfulness ignores in its evaluation the original user question. It differs from context relevance, since a relevant context can still lead to an irrelevant answer. It differs from answer faithfulness, since an answer can be faithful to the context but not relevant to the user query. Answer relevance can be seen as the closest proxy for the user satisfaction. If the answer is not relevant to the query, the system has failed regardless how relevant or faithful the answer was.</p>
-<p>Relevance can be evaluated by:</p>
-<ul>
-<li>sementic similiarity</li>
-<li>LLM-as-a-judge</li>
-</ul>
-<h2 id="negative-rejection">Negative rejection<a hidden class="anchor" aria-hidden="true" href="#negative-rejection">#</a></h2>
-<p>Negative rejection evaluates the system’s ability to refrain from answering when insufficient reliable information is available. This means, that the RAG system correctly identifies, when it can&rsquo;t answer a query based on the retrieved context. This can be caused by irrelevant or contradictory information, insufficient context, or the query being out of scope. The rejection is important, since it prevents the system from hallucinating or providing incorrect information. A rejection is a sign of robustness and reliability. A RAG system that rejects queries when it doesn&rsquo;t have enough information is more trustworthy than one that tries to answer everything.</p>
-<p>Negative rejection can be evaluated via:</p>
-<ul>
-<li>zero-shot classification</li>
-<li>LLM-as-a-judge</li>
-</ul>
-<h2 id="information-integration">Information integration<a hidden class="anchor" aria-hidden="true" href="#information-integration">#</a></h2>
-<p>This metric becomes critical when the answer isn&rsquo;t neatly contained in one retrieved context but requires combining multiple documents. Information integration measures the system’s capability to synthesize knowledge from multiple sources. The focus is, how well the system combines retrieved documents with the generated response to produce a coherent, accurate, and contextually relevant answer. It&rsquo;s about merging external info into the final output effectively. This includes the synthesis of different facts, conflict resolution, selection of relevant information and summarization with de-duplication. But also how contradicting information are handled.</p>
-<p>Since this is a complex task, a LLM-as-a-judge is the most practible approach to evaluate the LLM generation. Still this needs a lot of manual calibration and testing.</p>
-<h2 id="counterfactual-robustness">Counterfactual robustness<a hidden class="anchor" aria-hidden="true" href="#counterfactual-robustness">#</a></h2>
-<p>Counterfactual robustness ensures the identification and dismissal of incorrect or misleading information. It evaluates, how the LLM answer change based on counterfactual information or get confused and produce nonsensical or unrelated hallucinations. Counterfactual robustness tests, if the the answer is based on the provided context, even if the context is deliberately wrong. It differs from faithfulness by checking to known incorrect context. A system can be &ldquo;faithful&rdquo; to counterfacts, which is not the goal. A robust system should ideally reflect the information, highlight the counterfactual information if possible. Counterfactual changes can be made by changing entities, alter attributes, flip statements or modify relationships. It really is stress-testing the system&rsquo;s reliance on context vs. internal knowledge.</p>
-<p>Counterfactual robustness tests, how much the generation relies on the retrieval part. This is another complex metric, which needs a LLM-as-a-judge for evaluation.</p>
-<h2 id="conclusion">Conclusion<a hidden class="anchor" aria-hidden="true" href="#conclusion">#</a></h2>
-<p>RAG systems are complicated and need a lot of testing and needs a good dataset. The LLM-as-a-judge seems for me to be the best and most reliable approach, although it needs a lot of manual testing and calibration. The evaluation of RAG systems is an ongoing research area and this is a short summary of different aspects. I hope this article gives you a better understanding of the different aspects and challenges of RAG system evaluation.</p>
 <p>Thank you for your attention.</p>
 
 
@@ -292,16 +174,16 @@ Noise is not only off-topic information. It can also be outdated, contradictory,
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://steffenhaeussler.github.io/tags/machine-learning/">Machine Learning</a></li>
-      <li><a href="https://steffenhaeussler.github.io/tags/system-design/">System Design</a></li>
-      <li><a href="https://steffenhaeussler.github.io/tags/nlp/">Nlp</a></li>
+      <li><a href="http://localhost:1313/tags/machine-learning/">Machine Learning</a></li>
+      <li><a href="http://localhost:1313/tags/system-design/">System Design</a></li>
+      <li><a href="http://localhost:1313/tags/agents/">Agents</a></li>
     </ul>
   </footer>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="https://steffenhaeussler.github.io/">About me</a></span> · 
+        <span>&copy; 2025 <a href="http://localhost:1313/">About me</a></span> · 
 
     <span>
         Powered by

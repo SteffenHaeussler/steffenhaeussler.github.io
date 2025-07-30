@@ -2,41 +2,41 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Data Science on About me</title>
-    <link>https://steffenhaeussler.github.io/tags/data-science/</link>
+    <link>http://localhost:1313/tags/data-science/</link>
     <description>Recent content in Data Science on About me</description>
-    <generator>Hugo -- 0.140.1</generator>
+    <generator>Hugo -- 0.147.5</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 08 Dec 2023 10:30:58 +0100</lastBuildDate>
-    <atom:link href="https://steffenhaeussler.github.io/tags/data-science/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/data-science/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Deep Learning model explainability</title>
-      <link>https://steffenhaeussler.github.io/posts/2023-12-08-dl-explainability/dl_model_explainability/</link>
+      <link>http://localhost:1313/posts/2023-12-08-dl-explainability/dl_model_explainability/</link>
       <pubDate>Fri, 08 Dec 2023 10:30:58 +0100</pubDate>
-      <guid>https://steffenhaeussler.github.io/posts/2023-12-08-dl-explainability/dl_model_explainability/</guid>
+      <guid>http://localhost:1313/posts/2023-12-08-dl-explainability/dl_model_explainability/</guid>
       <description>&lt;p&gt;Hi,&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://steffenhaeussler.github.io/posts/model_explainability/&#34;&gt;In my first post&lt;/a&gt;, I looked into the explainability of classical machine learning models. As a next step, I&amp;rsquo;m interested in the explainability of neural networks.  Model explainability is easy for simple models (linear regression, decision trees), and some tools exist for more complex algorithms (ensemble trees). Therefore, I highly recommend the book &lt;a href=&#34;https://christophm.github.io/interpretable-ml-book/&#34;&gt;Interpretable Machine Learning by Christoph Molnar&lt;/a&gt; for a deeper theoretical understanding. All different approaches for model explanability are shown with a PyTorch model &lt;a href=&#34;https://www.kaggle.com/code/steffenhaeussler/mohs-hardness-model-explainer-for-neuralnets/notebook&#34;&gt;in this kaggle notebook&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Model explainability</title>
-      <link>https://steffenhaeussler.github.io/posts/2023-11-21-explainability/model_explainability/</link>
+      <link>http://localhost:1313/posts/2023-11-21-explainability/model_explainability/</link>
       <pubDate>Tue, 21 Nov 2023 10:30:58 +0100</pubDate>
-      <guid>https://steffenhaeussler.github.io/posts/2023-11-21-explainability/model_explainability/</guid>
+      <guid>http://localhost:1313/posts/2023-11-21-explainability/model_explainability/</guid>
       <description>&lt;p&gt;Hi,&lt;/p&gt;
 &lt;p&gt;Some months have passed since my last post. Model explainability is easy for simple models (linear regression, decision trees), and some tools exist for more complex algorithms (ensemble trees). I want to dig into the tools to interpret more complex models with this post. Therefore, I highly recommend the book &lt;a href=&#34;https://christophm.github.io/interpretable-ml-book/&#34;&gt;Interpretable Machine Learning by Christoph Molnar&lt;/a&gt; for a deeper theoretical understanding. All different approaches for model explanability are shown with a RandomForest model &lt;a href=&#34;https://www.kaggle.com/code/steffenhaeussler/mohs-hardness-model-explainer/notebook&#34;&gt;in this kaggle notebook&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Cookie-cutter Problems</title>
-      <link>https://steffenhaeussler.github.io/posts/2023-04-10-cookie/cookiecutter/</link>
+      <link>http://localhost:1313/posts/2023-04-10-cookie/cookiecutter/</link>
       <pubDate>Mon, 10 Apr 2023 10:30:58 +0100</pubDate>
-      <guid>https://steffenhaeussler.github.io/posts/2023-04-10-cookie/cookiecutter/</guid>
+      <guid>http://localhost:1313/posts/2023-04-10-cookie/cookiecutter/</guid>
       <description>&lt;p&gt;Hi,&lt;/p&gt;
 &lt;p&gt;Recently, I started to put some scripts together and run them against a Kaggle dataset. I decided to train my skills on an unseen dataset. Training keeps me sharp, and I need it to complement my skill set. For the last 2,5 years, I struggled in a small team with NLP problems, where I worked mostly on engineering tasks. My understanding in this area is not where I wanted to be. And on top, I follow this natural human process called forgetting things. For example, I definitely can&amp;rsquo;t write all relevant stochiometric formulas of the chemo-lithotrophic denitrification by memory. This was very important during my Ph.D. When did I start to forget relevant information? It&amp;rsquo;s funny to think back.  🤷&lt;/p&gt;</description>
     </item>
     <item>
       <title>Stratified multi-label split</title>
-      <link>https://steffenhaeussler.github.io/posts/2023-04-09-stratified/multi_label_split/</link>
+      <link>http://localhost:1313/posts/2023-04-09-stratified/multi_label_split/</link>
       <pubDate>Sat, 08 Apr 2023 10:30:58 +0100</pubDate>
-      <guid>https://steffenhaeussler.github.io/posts/2023-04-09-stratified/multi_label_split/</guid>
+      <guid>http://localhost:1313/posts/2023-04-09-stratified/multi_label_split/</guid>
       <description>&lt;p&gt;Hi,&lt;/p&gt;
 &lt;p&gt;This post is a short overview of a stratified multi-label train-test split. Please look at the &lt;a href=&#34;https://colab.research.google.com/drive/1SdJKRef4sZYowuddGIOzN8PVGH9PngyF?usp=sharing&#34;&gt;colab implementation&lt;/a&gt; for a step through guide.&lt;/p&gt;
 &lt;p&gt;Sometimes you step into work problems, which justify a small post. I already saw colleagues struggling to balance the train-test split for multi-label classification.
