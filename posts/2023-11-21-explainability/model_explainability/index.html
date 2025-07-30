@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 <title>Model explainability | About me</title>
 <meta name="keywords" content="data science, machine learning, explainability">
 <meta name="description" content="Hi,
 Some months have passed since my last post. Model explainability is easy for simple models (linear regression, decision trees), and some tools exist for more complex algorithms (ensemble trees). I want to dig into the tools to interpret more complex models with this post. Therefore, I highly recommend the book Interpretable Machine Learning by Christoph Molnar for a deeper theoretical understanding. All different approaches for model explanability are shown with a RandomForest model in this kaggle notebook.">
 <meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/posts/2023-11-21-explainability/model_explainability/">
-<link crossorigin="anonymous" href="http://localhost:1313/assets/css/stylesheet.a6264de45f1158af551cf2fe7595e8651c772fa1286f4c0483059a3e826a3049.css" integrity="sha256-piZN5F8RWK9VHPL&#43;dZXoZRx3L6Eob0wEgwWaPoJqMEk=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/assets/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/assets/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/assets/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link rel="canonical" href="https://steffenhaeussler.github.io/posts/2023-11-21-explainability/model_explainability/">
+<link crossorigin="anonymous" href="https://steffenhaeussler.github.io/assets/css/stylesheet.a6264de45f1158af551cf2fe7595e8651c772fa1286f4c0483059a3e826a3049.css" integrity="sha256-piZN5F8RWK9VHPL&#43;dZXoZRx3L6Eob0wEgwWaPoJqMEk=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://steffenhaeussler.github.io/assets/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://steffenhaeussler.github.io/assets/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://steffenhaeussler.github.io/assets/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://steffenhaeussler.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://steffenhaeussler.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/2023-11-21-explainability/model_explainability/">
+<link rel="alternate" hreflang="en" href="https://steffenhaeussler.github.io/posts/2023-11-21-explainability/model_explainability/">
 <noscript>
     <style>
         #theme-toggle,
@@ -67,7 +67,74 @@ Some months have passed since my last post. Model explainability is easy for sim
     onload="renderMathInElement(document.body);"></script>
 
 
+<meta property="og:url" content="https://steffenhaeussler.github.io/posts/2023-11-21-explainability/model_explainability/">
+  <meta property="og:site_name" content="About me">
+  <meta property="og:title" content="Model explainability">
+  <meta property="og:description" content="Hi,
+Some months have passed since my last post. Model explainability is easy for simple models (linear regression, decision trees), and some tools exist for more complex algorithms (ensemble trees). I want to dig into the tools to interpret more complex models with this post. Therefore, I highly recommend the book Interpretable Machine Learning by Christoph Molnar for a deeper theoretical understanding. All different approaches for model explanability are shown with a RandomForest model in this kaggle notebook.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2023-11-21T10:30:58+01:00">
+    <meta property="article:modified_time" content="2023-11-21T10:30:58+01:00">
+    <meta property="article:tag" content="Data Science">
+    <meta property="article:tag" content="Machine Learning">
+    <meta property="article:tag" content="Explainability">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Model explainability">
+<meta name="twitter:description" content="Hi,
+Some months have passed since my last post. Model explainability is easy for simple models (linear regression, decision trees), and some tools exist for more complex algorithms (ensemble trees). I want to dig into the tools to interpret more complex models with this post. Therefore, I highly recommend the book Interpretable Machine Learning by Christoph Molnar for a deeper theoretical understanding. All different approaches for model explanability are shown with a RandomForest model in this kaggle notebook.">
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://steffenhaeussler.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Model explainability",
+      "item": "https://steffenhaeussler.github.io/posts/2023-11-21-explainability/model_explainability/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Model explainability",
+  "name": "Model explainability",
+  "description": "Hi,\nSome months have passed since my last post. Model explainability is easy for simple models (linear regression, decision trees), and some tools exist for more complex algorithms (ensemble trees). I want to dig into the tools to interpret more complex models with this post. Therefore, I highly recommend the book Interpretable Machine Learning by Christoph Molnar for a deeper theoretical understanding. All different approaches for model explanability are shown with a RandomForest model in this kaggle notebook.\n",
+  "keywords": [
+    "data science", "machine learning", "explainability"
+  ],
+  "articleBody": "Hi,\nSome months have passed since my last post. Model explainability is easy for simple models (linear regression, decision trees), and some tools exist for more complex algorithms (ensemble trees). I want to dig into the tools to interpret more complex models with this post. Therefore, I highly recommend the book Interpretable Machine Learning by Christoph Molnar for a deeper theoretical understanding. All different approaches for model explanability are shown with a RandomForest model in this kaggle notebook.\nComplex models produce helpful predictions but often behave as a black box. This means that an explanation of the model’s behavior doesn’t exist. However, stakeholders often request an explanation of the model prediction to check for causality and to gain trust in the model.\nFeature importance Feature importance describes how useful a feature is at predicting a target variable. It also takes into account all interactions with other features. Additionally, feature importance can also used for dimensionality reduction and feature selection. There are two ways of computing the feature importance. One way is via impurity importance (mean decrease of impurity), and the second way is via permutation importance (average decrease accuracy). Permutation importance is model agnostic and should be preferred. A general drawback is correlated features. In this case, both features will score a lower importance, where they will be important. Please have a look at permutation importance with Multicollinear or Correlated Features.\nThe RandomForest implementation has an inbuild feature importance method. The impurity importance of each variable is the sum of the impurity decrease of all trees when it is selected to split a node. Impurity is quantified by the splitting criterion of the decision trees (e.g. Gini, Log Loss, or Mean Squared Error). A weakness of this method is in the case of overfitting. It can address the high importance of features on unseen data, which doesn’t represent reality. Additionally, impurity-based feature importance is strongly biased towards high cardinality features (numerical features). This method assigns lower scores to low cardinality features (binary features, categorical variables).\nPermutation-based feature importances do not exhibit such a bias (Scikit-learn inspect module). The permutation importance of a variable is calculated by randomly permuting a single feature and its effect on the model output. This randomized permutation breaks the linkage between feature and target. This also makes the interpretation of the results easy, since the feature importance shows the increase of the model error when this feature doesn’t exist.\nYou can find additional information here:\nRandom Forest by Breiman 2001 All Models Are Wrong, but Many are Useful: Learning a Variable’s Importance by Studying an Entire Class of Prediction Models Simultaneously by Fisher et al. 2018 Scikit-learn implementation of permutation importance, but not easy to read/understand Partial Dependence Plot The partial dependence plot (short PDP or PD plot) shows how one or two features affect the model prediction. It shows the relationship between the target and a feature. The partial dependence plot shows the average prediction for a feature value. For the impact of individual samples, you can use ICE plots.\nThe interpretation of partial dependant plots is very intuitive. It shows how the average prediction changes when a feature value is changed. Also, this only works when the features are uncorrelated. With correlated features, we use data points in our computation, which are highly unlikely. The partial dependence is limited to one or two features since more dimensions are hard to visualize.\nLike a PDP, an individual conditional expectation (ICE) plot shows the dependence between the target and a feature. However, unlike a PDP, which shows the average effect of the input feature, an ICE plot visualizes the dependence of the prediction on a feature for each sample separately with one line per sample. The advantage is that the ICE plot provides more insights into weak feature interactions. The calculation will take a bit, so only one feature will be displayed here.\nYou can find additional information here:\nPDPbox implementation Scikit-learn implementation of partial dependence Shapley values SHAP (Shapley Additive exPlanations) is a method to explain individual predictions. It is based on Shapley’s values and originates from cooperative game theory. It is a method for assigning payouts to players depending on their contribution to the total payout. Players cooperate in a coalition and receive a profit from this cooperation. Machine learning uses the difference of a single prediction towards the average prediction. The Shapley value is the average contribution of a feature value across all possible coalitions. ​ Keep in mind that the calculation of Shapley values can be computationally expensive. The difference between the SHAP value and the average prediction is fairly distributed among the feature values. This allows a contrastive explanation down to one single data point. The Shapley value returns a simple value per feature without a prediction model. Shap cannot be used to make statements about changes in prediction for changes in the input. Another disadvantage is that the calculation needs the training data. And like other permutation-based methods, Shapley values suffer from correlated features. ​ You can find additional information here:\nA Unified Approach to Interpreting Model Predictions by Lundberg and Lee 2017 SHAP implementation LIME Local interpretable model-agnostic explanations (LIME) is a paper in which the authors propose a concrete implementation of interpretable models to explain individual predictions of machine learning models. LIME trains simple models to approximate the predictions of the underlying model. As a first step, a new dataset is generated consisting of perturbed samples with corresponding predictions of the model. On this new dataset, LIME trains an interpretable model (decision tree, linear regression), which is weighted by the proximity of the sampled instances to the instance of interest.\nOne problem is that the calculation of the artificial datasets has its weaknesses. Multiple settings need to be tested before a final LIME model can be used. Another problem is that the interpretability of close points can vary greatly. This instability leads to a critical evaluation of any explanation.\nYou can find additional information here:\n“Why Should I Trust You?”: Explaining the Predictions of Any Classifier by Rebeiro et al. 2016 LIME implementation for tabular data Thank you for your attention.\n",
+  "wordCount" : "1023",
+  "inLanguage": "en",
+  "datePublished": "2023-11-21T10:30:58+01:00",
+  "dateModified": "2023-11-21T10:30:58+01:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://steffenhaeussler.github.io/posts/2023-11-21-explainability/model_explainability/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "About me",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://steffenhaeussler.github.io/assets/favicon.ico"
+    }
+  }
+}
+</script>
 </head>
 
 <body class="" id="top">
@@ -85,7 +152,7 @@ Some months have passed since my last post. Model explainability is easy for sim
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="About me (Alt + H)">About me</a>
+            <a href="https://steffenhaeussler.github.io/" accesskey="h" title="About me (Alt + H)">About me</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -113,17 +180,17 @@ Some months have passed since my last post. Model explainability is easy for sim
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/posts/" title="Posts">
+                <a href="https://steffenhaeussler.github.io/posts/" title="Posts">
                     <span>Posts</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/tags/" title="Tags">
+                <a href="https://steffenhaeussler.github.io/tags/" title="Tags">
                     <span>Tags</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/archives/" title="Archives">
+                <a href="https://steffenhaeussler.github.io/archives/" title="Archives">
                     <span>Archives</span>
                 </a>
             </li>
@@ -134,7 +201,7 @@ Some months have passed since my last post. Model explainability is easy for sim
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/posts/">Posts</a></div>
+    <div class="breadcrumbs"><a href="https://steffenhaeussler.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://steffenhaeussler.github.io/posts/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
       Model explainability
     </h1>
@@ -190,16 +257,16 @@ You can find additional information here:</p>
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://localhost:1313/tags/data-science/">Data Science</a></li>
-      <li><a href="http://localhost:1313/tags/machine-learning/">Machine Learning</a></li>
-      <li><a href="http://localhost:1313/tags/explainability/">Explainability</a></li>
+      <li><a href="https://steffenhaeussler.github.io/tags/data-science/">Data Science</a></li>
+      <li><a href="https://steffenhaeussler.github.io/tags/machine-learning/">Machine Learning</a></li>
+      <li><a href="https://steffenhaeussler.github.io/tags/explainability/">Explainability</a></li>
     </ul>
   </footer>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="http://localhost:1313/">About me</a></span> · 
+        <span>&copy; 2025 <a href="https://steffenhaeussler.github.io/">About me</a></span> · 
 
     <span>
         Powered by
