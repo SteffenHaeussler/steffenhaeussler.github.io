@@ -6,8 +6,29 @@
     <description>Recent content in Tags on About me</description>
     <generator>Hugo -- 0.147.5</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 30 Jul 2025 10:30:58 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 10 Dec 2025 10:30:58 +0100</lastBuildDate>
     <atom:link href="https://steffenhaeussler.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Human Learning</title>
+      <link>https://steffenhaeussler.github.io/tags/human-learning/</link>
+      <pubDate>Wed, 10 Dec 2025 10:30:58 +0100</pubDate>
+      <guid>https://steffenhaeussler.github.io/tags/human-learning/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Machine Learning</title>
+      <link>https://steffenhaeussler.github.io/tags/machine-learning/</link>
+      <pubDate>Wed, 10 Dec 2025 10:30:58 +0100</pubDate>
+      <guid>https://steffenhaeussler.github.io/tags/machine-learning/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Nlp</title>
+      <link>https://steffenhaeussler.github.io/tags/nlp/</link>
+      <pubDate>Wed, 10 Dec 2025 10:30:58 +0100</pubDate>
+      <guid>https://steffenhaeussler.github.io/tags/nlp/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Agents</title>
       <link>https://steffenhaeussler.github.io/tags/agents/</link>
@@ -16,24 +37,10 @@
       <description></description>
     </item>
     <item>
-      <title>Machine Learning</title>
-      <link>https://steffenhaeussler.github.io/tags/machine-learning/</link>
-      <pubDate>Wed, 30 Jul 2025 10:30:58 +0100</pubDate>
-      <guid>https://steffenhaeussler.github.io/tags/machine-learning/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>System Design</title>
       <link>https://steffenhaeussler.github.io/tags/system-design/</link>
       <pubDate>Wed, 30 Jul 2025 10:30:58 +0100</pubDate>
       <guid>https://steffenhaeussler.github.io/tags/system-design/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Nlp</title>
-      <link>https://steffenhaeussler.github.io/tags/nlp/</link>
-      <pubDate>Wed, 30 Apr 2025 10:30:58 +0100</pubDate>
-      <guid>https://steffenhaeussler.github.io/tags/nlp/</guid>
       <description></description>
     </item>
     <item>

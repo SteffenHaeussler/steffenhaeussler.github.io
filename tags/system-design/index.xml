@@ -10,19 +10,19 @@
     <atom:link href="https://steffenhaeussler.github.io/tags/system-design/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Building Agents &amp; LLM Workflows</title>
-      <link>https://steffenhaeussler.github.io/posts/2025-04-30-metrics/metrics/</link>
+      <link>https://steffenhaeussler.github.io/posts/2025-07-30-hackerroom/hackerroom/</link>
       <pubDate>Wed, 30 Jul 2025 10:30:58 +0100</pubDate>
-      <guid>https://steffenhaeussler.github.io/posts/2025-04-30-metrics/metrics/</guid>
+      <guid>https://steffenhaeussler.github.io/posts/2025-07-30-hackerroom/hackerroom/</guid>
       <description>&lt;p&gt;Hi,&lt;/p&gt;
 &lt;p&gt;Over the last three months, I&amp;rsquo;ve been working on Agents and LLM workflows. I had the opportunity to do this as part of a &lt;a href=&#34;https://www.merantix-aicampus.com/hacker-room&#34;&gt;residency program&lt;/a&gt; at &lt;a href=&#34;https://www.merantix-aicampus.com/&#34;&gt;Merantix&lt;/a&gt;.
 I&amp;rsquo;m deeply thankful for the opportunity and would highly recommend the program to others. Being surrounded by people with shared goals was incredibly motivating and inspiring.
 I already miss the discussions and the knowledge exchange. Unlike typical work environments, here the participants were truly aligned, and everyone learned from each other.&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Evaluation of RAG systems</title>
-      <link>https://steffenhaeussler.github.io/posts/2025-07-30-hackerroom/hackerroom/</link>
+      <title>Evaluation of RAG Systems</title>
+      <link>https://steffenhaeussler.github.io/posts/2025-04-30-metrics/metrics/</link>
       <pubDate>Wed, 30 Apr 2025 10:30:58 +0100</pubDate>
-      <guid>https://steffenhaeussler.github.io/posts/2025-07-30-hackerroom/hackerroom/</guid>
+      <guid>https://steffenhaeussler.github.io/posts/2025-04-30-metrics/metrics/</guid>
       <description>&lt;p&gt;Hi,&lt;/p&gt;
 &lt;p&gt;The implementation of this article is &lt;a href=&#34;https://www.kaggle.com/code/steffenhaeussler/evaluation-of-rag-systems&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;RAGs are complex systems. This is obvious, when you try to evaluate them. There are multiple aspects, which need to be checked. Here, I try to look into different approaches to get a better understanding and problems, when facing RAG systems. RAG system evaluation involves two distinct parts: retrieval and generation part. For retrieval, context relevance and noise robustness are key factors in assessing quality, while for generation part, key factors like answer faithfulness, answer relevance, negative rejection, information integration, and counterfactual robustness are important (&lt;a href=&#34;https://arxiv.org/pdf/2312.10997#page=14&#34;&gt;Gao et al. 2024&lt;/a&gt;).&lt;/p&gt;</description>
