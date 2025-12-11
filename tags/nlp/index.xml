@@ -6,13 +6,23 @@
     <description>Recent content in Nlp on About me</description>
     <generator>Hugo -- 0.147.5</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 30 Apr 2025 10:30:58 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 10 Dec 2025 10:30:58 +0100</lastBuildDate>
     <atom:link href="https://steffenhaeussler.github.io/tags/nlp/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Evaluation of RAG systems</title>
-      <link>https://steffenhaeussler.github.io/posts/2025-07-30-hackerroom/hackerroom/</link>
+      <title>This years recap</title>
+      <link>https://steffenhaeussler.github.io/posts/2025-12-12-recap/recap/</link>
+      <pubDate>Wed, 10 Dec 2025 10:30:58 +0100</pubDate>
+      <guid>https://steffenhaeussler.github.io/posts/2025-12-12-recap/recap/</guid>
+      <description>&lt;p&gt;Hi,&lt;/p&gt;
+&lt;p&gt;This year was an interesting learning experience. I tried to commercialize a product, which in the end was much harder than expected.
+As a short summary, the first attempt failed, because I couldn&amp;rsquo;t figure out how to sell the product. The pivot failed, because multiple big corporates released a similar product. Also the goal was to get 1-2 customers to build a MVP before looking for funding and so on. So I never incorporated the idea into a company. Basically, I failed already on the first meter, but this saved a lot of time. So I only invested 7
+months. 🥲&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Evaluation of RAG Systems</title>
+      <link>https://steffenhaeussler.github.io/posts/2025-04-30-metrics/metrics/</link>
       <pubDate>Wed, 30 Apr 2025 10:30:58 +0100</pubDate>
-      <guid>https://steffenhaeussler.github.io/posts/2025-07-30-hackerroom/hackerroom/</guid>
+      <guid>https://steffenhaeussler.github.io/posts/2025-04-30-metrics/metrics/</guid>
       <description>&lt;p&gt;Hi,&lt;/p&gt;
 &lt;p&gt;The implementation of this article is &lt;a href=&#34;https://www.kaggle.com/code/steffenhaeussler/evaluation-of-rag-systems&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;RAGs are complex systems. This is obvious, when you try to evaluate them. There are multiple aspects, which need to be checked. Here, I try to look into different approaches to get a better understanding and problems, when facing RAG systems. RAG system evaluation involves two distinct parts: retrieval and generation part. For retrieval, context relevance and noise robustness are key factors in assessing quality, while for generation part, key factors like answer faithfulness, answer relevance, negative rejection, information integration, and counterfactual robustness are important (&lt;a href=&#34;https://arxiv.org/pdf/2312.10997#page=14&#34;&gt;Gao et al. 2024&lt;/a&gt;).&lt;/p&gt;</description>
