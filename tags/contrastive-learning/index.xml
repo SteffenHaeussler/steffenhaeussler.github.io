@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Contrastive Learning on About me</title>
+    <link>https://steffenhaeussler.github.io/tags/contrastive-learning/</link>
+    <description>Recent content in Contrastive Learning on About me</description>
+    <generator>Hugo -- 0.147.5</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 09 Jan 2026 10:30:58 +0100</lastBuildDate>
+    <atom:link href="https://steffenhaeussler.github.io/tags/contrastive-learning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Training an embedding model</title>
+      <link>https://steffenhaeussler.github.io/posts/2026-01-09-contrastive/contrastive/</link>
+      <pubDate>Fri, 09 Jan 2026 10:30:58 +0100</pubDate>
+      <guid>https://steffenhaeussler.github.io/posts/2026-01-09-contrastive/contrastive/</guid>
+      <description>&lt;p&gt;Hi,&lt;/p&gt;
+&lt;p&gt;Based on my &lt;a href=&#34;https://steffenhaeussler.github.io/posts/2025-01-02-embeddings/embeddings/&#34;&gt;previous post&lt;/a&gt;, I need to write a correction. I was wrong.&lt;/p&gt;
+&lt;p&gt;I previously suggested using embeddings directly from pre-trained models. That turns out to be a bad idea, because the training objectives are fundamentally different. As an alternative, I have now explored training an embedding model using Contrastive Learning.&lt;/p&gt;
+&lt;p&gt;Please look at my &lt;a href=&#34;https://www.kaggle.com/code/steffenhaeussler/contrastive-learning&#34;&gt;notebook&lt;/a&gt; for the full code and details.&lt;/p&gt;
+&lt;p&gt;The main reason you should not use raw embeddings from pre-trained models is the anisotropy problem. The paper &lt;a href=&#34;https://arxiv.org/pdf/1909.00512&#34;&gt;How Contextual are Contextualized Word Representations? from Ethayarajh et al. 2019&lt;/a&gt; shows that the embeddings are clustered in a narrow cone of the vector space, making them almost useless for differentiation. So, if you calculate the cosine similarity between two completely different sentences, the result will be around 0.80.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

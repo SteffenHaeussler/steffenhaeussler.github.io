@@ -32,7 +32,8 @@ I already miss the discussions and the knowledge exchange. Unlike typical work e
       <link>https://steffenhaeussler.github.io/posts/2025-01-02-embeddings/embeddings/</link>
       <pubDate>Thu, 02 Jan 2025 10:30:58 +0100</pubDate>
       <guid>https://steffenhaeussler.github.io/posts/2025-01-02-embeddings/embeddings/</guid>
-      <description>&lt;p&gt;Hi,&lt;/p&gt;
+      <description>&lt;p&gt;DISCLAIMER: This is wrong. Please ignore this post.&lt;/p&gt;
+&lt;p&gt;Hi,&lt;/p&gt;
 &lt;p&gt;Following my first short post about &lt;a href=&#34;https://steffenhaeussler.github.io/posts/2024-12-27-overview/rag_overview/&#34;&gt;RAGs&lt;/a&gt;, I would like to provide a brief overview about embeddings, which are used to find similiar objects in a vector database. To better understand how various transformer models handle different input data types, I created this &lt;a href=&#34;https://www.kaggle.com/code/steffenhaeussler/get-embeddings-for-multiple-data-types&#34;&gt;notebook&lt;/a&gt;. I explore therefor, text, image, audio and video data.&lt;/p&gt;
 &lt;p&gt;I’ve chosen to skip the more traditional text embeddings (TF-IDF, Word2Vec or GloVe), because there are already very good tutorials available. Additionally, I plan to discuss the training of embedding models in a separate blog post. For this post, I use mostly pretrained classification models, where I use the last layer before the prediction head as embedding.&lt;/p&gt;</description>
     </item>

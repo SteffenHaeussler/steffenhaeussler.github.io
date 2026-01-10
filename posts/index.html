@@ -152,6 +152,23 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Training an embedding model
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Hi,
+Based on my previous post, I need to write a correction. I was wrong.
+I previously suggested using embeddings directly from pre-trained models. That turns out to be a bad idea, because the training objectives are fundamentally different. As an alternative, I have now explored training an embedding model using Contrastive Learning.
+Please look at my notebook for the full code and details.
+The main reason you should not use raw embeddings from pre-trained models is the anisotropy problem. The paper How Contextual are Contextualized Word Representations? from Ethayarajh et al. 2019 shows that the embeddings are clustered in a narrow cone of the vector space, making them almost useless for differentiation. So, if you calculate the cosine similarity between two completely different sentences, the result will be around 0.80.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-01-09 10:30:58 +0100 CET'>January 9, 2026</span>&nbsp;·&nbsp;4 min</footer>
+  <a class="entry-link" aria-label="post link to Training an embedding model" href="https://steffenhaeussler.github.io/posts/2026-01-09-contrastive/contrastive/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">This year&#39;s recap v2
     </h2>
   </header>
@@ -242,7 +259,8 @@ Some time ago, I did a small project on information retrieval. I think, it\s a g
     </h2>
   </header>
   <div class="entry-content">
-    <p>Hi,
+    <p>DISCLAIMER: This is wrong. Please ignore this post.
+Hi,
 Following my first short post about RAGs, I would like to provide a brief overview about embeddings, which are used to find similiar objects in a vector database. To better understand how various transformer models handle different input data types, I created this notebook. I explore therefor, text, image, audio and video data.
 I’ve chosen to skip the more traditional text embeddings (TF-IDF, Word2Vec or GloVe), because there are already very good tutorials available. Additionally, I plan to discuss the training of embedding models in a separate blog post. For this post, I use mostly pretrained classification models, where I use the last layer before the prediction head as embedding.
 ...</p>
@@ -278,20 +296,6 @@ In my first post, I looked into the explainability of classical machine learning
   <footer class="entry-footer"><span title='2023-12-08 10:30:58 +0100 CET'>December 8, 2023</span>&nbsp;·&nbsp;7 min</footer>
   <a class="entry-link" aria-label="post link to Deep Learning model explainability" href="https://steffenhaeussler.github.io/posts/2023-12-08-dl-explainability/dl_model_explainability/"></a>
 </article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Model explainability
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Hi,
-Some months have passed since my last post. Model explainability is easy for simple models (linear regression, decision trees), and some tools exist for more complex algorithms (ensemble trees). I want to dig into the tools to interpret more complex models with this post. Therefore, I highly recommend the book Interpretable Machine Learning by Christoph Molnar for a deeper theoretical understanding. All different approaches for model explanability are shown with a RandomForest model in this kaggle notebook.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2023-11-21 10:30:58 +0100 CET'>November 21, 2023</span>&nbsp;·&nbsp;5 min</footer>
-  <a class="entry-link" aria-label="post link to Model explainability" href="https://steffenhaeussler.github.io/posts/2023-11-21-explainability/model_explainability/"></a>
-</article>
 <footer class="page-footer">
   <nav class="pagination">
     <a class="next" href="https://steffenhaeussler.github.io/posts/page/2/">Next&nbsp;&nbsp;»
@@ -301,7 +305,7 @@ Some months have passed since my last post. Model explainability is easy for sim
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="https://steffenhaeussler.github.io/">About me</a></span> · 
+        <span>&copy; 2026 <a href="https://steffenhaeussler.github.io/">About me</a></span> · 
 
     <span>
         Powered by
