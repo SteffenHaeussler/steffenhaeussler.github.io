@@ -5,13 +5,15 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>Fast data transfer to or from s3 | About me</title>
-<meta name="keywords" content="engineering, aws, data engineering">
+<title>Training an embedding model | About me</title>
+<meta name="keywords" content="machine learning, NLP, contrastive learning">
 <meta name="description" content="Hi,
-This post is an homage to a stackoverflow post copying data from s3. This shared work saved me a lot of time. I believe that individuals who share their work do not receive sufficient recognition.
-The problem is that I have multiple Gb of data separated into thousands of files. Those files are selected for download by the semi-automated pipeline for model training. So the number of files to download varies from pipeline run to pipeline run. Also, this makes any data preparation obsolete. The solution from the official boto3 documentation for copying data from s3 takes too long. Even with asynchronous execution in the download, it will take a few hours to download those files.  Imagine a scenario where you want to fine-tune a deep learning model on a machine with multiple GPUs, but you have to wait several hours for the data to be copied 😱. Any preprocessing steps are not feasible since the data is filtered upon request. Additionally, downloading the data via aws cli is not an option, as there is much more data in the s3 buckets than requested for model training. The simplest approach is to increase the throughput. And here is the beauty, directly copy&#43;pasted from Pierre D:">
+Based on my previous post, I need to write a correction. I was wrong.
+I previously suggested using embeddings directly from pre-trained models. That turns out to be a bad idea, because the training objectives are fundamentally different. As an alternative, I have now explored training an embedding model using Contrastive Learning.
+Please look at my notebook for the full code and details.
+The main reason you should not use raw embeddings from pre-trained models is the anisotropy problem. The paper How Contextual are Contextualized Word Representations? from Ethayarajh et al. 2019 shows that the embeddings are clustered in a narrow cone of the vector space, making them almost useless for differentiation. So, if you calculate the cosine similarity between two completely different sentences, the result will be around 0.80.">
 <meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/posts/2023-04-27-s3/s3/">
+<link rel="canonical" href="http://localhost:1313/posts/2026-01-09-contrastive/contrastive/">
 <link crossorigin="anonymous" href="http://localhost:1313/assets/css/stylesheet.a6264de45f1158af551cf2fe7595e8651c772fa1286f4c0483059a3e826a3049.css" integrity="sha256-piZN5F8RWK9VHPL&#43;dZXoZRx3L6Eob0wEgwWaPoJqMEk=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/assets/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/assets/favicon-16x16.png">
@@ -20,7 +22,7 @@ The problem is that I have multiple Gb of data separated into thousands of files
 <link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/2023-04-27-s3/s3/">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/2026-01-09-contrastive/contrastive/">
 <noscript>
     <style>
         #theme-toggle,
@@ -127,15 +129,29 @@ The problem is that I have multiple Gb of data separated into thousands of files
   <header class="post-header">
     <div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/posts/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
-      Fast data transfer to or from s3
+      Training an embedding model
     </h1>
-    <div class="post-meta"><span title='2023-04-27 10:30:58 +0100 +0100'>April 27, 2023</span>&nbsp;·&nbsp;3 min
+    <div class="post-meta"><span title='2026-01-09 10:30:58 +0100 CET'>January 9, 2026</span>&nbsp;·&nbsp;4 min
 
 </div>
   </header> 
   <div class="post-content"><p>Hi,</p>
-<p>This post is an homage to a <a href="https://stackoverflow.com/questions/56639630/how-can-i-increase-my-aws-s3-upload-speed-when-using-boto3/61809946#61809946">stackoverflow post</a> copying data from s3. This shared work saved me a lot of time. I believe that individuals who share their work do not receive sufficient recognition.</p>
-<p>The problem is that I have multiple Gb of data separated into thousands of files. Those files are selected for download by the semi-automated pipeline for model training. So the number of files to download varies from pipeline run to pipeline run. Also, this makes any data preparation obsolete. The solution from the <a href="https://boto3.amazonaws.com/v1/documentation/api/latest/guide/s3-example-download-file.html">official boto3 documentation</a> for copying data from s3 takes too long. Even with <a href="https://docs.python.org/3/library/concurrent.futures.html">asynchronous execution</a> in the download, it will take a few hours to download those files.  Imagine a scenario where you want to fine-tune a deep learning model on a machine with multiple GPUs, but you have to wait several hours for the data to be copied 😱. Any preprocessing steps are not feasible since the data is filtered upon request. Additionally, downloading the data via aws cli is not an option, as there is much more data in the s3 buckets than requested for model training. The simplest approach is to increase the throughput. And here is the beauty, directly copy+pasted from <a href="https://stackoverflow.com/questions/56639630/how-can-i-increase-my-aws-s3-upload-speed-when-using-boto3/61809946#61809946">Pierre D</a>:</p>
+<p>Based on my <a href="https://steffenhaeussler.github.io/posts/2025-01-02-embeddings/embeddings/">previous post</a>, I need to write a correction. I was wrong.</p>
+<p>I previously suggested using embeddings directly from pre-trained models. That turns out to be a bad idea, because the training objectives are fundamentally different. As an alternative, I have now explored training an embedding model using Contrastive Learning.</p>
+<p>Please look at my <a href="https://www.kaggle.com/code/steffenhaeussler/contrastive-learning">notebook</a> for the full code and details.</p>
+<p>The main reason you should not use raw embeddings from pre-trained models is the anisotropy problem. The paper <a href="https://arxiv.org/pdf/1909.00512">How Contextual are Contextualized Word Representations? from Ethayarajh et al. 2019</a> shows that the embeddings are clustered in a narrow cone of the vector space, making them almost useless for differentiation. So, if you calculate the cosine similarity between two completely different sentences, the result will be around 0.80.</p>
+<p>A method to fix this is described in the paper <a href="https://arxiv.org/pdf/2004.11362">Supervised Contrastive Learning from Khosla et al. 2021</a>. The idea is to use positive pairs (similar sentences) and negative pairs (dissimilar sentences) to train the model. Positve pairs are pulled close together and result in closer similarity, while negative pairs are pushed apart and result in a lower similarity. Supervised contrastive learning needs a labelled dataset to train the model. This takes a lot of time and effort to create.</p>
+<p>To avoid the data labeling, I use <a href="https://arxiv.org/pdf/2104.08821">SimCSE: Simple Contrastive Learning of Sentence Embeddings from Gao et al. 2022</a> to train the model. The idea is to create positive pairs on the same sentence only relying on dropout noise from the same model. By passing the same sentence through the encoder twice with standard dropout active, we introduce noise to create a valid positive pair for contrastive learning. Negative pairs are created by sampling random sentences from the dataset.</p>
+<p>For SimCSE only two hyperparameters besides the model hyperparameters are critical:</p>
+<ul>
+<li>
+<p>batch size: this determines the number of negative samples available during training. Since SimCSE uses in-batch negatives, a batch size of 128 means the model sees 1 positive pair and 127 negative examples (N−1) for every step. Generally, a larger batch size makes the training task harder for the model. It forces the model to distinguish the correct sentence from a larger crowd of distractors, leading to more robust embeddings.</p>
+</li>
+<li>
+<p>temperature: this parameter scales the cosine similarity scores before they are passed into the softmax function. It essentially controls the model&rsquo;s sensitivity. A lower temperature (like the 0.05 used in the original SimCSE paper) sharpens the distribution, making the model very discriminative but potentially unstable. A higher temperature smooths the distribution out.</p>
+</li>
+</ul>
+<p>Here is my implementation of SimCSE using the huggingface trainer class:</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
@@ -161,60 +177,54 @@ The problem is that I have multiple Gb of data separated into thousands of files
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> os
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> boto3
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> botocore
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> boto3.s3.transfer <span style="color:#66d9ef">as</span> s3transfer
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SimCSETrainer</span>(Trainer):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">compute_loss</span>(self, model, inputs, return_outputs<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>, num_items_in_batch<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
 </span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        outputs_a <span style="color:#f92672">=</span> model(
+</span></span><span style="display:flex;"><span>            input_ids<span style="color:#f92672">=</span>inputs[<span style="color:#e6db74">&#34;input_ids&#34;</span>], <span style="color:#75715e"># torch.Size([batch_size, 128])</span>
+</span></span><span style="display:flex;"><span>            attention_mask<span style="color:#f92672">=</span>inputs[<span style="color:#e6db74">&#34;attention_mask&#34;</span>] <span style="color:#75715e"># torch.Size([batch_size, 128])</span>
+</span></span><span style="display:flex;"><span>        ) <span style="color:#75715e"># torch.Size([batch_size, 128, 768])</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fast_upload</span>(session, bucketname, s3dir, filelist, progress_func, workers<span style="color:#f92672">=</span><span style="color:#ae81ff">20</span>):
-</span></span><span style="display:flex;"><span>    botocore_config <span style="color:#f92672">=</span> botocore<span style="color:#f92672">.</span>config<span style="color:#f92672">.</span>Config(max_pool_connections<span style="color:#f92672">=</span>workers)
-</span></span><span style="display:flex;"><span>    s3client <span style="color:#f92672">=</span> session<span style="color:#f92672">.</span>client(<span style="color:#e6db74">&#39;s3&#39;</span>, config<span style="color:#f92672">=</span>botocore_config)
-</span></span><span style="display:flex;"><span>    transfer_config <span style="color:#f92672">=</span> s3transfer<span style="color:#f92672">.</span>TransferConfig(
-</span></span><span style="display:flex;"><span>        use_threads<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
-</span></span><span style="display:flex;"><span>        max_concurrency<span style="color:#f92672">=</span>workers,
-</span></span><span style="display:flex;"><span>    )
-</span></span><span style="display:flex;"><span>    s3t <span style="color:#f92672">=</span> s3transfer<span style="color:#f92672">.</span>create_transfer_manager(s3client, transfer_config)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> filepath <span style="color:#f92672">in</span> filelist:
-</span></span><span style="display:flex;"><span>        dst <span style="color:#f92672">=</span> str(Path(key, filepath<span style="color:#f92672">.</span>name))
-</span></span><span style="display:flex;"><span>        s3t<span style="color:#f92672">.</span>upload(
-</span></span><span style="display:flex;"><span>            filepath, bucketname, dst,
-</span></span><span style="display:flex;"><span>            subscribers<span style="color:#f92672">=</span>[
-</span></span><span style="display:flex;"><span>                s3transfer<span style="color:#f92672">.</span>ProgressCallbackInvoker(progress_func),
-</span></span><span style="display:flex;"><span>            ],
-</span></span><span style="display:flex;"><span>        )
-</span></span><span style="display:flex;"><span>    s3t<span style="color:#f92672">.</span>shutdown()
+</span></span><span style="display:flex;"><span>        emb_a <span style="color:#f92672">=</span> outputs_a<span style="color:#f92672">.</span>last_hidden_state[:, <span style="color:#ae81ff">0</span>, :] <span style="color:#75715e"># [CLS] token torch.Size([batch_size, 768])</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Forward Pass 2 - Re-run same inputs for different Dropout mask</span>
+</span></span><span style="display:flex;"><span>        outputs_b <span style="color:#f92672">=</span> model(
+</span></span><span style="display:flex;"><span>            input_ids<span style="color:#f92672">=</span>inputs[<span style="color:#e6db74">&#34;input_ids&#34;</span>], <span style="color:#75715e"># torch.Size([batch_size, 128])</span>
+</span></span><span style="display:flex;"><span>            attention_mask<span style="color:#f92672">=</span>inputs[<span style="color:#e6db74">&#34;attention_mask&#34;</span>] <span style="color:#75715e"># torch.Size([batch_size, 128])</span>
+</span></span><span style="display:flex;"><span>        ) <span style="color:#75715e"># torch.Size([batch_size, 128, 768])</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        emb_b <span style="color:#f92672">=</span> outputs_b<span style="color:#f92672">.</span>last_hidden_state[:, <span style="color:#ae81ff">0</span>, :] <span style="color:#75715e"># [CLS] token torch.Size([batch_size, 768])</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Scales vector to L2 norm</span>
+</span></span><span style="display:flex;"><span>        z_a <span style="color:#f92672">=</span> F<span style="color:#f92672">.</span>normalize(emb_a, p<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>, dim<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>        z_b <span style="color:#f92672">=</span> F<span style="color:#f92672">.</span>normalize(emb_b, p<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>, dim<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Cosine Similarity Matrix</span>
+</span></span><span style="display:flex;"><span>        sim_matrix <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>matmul(z_a, z_b<span style="color:#f92672">.</span>T) <span style="color:#f92672">/</span> temperature
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Labels are the diagonal (0, 1, 2...)</span>
+</span></span><span style="display:flex;"><span>        batch_size <span style="color:#f92672">=</span> z_a<span style="color:#f92672">.</span>size(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>        labels <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>arange(batch_size)<span style="color:#f92672">.</span>long()<span style="color:#f92672">.</span>to(z_a<span style="color:#f92672">.</span>device)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        loss <span style="color:#f92672">=</span> F<span style="color:#f92672">.</span>cross_entropy(sim_matrix, labels)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> (loss, outputs_a) <span style="color:#66d9ef">if</span> return_outputs <span style="color:#66d9ef">else</span> loss
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>Dependent on my internet ocnnection, I can upload/download 10_000 files in minutes.
-Before I get a bit into depth, here is the example usage:</p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> tqdm <span style="color:#f92672">import</span> tqdm
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>bucketname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;bucket-name&#39;</span>
-</span></span><span style="display:flex;"><span>key <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;some/path/in/s3&#39;</span>
-</span></span><span style="display:flex;"><span>filelist <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;as Path from pathlib&#39;</span>]
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">with</span> tqdm(desc<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;upload&#39;</span>, ncols<span style="color:#f92672">=</span><span style="color:#ae81ff">60</span>, unit_scale<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">as</span> pbar:
-</span></span><span style="display:flex;"><span>    fast_upload(boto3<span style="color:#f92672">.</span>Session(), bucketname, key, filelist, pbar<span style="color:#f92672">.</span>update)
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>So, what is happening here.</p>
-<p>The upload depends on the <a href="https://github.com/boto/s3transfer/blob/develop/s3transfer/manager.py#L156">Transfer Manager</a> from the s3transfer library.
-Also, the transfer manager allows <a href="https://github.com/boto/boto3/blob/develop/boto3/s3/transfer.py#L164">multi-threading</a>. I haven&rsquo;t tested this for an upper limit - in general, I use 20 or 30 threads and hit the limit of my internet connection (German internet 🥲). I like the integration with a progress callback (tqdm). This callback implementation only progresses the number of transferred bytes. Thanks to this shared code snippet, I could solve this small data transfer problem.</p>
+</div><p>As you can see, the implementation is surprisingly simple.</p>
+<p>Please have a look at the training results and the evaluation of the embeddings in the <a href="https://www.kaggle.com/code/steffenhaeussler/contrastive-learning#Evaluation">kaggle notebook</a>. While there is still room for improvement, the embeddings are significantly better than the base model.</p>
+<p>Overall, I hope this post helps you start training your own embedding models. This skill is incredibly valuable for improving RAG (Retrieval-Augmented Generation) systems, especially when fine-tuning on your own specific datasets.</p>
 <p>Thank you for your attention.</p>
 
 
@@ -222,9 +232,9 @@ Also, the transfer manager allows <a href="https://github.com/boto/boto3/blob/de
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://localhost:1313/tags/engineering/">Engineering</a></li>
-      <li><a href="http://localhost:1313/tags/aws/">Aws</a></li>
-      <li><a href="http://localhost:1313/tags/data-engineering/">Data Engineering</a></li>
+      <li><a href="http://localhost:1313/tags/machine-learning/">Machine Learning</a></li>
+      <li><a href="http://localhost:1313/tags/nlp/">NLP</a></li>
+      <li><a href="http://localhost:1313/tags/contrastive-learning/">Contrastive Learning</a></li>
     </ul>
   </footer>
 </article>
