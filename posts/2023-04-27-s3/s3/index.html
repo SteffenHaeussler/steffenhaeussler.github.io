@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 <title>Fast data transfer to or from s3 | About me</title>
 <meta name="keywords" content="engineering, aws, data engineering">
 <meta name="description" content="Hi,
 This post is an homage to a stackoverflow post copying data from s3. This shared work saved me a lot of time. I believe that individuals who share their work do not receive sufficient recognition.
 The problem is that I have multiple Gb of data separated into thousands of files. Those files are selected for download by the semi-automated pipeline for model training. So the number of files to download varies from pipeline run to pipeline run. Also, this makes any data preparation obsolete. The solution from the official boto3 documentation for copying data from s3 takes too long. Even with asynchronous execution in the download, it will take a few hours to download those files.  Imagine a scenario where you want to fine-tune a deep learning model on a machine with multiple GPUs, but you have to wait several hours for the data to be copied 😱. Any preprocessing steps are not feasible since the data is filtered upon request. Additionally, downloading the data via aws cli is not an option, as there is much more data in the s3 buckets than requested for model training. The simplest approach is to increase the throughput. And here is the beauty, directly copy&#43;pasted from Pierre D:">
 <meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/posts/2023-04-27-s3/s3/">
-<link crossorigin="anonymous" href="http://localhost:1313/assets/css/stylesheet.a6264de45f1158af551cf2fe7595e8651c772fa1286f4c0483059a3e826a3049.css" integrity="sha256-piZN5F8RWK9VHPL&#43;dZXoZRx3L6Eob0wEgwWaPoJqMEk=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/assets/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/assets/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/assets/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link rel="canonical" href="https://steffenhaeussler.github.io/posts/2023-04-27-s3/s3/">
+<link crossorigin="anonymous" href="https://steffenhaeussler.github.io/assets/css/stylesheet.a6264de45f1158af551cf2fe7595e8651c772fa1286f4c0483059a3e826a3049.css" integrity="sha256-piZN5F8RWK9VHPL&#43;dZXoZRx3L6Eob0wEgwWaPoJqMEk=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://steffenhaeussler.github.io/assets/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://steffenhaeussler.github.io/assets/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://steffenhaeussler.github.io/assets/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://steffenhaeussler.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://steffenhaeussler.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/2023-04-27-s3/s3/">
+<link rel="alternate" hreflang="en" href="https://steffenhaeussler.github.io/posts/2023-04-27-s3/s3/">
 <noscript>
     <style>
         #theme-toggle,
@@ -58,7 +58,76 @@ The problem is that I have multiple Gb of data separated into thousands of files
 
     </style>
 </noscript>
+<meta property="og:url" content="https://steffenhaeussler.github.io/posts/2023-04-27-s3/s3/">
+  <meta property="og:site_name" content="About me">
+  <meta property="og:title" content="Fast data transfer to or from s3">
+  <meta property="og:description" content="Hi,
+This post is an homage to a stackoverflow post copying data from s3. This shared work saved me a lot of time. I believe that individuals who share their work do not receive sufficient recognition.
+The problem is that I have multiple Gb of data separated into thousands of files. Those files are selected for download by the semi-automated pipeline for model training. So the number of files to download varies from pipeline run to pipeline run. Also, this makes any data preparation obsolete. The solution from the official boto3 documentation for copying data from s3 takes too long. Even with asynchronous execution in the download, it will take a few hours to download those files. Imagine a scenario where you want to fine-tune a deep learning model on a machine with multiple GPUs, but you have to wait several hours for the data to be copied 😱. Any preprocessing steps are not feasible since the data is filtered upon request. Additionally, downloading the data via aws cli is not an option, as there is much more data in the s3 buckets than requested for model training. The simplest approach is to increase the throughput. And here is the beauty, directly copy&#43;pasted from Pierre D:">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2023-04-27T10:30:58+01:00">
+    <meta property="article:modified_time" content="2023-04-27T10:30:58+01:00">
+    <meta property="article:tag" content="Engineering">
+    <meta property="article:tag" content="Aws">
+    <meta property="article:tag" content="Data Engineering">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Fast data transfer to or from s3">
+<meta name="twitter:description" content="Hi,
+This post is an homage to a stackoverflow post copying data from s3. This shared work saved me a lot of time. I believe that individuals who share their work do not receive sufficient recognition.
+The problem is that I have multiple Gb of data separated into thousands of files. Those files are selected for download by the semi-automated pipeline for model training. So the number of files to download varies from pipeline run to pipeline run. Also, this makes any data preparation obsolete. The solution from the official boto3 documentation for copying data from s3 takes too long. Even with asynchronous execution in the download, it will take a few hours to download those files.  Imagine a scenario where you want to fine-tune a deep learning model on a machine with multiple GPUs, but you have to wait several hours for the data to be copied 😱. Any preprocessing steps are not feasible since the data is filtered upon request. Additionally, downloading the data via aws cli is not an option, as there is much more data in the s3 buckets than requested for model training. The simplest approach is to increase the throughput. And here is the beauty, directly copy&#43;pasted from Pierre D:">
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://steffenhaeussler.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Fast data transfer to or from s3",
+      "item": "https://steffenhaeussler.github.io/posts/2023-04-27-s3/s3/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Fast data transfer to or from s3",
+  "name": "Fast data transfer to or from s3",
+  "description": "Hi,\nThis post is an homage to a stackoverflow post copying data from s3. This shared work saved me a lot of time. I believe that individuals who share their work do not receive sufficient recognition.\nThe problem is that I have multiple Gb of data separated into thousands of files. Those files are selected for download by the semi-automated pipeline for model training. So the number of files to download varies from pipeline run to pipeline run. Also, this makes any data preparation obsolete. The solution from the official boto3 documentation for copying data from s3 takes too long. Even with asynchronous execution in the download, it will take a few hours to download those files. Imagine a scenario where you want to fine-tune a deep learning model on a machine with multiple GPUs, but you have to wait several hours for the data to be copied 😱. Any preprocessing steps are not feasible since the data is filtered upon request. Additionally, downloading the data via aws cli is not an option, as there is much more data in the s3 buckets than requested for model training. The simplest approach is to increase the throughput. And here is the beauty, directly copy+pasted from Pierre D:\n",
+  "keywords": [
+    "engineering", "aws", "data engineering"
+  ],
+  "articleBody": "Hi,\nThis post is an homage to a stackoverflow post copying data from s3. This shared work saved me a lot of time. I believe that individuals who share their work do not receive sufficient recognition.\nThe problem is that I have multiple Gb of data separated into thousands of files. Those files are selected for download by the semi-automated pipeline for model training. So the number of files to download varies from pipeline run to pipeline run. Also, this makes any data preparation obsolete. The solution from the official boto3 documentation for copying data from s3 takes too long. Even with asynchronous execution in the download, it will take a few hours to download those files. Imagine a scenario where you want to fine-tune a deep learning model on a machine with multiple GPUs, but you have to wait several hours for the data to be copied 😱. Any preprocessing steps are not feasible since the data is filtered upon request. Additionally, downloading the data via aws cli is not an option, as there is much more data in the s3 buckets than requested for model training. The simplest approach is to increase the throughput. And here is the beauty, directly copy+pasted from Pierre D:\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 import os import boto3 import botocore import boto3.s3.transfer as s3transfer def fast_upload(session, bucketname, s3dir, filelist, progress_func, workers=20): botocore_config = botocore.config.Config(max_pool_connections=workers) s3client = session.client('s3', config=botocore_config) transfer_config = s3transfer.TransferConfig( use_threads=True, max_concurrency=workers, ) s3t = s3transfer.create_transfer_manager(s3client, transfer_config) for filepath in filelist: dst = str(Path(key, filepath.name)) s3t.upload( filepath, bucketname, dst, subscribers=[ s3transfer.ProgressCallbackInvoker(progress_func), ], ) s3t.shutdown() Dependent on my internet ocnnection, I can upload/download 10_000 files in minutes. Before I get a bit into depth, here is the example usage:\n1 2 3 4 5 6 7 8 from tqdm import tqdm bucketname = 'bucket-name' key = 'some/path/in/s3' filelist = ['as Path from pathlib'] with tqdm(desc='upload', ncols=60, unit_scale=1) as pbar: fast_upload(boto3.Session(), bucketname, key, filelist, pbar.update) So, what is happening here.\nThe upload depends on the Transfer Manager from the s3transfer library. Also, the transfer manager allows multi-threading. I haven’t tested this for an upper limit - in general, I use 20 or 30 threads and hit the limit of my internet connection (German internet 🥲). I like the integration with a progress callback (tqdm). This callback implementation only progresses the number of transferred bytes. Thanks to this shared code snippet, I could solve this small data transfer problem.\nThank you for your attention.\n",
+  "wordCount" : "427",
+  "inLanguage": "en",
+  "datePublished": "2023-04-27T10:30:58+01:00",
+  "dateModified": "2023-04-27T10:30:58+01:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://steffenhaeussler.github.io/posts/2023-04-27-s3/s3/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "About me",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://steffenhaeussler.github.io/assets/favicon.ico"
+    }
+  }
+}
+</script>
 </head>
 
 <body class="" id="top">
@@ -76,7 +145,7 @@ The problem is that I have multiple Gb of data separated into thousands of files
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="About me (Alt + H)">About me</a>
+            <a href="https://steffenhaeussler.github.io/" accesskey="h" title="About me (Alt + H)">About me</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -104,17 +173,17 @@ The problem is that I have multiple Gb of data separated into thousands of files
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/posts/" title="Posts">
+                <a href="https://steffenhaeussler.github.io/posts/" title="Posts">
                     <span>Posts</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/tags/" title="Tags">
+                <a href="https://steffenhaeussler.github.io/tags/" title="Tags">
                     <span>Tags</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/archives/" title="Archives">
+                <a href="https://steffenhaeussler.github.io/archives/" title="Archives">
                     <span>Archives</span>
                 </a>
             </li>
@@ -125,7 +194,7 @@ The problem is that I have multiple Gb of data separated into thousands of files
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/posts/">Posts</a></div>
+    <div class="breadcrumbs"><a href="https://steffenhaeussler.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://steffenhaeussler.github.io/posts/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
       Fast data transfer to or from s3
     </h1>
@@ -222,9 +291,9 @@ Also, the transfer manager allows <a href="https://github.com/boto/boto3/blob/de
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://localhost:1313/tags/engineering/">Engineering</a></li>
-      <li><a href="http://localhost:1313/tags/aws/">Aws</a></li>
-      <li><a href="http://localhost:1313/tags/data-engineering/">Data Engineering</a></li>
+      <li><a href="https://steffenhaeussler.github.io/tags/engineering/">Engineering</a></li>
+      <li><a href="https://steffenhaeussler.github.io/tags/aws/">Aws</a></li>
+      <li><a href="https://steffenhaeussler.github.io/tags/data-engineering/">Data Engineering</a></li>
     </ul>
   </footer>
 </article>
