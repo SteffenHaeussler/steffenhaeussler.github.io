@@ -134,12 +134,14 @@
   </header>
   <div class="entry-content">
     <p>Hi,
-Based on my previous post, I need to write a correction. I was wrong. Using embeddings from pre-trained models is not a good idea, since the training objective is different. As an alternative, I will train an embedding model with contrastive learning. Please look at my notebook for more details and code
-The reason why you should not use embeddings from pre-trained models is the anisotropy problem. The paper How Contextual are Contextualized Word Representations? from Ethayarajh et al. 2019 shows that the embeddings are clustered in a narrow cone of the vector space, making them almost useless for differentiation. So, if you calculate the cosine similarity between two completely different sentences, the result will be around 0.80.
+Based on my previous post, I need to write a correction. I was wrong.
+I previously suggested using embeddings directly from pre-trained models. That turns out to be a bad idea, because the training objectives are fundamentally different. As an alternative, I have now explored training an embedding model using Contrastive Learning.
+Please look at my notebook for the full code and details.
+The main reason you should not use raw embeddings from pre-trained models is the anisotropy problem. The paper How Contextual are Contextualized Word Representations? from Ethayarajh et al. 2019 shows that the embeddings are clustered in a narrow cone of the vector space, making them almost useless for differentiation. So, if you calculate the cosine similarity between two completely different sentences, the result will be around 0.80.
 ...</p>
   </div>
   <footer class="entry-footer"><span title='2026-01-09 10:30:58 +0100 CET'>January 9, 2026</span>&nbsp;·&nbsp;4 min</footer>
-  <a class="entry-link" aria-label="post link to Training an embedding model" href="http://localhost:1313/posts/2026-01-09-contrastive/contrastive/"></a>
+  <a class="entry-link" aria-label="post link to Training an embedding model" href="https://steffenhaeussler.github.io/posts/2026-01-09-contrastive/contrastive/"></a>
 </article>
 
 <article class="post-entry tag-entry"> 
@@ -269,7 +271,7 @@ In my first post, I looked into the explainability of classical machine learning
 ...</p>
   </div>
   <footer class="entry-footer"><span title='2023-12-08 10:30:58 +0100 CET'>December 8, 2023</span>&nbsp;·&nbsp;7 min</footer>
-  <a class="entry-link" aria-label="post link to Deep Learning model explainability" href="http://localhost:1313/posts/2023-12-08-dl-explainability/dl_model_explainability/"></a>
+  <a class="entry-link" aria-label="post link to Deep Learning model explainability" href="https://steffenhaeussler.github.io/posts/2023-12-08-dl-explainability/dl_model_explainability/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
@@ -280,7 +282,7 @@ In my first post, I looked into the explainability of classical machine learning
     </main>
     
 <footer class="footer">
-        <span>&copy; 2026 <a href="http://localhost:1313/">About me</a></span> · 
+        <span>&copy; 2026 <a href="https://steffenhaeussler.github.io/">About me</a></span> · 
 
     <span>
         Powered by

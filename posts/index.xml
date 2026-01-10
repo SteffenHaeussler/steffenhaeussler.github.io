@@ -7,12 +7,12 @@
     <generator>Hugo -- 0.147.5</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 09 Jan 2026 10:30:58 +0100</lastBuildDate>
-    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://steffenhaeussler.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Training an embedding model</title>
-      <link>http://localhost:1313/posts/2026-01-09-contrastive/contrastive/</link>
+      <link>https://steffenhaeussler.github.io/posts/2026-01-09-contrastive/contrastive/</link>
       <pubDate>Fri, 09 Jan 2026 10:30:58 +0100</pubDate>
-      <guid>http://localhost:1313/posts/2026-01-09-contrastive/contrastive/</guid>
+      <guid>https://steffenhaeussler.github.io/posts/2026-01-09-contrastive/contrastive/</guid>
       <description>&lt;p&gt;Hi,&lt;/p&gt;
 &lt;p&gt;Based on my &lt;a href=&#34;https://steffenhaeussler.github.io/posts/2025-01-02-embeddings/embeddings/&#34;&gt;previous post&lt;/a&gt;, I need to write a correction. I was wrong.&lt;/p&gt;
 &lt;p&gt;I previously suggested using embeddings directly from pre-trained models. That turns out to be a bad idea, because the training objectives are fundamentally different. As an alternative, I have now explored training an embedding model using Contrastive Learning.&lt;/p&gt;
@@ -80,7 +80,7 @@ The project is a small information retrieval of a FAQ, where I want to map the c
       <title>Get embeddings for multiple data sources</title>
       <link>http://localhost:1313/posts/2025-01-02-embeddings/embeddings/</link>
       <pubDate>Thu, 02 Jan 2025 10:30:58 +0100</pubDate>
-      <guid>http://localhost:1313/posts/2025-01-02-embeddings/embeddings/</guid>
+      <guid>https://steffenhaeussler.github.io/posts/2025-01-02-embeddings/embeddings/</guid>
       <description>&lt;p&gt;DISCLAIMER: This is wrong. Please ignore this post.&lt;/p&gt;
 &lt;p&gt;Hi,&lt;/p&gt;
 &lt;p&gt;Following my first short post about &lt;a href=&#34;https://steffenhaeussler.github.io/posts/2024-12-27-overview/rag_overview/&#34;&gt;RAGs&lt;/a&gt;, I would like to provide a brief overview about embeddings, which are used to find similiar objects in a vector database. To better understand how various transformer models handle different input data types, I created this &lt;a href=&#34;https://www.kaggle.com/code/steffenhaeussler/get-embeddings-for-multiple-data-types&#34;&gt;notebook&lt;/a&gt;. I explore therefor, text, image, audio and video data.&lt;/p&gt;

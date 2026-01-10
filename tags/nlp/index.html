@@ -4,7 +4,7 @@
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 <title>NLP | About me</title>
 <meta name="keywords" content="">
 <meta name="description" content="">
@@ -57,6 +57,14 @@
 
     </style>
 </noscript>
+<meta property="og:url" content="https://steffenhaeussler.github.io/tags/nlp/">
+  <meta property="og:site_name" content="About me">
+  <meta property="og:title" content="NLP">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="NLP">
+<meta name="twitter:description" content="">
 
 </head>
 
@@ -134,12 +142,14 @@
   </header>
   <div class="entry-content">
     <p>Hi,
-Based on my previous post, I need to write a correction. I was wrong. Using embeddings from pre-trained models is not a good idea, since the training objective is different. As an alternative, I will train an embedding model with contrastive learning. Please look at my notebook for more details and code
-The reason why you should not use embeddings from pre-trained models is the anisotropy problem. The paper How Contextual are Contextualized Word Representations? from Ethayarajh et al. 2019 shows that the embeddings are clustered in a narrow cone of the vector space, making them almost useless for differentiation. So, if you calculate the cosine similarity between two completely different sentences, the result will be around 0.80.
+Based on my previous post, I need to write a correction. I was wrong.
+I previously suggested using embeddings directly from pre-trained models. That turns out to be a bad idea, because the training objectives are fundamentally different. As an alternative, I have now explored training an embedding model using Contrastive Learning.
+Please look at my notebook for the full code and details.
+The main reason you should not use raw embeddings from pre-trained models is the anisotropy problem. The paper How Contextual are Contextualized Word Representations? from Ethayarajh et al. 2019 shows that the embeddings are clustered in a narrow cone of the vector space, making them almost useless for differentiation. So, if you calculate the cosine similarity between two completely different sentences, the result will be around 0.80.
 ...</p>
   </div>
   <footer class="entry-footer"><span title='2026-01-09 10:30:58 +0100 CET'>January 9, 2026</span>&nbsp;·&nbsp;4 min</footer>
-  <a class="entry-link" aria-label="post link to Training an embedding model" href="http://localhost:1313/posts/2026-01-09-contrastive/contrastive/"></a>
+  <a class="entry-link" aria-label="post link to Training an embedding model" href="https://steffenhaeussler.github.io/posts/2026-01-09-contrastive/contrastive/"></a>
 </article>
 
 <article class="post-entry tag-entry"> 
@@ -231,7 +241,7 @@ A language model is trained on large amounts of textual data to understand the p
     </main>
     
 <footer class="footer">
-        <span>&copy; 2026 <a href="http://localhost:1313/">About me</a></span> · 
+        <span>&copy; 2026 <a href="https://steffenhaeussler.github.io/">About me</a></span> · 
 
     <span>
         Powered by
