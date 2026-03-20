@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Contrastive Learning | About me</title>
+<title>Posts | About me</title>
 <meta name="keywords" content="">
-<meta name="description" content="">
+<meta name="description" content="Posts - About me">
 <meta name="author" content="">
-<link rel="canonical" href="https://steffenhaeussler.github.io/tags/contrastive-learning/">
+<link rel="canonical" href="https://steffenhaeussler.github.io/posts/">
 <link crossorigin="anonymous" href="https://steffenhaeussler.github.io/assets/css/stylesheet.a6264de45f1158af551cf2fe7595e8651c772fa1286f4c0483059a3e826a3049.css" integrity="sha256-piZN5F8RWK9VHPL&#43;dZXoZRx3L6Eob0wEgwWaPoJqMEk=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://steffenhaeussler.github.io/assets/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://steffenhaeussler.github.io/assets/favicon-16x16.png">
@@ -18,8 +18,8 @@
 <link rel="mask-icon" href="https://steffenhaeussler.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="https://steffenhaeussler.github.io/tags/contrastive-learning/index.xml">
-<link rel="alternate" hreflang="en" href="https://steffenhaeussler.github.io/tags/contrastive-learning/">
+<link rel="alternate" type="application/rss+xml" href="https://steffenhaeussler.github.io/posts/index.xml">
+<link rel="alternate" hreflang="en" href="https://steffenhaeussler.github.io/posts/">
 <noscript>
     <style>
         #theme-toggle,
@@ -57,15 +57,30 @@
 
     </style>
 </noscript>
-<meta property="og:url" content="https://steffenhaeussler.github.io/tags/contrastive-learning/">
+<meta property="og:url" content="https://steffenhaeussler.github.io/posts/">
   <meta property="og:site_name" content="About me">
-  <meta property="og:title" content="Contrastive Learning">
+  <meta property="og:title" content="Posts">
   <meta property="og:locale" content="en-us">
   <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Contrastive Learning">
+<meta name="twitter:title" content="Posts">
 <meta name="twitter:description" content="">
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://steffenhaeussler.github.io/posts/"
+    }
+  ]
+}
+</script>
 </head>
 
 <body class="list" id="top">
@@ -112,7 +127,7 @@
         <ul id="menu">
             <li>
                 <a href="https://steffenhaeussler.github.io/posts/" title="Posts">
-                    <span>Posts</span>
+                    <span class="active">Posts</span>
                 </a>
             </li>
             <li>
@@ -129,44 +144,34 @@
     </nav>
 </header>
 <main class="main"> 
-<header class="page-header"><div class="breadcrumbs"><a href="https://steffenhaeussler.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://steffenhaeussler.github.io/tags/">Tags</a></div>
+<header class="page-header"><div class="breadcrumbs"><a href="https://steffenhaeussler.github.io/">Home</a></div>
   <h1>
-    Contrastive Learning
+    Posts
   </h1>
 </header>
 
-<article class="post-entry tag-entry"> 
+<article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Fine-tuning a ReRanker
+    <h2 class="entry-hint-parent">The importance of building things by yourself
     </h2>
   </header>
   <div class="entry-content">
     <p>Hi,
-Based on my previous post, I looked into fine-tuning a bi-encoder via self-supervised learning. As a logical next step, I now want to fine-tune a cross-encoder for my specific task. This is not as easy as fine-tuning a bi-encoder, because cross-encoders are not designed to be trained with contrastive learning.
-Therefor I looked into four different approaches to fine-tune a cross-encoder for my specific task:
-BCE loss BCE loss with hard negatives InfoNCE loss Margin MSE loss BCE loss The simplest approach is to use binary cross-entropy loss to train the model. Here we have two labels, 1 for a positive pair and 0 for a negative pair and treat the relevance as a binary classification problem Passage Re-Ranking with BERT by Nogueira and Cho 2020. This can also be called a pointwise approach. For every query-document pair we calculate the logit, then apply a sigmoid activation twhich will represent the probability of relevance.
+In this initial post, I want to draft the development of my FastAPI skeleton.
+At the beginning of my career as a Data Scientist, I ran into the typical problem of model deployment to production. In a team of two scientists, I had the chance to write a micro-service with Flask from scratch out of necessity.
+My first service followed strongly the example of Miguel Grinbergs great tutorial. The reason was simple, I couldn’t write proper code at this time. Besides no experience and the great help of my co-workers, I could write a production-ready micro-service in a few weeks with the following features:
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2026-03-20 10:30:58 +0100 CET'>March 20, 2026</span>&nbsp;·&nbsp;5 min</footer>
-  <a class="entry-link" aria-label="post link to Fine-tuning a ReRanker" href="https://steffenhaeussler.github.io/posts/2026-03-20-reranker/reranker/"></a>
+  <footer class="entry-footer"><span title='2023-03-05 23:30:58 +0100 CET'>March 5, 2023</span>&nbsp;·&nbsp;2 min</footer>
+  <a class="entry-link" aria-label="post link to The importance of building things by yourself" href="https://steffenhaeussler.github.io/posts/2023-03-05-first/first/"></a>
 </article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Training an embedding model
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Hi,
-Based on my previous post, I need to write a correction. I was wrong.
-I previously suggested using embeddings directly from pre-trained models. That turns out to be a bad idea, because the training objectives are fundamentally different. As an alternative, I have now explored training an embedding model using Contrastive Learning.
-Please look at my notebook for the full code and details.
-The main reason you should not use raw embeddings from pre-trained models is the anisotropy problem. The paper How Contextual are Contextualized Word Representations? from Ethayarajh et al. 2019 shows that the embeddings are clustered in a narrow cone of the vector space, making them almost useless for differentiation. So, if you calculate the cosine similarity between two completely different sentences, the result will be around 0.80.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2026-01-09 10:30:58 +0100 CET'>January 9, 2026</span>&nbsp;·&nbsp;4 min</footer>
-  <a class="entry-link" aria-label="post link to Training an embedding model" href="https://steffenhaeussler.github.io/posts/2026-01-09-contrastive/contrastive/"></a>
-</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="prev" href="https://steffenhaeussler.github.io/posts/page/2/">
+      «&nbsp;Prev&nbsp;
+    </a>
+  </nav>
+</footer>
     </main>
     
 <footer class="footer">
