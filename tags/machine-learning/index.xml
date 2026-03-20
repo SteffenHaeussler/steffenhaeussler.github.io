@@ -6,8 +6,25 @@
     <description>Recent content in Machine Learning on About me</description>
     <generator>Hugo -- 0.147.5</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 09 Jan 2026 10:30:58 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 20 Mar 2026 10:30:58 +0100</lastBuildDate>
     <atom:link href="https://steffenhaeussler.github.io/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Fine-tuning a ReRanker</title>
+      <link>https://steffenhaeussler.github.io/posts/2026-03-20-reranker/reranker/</link>
+      <pubDate>Fri, 20 Mar 2026 10:30:58 +0100</pubDate>
+      <guid>https://steffenhaeussler.github.io/posts/2026-03-20-reranker/reranker/</guid>
+      <description>&lt;p&gt;Hi,&lt;/p&gt;
+&lt;p&gt;Based on my &lt;a href=&#34;https://steffenhaeussler.github.io/posts/2026-01-09-contrastive/contrastive/&#34;&gt;previous post&lt;/a&gt;, I looked into fine-tuning a bi-encoder via self-supervised learning. As a logical next step, I now want to fine-tune a cross-encoder for my specific task. This is not as easy as fine-tuning a bi-encoder, because cross-encoders are not designed to be trained with contrastive learning.&lt;/p&gt;
+&lt;p&gt;Therefor I looked into four different approaches to fine-tune a cross-encoder for my specific task:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.kaggle.com/code/steffenhaeussler/fine-tuning-a-reranker&#34;&gt;BCE loss&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.kaggle.com/code/steffenhaeussler/fine-tuning-a-reranker-part-2-with-bce-loss&#34;&gt;BCE loss with hard negatives&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.kaggle.com/code/steffenhaeussler/fine-tuning-a-reranker-part-3-with-infonce-loss&#34;&gt;InfoNCE loss&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.kaggle.com/code/steffenhaeussler/fine-tuning-a-reranker-part-4-margin-mse-loss&#34;&gt;Margin MSE loss&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;bce-loss&#34;&gt;BCE loss&lt;/h2&gt;
+&lt;p&gt;The simplest approach is to use binary cross-entropy loss to train the model. Here we have two labels, 1 for a positive pair and 0 for a negative pair and treat the relevance as a binary classification problem &lt;a href=&#34;https://arxiv.org/pdf/1901.04085&#34;&gt;Passage Re-Ranking with BERT by Nogueira and Cho 2020&lt;/a&gt;. This can also be called a pointwise approach. For every query-document pair we calculate the logit, then apply a sigmoid activation twhich will represent the probability of relevance.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Training an embedding model</title>
       <link>https://steffenhaeussler.github.io/posts/2026-01-09-contrastive/contrastive/</link>
