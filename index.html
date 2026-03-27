@@ -195,10 +195,10 @@
     <p>Hi,
 Based on my previous post, I looked into fine-tuning a bi-encoder via self-supervised learning. As a logical next step, I now want to fine-tune a cross-encoder for my specific task. This is not as easy as fine-tuning a bi-encoder, because cross-encoders are not designed to be trained with contrastive learning.
 Therefor I looked into four different approaches to fine-tune a cross-encoder for my specific task:
-BCE loss BCE loss with hard negatives InfoNCE loss Margin MSE loss BCE loss The simplest approach is to use binary cross-entropy loss to train the model. Here we have two labels, 1 for a positive pair and 0 for a negative pair and treat the relevance as a binary classification problem Passage Re-Ranking with BERT by Nogueira and Cho 2020. This can also be called a pointwise approach. For every query-document pair we calculate the logit, then apply a sigmoid activation twhich will represent the probability of relevance.
+BCE loss BCE loss with hard negatives InfoNCE loss Margin MSE loss Model explainability BCE loss The simplest approach is to use binary cross-entropy loss to train the model. Here we have two labels, 1 for a positive pair and 0 for a negative pair and treat the relevance as a binary classification problem Passage Re-Ranking with BERT by Nogueira and Cho 2020. This can also be called a pointwise approach. For every query-document pair we calculate the logit, then apply a sigmoid activation twhich will represent the probability of relevance.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2026-03-20 10:30:58 +0100 CET'>March 20, 2026</span>&nbsp;·&nbsp;5 min</footer>
+  <footer class="entry-footer"><span title='2026-03-20 10:30:58 +0100 CET'>March 20, 2026</span>&nbsp;·&nbsp;6 min</footer>
   <a class="entry-link" aria-label="post link to Fine-tuning a ReRanker" href="https://steffenhaeussler.github.io/posts/2026-03-20-reranker/reranker/"></a>
 </article>
 

@@ -21,6 +21,7 @@
 &lt;li&gt;&lt;a href=&#34;https://www.kaggle.com/code/steffenhaeussler/fine-tuning-a-reranker-part-2-with-bce-loss&#34;&gt;BCE loss with hard negatives&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.kaggle.com/code/steffenhaeussler/fine-tuning-a-reranker-part-3-with-infonce-loss&#34;&gt;InfoNCE loss&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.kaggle.com/code/steffenhaeussler/fine-tuning-a-reranker-part-4-margin-mse-loss&#34;&gt;Margin MSE loss&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.kaggle.com/code/steffenhaeussler/fine-tuning-a-reranker-part-5-explainability&#34;&gt;Model explainability&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;bce-loss&#34;&gt;BCE loss&lt;/h2&gt;
 &lt;p&gt;The simplest approach is to use binary cross-entropy loss to train the model. Here we have two labels, 1 for a positive pair and 0 for a negative pair and treat the relevance as a binary classification problem &lt;a href=&#34;https://arxiv.org/pdf/1901.04085&#34;&gt;Passage Re-Ranking with BERT by Nogueira and Cho 2020&lt;/a&gt;. This can also be called a pointwise approach. For every query-document pair we calculate the logit, then apply a sigmoid activation twhich will represent the probability of relevance.&lt;/p&gt;</description>
