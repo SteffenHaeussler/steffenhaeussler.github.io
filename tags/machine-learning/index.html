@@ -137,6 +137,22 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Fine-tuning the generative part of a RAG
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Hi,
+this is the final post in my series about RAG systems. Here I will look into fine-tuning the generative part of a RAG system. Here is the notebook. But mostly this is for me a method to understand LLM fine-tuning in a superficial and general way.
+For the records, I looked into search, ANN Algorithms, fine-tuning embedding models, fine-tuning a reranker and evaluation of RAG systems in my previous posts.
+In RAG, the retrieval step provides the facts. The fine-tuning is about model behavior to prevent that a base model hallucinate or ignore the provided data. As a rule of thumb, retrieval gives the model its memory and fine-tuning gives it its instructions.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-01 10:30:58 +0100 +0100'>April 1, 2026</span>&nbsp;·&nbsp;4 min</footer>
+  <a class="entry-link" aria-label="post link to Fine-tuning the generative part of a RAG" href="https://steffenhaeussler.github.io/posts/2026-04-01-generative/gen_llm/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Fine-tuning a ReRanker
     </h2>
   </header>
@@ -144,10 +160,10 @@
     <p>Hi,
 Based on my previous post, I looked into fine-tuning a bi-encoder via self-supervised learning. As a logical next step, I now want to fine-tune a cross-encoder for my specific task. This is not as easy as fine-tuning a bi-encoder, because cross-encoders are not designed to be trained with contrastive learning.
 Therefor I looked into four different approaches to fine-tune a cross-encoder for my specific task:
-BCE loss BCE loss with hard negatives InfoNCE loss Margin MSE loss Model explainability BCE loss The simplest approach is to use binary cross-entropy loss to train the model. Here we have two labels, 1 for a positive pair and 0 for a negative pair and treat the relevance as a binary classification problem Passage Re-Ranking with BERT by Nogueira and Cho 2020. This can also be called a pointwise approach. For every query-document pair we calculate the logit, then apply a sigmoid activation twhich will represent the probability of relevance.
+BCE loss BCE loss with hard negatives InfoNCE loss Margin MSE loss BCE loss The simplest approach is to use binary cross-entropy loss to train the model. Here we have two labels, 1 for a positive pair and 0 for a negative pair and treat the relevance as a binary classification problem Passage Re-Ranking with BERT by Nogueira and Cho 2020. This can also be called a pointwise approach. For every query-document pair we calculate the logit, then apply a sigmoid activation twhich will represent the probability of relevance.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2026-03-20 10:30:58 +0100 CET'>March 20, 2026</span>&nbsp;·&nbsp;6 min</footer>
+  <footer class="entry-footer"><span title='2026-03-20 10:30:58 +0100 CET'>March 20, 2026</span>&nbsp;·&nbsp;5 min</footer>
   <a class="entry-link" aria-label="post link to Fine-tuning a ReRanker" href="https://steffenhaeussler.github.io/posts/2026-03-20-reranker/reranker/"></a>
 </article>
 
@@ -268,20 +284,6 @@ I’ve chosen to skip the more traditional text embeddings (TF-IDF, Word2Vec or 
   </div>
   <footer class="entry-footer"><span title='2025-01-02 10:30:58 +0100 CET'>January 2, 2025</span>&nbsp;·&nbsp;1 min</footer>
   <a class="entry-link" aria-label="post link to Get embeddings for multiple data sources" href="https://steffenhaeussler.github.io/posts/2025-01-02-embeddings/embeddings/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Overview of RAG (Retrieval-Augmented Generation) systems
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Hi,
-It’s been a while since my last post, mostly because of my own laziness. Over the past year, I’ve been working on several projects, one of which is a small RAG (Retrieval-Augmented Generation) system. I implemented it to combine external knowledge (in this case internal safety documents) with a large language model (LLM). This approach allows the use of data that the LLM wasn’t trained on and also helps reduce hallucinations.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2024-12-27 10:30:58 +0100 CET'>December 27, 2024</span>&nbsp;·&nbsp;4 min</footer>
-  <a class="entry-link" aria-label="post link to Overview of RAG (Retrieval-Augmented Generation) systems" href="https://steffenhaeussler.github.io/posts/2024-12-27-overview/rag_overview/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
