@@ -6,8 +6,18 @@
     <description>Recent content in NLP on About me</description>
     <generator>Hugo -- 0.147.5</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 20 Mar 2026 10:30:58 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 01 Apr 2026 10:30:58 +0100</lastBuildDate>
     <atom:link href="https://steffenhaeussler.github.io/tags/nlp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Fine-tuning the generative part of a RAG</title>
+      <link>https://steffenhaeussler.github.io/posts/2026-04-01-generative/gen_llm/</link>
+      <pubDate>Wed, 01 Apr 2026 10:30:58 +0100</pubDate>
+      <guid>https://steffenhaeussler.github.io/posts/2026-04-01-generative/gen_llm/</guid>
+      <description>&lt;p&gt;Hi,&lt;/p&gt;
+&lt;p&gt;this is the final post in my series about RAG systems. Here I will look into fine-tuning the generative part of a RAG system. Here is the &lt;a href=&#34;https://www.kaggle.com/code/steffenhaeussler/fine-tuning-a-llm&#34;&gt;notebook&lt;/a&gt;. But mostly this is for me a method to understand LLM fine-tuning in a superficial and general way.&lt;/p&gt;
+&lt;p&gt;For the records, I looked into &lt;a href=&#34;https://www.kaggle.com/code/steffenhaeussler/examples-for-information-retrieval&#34;&gt;search&lt;/a&gt;, &lt;a href=&#34;https://www.kaggle.com/code/steffenhaeussler/understanding-approx-nearest-neighbor-algorithm&#34;&gt;ANN Algorithms&lt;/a&gt;, &lt;a href=&#34;https://steffenhaeussler.github.io/posts/2026-01-09-contrastive/contrastive/&#34;&gt;fine-tuning embedding models&lt;/a&gt;, &lt;a href=&#34;https://www.kaggle.com/code/steffenhaeussler/fine-tuning-a-reranker&#34;&gt;fine-tuning a reranker&lt;/a&gt; and &lt;a href=&#34;https://www.kaggle.com/code/steffenhaeussler/evaluation-of-rag-systems&#34;&gt;evaluation of RAG systems&lt;/a&gt; in my previous posts.&lt;/p&gt;
+&lt;p&gt;In RAG, the retrieval step provides the facts. The fine-tuning is about model behavior to prevent that a base model hallucinate or ignore the provided data. As a rule of thumb, retrieval gives the model its memory and fine-tuning gives it its instructions.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Fine-tuning a ReRanker</title>
       <link>https://steffenhaeussler.github.io/posts/2026-03-20-reranker/reranker/</link>
@@ -21,7 +31,6 @@
 &lt;li&gt;&lt;a href=&#34;https://www.kaggle.com/code/steffenhaeussler/fine-tuning-a-reranker-part-2-with-bce-loss&#34;&gt;BCE loss with hard negatives&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.kaggle.com/code/steffenhaeussler/fine-tuning-a-reranker-part-3-with-infonce-loss&#34;&gt;InfoNCE loss&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.kaggle.com/code/steffenhaeussler/fine-tuning-a-reranker-part-4-margin-mse-loss&#34;&gt;Margin MSE loss&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.kaggle.com/code/steffenhaeussler/fine-tuning-a-reranker-part-5-explainability&#34;&gt;Model explainability&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;bce-loss&#34;&gt;BCE loss&lt;/h2&gt;
 &lt;p&gt;The simplest approach is to use binary cross-entropy loss to train the model. Here we have two labels, 1 for a positive pair and 0 for a negative pair and treat the relevance as a binary classification problem &lt;a href=&#34;https://arxiv.org/pdf/1901.04085&#34;&gt;Passage Re-Ranking with BERT by Nogueira and Cho 2020&lt;/a&gt;. This can also be called a pointwise approach. For every query-document pair we calculate the logit, then apply a sigmoid activation twhich will represent the probability of relevance.&lt;/p&gt;</description>
