@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Contrastive Learning on About me</title>
-    <link>https://steffenhaeussler.github.io/tags/contrastive-learning/</link>
+    <link>http://localhost:1313/tags/contrastive-learning/</link>
     <description>Recent content in Contrastive Learning on About me</description>
     <generator>Hugo -- 0.147.5</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 20 Mar 2026 10:30:58 +0100</lastBuildDate>
-    <atom:link href="https://steffenhaeussler.github.io/tags/contrastive-learning/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/contrastive-learning/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Fine-tuning a ReRanker</title>
-      <link>https://steffenhaeussler.github.io/posts/2026-03-20-reranker/reranker/</link>
+      <link>http://localhost:1313/posts/2026-03-20-reranker/reranker/</link>
       <pubDate>Fri, 20 Mar 2026 10:30:58 +0100</pubDate>
-      <guid>https://steffenhaeussler.github.io/posts/2026-03-20-reranker/reranker/</guid>
+      <guid>http://localhost:1313/posts/2026-03-20-reranker/reranker/</guid>
       <description>&lt;p&gt;Hi,&lt;/p&gt;
 &lt;p&gt;Based on my &lt;a href=&#34;https://steffenhaeussler.github.io/posts/2026-01-09-contrastive/contrastive/&#34;&gt;previous post&lt;/a&gt;, I looked into fine-tuning a bi-encoder via self-supervised learning. As a logical next step, I now want to fine-tune a cross-encoder for my specific task. This is not as easy as fine-tuning a bi-encoder, because cross-encoders are not designed to be trained with contrastive learning.&lt;/p&gt;
 &lt;p&gt;Therefor I looked into four different approaches to fine-tune a cross-encoder for my specific task:&lt;/p&gt;
@@ -27,9 +27,9 @@
     </item>
     <item>
       <title>Training an embedding model</title>
-      <link>https://steffenhaeussler.github.io/posts/2026-01-09-contrastive/contrastive/</link>
+      <link>http://localhost:1313/posts/2026-01-09-contrastive/contrastive/</link>
       <pubDate>Fri, 09 Jan 2026 10:30:58 +0100</pubDate>
-      <guid>https://steffenhaeussler.github.io/posts/2026-01-09-contrastive/contrastive/</guid>
+      <guid>http://localhost:1313/posts/2026-01-09-contrastive/contrastive/</guid>
       <description>&lt;p&gt;Hi,&lt;/p&gt;
 &lt;p&gt;Based on my &lt;a href=&#34;https://steffenhaeussler.github.io/posts/2025-01-02-embeddings/embeddings/&#34;&gt;previous post&lt;/a&gt;, I need to write a correction. I was wrong.&lt;/p&gt;
 &lt;p&gt;I previously suggested using embeddings directly from pre-trained models. That turns out to be a bad idea, because the training objectives are fundamentally different. As an alternative, I have now explored training an embedding model using Contrastive Learning.&lt;/p&gt;

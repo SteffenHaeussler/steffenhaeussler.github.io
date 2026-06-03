@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Agentic Design Patterns | About me</title>
+<meta name="keywords" content="machine learning, NLP, Agents">
+<meta name="description" content="Hi,
+This post is written by AI as an experiment. I put much effort into guidelines and specified several rounds of improvements, but the result is still not very graspable. It&rsquo;s not bad, but also not really good.
+I see this as a proxy for the current state of agentic coding. Everyone uses it, but if you look at the outcome it is often shallow. If you mention your concerns about quality, responsibility and ownership, you will be always ignored because of the productivity gain.">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/posts/2026-05-05-agentic-design-patterns/agentic_patterns/">
+<link crossorigin="anonymous" href="http://localhost:1313/assets/css/stylesheet.a6264de45f1158af551cf2fe7595e8651c772fa1286f4c0483059a3e826a3049.css" integrity="sha256-piZN5F8RWK9VHPL&#43;dZXoZRx3L6Eob0wEgwWaPoJqMEk=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/assets/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/assets/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/assets/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/2026-05-05-agentic-design-patterns/agentic_patterns/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css"
+    integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"
+    integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4"
+    crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"
+    integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+    onload="renderMathInElement(document.body, {
+        delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+            {left: '\\(', right: '\\)', display: false},
+            {left: '\\[', right: '\\]', display: true}
+        ]
+    });"></script>
+
+
+
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="About me (Alt + H)">About me</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <ul class="lang-switch"><li>|</li>
+                </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/archives/" title="Archives">
+                    <span>Archives</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Agentic Design Patterns
+    </h1>
+    <div class="post-meta"><span title='2026-05-05 10:30:58 +0100 +0100'>May 5, 2026</span>&nbsp;·&nbsp;7 min
+
+</div>
+  </header> 
+  <div class="post-content"><p>Hi,</p>
+<p>This post is written by AI as an experiment. I put much effort into guidelines and specified several rounds of improvements, but the result is still not very graspable. It&rsquo;s not bad, but also not really good.</p>
+<p>I see this as a proxy for the current state of agentic coding. Everyone uses it, but if you look at the outcome it is often shallow. If you mention your concerns about quality, responsibility and ownership, you will be always ignored because of the productivity gain.</p>
+<ul>
+<li>Who owns the quality of code that nobody fully understands?</li>
+<li>Who is responsible when the generated solution is plausible, but wrong?</li>
+<li>How do we keep ownership alive when the main argument for adoption is speed?</li>
+</ul>
+<p>Normally, the responsibility lies with the engineer. But at the same time, engineers are pressured to follow the bandwagon and adopt these patterns without much critical assessment. There is peer pressure, evaluation pressure, and the fear that if you don’t do it or ask questions, you will be replaced. In the end, you may be left alone with a process you cannot fully control, but still have to maintain.</p>
+<p>I am not arguing against AI-assisted development. I use it, and I see the value. But we need to be more intentional about how we adopt it. When speed becomes the only argument, we stop asking the harder questions about quality, responsibility, and understanding. The goal is not to slow down, but to keep the engineer in control.</p>
+<h1 id="comparing-agentic-design-patterns-across-frameworks">Comparing Agentic Design Patterns Across Frameworks<a hidden class="anchor" aria-hidden="true" href="#comparing-agentic-design-patterns-across-frameworks">#</a></h1>
+<p>Agentic systems are often explained through abstract patterns: one agent critiques another, several agents work in parallel, an agent reflects on failed attempts, or a planner decomposes a larger task into smaller steps. Recent books and guides describe these patterns from different angles, including Albada&rsquo;s <a href="https://github.com/michaelalbada/BuildingApplicationsWithAIAgents">Building Applications with AI Agents</a>, Gulli&rsquo;s <a href="https://link.springer.com/book/10.1007/978-3-032-01402-3">Agentic Design Patterns</a>, and Dibia&rsquo;s <a href="https://github.com/victordibia/designing-multiagent-systems/">Designing Multi-Agent Systems</a>. These sources are useful conceptually, but the practical behavior of the patterns only becomes visible when they are implemented.</p>
+<p>The notebooks in this repository explore five common agentic workflow patterns using comparable implementations across LangChain, Google ADK, and Microsoft Agent Framework. Smolagents was originally on the list, but a compatible release was not available when the notebooks were created, so it is mentioned in each notebook but not implemented. All implementations run against a local Gemma model through a HuggingFace pipeline. The goal is not to benchmark model quality, but to observe how each framework handles orchestration, state, structured outputs, tool use, and debugging.</p>
+<p>The examples are intentionally small, but each one stresses a different aspect of agent design. Together, they provide a compact overview of the engineering questions that appear when moving from a simple LLM call to a multi-step agentic workflow.</p>
+<h2 id="simple-multi-agent-system">Simple Multi-Agent System<a hidden class="anchor" aria-hidden="true" href="#simple-multi-agent-system">#</a></h2>
+<p>The first implementation uses a simple <a href="https://www.kaggle.com/code/steffenhaeussler/agent-workflow-simple-multi-agent-system">poet-and-critic workflow</a>. One agent generates a haiku, while another evaluates whether the result should be accepted. This is a minimal example of a multi-agent system: the value does not come from complex tooling, but from separating generation and evaluation into two roles.</p>
+<p>This pattern is useful because it shows the basic mechanics of agent handoff. LangChain, Google ADK, and Microsoft Agent Framework can all express the workflow, but they expose different levels of structure. LangChain is close to manual chain composition, while Google ADK and Microsoft Agent Framework introduce more explicit lifecycle and agent concepts.</p>
+<h2 id="parallelization">Parallelization<a hidden class="anchor" aria-hidden="true" href="#parallelization">#</a></h2>
+<p>The second implementation explores <a href="https://www.kaggle.com/code/steffenhaeussler/agent-workflow-parallelization">parallelization</a>. A research request is split into several independent subtasks: summary generation, follow-up questions, and keyword extraction. A later synthesis step combines the partial outputs.</p>
+<p>This pattern is useful when subtasks can be handled independently before being merged. In this local setup the HuggingFace pipeline does not support concurrent calls, so the &ldquo;parallel&rdquo; branch actually runs sequentially, but the design still captures the intended workflow. The comparison shows how frameworks differ in their handling of concurrent agents, intermediate outputs, and synthesis steps.</p>
+<p>The main engineering question is not whether the pattern works, but how inspectable and controllable the intermediate results are.</p>
+<h2 id="reflexion">Reflexion<a hidden class="anchor" aria-hidden="true" href="#reflexion">#</a></h2>
+<p>The <a href="https://www.kaggle.com/code/steffenhaeussler/agent-workflow-reflexion">reflexion example</a> introduces an iterative loop. An agent writes code, the code is executed against tests, and if it fails, another step reflects on the error and updates the memory for the next attempt. The concrete task is LeetCode 224 (Basic Calculator), chosen because the executor gives real pass/fail feedback rather than an LLM opinion. Finding a suitable task was not trivial: the model had memorized large parts of the public LeetCode set, so a problem unfamiliar enough to actually exercise the reflexion loop took some searching.</p>
+<p>This pattern highlights the importance of state management. Reflexion is not only a prompting technique; it requires a loop, an execution tool, an early-exit condition, and memory that grows across attempts. Google ADK maps relatively naturally to this structure because state is part of the agent/session lifecycle. LangChain and Microsoft Agent Framework can implement the same logic, but more of the loop and memory handling remains in plain Python.</p>
+<p>The example also shows a limitation: adding more reflection does not automatically improve results. If the prompt accumulates too much prior code and error history, the model may become anchored to earlier failed attempts. For smaller models especially, compact state may be more useful than complete state.</p>
+<h2 id="plan-and-execute">Plan and Execute<a hidden class="anchor" aria-hidden="true" href="#plan-and-execute">#</a></h2>
+<p>The <a href="https://www.kaggle.com/code/steffenhaeussler/agent-workflow-plan-and-execute">plan-and-execute notebook</a> is closer to a realistic data-agent workflow. The task is to clean a dirty cafe sales dataset and determine the best reliable item/location pair using deterministic business rules.</p>
+<p>This pattern decomposes the work into planning, routing, specialist execution, verification, possible replanning, and final synthesis. The specialists themselves are deterministic pandas functions (profiling, cleaning, repair, metric calculation, validation); the LLM only chooses which one to run next. A final-artifact gate then checks that the required outputs exist before the synthesis step is allowed to produce an answer. The model should not invent calculations; it should coordinate steps, call reliable functions, and produce a validated final response.</p>
+<p>Across the frameworks, the final result can be made comparable only when the output schema and evaluation rule are explicit. This is an important lesson: as agentic workflows become more complex, evaluation becomes harder. A wrong answer may come from planning, routing, tool execution, verification, synthesis, or the handoff between steps.</p>
+<h2 id="react">ReAct<a hidden class="anchor" aria-hidden="true" href="#react">#</a></h2>
+<p>The <a href="https://www.kaggle.com/code/steffenhaeussler/agent-workflow-react">ReAct implementation</a> uses a loop where the model alternates between choosing a tool, observing the result, and deciding the next action. The task is based on a seller eligibility decision for a fictional logistics program using the Olist e-commerce dataset.</p>
+<p>This example is useful because it exposes the cost of agentic flexibility. The agent must read the policy, calculate metrics, inspect evidence, and return a decision. However, the same decision could also be computed directly with deterministic pandas logic. In this case, ReAct is more valuable as an evaluation environment than as a production solution.</p>
+<p>The implementation suggests that ReAct is most appropriate when the next useful action genuinely depends on previous observations and cannot be reduced to a fixed deterministic pipeline. Otherwise, the agent loop may add orchestration code, parsing logic, retries, validation, and probabilistic failure without adding much practical value. In practice, most of the logic in the ReAct example does not live inside the framework at all but in the surrounding controller: response parsing, retries, tool-argument repair, a finish-gate that checks whether required evidence has been collected, and a deterministic fallback final answer. The framework provides the loop; the controller is what keeps it reliable.</p>
+<h2 id="conclusion">Conclusion<a hidden class="anchor" aria-hidden="true" href="#conclusion">#</a></h2>
+<p>These five implementations show that agentic design patterns are useful, but they are not automatically useful in production. Their value depends on the task structure.</p>
+<p>Simple multi-agent and parallel workflows are good entry points because they make role separation and synthesis easy to see. Reflexion emphasizes state and memory design. Plan-and-execute shows why deterministic tools, schemas, and validation are central for data workflows. ReAct demonstrates both the power and the cost of dynamic tool use.</p>
+<p>The framework differences are real, but they are often secondary to the workflow design itself. The most important questions are: Can intermediate steps be inspected? Is state handled explicitly? Are tool outputs deterministic? Is the final answer validated? And does the task actually need an agentic workflow?</p>
+<p>In practice, agent frameworks should be evaluated less by whether they can express a pattern, and more by how well they support debugging, evaluation, structured outputs, state management, and recovery from failure.</p>
+<p>Thank you for your attention.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/machine-learning/">Machine Learning</a></li>
+      <li><a href="http://localhost:1313/tags/nlp/">NLP</a></li>
+      <li><a href="http://localhost:1313/tags/agents/">Agents</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">About me</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

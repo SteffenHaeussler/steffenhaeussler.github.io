@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Data Engineering on About me</title>
-    <link>https://steffenhaeussler.github.io/tags/data-engineering/</link>
+    <link>http://localhost:1313/tags/data-engineering/</link>
     <description>Recent content in Data Engineering on About me</description>
     <generator>Hugo -- 0.147.5</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 27 Apr 2023 10:30:58 +0100</lastBuildDate>
-    <atom:link href="https://steffenhaeussler.github.io/tags/data-engineering/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/data-engineering/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Fast data transfer to or from s3</title>
-      <link>https://steffenhaeussler.github.io/posts/2023-04-27-s3/s3/</link>
+      <link>http://localhost:1313/posts/2023-04-27-s3/s3/</link>
       <pubDate>Thu, 27 Apr 2023 10:30:58 +0100</pubDate>
-      <guid>https://steffenhaeussler.github.io/posts/2023-04-27-s3/s3/</guid>
+      <guid>http://localhost:1313/posts/2023-04-27-s3/s3/</guid>
       <description>&lt;p&gt;Hi,&lt;/p&gt;
 &lt;p&gt;This post is an homage to a &lt;a href=&#34;https://stackoverflow.com/questions/56639630/how-can-i-increase-my-aws-s3-upload-speed-when-using-boto3/61809946#61809946&#34;&gt;stackoverflow post&lt;/a&gt; copying data from s3. This shared work saved me a lot of time. I believe that individuals who share their work do not receive sufficient recognition.&lt;/p&gt;
 &lt;p&gt;The problem is that I have multiple Gb of data separated into thousands of files. Those files are selected for download by the semi-automated pipeline for model training. So the number of files to download varies from pipeline run to pipeline run. Also, this makes any data preparation obsolete. The solution from the &lt;a href=&#34;https://boto3.amazonaws.com/v1/documentation/api/latest/guide/s3-example-download-file.html&#34;&gt;official boto3 documentation&lt;/a&gt; for copying data from s3 takes too long. Even with &lt;a href=&#34;https://docs.python.org/3/library/concurrent.futures.html&#34;&gt;asynchronous execution&lt;/a&gt; in the download, it will take a few hours to download those files.  Imagine a scenario where you want to fine-tune a deep learning model on a machine with multiple GPUs, but you have to wait several hours for the data to be copied 😱. Any preprocessing steps are not feasible since the data is filtered upon request. Additionally, downloading the data via aws cli is not an option, as there is much more data in the s3 buckets than requested for model training. The simplest approach is to increase the throughput. And here is the beauty, directly copy+pasted from &lt;a href=&#34;https://stackoverflow.com/questions/56639630/how-can-i-increase-my-aws-s3-upload-speed-when-using-boto3/61809946#61809946&#34;&gt;Pierre D&lt;/a&gt;:&lt;/p&gt;</description>

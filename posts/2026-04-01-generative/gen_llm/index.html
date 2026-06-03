@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto">
 
-<head><meta charset="utf-8">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="noindex, nofollow">
 <title>Fine-tuning the generative part of a RAG | About me</title>
 <meta name="keywords" content="machine learning, NLP">
 <meta name="description" content="Hi,
@@ -12,16 +12,16 @@ this is the final post in my series about RAG systems. Here I will look into fin
 For the records, I looked into search, ANN Algorithms, fine-tuning embedding models, fine-tuning a reranker and evaluation of RAG systems in my previous posts.
 In RAG, the retrieval step provides the facts. The fine-tuning is about model behavior to prevent that a base model hallucinate or ignore the provided data. As a rule of thumb, retrieval gives the model its memory and fine-tuning gives it its instructions.">
 <meta name="author" content="">
-<link rel="canonical" href="https://steffenhaeussler.github.io/posts/2026-04-01-generative/gen_llm/">
-<link crossorigin="anonymous" href="https://steffenhaeussler.github.io/assets/css/stylesheet.a6264de45f1158af551cf2fe7595e8651c772fa1286f4c0483059a3e826a3049.css" integrity="sha256-piZN5F8RWK9VHPL&#43;dZXoZRx3L6Eob0wEgwWaPoJqMEk=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://steffenhaeussler.github.io/assets/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://steffenhaeussler.github.io/assets/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://steffenhaeussler.github.io/assets/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://steffenhaeussler.github.io/apple-touch-icon.png">
-<link rel="mask-icon" href="https://steffenhaeussler.github.io/safari-pinned-tab.svg">
+<link rel="canonical" href="http://localhost:1313/posts/2026-04-01-generative/gen_llm/">
+<link crossorigin="anonymous" href="http://localhost:1313/assets/css/stylesheet.a6264de45f1158af551cf2fe7595e8651c772fa1286f4c0483059a3e826a3049.css" integrity="sha256-piZN5F8RWK9VHPL&#43;dZXoZRx3L6Eob0wEgwWaPoJqMEk=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/assets/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/assets/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/assets/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="https://steffenhaeussler.github.io/posts/2026-04-01-generative/gen_llm/">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/2026-04-01-generative/gen_llm/">
 <noscript>
     <style>
         #theme-toggle,
@@ -76,77 +76,7 @@ In RAG, the retrieval step provides the facts. The fine-tuning is about model be
     });"></script>
 
 
-<meta property="og:url" content="https://steffenhaeussler.github.io/posts/2026-04-01-generative/gen_llm/">
-  <meta property="og:site_name" content="About me">
-  <meta property="og:title" content="Fine-tuning the generative part of a RAG">
-  <meta property="og:description" content="Hi,
-this is the final post in my series about RAG systems. Here I will look into fine-tuning the generative part of a RAG system. Here is the notebook. But mostly this is for me a method to understand LLM fine-tuning in a superficial and general way.
-For the records, I looked into search, ANN Algorithms, fine-tuning embedding models, fine-tuning a reranker and evaluation of RAG systems in my previous posts.
-In RAG, the retrieval step provides the facts. The fine-tuning is about model behavior to prevent that a base model hallucinate or ignore the provided data. As a rule of thumb, retrieval gives the model its memory and fine-tuning gives it its instructions.">
-  <meta property="og:locale" content="en-us">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2026-04-01T10:30:58+01:00">
-    <meta property="article:modified_time" content="2026-04-01T10:30:58+01:00">
-    <meta property="article:tag" content="Machine Learning">
-    <meta property="article:tag" content="NLP">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Fine-tuning the generative part of a RAG">
-<meta name="twitter:description" content="Hi,
-this is the final post in my series about RAG systems. Here I will look into fine-tuning the generative part of a RAG system. Here is the notebook. But mostly this is for me a method to understand LLM fine-tuning in a superficial and general way.
-For the records, I looked into search, ANN Algorithms, fine-tuning embedding models, fine-tuning a reranker and evaluation of RAG systems in my previous posts.
-In RAG, the retrieval step provides the facts. The fine-tuning is about model behavior to prevent that a base model hallucinate or ignore the provided data. As a rule of thumb, retrieval gives the model its memory and fine-tuning gives it its instructions.">
 
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "Posts",
-      "item": "https://steffenhaeussler.github.io/posts/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  2 ,
-      "name": "Fine-tuning the generative part of a RAG",
-      "item": "https://steffenhaeussler.github.io/posts/2026-04-01-generative/gen_llm/"
-    }
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Fine-tuning the generative part of a RAG",
-  "name": "Fine-tuning the generative part of a RAG",
-  "description": "Hi,\nthis is the final post in my series about RAG systems. Here I will look into fine-tuning the generative part of a RAG system. Here is the notebook. But mostly this is for me a method to understand LLM fine-tuning in a superficial and general way.\nFor the records, I looked into search, ANN Algorithms, fine-tuning embedding models, fine-tuning a reranker and evaluation of RAG systems in my previous posts.\nIn RAG, the retrieval step provides the facts. The fine-tuning is about model behavior to prevent that a base model hallucinate or ignore the provided data. As a rule of thumb, retrieval gives the model its memory and fine-tuning gives it its instructions.\n",
-  "keywords": [
-    "machine learning", "NLP"
-  ],
-  "articleBody": "Hi,\nthis is the final post in my series about RAG systems. Here I will look into fine-tuning the generative part of a RAG system. Here is the notebook. But mostly this is for me a method to understand LLM fine-tuning in a superficial and general way.\nFor the records, I looked into search, ANN Algorithms, fine-tuning embedding models, fine-tuning a reranker and evaluation of RAG systems in my previous posts.\nIn RAG, the retrieval step provides the facts. The fine-tuning is about model behavior to prevent that a base model hallucinate or ignore the provided data. As a rule of thumb, retrieval gives the model its memory and fine-tuning gives it its instructions.\nSLM Small Language Models (SLMs) are language models with parameters in the range of 0.1B to 10B. Compared to frontier models, they require less RAM, run faster and are cheaper to train and deploy. For a domain-specific RAG application, SLMs can be sometimes perform comparably or better than LLMs (Wang et al. 2024).\nSince the RAG system already provides the necessary context through the retrieval phase, the generative model doesn’t need to memorize vast amounts of world knowledge. Fine-tuning makes sense for three reasons:\ndomain adaptation (teaching the model domain-specific vocabulary, facts, and proprietary concepts) task-specific alignment (producing responses that directly answer the question) consistent output (enforcing a reliable tone, style, or format). PEFT Full fine-tuning of large language models is computationally intensive and can lead to catastrophic forgetting. Parameter-efficient fine-tuning (PEFT) addresses this by updating only a small subset of parameters (typically \u003c1%), significantly reducing memory and compute requirements.\nBy Han et al. 2024 PEFT methods can be classified into three categories:\nReparameterization (low-dimensional updates) via LoRA and QLoRA Additive methods (additional parameters) via Adapters and Prefix / Prompt tuning Selective updates (partial fine-tuning) via BitFit and Diff pruning In practice, LoRA and QLoRA are the most widely used methods due to their strong performance and efficiency.\nLoRA \u0026 QLoRA The core idea of LoRA by Hu et al. 2021 is that instead of fine-tuning all parameters of the model, external low-rank matrices are used for learning. This means all base model weights are frozen, and fine-tuning only affects small matrices of selected layers. Instead of updating a large weight matrix $W$, it learns $W + A \\times B$ where $A$ and $B$ are low-rank matrices. This drastically reduces the number of trainable parameters while maintaining near full fine-tuning performance.\nImplementations:\nLoRA Orchestrator in PEFT original LoRA implementation LoRA Tutorial QLoRA by Dettmers et al. 2023 is a combination of LoRA and quantization. Quantization converts model weights from a high-precision format to a lower-precision format (e.g., 32-bit floating point to 4-bit integer). This reduces the memory requirement of an LLM.\nThe standard library is bitsandbytes. Another alternative, still based on the Transformers library is HQQ or Unsloth.\nDPO Direct Preference Optimization (DPO) by Rafailov et al. (2023) is a technique used to align language models with human preferences directly from data. In a standard alignment pipeline, DPO follows an initial stage of Supervised Fine-Tuning (SFT). SFT establishes the model’s ability to follow basic formatting and structural instructions, DPO serves as the optimization layer for behavioral alignment.\nRather than training a separate reward model as in Reinforcement Learning from Human Feedback (RLHF), DPO optimizes the model directly using preference pairs: a “chosen” (good) response and a “rejected” (bad) response for the same prompt. By increasing the relative log probability of the chosen response, we can steer the model toward concise, factual answers grounded in the provided context while actively penalizing hallucinations.\nImplementations:\ntlr by HuggingFace OpenRLHF Eric Mitchell - Co-Author Conclusion Overall, this fine-tuning step completes the RAG architecture pipeline. We’ve transitioned from setting up an initial vector search, fine-tuning the embedding model, and training a reranker to improve retrieval quality, all the way to fine-tuning the final generative SLM using QLoRA and DPO. I hope you enjoyed this overview and see the possibility to dig deeper. There is a whole universe in each of these steps.\nBy applying these parameter-efficient techniques, we can build, train, and deploy an entirely customized RAG system that runs efficiently on consumer hardware.\nThank you for your attention.\n",
-  "wordCount" : "698",
-  "inLanguage": "en",
-  "datePublished": "2026-04-01T10:30:58+01:00",
-  "dateModified": "2026-04-01T10:30:58+01:00",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://steffenhaeussler.github.io/posts/2026-04-01-generative/gen_llm/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "About me",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://steffenhaeussler.github.io/assets/favicon.ico"
-    }
-  }
-}
-</script>
 </head>
 
 <body class="" id="top">
@@ -164,7 +94,7 @@ In RAG, the retrieval step provides the facts. The fine-tuning is about model be
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://steffenhaeussler.github.io/" accesskey="h" title="About me (Alt + H)">About me</a>
+            <a href="http://localhost:1313/" accesskey="h" title="About me (Alt + H)">About me</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -192,17 +122,17 @@ In RAG, the retrieval step provides the facts. The fine-tuning is about model be
         </div>
         <ul id="menu">
             <li>
-                <a href="https://steffenhaeussler.github.io/posts/" title="Posts">
+                <a href="http://localhost:1313/posts/" title="Posts">
                     <span>Posts</span>
                 </a>
             </li>
             <li>
-                <a href="https://steffenhaeussler.github.io/tags/" title="Tags">
+                <a href="http://localhost:1313/tags/" title="Tags">
                     <span>Tags</span>
                 </a>
             </li>
             <li>
-                <a href="https://steffenhaeussler.github.io/archives/" title="Archives">
+                <a href="http://localhost:1313/archives/" title="Archives">
                     <span>Archives</span>
                 </a>
             </li>
@@ -213,7 +143,7 @@ In RAG, the retrieval step provides the facts. The fine-tuning is about model be
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="https://steffenhaeussler.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://steffenhaeussler.github.io/posts/">Posts</a></div>
+    <div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/posts/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
       Fine-tuning the generative part of a RAG
     </h1>
@@ -272,15 +202,15 @@ For a domain-specific RAG application, SLMs can be sometimes perform comparably 
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://steffenhaeussler.github.io/tags/machine-learning/">Machine Learning</a></li>
-      <li><a href="https://steffenhaeussler.github.io/tags/nlp/">NLP</a></li>
+      <li><a href="http://localhost:1313/tags/machine-learning/">Machine Learning</a></li>
+      <li><a href="http://localhost:1313/tags/nlp/">NLP</a></li>
     </ul>
   </footer>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2026 <a href="https://steffenhaeussler.github.io/">About me</a></span> · 
+        <span>&copy; 2026 <a href="http://localhost:1313/">About me</a></span> · 
 
     <span>
         Powered by

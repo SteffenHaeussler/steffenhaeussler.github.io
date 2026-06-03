@@ -2,17 +2,35 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Agents on About me</title>
-    <link>https://steffenhaeussler.github.io/tags/agents/</link>
+    <link>http://localhost:1313/tags/agents/</link>
     <description>Recent content in Agents on About me</description>
     <generator>Hugo -- 0.147.5</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 30 Jul 2025 10:30:58 +0100</lastBuildDate>
-    <atom:link href="https://steffenhaeussler.github.io/tags/agents/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 01 Jun 2026 10:30:58 +0100</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/agents/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Overview of Agentic AI</title>
+      <link>http://localhost:1313/posts/2026-06-01-overview_agents-/agents/</link>
+      <pubDate>Mon, 01 Jun 2026 10:30:58 +0100</pubDate>
+      <guid>http://localhost:1313/posts/2026-06-01-overview_agents-/agents/</guid>
+      <description>&lt;p&gt;Hi,&lt;/p&gt;
+&lt;p&gt;In this post I want to outline Agentic AI. I&amp;rsquo;ve spent the last two years building AI agents and I want to share an overview of what I&amp;rsquo;ve learned. I originally meant to start this series a year ago, but finding the time was tough. While this field is moving incredibly fast, I’m going to ignore the latest hype and focus strictly on the fundamentals.&lt;/p&gt;
+&lt;p&gt;Nowadays, the term &amp;ldquo;agent&amp;rdquo; is used loosely for almost any system involving an LLM. As an introduction, I want to draw a clear distinction between an agent and a workflow. An agent operates in an open environment and autonomously figures out how to solve a problem (e.g. a chatbot for data analysis). In contrast, a workflow is a predefined sequence of steps in which an LLM is used to execute specific tasks (e.g. extracting text to fill out a form).&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Agentic Design Patterns</title>
+      <link>http://localhost:1313/posts/2026-05-05-agentic-design-patterns/agentic_patterns/</link>
+      <pubDate>Tue, 05 May 2026 10:30:58 +0100</pubDate>
+      <guid>http://localhost:1313/posts/2026-05-05-agentic-design-patterns/agentic_patterns/</guid>
+      <description>&lt;p&gt;Hi,&lt;/p&gt;
+&lt;p&gt;Experiment: This post is written by AI. I put much effort into guidelines and specified several rounds of improvements, but the result is still not very graspable. It&amp;rsquo;s not bad, but also not really good.&lt;/p&gt;
+&lt;p&gt;I see this as a proxy for the current state of agentic coding. Everyone uses it, but if you look at the outcome it is often shallow. If you mention your concerns about quality, responsibility and ownership, you will be always ignored because of the productivity gain.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Building Agents &amp; LLM Workflows</title>
-      <link>https://steffenhaeussler.github.io/posts/2025-07-30-hackerroom/hackerroom/</link>
+      <link>http://localhost:1313/posts/2025-07-30-hackerroom/hackerroom/</link>
       <pubDate>Wed, 30 Jul 2025 10:30:58 +0100</pubDate>
-      <guid>https://steffenhaeussler.github.io/posts/2025-07-30-hackerroom/hackerroom/</guid>
+      <guid>http://localhost:1313/posts/2025-07-30-hackerroom/hackerroom/</guid>
       <description>&lt;p&gt;Hi,&lt;/p&gt;
 &lt;p&gt;Over the last three months, I&amp;rsquo;ve been working on Agents and LLM workflows. I had the opportunity to do this as part of a &lt;a href=&#34;https://www.merantix-aicampus.com/hacker-room&#34;&gt;residency program&lt;/a&gt; at &lt;a href=&#34;https://www.merantix-aicampus.com/&#34;&gt;Merantix&lt;/a&gt;.
 I&amp;rsquo;m deeply thankful for the opportunity and would highly recommend the program to others. Being surrounded by people with shared goals was incredibly motivating and inspiring.
