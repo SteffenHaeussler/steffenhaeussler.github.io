@@ -6,8 +6,16 @@
     <description>Recent content on About me</description>
     <generator>Hugo -- 0.147.5</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 01 Jun 2026 10:30:58 +0100</lastBuildDate>
+    <lastBuildDate>Sat, 13 Jun 2026 10:20:58 +0100</lastBuildDate>
     <atom:link href="https://steffenhaeussler.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Engineering with AI agents</title>
+      <link>https://steffenhaeussler.github.io/posts/2026-06-14-engineering_ai/engineering/</link>
+      <pubDate>Sat, 13 Jun 2026 10:20:58 +0100</pubDate>
+      <guid>https://steffenhaeussler.github.io/posts/2026-06-14-engineering_ai/engineering/</guid>
+      <description>&lt;p&gt;Hi,&lt;/p&gt;
+&lt;p&gt;For more than a year, I have been using coding agents, mostly Claude Code. During that time, I have barely written code myself. Instead, my role has shifted toward planning, reviewing and understanding code. I also use these agents for studying, brainstorming and problem-solving. I definitely struggle with the blurred boundary of my own work and orchestrated LLM work. I feel like a Code DJ by using and mixing ideas and samples from someone else.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Overview of Agentic AI</title>
       <link>https://steffenhaeussler.github.io/posts/2026-06-01-overview_agents-/agents/</link>

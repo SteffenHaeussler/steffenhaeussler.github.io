@@ -3,10 +3,25 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://steffenhaeussler.github.io/</loc>
-    <lastmod>2026-06-01T10:30:58+01:00</lastmod>
+    <lastmod>2026-06-13T10:20:58+01:00</lastmod>
   </url><url>
     <loc>https://steffenhaeussler.github.io/tags/agents/</loc>
-    <lastmod>2026-06-01T10:30:58+01:00</lastmod>
+    <lastmod>2026-06-13T10:20:58+01:00</lastmod>
+  </url><url>
+    <loc>https://steffenhaeussler.github.io/tags/distributed-systems/</loc>
+    <lastmod>2026-06-13T10:20:58+01:00</lastmod>
+  </url><url>
+    <loc>https://steffenhaeussler.github.io/tags/engineering/</loc>
+    <lastmod>2026-06-13T10:20:58+01:00</lastmod>
+  </url><url>
+    <loc>https://steffenhaeussler.github.io/posts/2026-06-14-engineering_ai/engineering/</loc>
+    <lastmod>2026-06-13T10:20:58+01:00</lastmod>
+  </url><url>
+    <loc>https://steffenhaeussler.github.io/posts/</loc>
+    <lastmod>2026-06-13T10:20:58+01:00</lastmod>
+  </url><url>
+    <loc>https://steffenhaeussler.github.io/tags/</loc>
+    <lastmod>2026-06-13T10:20:58+01:00</lastmod>
   </url><url>
     <loc>https://steffenhaeussler.github.io/tags/machine-learning/</loc>
     <lastmod>2026-06-01T10:30:58+01:00</lastmod>
@@ -15,12 +30,6 @@
     <lastmod>2026-06-01T10:30:58+01:00</lastmod>
   </url><url>
     <loc>https://steffenhaeussler.github.io/posts/2026-06-01-overview_agents-/agents/</loc>
-    <lastmod>2026-06-01T10:30:58+01:00</lastmod>
-  </url><url>
-    <loc>https://steffenhaeussler.github.io/posts/</loc>
-    <lastmod>2026-06-01T10:30:58+01:00</lastmod>
-  </url><url>
-    <loc>https://steffenhaeussler.github.io/tags/</loc>
     <lastmod>2026-06-01T10:30:58+01:00</lastmod>
   </url><url>
     <loc>https://steffenhaeussler.github.io/posts/2026-05-05-agentic-design-patterns/agentic_patterns/</loc>
@@ -108,9 +117,6 @@
     <lastmod>2023-08-07T10:30:50+02:00</lastmod>
   </url><url>
     <loc>https://steffenhaeussler.github.io/posts/2023-08-07-pydantic/pydantic/</loc>
-    <lastmod>2023-08-07T10:30:50+02:00</lastmod>
-  </url><url>
-    <loc>https://steffenhaeussler.github.io/tags/engineering/</loc>
     <lastmod>2023-08-07T10:30:50+02:00</lastmod>
   </url><url>
     <loc>https://steffenhaeussler.github.io/tags/microservice/</loc>
