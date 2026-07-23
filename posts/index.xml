@@ -4,10 +4,18 @@
     <title>Posts on About me</title>
     <link>https://steffenhaeussler.github.io/posts/</link>
     <description>Recent content in Posts on About me</description>
-    <generator>Hugo -- 0.147.5</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sat, 13 Jun 2026 10:20:58 +0100</lastBuildDate>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    <lastBuildDate>Sun, 12 Jul 2026 10:20:58 +0100</lastBuildDate>
     <atom:link href="https://steffenhaeussler.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Engineering with AI agents II</title>
+      <link>https://steffenhaeussler.github.io/posts/2026-06-28-engineering_ai_2/engineering/</link>
+      <pubDate>Sun, 12 Jul 2026 10:20:58 +0100</pubDate>
+      <guid>https://steffenhaeussler.github.io/posts/2026-06-28-engineering_ai_2/engineering/</guid>
+      <description>&lt;p&gt;Hi,&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://steffenhaeussler.github.io/posts/2026-06-14-engineering_ai/engineering/&#34;&gt;Four weeks ago&lt;/a&gt;, I looked into &lt;a href=&#34;https://temporal.io/&#34;&gt;Temporal.io&lt;/a&gt; as a platform for building and orchestration reliable workflows. I looked at it through the lens of distributed systems, combining it with concepts from &lt;a href=&#34;https://www.oreilly.com/library/view/designing-data-intensive-applications/9781491903063/&#34;&gt;Martin Kleppmann’s Designing Data-Intensive Applications (for reference, DDIA)&lt;/a&gt;. In this post, I team up with Claude Code and Codex to rebuild these core architectural ideas using &lt;a href=&#34;https://www.langchain.com/langgraph&#34;&gt;LangGraph&lt;/a&gt; and &lt;a href=&#34;https://www.postgresql.org/&#34;&gt;Postgres&lt;/a&gt;. LangGraph is built specifically for stateful, multi-agent systems. My goal here is to dig deeper into orchestration patterns and gain a clearer understanding of what it takes to run agentic systems in production. My long-term goal is exploring the fault-tolerant guarantees of Temporal with the agentic flexibility of LangGraph as a combination for modern enterprise workflows.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Engineering with AI agents</title>
       <link>https://steffenhaeussler.github.io/posts/2026-06-14-engineering_ai/engineering/</link>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto">
+<html lang="en" dir="auto" data-theme="auto">
 
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,7 +10,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <link rel="canonical" href="https://steffenhaeussler.github.io/tags/agents/">
-<link crossorigin="anonymous" href="https://steffenhaeussler.github.io/assets/css/stylesheet.a6264de45f1158af551cf2fe7595e8651c772fa1286f4c0483059a3e826a3049.css" integrity="sha256-piZN5F8RWK9VHPL&#43;dZXoZRx3L6Eob0wEgwWaPoJqMEk=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="https://steffenhaeussler.github.io/assets/css/stylesheet.13b1832d9a1539bf4cde35aa50072f19f51c680d26290c26ec119cb8f856790e.css" integrity="sha256-E7GDLZoVOb9M3jWqUAcvGfUcaA0mKQwm7BGcuPhWeQ4=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://steffenhaeussler.github.io/assets/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://steffenhaeussler.github.io/assets/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://steffenhaeussler.github.io/assets/favicon-32x32.png">
@@ -18,7 +18,7 @@
 <link rel="mask-icon" href="https://steffenhaeussler.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="https://steffenhaeussler.github.io/tags/agents/index.xml">
+<link rel="alternate" type="application/rss+xml" href="https://steffenhaeussler.github.io/tags/agents/index.xml" title="rss">
 <link rel="alternate" hreflang="en" href="https://steffenhaeussler.github.io/tags/agents/">
 <noscript>
     <style>
@@ -40,58 +40,55 @@
                 --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
+                color-scheme: dark;
             }
 
             .list {
                 background: var(--theme);
             }
 
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
+            .toc {
+                background: var(--entry);
             }
         }
 
     </style>
 </noscript>
-<meta property="og:url" content="https://steffenhaeussler.github.io/tags/agents/">
-  <meta property="og:site_name" content="About me">
-  <meta property="og:title" content="Agents">
-  <meta property="og:locale" content="en-us">
-  <meta property="og:type" content="website">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Agents">
-<meta name="twitter:description" content="">
-
-</head>
-
-<body class="list" id="top">
 <script>
     if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
+        document.querySelector("html").dataset.theme = 'dark';
     } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
+       document.querySelector("html").dataset.theme = 'light';
     } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
     }
 
 </script>
+<meta property="og:url" content="https://steffenhaeussler.github.io/tags/agents/">
+  <meta property="og:site_name" content="About me">
+  <meta property="og:title" content="Agents">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="website">
 
-<header class="header">
-    <nav class="nav">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Agents">
+
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="header-nav">
         <div class="logo">
             <a href="https://steffenhaeussler.github.io/" accesskey="h" title="About me (Alt + H)">About me</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
@@ -105,11 +102,9 @@
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
-                <ul class="lang-switch"><li>|</li>
-                </ul>
             </div>
         </div>
-        <ul id="menu">
+        <ul id="menu" class="menu">
             <li>
                 <a href="https://steffenhaeussler.github.io/posts/" title="Posts">
                     <span>Posts</span>
@@ -129,11 +124,38 @@
     </nav>
 </header>
 <main class="main"> 
-<header class="page-header"><div class="breadcrumbs"><a href="https://steffenhaeussler.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://steffenhaeussler.github.io/tags/">Tags</a></div>
+<header class="page-header"><nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
+            <a href="https://steffenhaeussler.github.io/">Home</a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <a href="https://steffenhaeussler.github.io/tags/">Tags</a>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+        <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+</nav>
   <h1>
     Agents
   </h1>
 </header>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Engineering with AI agents II
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Hi,
+Four weeks ago, I looked into Temporal.io as a platform for building and orchestration reliable workflows. I looked at it through the lens of distributed systems, combining it with concepts from Martin Kleppmann’s Designing Data-Intensive Applications (for reference, DDIA). In this post, I team up with Claude Code and Codex to rebuild these core architectural ideas using LangGraph and Postgres. LangGraph is built specifically for stateful, multi-agent systems. My goal here is to dig deeper into orchestration patterns and gain a clearer understanding of what it takes to run agentic systems in production. My long-term goal is exploring the fault-tolerant guarantees of Temporal with the agentic flexibility of LangGraph as a combination for modern enterprise workflows.
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-07-12 10:20:58 +0100 +0100'>July 12, 2026</span>&nbsp;·&nbsp;<span>19 min</span></footer>
+  <a class="entry-link" aria-label="post link to Engineering with AI agents II" href="https://steffenhaeussler.github.io/posts/2026-06-28-engineering_ai_2/engineering/"></a>
+</article>
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
@@ -145,7 +167,9 @@
 For more than a year, I have been using coding agents, mostly Claude Code. During that time, I have barely written code myself. Instead, my role has shifted toward planning, reviewing and understanding code. I also use these agents for studying, brainstorming and problem-solving. I definitely struggle with the blurred boundary of my own work and orchestrated LLM work. I feel like a Code DJ by using and mixing ideas and samples from someone else.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2026-06-13 10:20:58 +0100 +0100'>June 13, 2026</span>&nbsp;·&nbsp;16 min</footer>
+  <footer class="entry-footer">
+
+<span title='2026-06-13 10:20:58 +0100 +0100'>June 13, 2026</span>&nbsp;·&nbsp;<span>16 min</span></footer>
   <a class="entry-link" aria-label="post link to Engineering with AI agents" href="https://steffenhaeussler.github.io/posts/2026-06-14-engineering_ai/engineering/"></a>
 </article>
 
@@ -160,7 +184,9 @@ In this post I want to outline Agentic AI. I’ve spent the last two years build
 Nowadays, the term “agent” is used loosely for almost any system involving an LLM. As an introduction, I want to draw a clear distinction between an agent and a workflow. An agent operates in an open environment and autonomously figures out how to solve a problem (e.g. a chatbot for data analysis). In contrast, a workflow is a predefined sequence of steps in which an LLM is used to execute specific tasks (e.g. extracting text to fill out a form).
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2026-06-01 10:30:58 +0100 +0100'>June 1, 2026</span>&nbsp;·&nbsp;12 min</footer>
+  <footer class="entry-footer">
+
+<span title='2026-06-01 10:30:58 +0100 +0100'>June 1, 2026</span>&nbsp;·&nbsp;<span>12 min</span></footer>
   <a class="entry-link" aria-label="post link to Overview of Agentic AI" href="https://steffenhaeussler.github.io/posts/2026-06-01-overview_agents-/agents/"></a>
 </article>
 
@@ -175,7 +201,9 @@ This post is written by AI as an experiment. I put much effort into guidelines a
 I see this as a proxy for the current state of agentic coding. Everyone uses it, but if you look at the outcome it is often shallow. If you mention your concerns about quality, responsibility and ownership, you will be always ignored because of the productivity gain.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2026-05-05 10:30:58 +0100 +0100'>May 5, 2026</span>&nbsp;·&nbsp;7 min</footer>
+  <footer class="entry-footer">
+
+<span title='2026-05-05 10:30:58 +0100 +0100'>May 5, 2026</span>&nbsp;·&nbsp;<span>7 min</span></footer>
   <a class="entry-link" aria-label="post link to Agentic Design Patterns" href="https://steffenhaeussler.github.io/posts/2026-05-05-agentic-design-patterns/agentic_patterns/"></a>
 </article>
 
@@ -189,7 +217,9 @@ I see this as a proxy for the current state of agentic coding. Everyone uses it,
 Over the last three months, I’ve been working on Agents and LLM workflows. I had the opportunity to do this as part of a residency program at Merantix. I’m deeply thankful for the opportunity and would highly recommend the program to others. Being surrounded by people with shared goals was incredibly motivating and inspiring. I already miss the discussions and the knowledge exchange. Unlike typical work environments, here the participants were truly aligned, and everyone learned from each other.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2025-07-30 10:30:58 +0100 +0100'>July 30, 2025</span>&nbsp;·&nbsp;2 min</footer>
+  <footer class="entry-footer">
+
+<span title='2025-07-30 10:30:58 +0100 +0100'>July 30, 2025</span>&nbsp;·&nbsp;<span>2 min</span></footer>
   <a class="entry-link" aria-label="post link to Building Agents & LLM Workflows" href="https://steffenhaeussler.github.io/posts/2025-07-30-hackerroom/hackerroom/"></a>
 </article>
     </main>
@@ -197,22 +227,31 @@ Over the last three months, I’ve been working on Agents and LLM workflows. I h
 <footer class="footer">
         <span>&copy; 2026 <a href="https://steffenhaeussler.github.io/">About me</a></span> · 
 
+    
+    
     <span>
         Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
         <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
     </span>
 </footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
     </svg>
 </a>
 
 <script>
-    let menu = document.getElementById('menu')
+    let menu = document.getElementById('menu');
     if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
         menu.onscroll = function () {
             localStorage.setItem("menu-scroll-position", menu.scrollLeft);
         }
@@ -239,25 +278,25 @@ Over the last three months, I’ve been working on Agents and LLM workflows. I h
 
 </script>
 <script>
-    var mybutton = document.getElementById("top-link");
+    var toplink = document.getElementById("top-link");
     window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
         } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
+            toplink.classList.add("hidden");
         }
     };
 
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
             localStorage.setItem("pref-theme", 'light');
         } else {
-            document.body.classList.add('dark');
+            html.dataset.theme = 'dark';
             localStorage.setItem("pref-theme", 'dark');
         }
     })

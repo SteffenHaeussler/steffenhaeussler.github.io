@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto">
+<html lang="en" dir="auto" data-theme="auto">
 
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,7 +10,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <link rel="canonical" href="https://steffenhaeussler.github.io/tags/engineering/">
-<link crossorigin="anonymous" href="https://steffenhaeussler.github.io/assets/css/stylesheet.a6264de45f1158af551cf2fe7595e8651c772fa1286f4c0483059a3e826a3049.css" integrity="sha256-piZN5F8RWK9VHPL&#43;dZXoZRx3L6Eob0wEgwWaPoJqMEk=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="https://steffenhaeussler.github.io/assets/css/stylesheet.13b1832d9a1539bf4cde35aa50072f19f51c680d26290c26ec119cb8f856790e.css" integrity="sha256-E7GDLZoVOb9M3jWqUAcvGfUcaA0mKQwm7BGcuPhWeQ4=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://steffenhaeussler.github.io/assets/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://steffenhaeussler.github.io/assets/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://steffenhaeussler.github.io/assets/favicon-32x32.png">
@@ -18,7 +18,7 @@
 <link rel="mask-icon" href="https://steffenhaeussler.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="https://steffenhaeussler.github.io/tags/engineering/index.xml">
+<link rel="alternate" type="application/rss+xml" href="https://steffenhaeussler.github.io/tags/engineering/index.xml" title="rss">
 <link rel="alternate" hreflang="en" href="https://steffenhaeussler.github.io/tags/engineering/">
 <noscript>
     <style>
@@ -40,58 +40,55 @@
                 --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
+                color-scheme: dark;
             }
 
             .list {
                 background: var(--theme);
             }
 
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
+            .toc {
+                background: var(--entry);
             }
         }
 
     </style>
 </noscript>
-<meta property="og:url" content="https://steffenhaeussler.github.io/tags/engineering/">
-  <meta property="og:site_name" content="About me">
-  <meta property="og:title" content="Engineering">
-  <meta property="og:locale" content="en-us">
-  <meta property="og:type" content="website">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Engineering">
-<meta name="twitter:description" content="">
-
-</head>
-
-<body class="list" id="top">
 <script>
     if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
+        document.querySelector("html").dataset.theme = 'dark';
     } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
+       document.querySelector("html").dataset.theme = 'light';
     } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
     }
 
 </script>
+<meta property="og:url" content="https://steffenhaeussler.github.io/tags/engineering/">
+  <meta property="og:site_name" content="About me">
+  <meta property="og:title" content="Engineering">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="website">
 
-<header class="header">
-    <nav class="nav">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Engineering">
+
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="header-nav">
         <div class="logo">
             <a href="https://steffenhaeussler.github.io/" accesskey="h" title="About me (Alt + H)">About me</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
@@ -105,11 +102,9 @@
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
-                <ul class="lang-switch"><li>|</li>
-                </ul>
             </div>
         </div>
-        <ul id="menu">
+        <ul id="menu" class="menu">
             <li>
                 <a href="https://steffenhaeussler.github.io/posts/" title="Posts">
                     <span>Posts</span>
@@ -129,11 +124,38 @@
     </nav>
 </header>
 <main class="main"> 
-<header class="page-header"><div class="breadcrumbs"><a href="https://steffenhaeussler.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://steffenhaeussler.github.io/tags/">Tags</a></div>
+<header class="page-header"><nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
+            <a href="https://steffenhaeussler.github.io/">Home</a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <a href="https://steffenhaeussler.github.io/tags/">Tags</a>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+        <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+</nav>
   <h1>
     Engineering
   </h1>
 </header>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Engineering with AI agents II
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Hi,
+Four weeks ago, I looked into Temporal.io as a platform for building and orchestration reliable workflows. I looked at it through the lens of distributed systems, combining it with concepts from Martin Kleppmann’s Designing Data-Intensive Applications (for reference, DDIA). In this post, I team up with Claude Code and Codex to rebuild these core architectural ideas using LangGraph and Postgres. LangGraph is built specifically for stateful, multi-agent systems. My goal here is to dig deeper into orchestration patterns and gain a clearer understanding of what it takes to run agentic systems in production. My long-term goal is exploring the fault-tolerant guarantees of Temporal with the agentic flexibility of LangGraph as a combination for modern enterprise workflows.
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-07-12 10:20:58 +0100 +0100'>July 12, 2026</span>&nbsp;·&nbsp;<span>19 min</span></footer>
+  <a class="entry-link" aria-label="post link to Engineering with AI agents II" href="https://steffenhaeussler.github.io/posts/2026-06-28-engineering_ai_2/engineering/"></a>
+</article>
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
@@ -145,7 +167,9 @@
 For more than a year, I have been using coding agents, mostly Claude Code. During that time, I have barely written code myself. Instead, my role has shifted toward planning, reviewing and understanding code. I also use these agents for studying, brainstorming and problem-solving. I definitely struggle with the blurred boundary of my own work and orchestrated LLM work. I feel like a Code DJ by using and mixing ideas and samples from someone else.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2026-06-13 10:20:58 +0100 +0100'>June 13, 2026</span>&nbsp;·&nbsp;16 min</footer>
+  <footer class="entry-footer">
+
+<span title='2026-06-13 10:20:58 +0100 +0100'>June 13, 2026</span>&nbsp;·&nbsp;<span>16 min</span></footer>
   <a class="entry-link" aria-label="post link to Engineering with AI agents" href="https://steffenhaeussler.github.io/posts/2026-06-14-engineering_ai/engineering/"></a>
 </article>
 
@@ -159,7 +183,9 @@ For more than a year, I have been using coding agents, mostly Claude Code. Durin
 In my previous job, I spent hours debugging internal data transformations to figure out the received data from an external API was faulty. This issue would not appeared with schema validation. My fault was that I trusted the incoming data and didn’t check for data consistency. Learning from mistakes and saving time, I would set up a small example for JSON validation via Pydantic. FastAPI relies heavily on pydantic and I use it for validating the incoming request and outgoing response. Anyway, not in every project FastAPI is used.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2023-08-07 10:30:50 +0200 CEST'>August 7, 2023</span>&nbsp;·&nbsp;3 min</footer>
+  <footer class="entry-footer">
+
+<span title='2023-08-07 10:30:50 +0200 CEST'>August 7, 2023</span>&nbsp;·&nbsp;<span>3 min</span></footer>
   <a class="entry-link" aria-label="post link to Endpoint validation" href="https://steffenhaeussler.github.io/posts/2023-08-07-pydantic/pydantic/"></a>
 </article>
 
@@ -174,7 +200,9 @@ This post is an homage to a stackoverflow post copying data from s3. This shared
 The problem is that I have multiple Gb of data separated into thousands of files. Those files are selected for download by the semi-automated pipeline for model training. So the number of files to download varies from pipeline run to pipeline run. Also, this makes any data preparation obsolete. The solution from the official boto3 documentation for copying data from s3 takes too long. Even with asynchronous execution in the download, it will take a few hours to download those files. Imagine a scenario where you want to fine-tune a deep learning model on a machine with multiple GPUs, but you have to wait several hours for the data to be copied 😱. Any preprocessing steps are not feasible since the data is filtered upon request. Additionally, downloading the data via aws cli is not an option, as there is much more data in the s3 buckets than requested for model training. The simplest approach is to increase the throughput. And here is the beauty, directly copy&#43;pasted from Pierre D:
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2023-04-27 10:30:58 +0100 +0100'>April 27, 2023</span>&nbsp;·&nbsp;3 min</footer>
+  <footer class="entry-footer">
+
+<span title='2023-04-27 10:30:58 +0100 +0100'>April 27, 2023</span>&nbsp;·&nbsp;<span>3 min</span></footer>
   <a class="entry-link" aria-label="post link to Fast data transfer to or from s3" href="https://steffenhaeussler.github.io/posts/2023-04-27-s3/s3/"></a>
 </article>
 
@@ -190,7 +218,9 @@ At the beginning of my career as a Data Scientist, I ran into the typical proble
 My first service followed strongly the example of Miguel Grinbergs great tutorial. The reason was simple, I couldn’t write proper code at this time. Besides no experience and the great help of my co-workers, I could write a production-ready micro-service in a few weeks with the following features:
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2023-03-05 23:30:58 +0100 CET'>March 5, 2023</span>&nbsp;·&nbsp;2 min</footer>
+  <footer class="entry-footer">
+
+<span title='2023-03-05 23:30:58 +0100 CET'>March 5, 2023</span>&nbsp;·&nbsp;<span>2 min</span></footer>
   <a class="entry-link" aria-label="post link to The importance of building things by yourself" href="https://steffenhaeussler.github.io/posts/2023-03-05-first/first/"></a>
 </article>
     </main>
@@ -198,22 +228,31 @@ My first service followed strongly the example of Miguel Grinbergs great tutoria
 <footer class="footer">
         <span>&copy; 2026 <a href="https://steffenhaeussler.github.io/">About me</a></span> · 
 
+    
+    
     <span>
         Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
         <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
     </span>
 </footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
     </svg>
 </a>
 
 <script>
-    let menu = document.getElementById('menu')
+    let menu = document.getElementById('menu');
     if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
         menu.onscroll = function () {
             localStorage.setItem("menu-scroll-position", menu.scrollLeft);
         }
@@ -240,25 +279,25 @@ My first service followed strongly the example of Miguel Grinbergs great tutoria
 
 </script>
 <script>
-    var mybutton = document.getElementById("top-link");
+    var toplink = document.getElementById("top-link");
     window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
         } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
+            toplink.classList.add("hidden");
         }
     };
 
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
             localStorage.setItem("pref-theme", 'light');
         } else {
-            document.body.classList.add('dark');
+            html.dataset.theme = 'dark';
             localStorage.setItem("pref-theme", 'dark');
         }
     })
