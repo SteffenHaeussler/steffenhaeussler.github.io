@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto">
+<html lang="en" dir="auto" data-theme="auto">
 
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,7 +11,7 @@
 For more than a year, I have been using coding agents, mostly Claude Code. During that time, I have barely written code myself. Instead, my role has shifted toward planning, reviewing and understanding code. I also use these agents for studying, brainstorming and problem-solving. I definitely struggle with the blurred boundary of my own work and orchestrated LLM work. I feel like a Code DJ by using and mixing ideas and samples from someone else.">
 <meta name="author" content="">
 <link rel="canonical" href="https://steffenhaeussler.github.io/posts/2026-06-14-engineering_ai/engineering/">
-<link crossorigin="anonymous" href="https://steffenhaeussler.github.io/assets/css/stylesheet.a6264de45f1158af551cf2fe7595e8651c772fa1286f4c0483059a3e826a3049.css" integrity="sha256-piZN5F8RWK9VHPL&#43;dZXoZRx3L6Eob0wEgwWaPoJqMEk=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="https://steffenhaeussler.github.io/assets/css/stylesheet.13b1832d9a1539bf4cde35aa50072f19f51c680d26290c26ec119cb8f856790e.css" integrity="sha256-E7GDLZoVOb9M3jWqUAcvGfUcaA0mKQwm7BGcuPhWeQ4=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://steffenhaeussler.github.io/assets/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://steffenhaeussler.github.io/assets/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://steffenhaeussler.github.io/assets/favicon-32x32.png">
@@ -40,23 +40,32 @@ For more than a year, I have been using coding agents, mostly Claude Code. Durin
                 --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
+                color-scheme: dark;
             }
 
             .list {
                 background: var(--theme);
             }
 
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
+            .toc {
+                background: var(--entry);
             }
         }
 
     </style>
 </noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css"
     integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"
@@ -79,7 +88,7 @@ For more than a year, I have been using coding agents, mostly Claude Code. Durin
   <meta property="og:title" content="Engineering with AI agents">
   <meta property="og:description" content="Hi,
 For more than a year, I have been using coding agents, mostly Claude Code. During that time, I have barely written code myself. Instead, my role has shifted toward planning, reviewing and understanding code. I also use these agents for studying, brainstorming and problem-solving. I definitely struggle with the blurred boundary of my own work and orchestrated LLM work. I feel like a Code DJ by using and mixing ideas and samples from someone else.">
-  <meta property="og:locale" content="en-us">
+  <meta property="og:locale" content="en_US">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2026-06-13T10:20:58+01:00">
@@ -87,9 +96,10 @@ For more than a year, I have been using coding agents, mostly Claude Code. Durin
     <meta property="article:tag" content="Engineering">
     <meta property="article:tag" content="Distributed Systems">
     <meta property="article:tag" content="Agents">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Engineering with AI agents">
-<meta name="twitter:description" content="Hi,
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Engineering with AI agents">
+  <meta name="twitter:description" content="Hi,
 For more than a year, I have been using coding agents, mostly Claude Code. During that time, I have barely written code myself. Instead, my role has shifted toward planning, reviewing and understanding code. I also use these agents for studying, brainstorming and problem-solving. I definitely struggle with the blurred boundary of my own work and orchestrated LLM work. I feel like a Code DJ by using and mixing ideas and samples from someone else.">
 
 
@@ -143,31 +153,19 @@ For more than a year, I have been using coding agents, mostly Claude Code. Durin
 }
 </script>
 </head>
-
-<body class="" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
-</script>
-
-<header class="header">
-    <nav class="nav">
+<body id="top">
+    <header class="header">
+    <nav class="header-nav">
         <div class="logo">
             <a href="https://steffenhaeussler.github.io/" accesskey="h" title="About me (Alt + H)">About me</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
@@ -181,11 +179,9 @@ For more than a year, I have been using coding agents, mostly Claude Code. Durin
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
-                <ul class="lang-switch"><li>|</li>
-                </ul>
             </div>
         </div>
-        <ul id="menu">
+        <ul id="menu" class="menu">
             <li>
                 <a href="https://steffenhaeussler.github.io/posts/" title="Posts">
                     <span>Posts</span>
@@ -208,15 +204,28 @@ For more than a year, I have been using coding agents, mostly Claude Code. Durin
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="https://steffenhaeussler.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://steffenhaeussler.github.io/posts/">Posts</a></div>
+    <nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
+            <a href="https://steffenhaeussler.github.io/">Home</a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <a href="https://steffenhaeussler.github.io/posts/">Posts</a>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+        <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+</nav>
     <h1 class="post-title entry-hint-parent">
       Engineering with AI agents
     </h1>
-    <div class="post-meta"><span title='2026-06-13 10:20:58 +0100 +0100'>June 13, 2026</span>&nbsp;·&nbsp;16 min
+    <div class="post-meta">
+
+<span title='2026-06-13 10:20:58 +0100 +0100'>June 13, 2026</span>&nbsp;·&nbsp;<span>16 min</span>
 
 </div>
   </header> 
-  <div class="post-content"><p>Hi,</p>
+  <div class="post-content md-content"><p>Hi,</p>
 <p>For more than a year, I have been using coding agents, mostly Claude Code. During that time, I have barely written code myself. Instead, my role has shifted toward planning, reviewing and understanding code. I also use these agents for studying, brainstorming and problem-solving. I definitely struggle with the blurred boundary of my own work and orchestrated LLM work. I feel like a Code DJ by using and mixing ideas and samples from someone else.</p>
 <p>One topic that still feels underexplored in many discussions about AI agents is engineering. Agentic design matters, but so does the underlying infrastructure. In practice, AI agents are distributed systems. They rely on repeated API calls to LLMs, coordinate state across multiple steps, handle failures and had to deal with uncertainty, latency and partial results. To understand these problems better, I use Claude Code and Codex to generate an example project, which I then analyze in detail. My goal is to understand the engineering problems behind the code. The agent is mocked in this example.</p>
 <p>As a first example, I use my <a href="https://github.com/SteffenHaeussler/temporal">ticketflow project</a>, which is built with <a href="https://temporal.io/">Temporal.io</a>. Temporal is a platform for building reliable workflows. It guarantees that workflows can resume from exactly the state where they left off, even if a worker process crashes.</p>
@@ -248,16 +257,16 @@ For more than a year, I have been using coding agents, mostly Claude Code. Durin
 <p>This needs durable execution, where the ticket progress is recorded independently of the currently running process. Temporal solves this by treating the workflow as a replayed state machine. <a href="https://docs.temporal.io/develop/python/workflows/basics#workflow-logic-requirements">Temporal workflow code</a> looks like normal control flow but its state is reconstructed from an event history.</p>
 <p>The <a href="https://github.com/SteffenHaeussler/temporal/blob/main/src/ticketflow/workflows.py#L68-L141">ticket workflow</a> follows the ticket process until it is finished. Local fields such as _status, _draft and _decision are reconstructed by replaying the event history.</p>
 <p>Another important point is, that waiting for human approval also looks like ordinary async code:</p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span>:
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span>:
 </span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">await</span> workflow<span style="color:#f92672">.</span>wait_condition(
 </span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">lambda</span>: self<span style="color:#f92672">.</span>_decision <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> <span style="color:#66d9ef">None</span>, timeout<span style="color:#f92672">=</span>APPROVAL_TIMEOUT
 </span></span><span style="display:flex;"><span>            )
@@ -266,9 +275,9 @@ For more than a year, I have been using coding agents, mostly Claude Code. Durin
 </div>
 </div><p>This does not hold a worker thread for the full APPROVAL_TIMEOUT. Temporal records a durable timer and can resume the workflow later. The worker process can disappear in the meantime, but the workflow state still exists in Temporal&rsquo;s event history.</p>
 <p>Approval enters the workflow through an update, which is called by the corresponding <a href="https://github.com/SteffenHaeussler/temporal/blob/main/src/ticketflow/api.py#L305-L333">HTTP request</a>:</p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
@@ -278,7 +287,7 @@ For more than a year, I have been using coding agents, mostly Claude Code. Durin
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>    <span style="color:#a6e22e">@workflow.update</span>
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>    <span style="color:#a6e22e">@workflow.update</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">submit_approval</span>(self, decision: ApprovalDecision) <span style="color:#f92672">-&gt;</span> TicketStatus:
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;Accept a human decision and return the resulting status.&#34;&#34;&#34;</span>
 </span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>_decision <span style="color:#f92672">=</span> decision
@@ -290,9 +299,9 @@ For more than a year, I have been using coding agents, mostly Claude Code. Durin
 </div>
 </div><p>This is useful because approval is not just an external HTTP request. It is a state transition inside the workflow. The workflow can validate the decision, reject duplicate or late approvals and return the resulting status to the caller.</p>
 <p>A potential bug is that a late approval could arrive while the workflow is already finishing an escalation. In this case the workflow was logically done, but the terminal status had not been written yet because final activities were still running. The fix is to set the terminal status before running those final activities:</p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
@@ -302,7 +311,7 @@ For more than a year, I have been using coding agents, mostly Claude Code. Durin
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>    <span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">_finish</span>(
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>    <span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">_finish</span>(
 </span></span><span style="display:flex;"><span>        self, <span style="color:#f92672">*</span>, reply_text: str, refund: bool, status: TicketStatus
 </span></span><span style="display:flex;"><span>    ) <span style="color:#f92672">-&gt;</span> TicketResult:
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>_ticket <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span>:
@@ -328,9 +337,9 @@ For more than a year, I have been using coding agents, mostly Claude Code. Durin
 <li>start_to_close: how long one activity attempt run after a worker has started it.</li>
 <li>heartbeat_timeout: how long a running activity go without sending a heartbeat.</li>
 </ul>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -347,7 +356,7 @@ For more than a year, I have been using coding agents, mostly Claude Code. Durin
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>AGENT_ACTIVITY_TIMEOUT <span style="color:#f92672">=</span> timedelta(minutes<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>)
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>AGENT_ACTIVITY_TIMEOUT <span style="color:#f92672">=</span> timedelta(minutes<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>)
 </span></span><span style="display:flex;"><span>AGENT_HEARTBEAT_TIMEOUT <span style="color:#f92672">=</span> timedelta(seconds<span style="color:#f92672">=</span><span style="color:#ae81ff">30</span>)
 </span></span><span style="display:flex;"><span>AGENT_SCHEDULE_TO_START_S <span style="color:#f92672">=</span> config<span style="color:#f92672">.</span>AGENT_SCHEDULE_TO_START_S
 </span></span><span style="display:flex;"><span>
@@ -372,13 +381,13 @@ For more than a year, I have been using coding agents, mostly Claude Code. Durin
 <li>How many LLM calls may the whole system start per second?</li>
 <li>How many activities can this worker handle at the same time?</li>
 </ul>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>max_concurrent_activities<span style="color:#f92672">=</span>config<span style="color:#f92672">.</span>AGENT_MAX_CONCURRENT,
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>max_concurrent_activities<span style="color:#f92672">=</span>config<span style="color:#f92672">.</span>AGENT_MAX_CONCURRENT,
 </span></span><span style="display:flex;"><span>max_task_queue_activities_per_second<span style="color:#f92672">=</span>config<span style="color:#f92672">.</span>AGENT_MAX_PER_SECOND,
 </span></span></code></pre></td></tr></table>
 </div>
@@ -390,9 +399,9 @@ For more than a year, I have been using coding agents, mostly Claude Code. Durin
 <p>So Temporal’s task queue acts like the message queue for the agent step. No separate broker is needed here. The growing queue of pending activity tasks is the backpressure signal.</p>
 <h3 id="fallback-routing">Fallback routing<a hidden class="anchor" aria-hidden="true" href="#fallback-routing">#</a></h3>
 <p>The schedule_to_start timeout is also used as a routing signal. If an agent activity waits too long in the primary task queue, the workflow treats this as “the primary LLM worker cannot get to this task in time.” Instead of failing the whole ticket, it reruns the agent call on the fallback queue.</p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -405,7 +414,7 @@ For more than a year, I have been using coding agents, mostly Claude Code. Durin
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">try</span>:
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">try</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">await</span> workflow<span style="color:#f92672">.</span>execute_activity_method(
 </span></span><span style="display:flex;"><span>        activity_method,
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">*</span>args,
@@ -419,9 +428,9 @@ For more than a year, I have been using coding agents, mostly Claude Code. Durin
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>This makes the fallback queue a degraded mode. In this project, the fallback model is cheaper and has lower confidence as you can see in the mock agent:</p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -434,7 +443,7 @@ For more than a year, I have been using coding agents, mostly Claude Code. Durin
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a6e22e">@classmethod</span>
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a6e22e">@classmethod</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fallback</span>(cls, seed: int <span style="color:#f92672">|</span> <span style="color:#66d9ef">None</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>) <span style="color:#f92672">-&gt;</span> <span style="color:#e6db74">&#34;MockAgent&#34;</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Create a fast, reliable, lower-confidence fallback agent.&#34;&#34;&#34;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> cls(
@@ -502,22 +511,31 @@ For more than a year, I have been using coding agents, mostly Claude Code. Durin
 <footer class="footer">
         <span>&copy; 2026 <a href="https://steffenhaeussler.github.io/">About me</a></span> · 
 
+    
+    
     <span>
         Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
         <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
     </span>
 </footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
     </svg>
 </a>
 
 <script>
-    let menu = document.getElementById('menu')
+    let menu = document.getElementById('menu');
     if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
         menu.onscroll = function () {
             localStorage.setItem("menu-scroll-position", menu.scrollLeft);
         }
@@ -544,25 +562,25 @@ For more than a year, I have been using coding agents, mostly Claude Code. Durin
 
 </script>
 <script>
-    var mybutton = document.getElementById("top-link");
+    var toplink = document.getElementById("top-link");
     window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
         } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
+            toplink.classList.add("hidden");
         }
     };
 
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
             localStorage.setItem("pref-theme", 'light');
         } else {
-            document.body.classList.add('dark');
+            html.dataset.theme = 'dark';
             localStorage.setItem("pref-theme", 'dark');
         }
     })

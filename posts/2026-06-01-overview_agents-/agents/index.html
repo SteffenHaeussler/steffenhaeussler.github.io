@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto">
+<html lang="en" dir="auto" data-theme="auto">
 
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,7 +12,7 @@ In this post I want to outline Agentic AI. I&rsquo;ve spent the last two years b
 Nowadays, the term &ldquo;agent&rdquo; is used loosely for almost any system involving an LLM. As an introduction, I want to draw a clear distinction between an agent and a workflow. An agent operates in an open environment and autonomously figures out how to solve a problem (e.g. a chatbot for data analysis). In contrast, a workflow is a predefined sequence of steps in which an LLM is used to execute specific tasks (e.g. extracting text to fill out a form).">
 <meta name="author" content="">
 <link rel="canonical" href="https://steffenhaeussler.github.io/posts/2026-06-01-overview_agents-/agents/">
-<link crossorigin="anonymous" href="https://steffenhaeussler.github.io/assets/css/stylesheet.a6264de45f1158af551cf2fe7595e8651c772fa1286f4c0483059a3e826a3049.css" integrity="sha256-piZN5F8RWK9VHPL&#43;dZXoZRx3L6Eob0wEgwWaPoJqMEk=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="https://steffenhaeussler.github.io/assets/css/stylesheet.13b1832d9a1539bf4cde35aa50072f19f51c680d26290c26ec119cb8f856790e.css" integrity="sha256-E7GDLZoVOb9M3jWqUAcvGfUcaA0mKQwm7BGcuPhWeQ4=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://steffenhaeussler.github.io/assets/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://steffenhaeussler.github.io/assets/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://steffenhaeussler.github.io/assets/favicon-32x32.png">
@@ -41,23 +41,32 @@ Nowadays, the term &ldquo;agent&rdquo; is used loosely for almost any system inv
                 --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
+                color-scheme: dark;
             }
 
             .list {
                 background: var(--theme);
             }
 
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
+            .toc {
+                background: var(--entry);
             }
         }
 
     </style>
 </noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css"
     integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"
@@ -81,7 +90,7 @@ Nowadays, the term &ldquo;agent&rdquo; is used loosely for almost any system inv
   <meta property="og:description" content="Hi,
 In this post I want to outline Agentic AI. I’ve spent the last two years building AI agents and I want to share an overview of what I’ve learned. I originally meant to start this series a year ago, but finding the time was tough. While this field is moving incredibly fast, I’m going to ignore the latest hype and focus strictly on the fundamentals.
 Nowadays, the term “agent” is used loosely for almost any system involving an LLM. As an introduction, I want to draw a clear distinction between an agent and a workflow. An agent operates in an open environment and autonomously figures out how to solve a problem (e.g. a chatbot for data analysis). In contrast, a workflow is a predefined sequence of steps in which an LLM is used to execute specific tasks (e.g. extracting text to fill out a form).">
-  <meta property="og:locale" content="en-us">
+  <meta property="og:locale" content="en_US">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2026-06-01T10:30:58+01:00">
@@ -89,11 +98,12 @@ Nowadays, the term “agent” is used loosely for almost any system involving a
     <meta property="article:tag" content="Machine Learning">
     <meta property="article:tag" content="NLP">
     <meta property="article:tag" content="Agents">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Overview of Agentic AI">
-<meta name="twitter:description" content="Hi,
-In this post I want to outline Agentic AI. I&rsquo;ve spent the last two years building AI agents and I want to share an overview of what I&rsquo;ve learned. I originally meant to start this series a year ago, but finding the time was tough. While this field is moving incredibly fast, I’m going to ignore the latest hype and focus strictly on the fundamentals.
-Nowadays, the term &ldquo;agent&rdquo; is used loosely for almost any system involving an LLM. As an introduction, I want to draw a clear distinction between an agent and a workflow. An agent operates in an open environment and autonomously figures out how to solve a problem (e.g. a chatbot for data analysis). In contrast, a workflow is a predefined sequence of steps in which an LLM is used to execute specific tasks (e.g. extracting text to fill out a form).">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Overview of Agentic AI">
+  <meta name="twitter:description" content="Hi,
+In this post I want to outline Agentic AI. I’ve spent the last two years building AI agents and I want to share an overview of what I’ve learned. I originally meant to start this series a year ago, but finding the time was tough. While this field is moving incredibly fast, I’m going to ignore the latest hype and focus strictly on the fundamentals.
+Nowadays, the term “agent” is used loosely for almost any system involving an LLM. As an introduction, I want to draw a clear distinction between an agent and a workflow. An agent operates in an open environment and autonomously figures out how to solve a problem (e.g. a chatbot for data analysis). In contrast, a workflow is a predefined sequence of steps in which an LLM is used to execute specific tasks (e.g. extracting text to fill out a form).">
 
 
 <script type="application/ld+json">
@@ -146,31 +156,19 @@ Nowadays, the term &ldquo;agent&rdquo; is used loosely for almost any system inv
 }
 </script>
 </head>
-
-<body class="" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
-</script>
-
-<header class="header">
-    <nav class="nav">
+<body id="top">
+    <header class="header">
+    <nav class="header-nav">
         <div class="logo">
             <a href="https://steffenhaeussler.github.io/" accesskey="h" title="About me (Alt + H)">About me</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
@@ -184,11 +182,9 @@ Nowadays, the term &ldquo;agent&rdquo; is used loosely for almost any system inv
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
-                <ul class="lang-switch"><li>|</li>
-                </ul>
             </div>
         </div>
-        <ul id="menu">
+        <ul id="menu" class="menu">
             <li>
                 <a href="https://steffenhaeussler.github.io/posts/" title="Posts">
                     <span>Posts</span>
@@ -211,15 +207,28 @@ Nowadays, the term &ldquo;agent&rdquo; is used loosely for almost any system inv
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="https://steffenhaeussler.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://steffenhaeussler.github.io/posts/">Posts</a></div>
+    <nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
+            <a href="https://steffenhaeussler.github.io/">Home</a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <a href="https://steffenhaeussler.github.io/posts/">Posts</a>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+        <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+</nav>
     <h1 class="post-title entry-hint-parent">
       Overview of Agentic AI
     </h1>
-    <div class="post-meta"><span title='2026-06-01 10:30:58 +0100 +0100'>June 1, 2026</span>&nbsp;·&nbsp;12 min
+    <div class="post-meta">
+
+<span title='2026-06-01 10:30:58 +0100 +0100'>June 1, 2026</span>&nbsp;·&nbsp;<span>12 min</span>
 
 </div>
   </header> 
-  <div class="post-content"><p>Hi,</p>
+  <div class="post-content md-content"><p>Hi,</p>
 <p>In this post I want to outline Agentic AI. I&rsquo;ve spent the last two years building AI agents and I want to share an overview of what I&rsquo;ve learned. I originally meant to start this series a year ago, but finding the time was tough. While this field is moving incredibly fast, I’m going to ignore the latest hype and focus strictly on the fundamentals.</p>
 <p>Nowadays, the term &ldquo;agent&rdquo; is used loosely for almost any system involving an LLM. As an introduction, I want to draw a clear distinction between an agent and a workflow. An agent operates in an open environment and autonomously figures out how to solve a problem (e.g. a chatbot for data analysis). In contrast, a workflow is a predefined sequence of steps in which an LLM is used to execute specific tasks (e.g. extracting text to fill out a form).</p>
 <p>In the following sections, I’ll briefly cover the core concepts. There is already a vast amount of material available, so this is simply my perspective on the fundamentals. For a high-level overview, I highly recommend the following:</p>
@@ -241,65 +250,65 @@ Nowadays, the term &ldquo;agent&rdquo; is used loosely for almost any system inv
 <p>Traditional LLM reasoning is implicit and passive. You hand the model a static prompt and it attempts to solve the problem in a single forward pass based on its pre-trained weights. Agentic reasoning shifts this paradigm from static capacity to structured interaction. It transforms inference into an iterative loop, where the LLM formulates an internal thought, invokes a tool, observes the external result and updates its context before taking the next step.</p>
 <p>Here is a practical breakdown of how the two approaches differ (<a href="https://arxiv.org/pdf/2601.12538">Wei et al. 2026</a>):</p>
 <table>
-  <thead>
-      <tr>
-          <th>Dimension</th>
-          <th>LLM Reasoning</th>
-          <th>Agentic Reasoning</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Paradigm</td>
-          <td>Passive</td>
-          <td>Interactive</td>
-      </tr>
-      <tr>
-          <td>Input</td>
-          <td>Static input</td>
-          <td>Dynamic context</td>
-      </tr>
-      <tr>
-          <td>Computation</td>
-          <td>Single pass</td>
-          <td>Multi-step</td>
-      </tr>
-      <tr>
-          <td>Feedback</td>
-          <td>No external feedback</td>
-          <td>External feedback</td>
-      </tr>
-      <tr>
-          <td>Statefulness</td>
-          <td>Context window</td>
-          <td>External memory</td>
-      </tr>
-      <tr>
-          <td>Persistence</td>
-          <td>No persistence</td>
-          <td>State tracking</td>
-      </tr>
-      <tr>
-          <td>Learning</td>
-          <td>Offline pretraining</td>
-          <td>Continual improvement</td>
-      </tr>
-      <tr>
-          <td>Knowledge</td>
-          <td>Fixed knowledge</td>
-          <td>Self-evolving</td>
-      </tr>
-      <tr>
-          <td>Goal Orientation</td>
-          <td>Prompt-based</td>
-          <td>Explicit goal</td>
-      </tr>
-      <tr>
-          <td>Behavior</td>
-          <td>Reactive</td>
-          <td>Planning</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Dimension</th>
+					<th>LLM Reasoning</th>
+					<th>Agentic Reasoning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Paradigm</td>
+					<td>Passive</td>
+					<td>Interactive</td>
+			</tr>
+			<tr>
+					<td>Input</td>
+					<td>Static input</td>
+					<td>Dynamic context</td>
+			</tr>
+			<tr>
+					<td>Computation</td>
+					<td>Single pass</td>
+					<td>Multi-step</td>
+			</tr>
+			<tr>
+					<td>Feedback</td>
+					<td>No external feedback</td>
+					<td>External feedback</td>
+			</tr>
+			<tr>
+					<td>Statefulness</td>
+					<td>Context window</td>
+					<td>External memory</td>
+			</tr>
+			<tr>
+					<td>Persistence</td>
+					<td>No persistence</td>
+					<td>State tracking</td>
+			</tr>
+			<tr>
+					<td>Learning</td>
+					<td>Offline pretraining</td>
+					<td>Continual improvement</td>
+			</tr>
+			<tr>
+					<td>Knowledge</td>
+					<td>Fixed knowledge</td>
+					<td>Self-evolving</td>
+			</tr>
+			<tr>
+					<td>Goal Orientation</td>
+					<td>Prompt-based</td>
+					<td>Explicit goal</td>
+			</tr>
+			<tr>
+					<td>Behavior</td>
+					<td>Reactive</td>
+					<td>Planning</td>
+			</tr>
+	</tbody>
 </table>
 <p>While high-level concepts explore self-evolution and post-training reinforcement learning, building production agents relies on understanding some fundamental design patterns. The following implementation patterns define how you actually build an agent:</p>
 <ul>
@@ -473,22 +482,31 @@ This includes:</p>
 <footer class="footer">
         <span>&copy; 2026 <a href="https://steffenhaeussler.github.io/">About me</a></span> · 
 
+    
+    
     <span>
         Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
         <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
     </span>
 </footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
     </svg>
 </a>
 
 <script>
-    let menu = document.getElementById('menu')
+    let menu = document.getElementById('menu');
     if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
         menu.onscroll = function () {
             localStorage.setItem("menu-scroll-position", menu.scrollLeft);
         }
@@ -515,25 +533,25 @@ This includes:</p>
 
 </script>
 <script>
-    var mybutton = document.getElementById("top-link");
+    var toplink = document.getElementById("top-link");
     window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
         } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
+            toplink.classList.add("hidden");
         }
     };
 
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
             localStorage.setItem("pref-theme", 'light');
         } else {
-            document.body.classList.add('dark');
+            html.dataset.theme = 'dark';
             localStorage.setItem("pref-theme", 'dark');
         }
     })

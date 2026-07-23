@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Engineering with AI agents II | About me</title>
+<meta name="keywords" content="engineering, distributed systems, Agents">
+<meta name="description" content="Hi,
+Four weeks ago, I looked into Temporal.io as a platform for building and orchestration reliable workflows. I looked at it through the lens of distributed systems, combining it with concepts from Martin Kleppmann’s Designing Data-Intensive Applications (for reference, DDIA). In this post, I team up with Claude Code and Codex to rebuild these core architectural ideas using LangGraph and Postgres. LangGraph is built specifically for stateful, multi-agent systems. My goal here is to dig deeper into orchestration patterns and gain a clearer understanding of what it takes to run agentic systems in production. My long-term goal is exploring the fault-tolerant guarantees of Temporal with the agentic flexibility of LangGraph as a combination for modern enterprise workflows.">
+<meta name="author" content="">
+<link rel="canonical" href="https://steffenhaeussler.github.io/posts/2026-06-28-engineering_ai_2/engineering/">
+<link crossorigin="anonymous" href="https://steffenhaeussler.github.io/assets/css/stylesheet.13b1832d9a1539bf4cde35aa50072f19f51c680d26290c26ec119cb8f856790e.css" integrity="sha256-E7GDLZoVOb9M3jWqUAcvGfUcaA0mKQwm7BGcuPhWeQ4=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://steffenhaeussler.github.io/assets/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://steffenhaeussler.github.io/assets/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://steffenhaeussler.github.io/assets/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://steffenhaeussler.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://steffenhaeussler.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://steffenhaeussler.github.io/posts/2026-06-28-engineering_ai_2/engineering/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css"
+    integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"
+    integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4"
+    crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"
+    integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+    onload="renderMathInElement(document.body, {
+        delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+            {left: '\\(', right: '\\)', display: false},
+            {left: '\\[', right: '\\]', display: true}
+        ]
+    });"></script>
+
+
+<meta property="og:url" content="https://steffenhaeussler.github.io/posts/2026-06-28-engineering_ai_2/engineering/">
+  <meta property="og:site_name" content="About me">
+  <meta property="og:title" content="Engineering with AI agents II">
+  <meta property="og:description" content="Hi,
+Four weeks ago, I looked into Temporal.io as a platform for building and orchestration reliable workflows. I looked at it through the lens of distributed systems, combining it with concepts from Martin Kleppmann’s Designing Data-Intensive Applications (for reference, DDIA). In this post, I team up with Claude Code and Codex to rebuild these core architectural ideas using LangGraph and Postgres. LangGraph is built specifically for stateful, multi-agent systems. My goal here is to dig deeper into orchestration patterns and gain a clearer understanding of what it takes to run agentic systems in production. My long-term goal is exploring the fault-tolerant guarantees of Temporal with the agentic flexibility of LangGraph as a combination for modern enterprise workflows.">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-07-12T10:20:58+01:00">
+    <meta property="article:modified_time" content="2026-07-12T10:20:58+01:00">
+    <meta property="article:tag" content="Engineering">
+    <meta property="article:tag" content="Distributed Systems">
+    <meta property="article:tag" content="Agents">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Engineering with AI agents II">
+  <meta name="twitter:description" content="Hi,
+Four weeks ago, I looked into Temporal.io as a platform for building and orchestration reliable workflows. I looked at it through the lens of distributed systems, combining it with concepts from Martin Kleppmann’s Designing Data-Intensive Applications (for reference, DDIA). In this post, I team up with Claude Code and Codex to rebuild these core architectural ideas using LangGraph and Postgres. LangGraph is built specifically for stateful, multi-agent systems. My goal here is to dig deeper into orchestration patterns and gain a clearer understanding of what it takes to run agentic systems in production. My long-term goal is exploring the fault-tolerant guarantees of Temporal with the agentic flexibility of LangGraph as a combination for modern enterprise workflows.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://steffenhaeussler.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Engineering with AI agents II",
+      "item": "https://steffenhaeussler.github.io/posts/2026-06-28-engineering_ai_2/engineering/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Engineering with AI agents II",
+  "name": "Engineering with AI agents II",
+  "description": "Hi,\nFour weeks ago, I looked into Temporal.io as a platform for building and orchestration reliable workflows. I looked at it through the lens of distributed systems, combining it with concepts from Martin Kleppmann’s Designing Data-Intensive Applications (for reference, DDIA). In this post, I team up with Claude Code and Codex to rebuild these core architectural ideas using LangGraph and Postgres. LangGraph is built specifically for stateful, multi-agent systems. My goal here is to dig deeper into orchestration patterns and gain a clearer understanding of what it takes to run agentic systems in production. My long-term goal is exploring the fault-tolerant guarantees of Temporal with the agentic flexibility of LangGraph as a combination for modern enterprise workflows.\n",
+  "keywords": [
+    "engineering", "distributed systems", "Agents"
+  ],
+  "articleBody": "Hi,\nFour weeks ago, I looked into Temporal.io as a platform for building and orchestration reliable workflows. I looked at it through the lens of distributed systems, combining it with concepts from Martin Kleppmann’s Designing Data-Intensive Applications (for reference, DDIA). In this post, I team up with Claude Code and Codex to rebuild these core architectural ideas using LangGraph and Postgres. LangGraph is built specifically for stateful, multi-agent systems. My goal here is to dig deeper into orchestration patterns and gain a clearer understanding of what it takes to run agentic systems in production. My long-term goal is exploring the fault-tolerant guarantees of Temporal with the agentic flexibility of LangGraph as a combination for modern enterprise workflows.\nHere I use my TicketGraph project for the deep dive, which is a rewrite of my ticketflow project without Temporal.io. The project implements a simple ticket system where a mock agent resolves support tickets with a conditional human-in-the-loop step. I keep the structure as same as in my previous post, but I wanted to get a better understanding of the concepts.\nProject introduction A support ticket is not a good fit for a single request/response handler. The system has to call an unreliable agent, retry transient failures, wait for human approval, execute a refund, send a reply and answer status checks while the process is still running.\nI picked LangGraph here as it seems the most used framework for workflows and I want to get my hands on it. The ticket flow is as follows: classify the ticket, draft a reply, wait for human approval, then either send the reply and execute the approved action or reject the proposed resolution. The flow also includes fallback queues in case an agent is not available.\nThe service is split into five components, where Postgres is used as workflow checkpointer, a hand-built task queue and the read model:\nFastAPI app: Accepts ticket requests and starts, queries and updates workflows. Workflow Runner: Leases runnable workflows, advances the graph, dispatches tasks at-least-once. Agent worker: Polls the agent queue with a rate limit and the agent-fallback queue. Fallback worker: Polls the agent-fallback queue. Side-effect worker: sends replies, executes refund at-most-once. Upserts results by ticket ID. Related to DDIA (Chapter 1: Reliable, Scalable and Maintainable Applications), we use Postgres as backbone for reliability. Reliability is not about avoiding faults, but also deciding which faults the system can tolerate. Those five components do not fail in the same way. If the API is down, no new tickets can be created and status checks fail, but running workflows continue. If a worker is down, work is waiting in Postgres and resumes when the worker returns. If the Agent worker is overloaded or unavailable, agent calls can wait, time out and move to a fallback queue. If Postgres goes down, the system has lost its durable coordinator. So, a dead worker is a fault the system can absorb. A dead Postgres DB is a system outage. Separating the LLM worker is not required for correctness, but it creates an independent failure domain for a rate limited dependency.\nDurable execution: remembering where the ticket is The first problem is not the agent call itself. The first problem is remembering where the ticket is when the process running it disappears. A ticket can be in one of several states:\nwaiting for an LLM retrying after a transient failure waiting for human approval waiting for long-running execution executing a refund sending a final reply If this process lives only in a Python request handler or an in-memory background task, a worker restart turns into a bug, where the ticket may be stuck, repeated, forgotten or be completed twice.\nThis needs durable execution, where the ticket progress is recorded independently of the currently running process. Here we need to display the workflow as a checkpointed state machine. The workflow code advances one state at a time and after every step LangGraph writes that state to Postgres. The runner leases a run, reloads the latest checkpoint, advances the graph by one step and persists the result. A crashed process leaves the last checkpoint untouched and a different runner reloads it and continues.\nAnother important point is, that waiting for human approval also looks like ordinary async code:\n1 2 3 4 5 6 async def prepare_approval(state: TicketState) -\u003e TicketState: _ = state return { \"status\": TicketStatus.AWAITING_APPROVAL, \"wakeup_at\": await timestamp_after(APPROVAL_TIMEOUT), } and\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 async def await_approval(state: TicketState) -\u003e TicketState: ticket = state.get(\"ticket\") reply = state.get(\"draft\") wakeup_at = state.get(\"wakeup_at\") assert ticket is not None and reply is not None and wakeup_at is not None resume = interrupt( { \"kind\": \"approval_required\", \"ticket_id\": ticket.id, \"wakeup_at\": wakeup_at.isoformat(), \"draft\": reply.model_dump(mode=\"json\"), } ) if not isinstance(resume, dict): raise ValueError(\"approval resume payload must be an object\") kind = resume.get(\"kind\") if kind == \"timeout\": return {\"status\": TicketStatus.ESCALATED} if kind != \"decision\": raise ValueError(\"approval resume kind must be 'decision' or 'timeout'\") decision = ApprovalDecision.model_validate(resume.get(\"decision\")) if decision.approved: return {\"decision\": decision} return {\"decision\": decision, \"status\": TicketStatus.REJECTED} This does not hold a worker thread for the full APPROVAL_TIMEOUT. prepare_approval records a durable timer and await_approval suspends the graph. The worker process can disappear in the meantime, but the workflow state still exists in the durable checkpoint and the runner only resumes the run once the timer is due or an approval signal arrives.\nApproval reaches the workflow through a durable signal, written by the corresponding HTTP request:\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 @app.post(\"/tickets/{ticket_id}/approval\") async def submit_approval( request: Request, ticket_id: str, decision: ApprovalDecision ) -\u003e dict[str, TicketStatus]: \"\"\"Accept a human approval decision by writing a durable workflow signal.\"\"\" signal_id = db.add_pending_signal_if_waiting( ticket_id, APPROVAL_DECISION_SIGNAL, decision.model_dump(mode=\"json\"), waiting_status=TicketStatus.AWAITING_APPROVAL, pool=request.app.state.pool, ) if signal_id is None: raise _approval_conflict() return {\"status\": TicketStatus.AWAITING_APPROVAL} This is where the Postgres version diverges from Temporal. In Temporal, approval is a workflow update, where it runs inside the workflow, validates the decision and returns the resulting status synchronously. Here it is a durable signal row. The endpoint does not run workflow logic and does not know the resulting status. The actual transition happens later, when the runner consumes the signal and advances the graph.\nThis reframes the classic finishing race condition. A late approval could arrive while the workflow is executing a terminal side effect. In Temporal you often close this by writing the terminal status before the final activities, so the update validator rejects approvals that arrive while they run. This codebase closes it structurally instead, because the finalize worker actually writes the terminal status last:\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 async def run_finalize( task: db.QueuedTask, activities: TicketActivities ) -\u003e TicketResult: if task.task_type != \"finalize_ticket\": raise ValueError(f\"unexpected side-effect task_type {task.task_type!r}\") ticket = Ticket.model_validate(task.payload[\"ticket\"]) action = ProposedAction.model_validate(task.payload[\"action\"]) result = TicketResult.model_validate(task.payload[\"result\"]) refund_executed = False if result.status == TicketStatus.RESOLVED and action.type == ActionType.REFUND: assert action.refund_amount is not None await activities.execute_refund( ticket.id, action.refund_amount, attempt=task.attempts ) refund_executed = await activities.refund_recorded(ticket.id) await activities.send_reply(ticket, result.reply_text, attempt=task.attempts) result = result.model_copy(update={\"refund_executed\": refund_executed}) await activities.record_result(result) return result The lesson from the Temporal version still holds, that races in a single thread are ordering problems and you fix them by placing the state transition right and not using a lock. Here, only the location moves. In Temporal it’s a status write in the event history. Here it’s two separate facts: workflow_run.status says whether approvals are still accepted and the refund/reply/result ledgers say which side effects have run. Finalize can fail and retry, so each question has to be answerable on its own.\nThis connects directly to DDIA (Chapter 7: Transactions). The run behaves like a small state machine whose every advance is a database transaction. When the runner resumes a run, one transaction advances workflow_run.status, releases the lease and marks the consumed signal. So a crash can never leave the status moved but the signal un-consumed or vice versa. The checkpoint with the task queue play the role of a write-ahead log. The important decisions and effects are recorded durably before the workflow is allowed to proceed, which is exactly what lets a new process pick the ticket up and finish it.\nTimeouts, rate limits, backpressure and fallback routing Another problem is deciding how long the workflow should wait for an event like an agent/LLM response. This sounds like one question, but in a distributed system it is several different questions.\nTimeouts Did the task wait too long before any worker picked it up? Did the worker start the task but take too long to finish? Did the worker stop making progress while the task was running? Temporal gives each its own activity timeout with schedule_to_start, start_to_close and heartbeat_timeout. In this codebase it is handled differently, for example there is no heartbeat.\n“Was the task ever picked up?” is the durable schedule-to-start timer. When the workflow dispatches an agent task, it uses a wake-up AGENT_SCHEDULE_TO_START_S:\n1 2 3 4 5 6 7 8 9 async def enqueue_agent_task( *, task_type: str, workflow_id: str, payload: dict[str, Any] ) -\u003e datetime: key = f\"{workflow_id}:{task_type}\" wakeup_at = await enqueue_task( queue_name=config.AGENT_TASK_QUEUE, ... wakeup_after=timedelta(seconds=config.AGENT_SCHEDULE_TO_START_S), ) If the timer fires and the task is still pending, the task gets rerouted to the the fallback queue. This is the only question that produces its own signal.\n“Did a started attempt finish?” and “is the worker still alive?” are not handled as separate questions. Both are answered by the lease. Dequeue hands a worker a task with a fixed 30-second lease:\n1 2 3 4 5 6 UPDATE task_queue SET status = 'leased', lease_owner = %s, lease_expires_at = now() + interval '30 seconds', attempts = attempts + 1 WHERE id = ( ... FOR UPDATE SKIP LOCKED LIMIT 1 ) There is no heartbeat and no lease renewal, since the lease is set once and never extended. Also, there is no separate wall-clock cap on the agent call itself. The 30-second lease is the only bound. If a worker does not complete within the lease, the reclaim_expired returns the task to pending and it is redelivered. A crashed worker and a slow worker are indistinguishable. When both let the lease lapse, the trigger reclaim and the second one means the same task can run twice. That is the cost of dropping heartbeats and it is why every terminal effect is idempotent rather than guarded by an execution timeout.\nSo the three timeouts are collapsed into two signals with fallback routing and a redelivery in case of an expired lease. The correctness is covered further downstream by idempotency instead of by timing.\nRate limits and backpressure Those timeouts are implemented from the workflow’s point of view. But there is another issue: throughput. Even if every activity eventually succeeds, the system should not start unlimited LLM calls. This matters because the LLM provider has a global rate limit and each worker process also has limited local capacity.\nHow many LLM calls may the whole system start per second? How many activities can this worker handle at the same time? Temporal answers both with worker options of max_task_queue_activities_per_second and max_concurrent_activities. This codebase answers them with two constants on the agent worker:\n1 2 AGENT_MAX_PER_SECOND = float(os.environ.get(\"AGENT_MAX_PER_SECOND\", \"10.0\")) AGENT_MAX_CONCURRENT = int(os.environ.get(\"AGENT_MAX_CONCURRENT\", \"20\")) AGENT_MAX_CONCURRENT bounds how many tasks one worker runs at a time. The worker keeps a set of in-flight tasks and only leases a new one while it has room:\n1 2 3 4 while len(in_flight) \u003c max_concurrent: if bucket is not None: await bucket.acquire() in_flight.add(asyncio.create_task(process_one_task(...))) This protects the worker host. It also composes the way you’d expect, so three workers at max_concurrent=20 run up to 60 tasks at once.\nRate is a token bucket that spaces task starts at AGENT_MAX_PER_SECOND. This is meant to protect the shared LLM budget. Temporal’s per-second limit lives on the task queue, but this token bucket is an in-process object created per worker:\n1 bucket = TokenBucket(max_per_second) if max_per_second is not None else None Nothing coordinates it across processes. So the rate limit holds for a single primary agent worker, but it does not support horizontal scaling. A truly global cap would need a shared limiter (a Postgres-backed token bucket) or a single worker. This is one of the things Temporal hands you for free that a hand-built queue does not.\nBackpressure falls out of the queue for free. It happens when tickets arrive faster than the agent workers can drain them and because the queue is just a Postgres table, the signal is literally a row count:\n1 SELECT count(*) FROM task_queue WHERE queue_name = 'ticketflow-agent' AND status = 'pending'; If the agent worker stops, the tasks stay pending in task_queue. When a worker starts again it resumes polling with dequeue and the workflows continue. The task_queue table plays the same role as Temporal’s task queue. It is a durable buffer between tickets and the rate-limited LLM tier. A growing count of pending agent tasks is the backpressure signal and the schedule-to-start timer from the previous section is the automated reaction to it.\nFallback routing The schedule_to_start timeout is also used as a routing signal. If an agent activity waits too long in the primary task queue, the workflow treats this as “the primary LLM worker cannot get to this task in time.” Instead of failing the whole ticket, it reruns the agent call on the fallback queue.\nIn Temporal this is a try/except around the activity that inspects the error. Here there is no exception to catch and the timeout is the durable wakeup_at timer firing, delivered to the parked workflow as a resume value. await_agent_task checks for it and redispatches:\n1 2 3 4 5 resume = interrupt({...}) # park until result or timer if _is_timeout(resume): redispatched = await redispatch_agent_task(...) resume = interrupt({...}) # park again, now on the fallback queue return resume Redispatch is a queue switch, not a retry of the same row. It cancels the still-pending primary task and enqueues a new one on the fallback queue under a distinct idempotency key:\n1 2 3 4 5 6 7 8 9 10 redispatched = await taskqueue.acancel_pending(conn, key, reason=\"redispatched to fallback\") if redispatched: await taskqueue.aenqueue( conn, queue_name=config.FALLBACK_TASK_QUEUE, task_type=task_type, workflow_id=workflow_id, payload=payload, idempotency_key=f\"{key}:fallback\", ) cancel_pending only succeeds if the task is still pending. If a primary worker already picked it up, the workflow keeps awaiting the primary and the reroute happens only when the task truly was never started. The {key}:fallback key keeps the fallback enqueue from colliding with the original.\nThe fallback tier is a cheaper, weaker model, so its answers come back with lower confidence. The approval rule escalates anything below CONFIDENCE_THRESHOLD = 0.75, so a low-confidence fallback answer lands in the human approval inbox on its own. The degradation is explicit and reviewable, not hidden.\nThere’s a retry question here too and it’s simpler than in Temporal. Retry and routing are separate mechanisms keyed on separate signals:\nTransient failure (AgentOverloadedError) → the task queue retries with exponential backoff (attempts, available_at), declaratively, as data. Schedule-to-start timeout (never picked up) → the graph redispatches to the fallback queue. Exhausted or permanent failure → the graph escalates to a human (_is_task_failed → ESCALATED). So retry stays in the queue and routing stays in the graph. The workflow owns only the routing decision and it stays small.\nThis connects to DDIA (Chapter 8, The Trouble with Distributed Systems and Chapter 11, Stream Processing). Waiting is not neutral: a task may be slow because a worker is overloaded, a queue is growing or a dependency is down. Here, schedule-to-start makes overload observable, the task_queue absorbs backpressure and the fallback queue turns a blocked primary tier into degraded service instead of a full failure. Postgres provides the durable queue; the application still decides what “too slow” means and what happens next.\nIdempotency: exactly-once as a useful lie The goal is to make failed tasks safe to retry without applying the same effect twice. In this project, the dangerous case is a crash during a refund. A naive retry could refund the customer twice.\nThe refund activity writes to Postgres and delivery is at-least-once. A worker leases the finalize_check task and if it executes the refund but crashes before acknowledging the task, the lease expires. The reclaim_expired returns the task to pending and it is redelivered. The second attempt reaches the same table, but the refund effect is keyed by ticket_id. The insert uses ON CONFLICT (ticket_id) DO NOTHING, so the duplicate is ignored and the customer is refunded once.\nThat is the practical version of exactly-once. The code may run more than once, but the external effect happens once. The task queue gives at-least-once execution and idempotency makes the effect effectively-once.\nThe activity does not ask, “did I run before?” Instead, the effect is modeled with an idempotency key. refund_attempts logs every attempt, while refunds records the business effect. Both are committed in one transaction, so the log of what was tried and the record of what happened do not disagree. The same two-table pattern backs the customer reply (reply_attempts / sent_replies) and the terminal result is an idempotent upsert into ticket_results. Every terminal effect is at-most-once, not just the refund.\nThis is DDIA’s point about retries and uncertainty. The caller cannot always know whether the callee did nothing, did the work and crashed or did the work and lost the reply. Idempotency does not remove that uncertainty. It makes it harmless.\nPayloads outlive code: schema evolution in workflow histories The next problem is that workflow data lives longer than the code that created it. A ticket can sit parked for a long time waiting for a human or pending in the queue under backpressure and a deploy can land in that window. When the ticket resumes, new code has to read a payload that old code wrote.\nTemporal surfaces this through history replay. This system has no replay, but the same exposure lives in two durable places, the task queue (task_queue.payload) and the LangGraph checkpoint (the parked TicketState). Both are deserialized with Pydantic model_validate when a worker leases a task or the runner resumes a run and the agent and side-effect workers validate task.payload against the current models.\nThe failure mode is concrete. Add a new required field to Classification and the next worker that validates an old task.payload raises a ValidationError. The task can’t be processed, the run can’t advance and the ticket is stuck. No line of code is at fault, only a shape mismatch between old data and a new model.\nThe lesson is a versioning rule. Only add fields with defaults, never add required fields and don’t remove or rename existing ones. Each direction breaks a different compatibility. A new required field breaks backward compatibility and new code can’t read old payloads that lack it. Removing or renaming a field breaks forward compatibility and old code still draining the queue can’t read payloads that new code wrote.\nThe project follows the rule. The model-provenance field was added as model: str = “primary”, so payloads that predate it still deserialize cleanly. A regression test pins this down by validating old-shape payloads against the current models, so a future breaking change fails a test instead of silently failing a parked ticket.\nThis is DDIA (Chapter 4: Encoding and Evolution) in practice, where encoded data outlives the code that wrote it.\nDerived data and two read paths The system gets asked two different kinds of questions and they do not need the same storage:\nWhich tickets are waiting for approval right now? What happened to ticket X? The first is a search across many tickets. The API serves it from the workflow_run table, which carries a status column with a secondary index. The runner writes each state change into that column when it advances a run (save_run), so list_tickets answers “who is awaiting approval?” with one indexed query instead of opening every ticket’s state. This is the role Temporal’s visibility store and search attributes play.\nThe second question is historical and ticket-specific. The source of truth is the workflow’s own state in the LangGraph checkpoint. For a live ticket, get_ticket reads it directly with aget_state. When the ticket finishes, its outcome is materialized once into the Postgres ticket_results table and get_ticket falls back to that (readmodel.load_result) once retention has pruned the checkpoint with returning 404 only when neither store knows the ticket.\nThis is DDIA’s (Chapter 11: Stream Processing) materialized views and CQRS at toy scale. You don’t serve every read from the source of truth. You derive read-optimized projections from a log and route each question to the view built for it, while accepting that the views can lag and must be rebuildable from the log.\nWhere would this break in production The project is useful as a lab, but it is not production-ready. A reliable system should be clear about the faults it handles and the faults it does not handle yet.\nThe first gap is heartbeats. The 30-second lease is the only liveness signal and it is never renewed. A real LLM call slower than the lease gets reclaimed and redelivered while still running. It is safe only because effects are idempotent. The fix is a heartbeat that extends the lease during the call.\nThe second gap is the fallback path. The primary call has a schedule-to-start budget, but the fallback await lacks a timer. If both agent workers are down, the ticket hangs forever. Production needs a deadline on the fallback to end in escalation.\nThe third gap is the rate limit scalability. The token bucket is per-process, so it holds only with a single primary worker. Three workers have 3× the intended rate. A real deployment needs a shared limiter.\nThe fourth gap is the missing atomicity of state and projection. The checkpoint, the outbox and the workflow_run projection commit in separate transactions. Correctness relies on idempotency keys and reconcile_orphaned_runs. This is a load-bearing reconciler and weaker than the atomic history with state Temporal gives you.\nThe fifth gap is deployment. A single Postgres in Docker Compose is fine for experiments, but has no backups, replication or failover.\nThere are also ordinary application gaps with refund_amount as a float and the approval endpoint without authentication. Those were out of scope for the exercise, but they would not be acceptable production defaults.\nThis connects back to DDIA (Chapter 1: Reliability) that states that reliability is not a vague promise that nothing will fail, but starts with knowing your fault assumptions. Which failures the system absorbs, which ones degrade service and which ones are still outages.\nConclusion This project focuses on the system design aspect of AI engineering. I took Temporal as the benchmark and rebuilt its durable execution on Postgres, with DDIA for the concepts behind each primitive. Temporal showed what reliable orchestration should do and DDIA explained why. By rebuilding it on Postgres I had to get a better understanding about leases, idempotency keys, durable timers and backpressure. From my current point of view, this is really helpful, even with the help of LLMs.\nI want to build more systems like this to develop a better understanding of system design in AI engineering, but also about the strength and weaknesses of different frameworks and tools. At the same time, it is important not to forget the ML part. LLM calls are probabilistic and non-deterministic. They are not just ordinary API calls, even if they often are wrapped to look like one.\nThat distinction matters. The engineering layer can make an AI system more reliable around the model with retries, timeouts, idempotency, queues, observability and human approval. But it does not make the model itself deterministic or correct. Good AI engineering has to hold both ideas at once: treat the surrounding system like a distributed system and treat the model output like an uncertain prediction.\nThank you for your attention.\n",
+  "wordCount" : "3990",
+  "inLanguage": "en",
+  "datePublished": "2026-07-12T10:20:58+01:00",
+  "dateModified": "2026-07-12T10:20:58+01:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://steffenhaeussler.github.io/posts/2026-06-28-engineering_ai_2/engineering/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "About me",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://steffenhaeussler.github.io/assets/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="https://steffenhaeussler.github.io/" accesskey="h" title="About me (Alt + H)">About me</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu" class="menu">
+            <li>
+                <a href="https://steffenhaeussler.github.io/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://steffenhaeussler.github.io/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://steffenhaeussler.github.io/archives/" title="Archives">
+                    <span>Archives</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
+            <a href="https://steffenhaeussler.github.io/">Home</a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <a href="https://steffenhaeussler.github.io/posts/">Posts</a>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+        <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+</nav>
+    <h1 class="post-title entry-hint-parent">
+      Engineering with AI agents II
+    </h1>
+    <div class="post-meta">
+
+<span title='2026-07-12 10:20:58 +0100 +0100'>July 12, 2026</span>&nbsp;·&nbsp;<span>19 min</span>
+
+</div>
+  </header> 
+  <div class="post-content md-content"><p>Hi,</p>
+<p><a href="https://steffenhaeussler.github.io/posts/2026-06-14-engineering_ai/engineering/">Four weeks ago</a>, I looked into <a href="https://temporal.io/">Temporal.io</a> as a platform for building and orchestration reliable workflows. I looked at it through the lens of distributed systems, combining it with concepts from <a href="https://www.oreilly.com/library/view/designing-data-intensive-applications/9781491903063/">Martin Kleppmann’s Designing Data-Intensive Applications (for reference, DDIA)</a>. In this post, I team up with Claude Code and Codex to rebuild these core architectural ideas using <a href="https://www.langchain.com/langgraph">LangGraph</a> and <a href="https://www.postgresql.org/">Postgres</a>. LangGraph is built specifically for stateful, multi-agent systems. My goal here is to dig deeper into orchestration patterns and gain a clearer understanding of what it takes to run agentic systems in production. My long-term goal is exploring the fault-tolerant guarantees of Temporal with the agentic flexibility of LangGraph as a combination for modern enterprise workflows.</p>
+<p>Here I use my <a href="https://github.com/SteffenHaeussler/TicketGraph">TicketGraph</a> project for the deep dive, which is a rewrite of my <a href="https://github.com/SteffenHaeussler/temporal">ticketflow project</a> without Temporal.io. The project implements a simple ticket system where a mock agent resolves support tickets with a conditional human-in-the-loop step. I keep the structure as same as in my previous post, but I wanted to get a better understanding of the concepts.</p>
+<h2 id="project-introduction">Project introduction<a hidden class="anchor" aria-hidden="true" href="#project-introduction">#</a></h2>
+<p>A support ticket is not a good fit for a single request/response handler. The system has to call an unreliable agent, retry transient failures, wait for human approval, execute a refund, send a reply and answer status checks while the process is still running.</p>
+<p>I picked LangGraph here as it seems the most used framework for workflows and I want to get my hands on it. The <a href="https://github.com/SteffenHaeussler/TicketGraph/blob/main/README.md">ticket flow</a> is as follows: classify the ticket, draft a reply, wait for human approval, then either send the reply and execute the approved action or reject the proposed resolution. The flow also includes fallback queues in case an agent is not available.</p>
+<p>The service is split into five components, where Postgres is used as  workflow checkpointer, a hand-built task queue and the read model:</p>
+<ul>
+<li><a href="https://github.com/SteffenHaeussler/TicketGraph/blob/main/src/ticketflow/api.py">FastAPI app</a>: Accepts ticket requests and starts, queries and updates  workflows.</li>
+<li><a href="https://github.com/SteffenHaeussler/TicketGraph/blob/main/src/ticketflow/runner.py">Workflow Runner</a>: Leases runnable workflows, advances the graph, dispatches tasks at-least-once.</li>
+<li><a href="https://github.com/SteffenHaeussler/TicketGraph/blob/main/src/ticketflow/agent_worker.py">Agent worker</a>: Polls the agent queue with a rate limit and the agent-fallback queue.</li>
+<li><a href="https://github.com/SteffenHaeussler/TicketGraph/blob/main/src/ticketflow/fallback_worker.py">Fallback worker</a>: Polls the agent-fallback queue.</li>
+<li><a href="https://github.com/SteffenHaeussler/TicketGraph/blob/main/src/ticketflow/side_effect_worker.py">Side-effect worker</a>: sends replies, executes refund  at-most-once. Upserts results by ticket ID.</li>
+</ul>
+<p>Related to DDIA (Chapter 1: Reliable, Scalable and Maintainable Applications), we use Postgres as backbone for reliability. Reliability is not about avoiding faults, but also deciding which faults the system can tolerate. Those five components do not fail in the same way. If the API is down, no new tickets can be created and status checks fail, but running workflows continue. If a worker is down, work is waiting in Postgres and resumes when the worker returns. If the Agent worker is overloaded or unavailable, agent calls can wait, time out and move to a fallback queue. If Postgres goes down, the system has lost its durable coordinator. So, a dead worker is a fault the system can absorb. A dead Postgres DB is a system outage. Separating the LLM worker is not required for correctness, but it creates an independent failure domain for a rate limited dependency.</p>
+<h2 id="durable-execution-remembering-where-the-ticket-is">Durable execution: remembering where the ticket is<a hidden class="anchor" aria-hidden="true" href="#durable-execution-remembering-where-the-ticket-is">#</a></h2>
+<p>The first problem is not the agent call itself. The first problem is remembering where the ticket is when the process running it disappears. A ticket can be in one of several states:</p>
+<ul>
+<li>waiting for an LLM</li>
+<li>retrying after a transient failure</li>
+<li>waiting for human approval</li>
+<li>waiting for long-running execution</li>
+<li>executing a refund</li>
+<li>sending a final reply</li>
+</ul>
+<p>If this process lives only in a Python request handler or an in-memory background task, a worker restart turns into a bug, where the ticket may be stuck, repeated, forgotten or be completed twice.</p>
+<p>This needs durable execution, where the ticket progress is recorded independently of the currently running process. Here we need to display the workflow as a checkpointed state machine. <a href="https://github.com/SteffenHaeussler/TicketGraph/blob/main/src/ticketflow/graph.py#L109">The workflow code</a> advances one <a href="https://github.com/SteffenHaeussler/TicketGraph/blob/main/src/ticketflow/graph.py#L90">state</a> at a time and after every step LangGraph writes that state to Postgres. The <a href="https://github.com/SteffenHaeussler/TicketGraph/blob/main/src/ticketflow/runner.py#L243">runner</a> leases a run, reloads the latest checkpoint, advances the graph by one step and persists the result. A crashed process leaves the last checkpoint untouched and a different runner reloads it and continues.</p>
+<p>Another important point is, that waiting for human approval also looks like ordinary async code:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>    <span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">prepare_approval</span>(state: TicketState) <span style="color:#f92672">-&gt;</span> TicketState:
+</span></span><span style="display:flex;"><span>        _ <span style="color:#f92672">=</span> state
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;status&#34;</span>: TicketStatus<span style="color:#f92672">.</span>AWAITING_APPROVAL,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;wakeup_at&#34;</span>: <span style="color:#66d9ef">await</span> timestamp_after(APPROVAL_TIMEOUT),
+</span></span><span style="display:flex;"><span>        }
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>and</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>    <span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">await_approval</span>(state: TicketState) <span style="color:#f92672">-&gt;</span> TicketState:
+</span></span><span style="display:flex;"><span>        ticket <span style="color:#f92672">=</span> state<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;ticket&#34;</span>)
+</span></span><span style="display:flex;"><span>        reply <span style="color:#f92672">=</span> state<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;draft&#34;</span>)
+</span></span><span style="display:flex;"><span>        wakeup_at <span style="color:#f92672">=</span> state<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;wakeup_at&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">assert</span> ticket <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> <span style="color:#66d9ef">None</span> <span style="color:#f92672">and</span> reply <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> <span style="color:#66d9ef">None</span> <span style="color:#f92672">and</span> wakeup_at <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        resume <span style="color:#f92672">=</span> interrupt(
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;kind&#34;</span>: <span style="color:#e6db74">&#34;approval_required&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;ticket_id&#34;</span>: ticket<span style="color:#f92672">.</span>id,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;wakeup_at&#34;</span>: wakeup_at<span style="color:#f92672">.</span>isoformat(),
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;draft&#34;</span>: reply<span style="color:#f92672">.</span>model_dump(mode<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;json&#34;</span>),
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> isinstance(resume, dict):
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">ValueError</span>(<span style="color:#e6db74">&#34;approval resume payload must be an object&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        kind <span style="color:#f92672">=</span> resume<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;kind&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> kind <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;timeout&#34;</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> {<span style="color:#e6db74">&#34;status&#34;</span>: TicketStatus<span style="color:#f92672">.</span>ESCALATED}
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> kind <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#34;decision&#34;</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">ValueError</span>(<span style="color:#e6db74">&#34;approval resume kind must be &#39;decision&#39; or &#39;timeout&#39;&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        decision <span style="color:#f92672">=</span> ApprovalDecision<span style="color:#f92672">.</span>model_validate(resume<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;decision&#34;</span>))
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> decision<span style="color:#f92672">.</span>approved:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> {<span style="color:#e6db74">&#34;decision&#34;</span>: decision}
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> {<span style="color:#e6db74">&#34;decision&#34;</span>: decision, <span style="color:#e6db74">&#34;status&#34;</span>: TicketStatus<span style="color:#f92672">.</span>REJECTED}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>This does not hold a worker thread for the full APPROVAL_TIMEOUT. prepare_approval records a durable timer and await_approval suspends the graph. The worker process can disappear in the meantime, but the workflow state still exists in the durable checkpoint and the runner only resumes the run once the timer is due or an approval signal arrives.</p>
+<p>Approval reaches the workflow through a durable signal, written by the corresponding <a href="https://github.com/SteffenHaeussler/TicketGraph/blob/main/src/ticketflow/api.py#L222C1-L236C54">HTTP request</a>:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a6e22e">@app.post</span>(<span style="color:#e6db74">&#34;/tickets/</span><span style="color:#e6db74">{ticket_id}</span><span style="color:#e6db74">/approval&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">submit_approval</span>(
+</span></span><span style="display:flex;"><span>    request: Request, ticket_id: str, decision: ApprovalDecision
+</span></span><span style="display:flex;"><span>) <span style="color:#f92672">-&gt;</span> dict[str, TicketStatus]:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Accept a human approval decision by writing a durable workflow signal.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    signal_id <span style="color:#f92672">=</span> db<span style="color:#f92672">.</span>add_pending_signal_if_waiting(
+</span></span><span style="display:flex;"><span>        ticket_id,
+</span></span><span style="display:flex;"><span>        APPROVAL_DECISION_SIGNAL,
+</span></span><span style="display:flex;"><span>        decision<span style="color:#f92672">.</span>model_dump(mode<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;json&#34;</span>),
+</span></span><span style="display:flex;"><span>        waiting_status<span style="color:#f92672">=</span>TicketStatus<span style="color:#f92672">.</span>AWAITING_APPROVAL,
+</span></span><span style="display:flex;"><span>        pool<span style="color:#f92672">=</span>request<span style="color:#f92672">.</span>app<span style="color:#f92672">.</span>state<span style="color:#f92672">.</span>pool,
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> signal_id <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">raise</span> _approval_conflict()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> {<span style="color:#e6db74">&#34;status&#34;</span>: TicketStatus<span style="color:#f92672">.</span>AWAITING_APPROVAL}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>This is where the Postgres version diverges from Temporal. In Temporal, approval is a workflow update, where it runs inside the workflow, validates the decision and returns the resulting status synchronously. Here it is a <a href="https://github.com/SteffenHaeussler/TicketGraph/blob/main/src/ticketflow/db.py#L587">durable signal row</a>. The endpoint does not run workflow logic and does not know the resulting status. The actual transition happens later, when the runner consumes the <a href="https://github.com/SteffenHaeussler/TicketGraph/blob/main/src/ticketflow/db.py#L405">signal</a> and advances the graph.</p>
+<p>This reframes the classic finishing race condition. A late approval could arrive while the workflow is executing a terminal side effect. In Temporal you often close this by writing the terminal status before the final activities, so the update validator rejects approvals that arrive while they run. This codebase closes it structurally instead, because the <a href="https://github.com/SteffenHaeussler/TicketGraph/blob/main/src/ticketflow/side_effect_worker.py#L36">finalize worker</a> actually writes the terminal status last:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">run_finalize</span>(
+</span></span><span style="display:flex;"><span>    task: db<span style="color:#f92672">.</span>QueuedTask, activities: TicketActivities
+</span></span><span style="display:flex;"><span>) <span style="color:#f92672">-&gt;</span> TicketResult:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> task<span style="color:#f92672">.</span>task_type <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#34;finalize_ticket&#34;</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">ValueError</span>(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;unexpected side-effect task_type </span><span style="color:#e6db74">{</span>task<span style="color:#f92672">.</span>task_type<span style="color:#e6db74">!r}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ticket <span style="color:#f92672">=</span> Ticket<span style="color:#f92672">.</span>model_validate(task<span style="color:#f92672">.</span>payload[<span style="color:#e6db74">&#34;ticket&#34;</span>])
+</span></span><span style="display:flex;"><span>    action <span style="color:#f92672">=</span> ProposedAction<span style="color:#f92672">.</span>model_validate(task<span style="color:#f92672">.</span>payload[<span style="color:#e6db74">&#34;action&#34;</span>])
+</span></span><span style="display:flex;"><span>    result <span style="color:#f92672">=</span> TicketResult<span style="color:#f92672">.</span>model_validate(task<span style="color:#f92672">.</span>payload[<span style="color:#e6db74">&#34;result&#34;</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    refund_executed <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> result<span style="color:#f92672">.</span>status <span style="color:#f92672">==</span> TicketStatus<span style="color:#f92672">.</span>RESOLVED <span style="color:#f92672">and</span> action<span style="color:#f92672">.</span>type <span style="color:#f92672">==</span> ActionType<span style="color:#f92672">.</span>REFUND:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">assert</span> action<span style="color:#f92672">.</span>refund_amount <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">await</span> activities<span style="color:#f92672">.</span>execute_refund(
+</span></span><span style="display:flex;"><span>            ticket<span style="color:#f92672">.</span>id, action<span style="color:#f92672">.</span>refund_amount, attempt<span style="color:#f92672">=</span>task<span style="color:#f92672">.</span>attempts
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>        refund_executed <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> activities<span style="color:#f92672">.</span>refund_recorded(ticket<span style="color:#f92672">.</span>id)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">await</span> activities<span style="color:#f92672">.</span>send_reply(ticket, result<span style="color:#f92672">.</span>reply_text, attempt<span style="color:#f92672">=</span>task<span style="color:#f92672">.</span>attempts)
+</span></span><span style="display:flex;"><span>    result <span style="color:#f92672">=</span> result<span style="color:#f92672">.</span>model_copy(update<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#34;refund_executed&#34;</span>: refund_executed})
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">await</span> activities<span style="color:#f92672">.</span>record_result(result)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> result
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>The lesson from the Temporal version still holds, that races in a single thread are ordering problems and you fix them by placing the state transition right and not using a lock. Here, only the location moves. In Temporal it&rsquo;s a status write in the event history. Here it’s two separate facts: workflow_run.status says whether approvals are still accepted and the refund/reply/result ledgers say which side effects have run. Finalize can fail and retry, so each question has to be answerable on its own.</p>
+<p>This connects directly to DDIA (Chapter 7: Transactions). The run behaves like a small state machine whose every advance is a database transaction. When the runner resumes a run, one transaction advances workflow_run.status, releases the lease and marks the consumed signal. So a crash can never leave the status moved but the signal un-consumed or vice versa. The checkpoint with the task queue play the role of a write-ahead log. The important decisions and effects are recorded durably before the workflow is allowed to proceed, which is exactly what lets a new process pick the ticket up and finish it.</p>
+<h2 id="timeouts-rate-limits-backpressure-and-fallback-routing">Timeouts, rate limits, backpressure and fallback routing<a hidden class="anchor" aria-hidden="true" href="#timeouts-rate-limits-backpressure-and-fallback-routing">#</a></h2>
+<p>Another problem is deciding how long the workflow should wait for an event like an agent/LLM response. This sounds like one question, but in a distributed system it is several different questions.</p>
+<h3 id="timeouts">Timeouts<a hidden class="anchor" aria-hidden="true" href="#timeouts">#</a></h3>
+<ul>
+<li>Did the task wait too long before any worker picked it up?</li>
+<li>Did the worker start the task but take too long to finish?</li>
+<li>Did the worker stop making progress while the task was running?</li>
+</ul>
+<p>Temporal gives each its own activity timeout with schedule_to_start, start_to_close and heartbeat_timeout. In this codebase it is handled differently, for example there is no heartbeat.</p>
+<p>“Was the task ever picked up?” is the durable schedule-to-start timer. When the workflow dispatches an agent task, it uses a wake-up AGENT_SCHEDULE_TO_START_S:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">enqueue_agent_task</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">*</span>, task_type: str, workflow_id: str, payload: dict[str, Any]
+</span></span><span style="display:flex;"><span>) <span style="color:#f92672">-&gt;</span> datetime:
+</span></span><span style="display:flex;"><span>    key <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>workflow_id<span style="color:#e6db74">}</span><span style="color:#e6db74">:</span><span style="color:#e6db74">{</span>task_type<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>    wakeup_at <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> enqueue_task(
+</span></span><span style="display:flex;"><span>        queue_name<span style="color:#f92672">=</span>config<span style="color:#f92672">.</span>AGENT_TASK_QUEUE,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>        wakeup_after<span style="color:#f92672">=</span>timedelta(seconds<span style="color:#f92672">=</span>config<span style="color:#f92672">.</span>AGENT_SCHEDULE_TO_START_S),
+</span></span><span style="display:flex;"><span>    )
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>If the timer fires and the task is still pending, the task gets rerouted to the the <a href="https://github.com/SteffenHaeussler/TicketGraph/blob/main/src/ticketflow/graph.py#L235">fallback queue</a>.
+This is the only question that produces its own signal.</p>
+<p>“Did a started attempt finish?” and “is the worker still alive?” are not handled as separate questions. Both are answered by the lease. Dequeue hands a worker a task with a fixed 30-second lease:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>    <span style="color:#66d9ef">UPDATE</span> task_queue
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">SET</span> status <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;leased&#39;</span>,
+</span></span><span style="display:flex;"><span>           lease_owner <span style="color:#f92672">=</span> <span style="color:#f92672">%</span>s,
+</span></span><span style="display:flex;"><span>           lease_expires_at <span style="color:#f92672">=</span> now() <span style="color:#f92672">+</span> interval <span style="color:#e6db74">&#39;30 seconds&#39;</span>,
+</span></span><span style="display:flex;"><span>           attempts <span style="color:#f92672">=</span> attempts <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">WHERE</span> id <span style="color:#f92672">=</span> ( ... <span style="color:#66d9ef">FOR</span> <span style="color:#66d9ef">UPDATE</span> SKIP LOCKED <span style="color:#66d9ef">LIMIT</span> <span style="color:#ae81ff">1</span> )
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>There is no heartbeat and no lease renewal, since the lease is set once and never extended. Also, there is no separate wall-clock cap on the agent call itself. The 30-second lease is the only bound. If a worker does not complete within the lease, the reclaim_expired returns the task to pending and it is <a href="https://github.com/SteffenHaeussler/TicketGraph/blob/main/src/ticketflow/taskqueue.py#L198">redelivered</a>. A crashed worker and a slow worker are indistinguishable. When both let the lease lapse, the trigger reclaim and the second one means the same task can run twice. That is the cost of dropping heartbeats and it is why every terminal effect is idempotent rather than guarded by an execution timeout.</p>
+<p>So the three timeouts are collapsed into two signals with fallback routing and a redelivery in case of an expired lease. The correctness is covered further downstream by idempotency instead of by timing.</p>
+<h3 id="rate-limits-and-backpressure">Rate limits and backpressure<a hidden class="anchor" aria-hidden="true" href="#rate-limits-and-backpressure">#</a></h3>
+<p>Those timeouts are implemented from the workflow’s point of view. But there is another issue: throughput. Even if every activity eventually succeeds, the system should not start unlimited LLM calls. This matters because the LLM provider has a global rate limit and each worker process also has limited local capacity.</p>
+<ul>
+<li>How many LLM calls may the whole system start per second?</li>
+<li>How many activities can this worker handle at the same time?</li>
+</ul>
+<p>Temporal answers both with worker options of max_task_queue_activities_per_second and max_concurrent_activities. This codebase answers them with two constants on the <a href="https://github.com/SteffenHaeussler/TicketGraph/blob/main/src/ticketflow/agent_worker.py#L153">agent worker</a>:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>AGENT_MAX_PER_SECOND <span style="color:#f92672">=</span> float(os<span style="color:#f92672">.</span>environ<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;AGENT_MAX_PER_SECOND&#34;</span>, <span style="color:#e6db74">&#34;10.0&#34;</span>))
+</span></span><span style="display:flex;"><span>AGENT_MAX_CONCURRENT <span style="color:#f92672">=</span> int(os<span style="color:#f92672">.</span>environ<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;AGENT_MAX_CONCURRENT&#34;</span>, <span style="color:#e6db74">&#34;20&#34;</span>))
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>AGENT_MAX_CONCURRENT bounds how many tasks one worker runs at a time. The worker keeps a set of in-flight tasks and only leases a new one while it has room:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">while</span> len(in_flight) <span style="color:#f92672">&lt;</span> max_concurrent:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> bucket <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">await</span> bucket<span style="color:#f92672">.</span>acquire()
+</span></span><span style="display:flex;"><span>    in_flight<span style="color:#f92672">.</span>add(asyncio<span style="color:#f92672">.</span>create_task(process_one_task(<span style="color:#f92672">...</span>)))
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>This protects the worker host. It also composes the way you’d expect, so three workers at max_concurrent=20 run up to 60 tasks at once.</p>
+<p>Rate is a <a href="https://github.com/SteffenHaeussler/TicketGraph/blob/main/src/ticketflow/agent_worker.py#L24">token bucket</a> that spaces task starts at AGENT_MAX_PER_SECOND. This is meant to protect the shared LLM budget. Temporal’s per-second limit lives on the task queue, but this token bucket is an in-process object created <a href="https://github.com/SteffenHaeussler/TicketGraph/blob/main/src/ticketflow/agent_worker.py#L178">per worker</a>:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>bucket <span style="color:#f92672">=</span> TokenBucket(max_per_second) <span style="color:#66d9ef">if</span> max_per_second <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> <span style="color:#66d9ef">None</span> <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">None</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Nothing coordinates it across processes. So the rate limit holds for a single primary agent worker, but it does not support horizontal scaling. A truly global cap would need a shared limiter (a Postgres-backed token bucket) or a single worker. This is one of the things Temporal hands you for free that a hand-built queue does not.</p>
+<p>Backpressure falls out of the queue for free. It happens when tickets arrive faster than the agent workers can drain them and because the queue is just a Postgres table, the signal is literally a row count:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">count</span>(<span style="color:#f92672">*</span>) <span style="color:#66d9ef">FROM</span> task_queue <span style="color:#66d9ef">WHERE</span> queue_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ticketflow-agent&#39;</span> <span style="color:#66d9ef">AND</span> status <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;pending&#39;</span>;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>If the agent worker stops, the tasks stay pending in task_queue. When a worker starts again it resumes polling with dequeue and the workflows continue. The task_queue table plays the same role as Temporal’s task queue. It is a durable buffer between tickets and the rate-limited LLM tier. A growing count of pending agent tasks is the backpressure signal and the schedule-to-start timer from the previous section is the automated reaction to it.</p>
+<h3 id="fallback-routing">Fallback routing<a hidden class="anchor" aria-hidden="true" href="#fallback-routing">#</a></h3>
+<p>The schedule_to_start timeout is also used as a routing signal. If an agent activity waits too long in the primary task queue, the workflow treats this as “the primary LLM worker cannot get to this task in time.” Instead of failing the whole ticket, it reruns the agent call on the fallback queue.</p>
+<p>In Temporal this is a try/except around the activity that inspects the error. Here there is no exception to catch and the timeout is the durable wakeup_at timer firing, delivered to the parked workflow as a resume value. <a href="https://github.com/SteffenHaeussler/TicketGraph/blob/main/src/ticketflow/graph.py#L245">await_agent_task</a> checks for it and redispatches:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>resume <span style="color:#f92672">=</span> interrupt({<span style="color:#f92672">...</span>})           <span style="color:#75715e"># park until result or timer</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> _is_timeout(resume):
+</span></span><span style="display:flex;"><span>    redispatched <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> redispatch_agent_task(<span style="color:#f92672">...</span>)
+</span></span><span style="display:flex;"><span>    resume <span style="color:#f92672">=</span> interrupt({<span style="color:#f92672">...</span>})       <span style="color:#75715e"># park again, now on the fallback queue</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">return</span> resume
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><a href="https://github.com/SteffenHaeussler/TicketGraph/blob/main/src/ticketflow/graph.py#L199">Redispatch</a> is a queue switch, not a retry of the same row. It cancels the still-pending primary task and enqueues a new one on the fallback queue under a distinct idempotency key:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>redispatched <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> taskqueue<span style="color:#f92672">.</span>acancel_pending(conn, key, reason<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;redispatched to fallback&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> redispatched:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">await</span> taskqueue<span style="color:#f92672">.</span>aenqueue(
+</span></span><span style="display:flex;"><span>        conn,
+</span></span><span style="display:flex;"><span>        queue_name<span style="color:#f92672">=</span>config<span style="color:#f92672">.</span>FALLBACK_TASK_QUEUE,
+</span></span><span style="display:flex;"><span>        task_type<span style="color:#f92672">=</span>task_type,
+</span></span><span style="display:flex;"><span>        workflow_id<span style="color:#f92672">=</span>workflow_id,
+</span></span><span style="display:flex;"><span>        payload<span style="color:#f92672">=</span>payload,
+</span></span><span style="display:flex;"><span>        idempotency_key<span style="color:#f92672">=</span><span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>key<span style="color:#e6db74">}</span><span style="color:#e6db74">:fallback&#34;</span>,
+</span></span><span style="display:flex;"><span>    )
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>cancel_pending only succeeds if the task is still pending. If a primary worker already picked it up, the workflow keeps awaiting the primary and the reroute happens only when the task truly was never started. The {key}:fallback key keeps the fallback enqueue from colliding with the original.</p>
+<p>The fallback tier is a cheaper, weaker model, so its answers come back with lower confidence. The <a href="https://github.com/SteffenHaeussler/TicketGraph/blob/main/src/ticketflow/graph.py#L343">approval rule</a> escalates anything below CONFIDENCE_THRESHOLD = 0.75, so a low-confidence fallback answer lands in the human approval inbox on its own. The degradation is explicit and reviewable, not hidden.</p>
+<p>There’s a retry question here too and it’s simpler than in Temporal. Retry and routing are separate mechanisms keyed on separate signals:</p>
+<ul>
+<li>Transient failure (AgentOverloadedError) → the task queue retries with exponential backoff (attempts, available_at), declaratively, as data.</li>
+<li>Schedule-to-start timeout (never picked up) → the graph redispatches to the fallback queue.</li>
+<li>Exhausted or permanent failure → the graph escalates to a human (_is_task_failed → ESCALATED).</li>
+</ul>
+<p>So retry stays in the queue and routing stays in the graph. The workflow owns only the routing decision and it stays small.</p>
+<p>This connects to DDIA (Chapter 8, The Trouble with Distributed Systems and Chapter 11, Stream Processing). Waiting is not neutral: a task may be slow because a worker is overloaded, a queue is growing or a dependency is down. Here, schedule-to-start makes overload observable, the task_queue absorbs backpressure and the fallback queue turns a blocked primary tier into degraded service instead of a full failure. Postgres provides the durable queue; the application still decides what “too slow” means and what happens next.</p>
+<h2 id="idempotency-exactly-once-as-a-useful-lie">Idempotency: exactly-once as a useful lie<a hidden class="anchor" aria-hidden="true" href="#idempotency-exactly-once-as-a-useful-lie">#</a></h2>
+<p>The goal is to make failed tasks safe to retry without applying the same effect twice. In this project, the dangerous case is a crash during a refund. A naive retry could refund the customer twice.</p>
+<p>The <a href="https://github.com/SteffenHaeussler/TicketGraph/blob/main/src/ticketflow/activities.py#L67">refund activity</a> writes to Postgres and delivery is at-least-once. A worker leases the finalize_check task and if it executes the refund but crashes before acknowledging the task, the lease expires. The reclaim_expired returns the task to pending and it is redelivered. The second attempt reaches the same <a href="https://github.com/SteffenHaeussler/TicketGraph/blob/main/src/ticketflow/readmodel.py#L32">table</a>, but the refund effect is keyed by ticket_id. The insert uses ON CONFLICT (ticket_id) DO NOTHING, so the duplicate is ignored and the customer is refunded once.</p>
+<p>That is the practical version of exactly-once. The code may run more than once, but the external effect happens once. The task queue gives at-least-once execution and idempotency makes the effect effectively-once.</p>
+<p>The activity does not ask, “did I run before?” Instead, the effect is modeled with an idempotency key. <a href="https://github.com/SteffenHaeussler/TicketGraph/blob/main/src/ticketflow/ledger.py#L6">refund_attempts</a> logs every attempt, while refunds records the business effect. Both are committed in one transaction, so the log of what was tried and the record of what happened do not disagree. The same two-table pattern backs the customer reply (reply_attempts / sent_replies) and the terminal result is an idempotent upsert into ticket_results. Every terminal effect is at-most-once, not just the refund.</p>
+<p>This is DDIA’s point about retries and uncertainty. The caller cannot always know whether the callee did nothing, did the work and crashed or did the work and lost the reply. Idempotency does not remove that uncertainty. It makes it harmless.</p>
+<h2 id="payloads-outlive-code-schema-evolution-in-workflow-histories">Payloads outlive code: schema evolution in workflow histories<a hidden class="anchor" aria-hidden="true" href="#payloads-outlive-code-schema-evolution-in-workflow-histories">#</a></h2>
+<p>The next problem is that workflow data lives longer than the code that created it. A ticket can sit parked for a long time waiting for a human or pending in the queue under backpressure and a deploy can land in that window. When the ticket resumes, new code has to read a payload that old code wrote.</p>
+<p>Temporal surfaces this through history replay. This system has no replay, but the same exposure lives in two durable places, the task queue (task_queue.payload) and the LangGraph checkpoint (the parked TicketState). Both are deserialized with Pydantic model_validate when a worker leases a task or the runner resumes a run and the agent and side-effect workers validate task.payload against the current models.</p>
+<p>The failure mode is concrete. Add a new required field to Classification and the next worker that validates an old task.payload raises a ValidationError. The task can’t be processed, the run can’t advance and the ticket is stuck. No line of code is at fault, only a shape mismatch between old data and a new model.</p>
+<p>The lesson is a versioning rule. Only add fields with defaults, never add required fields and don’t remove or rename existing ones. Each direction breaks a different compatibility. A new required field breaks backward compatibility and new code can’t read old payloads that lack it. Removing or renaming a field breaks forward compatibility and old code still draining the queue can’t read payloads that new code wrote.</p>
+<p>The project follows the rule. The model-provenance field was added as model: str = &ldquo;primary&rdquo;, so payloads that predate it still deserialize cleanly. A <a href="https://github.com/SteffenHaeussler/TicketGraph/blob/main/tests/test_models.py#L36">regression test</a> pins this down by validating old-shape payloads against the current models, so a future breaking change fails a test instead of silently failing a parked ticket.</p>
+<p>This is DDIA (Chapter 4: Encoding and Evolution) in practice, where encoded data outlives the code that wrote it.</p>
+<h2 id="derived-data-and-two-read-paths">Derived data and two read paths<a hidden class="anchor" aria-hidden="true" href="#derived-data-and-two-read-paths">#</a></h2>
+<p>The system gets asked two different kinds of questions and they do not need the same storage:</p>
+<ul>
+<li>Which tickets are waiting for approval right now?</li>
+<li>What happened to ticket X?</li>
+</ul>
+<p>The first is a search across many tickets. The API serves it from the workflow_run table, which carries a status column with a secondary index. The runner writes each state change into that column when it advances a run (save_run), so <a href="https://github.com/SteffenHaeussler/TicketGraph/blob/main/src/ticketflow/api.py#L183">list_tickets</a> answers “who is awaiting approval?” with one indexed query instead of opening every ticket’s state. This is the role Temporal’s visibility store and search attributes play.</p>
+<p>The second question is historical and ticket-specific. The source of truth is the workflow’s own state in the LangGraph checkpoint. For a live ticket, <a href="https://github.com/SteffenHaeussler/TicketGraph/blob/main/src/ticketflow/api.py#L191">get_ticket</a> reads it directly with aget_state. When the ticket finishes, its outcome is materialized once into the Postgres ticket_results table and get_ticket falls back to that (readmodel.load_result) once retention has pruned the checkpoint with returning 404 only when neither store knows the ticket.</p>
+<p>This is DDIA&rsquo;s (Chapter 11: Stream Processing) materialized views and CQRS at toy scale. You don&rsquo;t serve every read from the source of truth. You derive read-optimized projections from a log and route each question to the view built for it, while accepting that the views can lag and must be rebuildable from the log.</p>
+<h2 id="where-would-this-break-in-production">Where would this break in production<a hidden class="anchor" aria-hidden="true" href="#where-would-this-break-in-production">#</a></h2>
+<p>The project is useful as a lab, but it is not production-ready. A reliable system should be clear about the faults it handles and the faults it does not handle yet.</p>
+<p>The first gap is heartbeats. The 30-second lease is the only liveness signal and it is never renewed. A real LLM call slower than the lease gets reclaimed and redelivered while still running. It is safe only because effects are idempotent. The fix is a heartbeat that extends the lease during the call.</p>
+<p>The second gap is the fallback path. The primary call has a schedule-to-start budget, but the fallback await lacks a timer. If both agent workers are down, the ticket hangs forever. Production needs a deadline on the fallback to end in escalation.</p>
+<p>The third gap is the rate limit scalability. The token bucket is per-process, so it holds only with a single primary worker. Three workers have 3× the intended rate. A real deployment needs a shared limiter.</p>
+<p>The fourth gap is the missing atomicity of state and projection. The checkpoint, the outbox and the workflow_run projection commit in separate transactions. Correctness relies on idempotency keys and reconcile_orphaned_runs. This is a load-bearing reconciler and weaker than the atomic history with state Temporal gives you.</p>
+<p>The fifth gap is deployment. A single Postgres in Docker Compose is fine for experiments, but has no backups, replication or failover.</p>
+<p>There are also ordinary application gaps with refund_amount as a float and the approval endpoint without authentication. Those were out of scope for the exercise, but they would not be acceptable production defaults.</p>
+<p>This connects back to DDIA (Chapter 1: Reliability) that states that reliability is not a vague promise that nothing will fail, but starts with knowing your fault assumptions. Which failures the system absorbs, which ones degrade service and which ones are still outages.</p>
+<h2 id="conclusion">Conclusion<a hidden class="anchor" aria-hidden="true" href="#conclusion">#</a></h2>
+<p>This project focuses on the system design aspect of AI engineering. I took Temporal as the benchmark and rebuilt its durable execution on Postgres, with DDIA for the concepts behind each primitive. Temporal showed what reliable orchestration should do and DDIA explained why. By rebuilding it on Postgres I had to get a better understanding about leases, idempotency keys, durable timers and backpressure. From my current point of view, this is really helpful, even with the help of LLMs.</p>
+<p>I want to build more systems like this to develop a better understanding of system design in AI engineering, but also about the strength and weaknesses of different frameworks and tools. At the same time, it is important not to forget the ML part. LLM calls are probabilistic and non-deterministic. They are not just ordinary API calls, even if they often are wrapped to look like one.</p>
+<p>That distinction matters. The engineering layer can make an AI system more reliable around the model with retries, timeouts, idempotency, queues, observability and human approval. But it does not make the model itself deterministic or correct. Good AI engineering has to hold both ideas at once: treat the surrounding system like a distributed system and treat the model output like an uncertain prediction.</p>
+<p>Thank you for your attention.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://steffenhaeussler.github.io/tags/engineering/">Engineering</a></li>
+      <li><a href="https://steffenhaeussler.github.io/tags/distributed-systems/">Distributed Systems</a></li>
+      <li><a href="https://steffenhaeussler.github.io/tags/agents/">Agents</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://steffenhaeussler.github.io/">About me</a></span> · 
+
+    
+    
+    <span>
+        Powered by
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var toplink = document.getElementById("top-link");
+    window.onscroll = function () {
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
+        } else {
+            toplink.classList.add("hidden");
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

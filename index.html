@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto">
+<html lang="en" dir="auto" data-theme="auto">
 
 <head>
-	<meta name="generator" content="Hugo 0.147.5"><meta charset="utf-8">
+	<meta name="generator" content="Hugo 0.163.3"><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
@@ -11,7 +11,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <link rel="canonical" href="https://steffenhaeussler.github.io/">
-<link crossorigin="anonymous" href="https://steffenhaeussler.github.io/assets/css/stylesheet.a6264de45f1158af551cf2fe7595e8651c772fa1286f4c0483059a3e826a3049.css" integrity="sha256-piZN5F8RWK9VHPL&#43;dZXoZRx3L6Eob0wEgwWaPoJqMEk=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="https://steffenhaeussler.github.io/assets/css/stylesheet.13b1832d9a1539bf4cde35aa50072f19f51c680d26290c26ec119cb8f856790e.css" integrity="sha256-E7GDLZoVOb9M3jWqUAcvGfUcaA0mKQwm7BGcuPhWeQ4=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://steffenhaeussler.github.io/assets/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://steffenhaeussler.github.io/assets/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://steffenhaeussler.github.io/assets/favicon-32x32.png">
@@ -19,7 +19,7 @@
 <link rel="mask-icon" href="https://steffenhaeussler.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="https://steffenhaeussler.github.io/index.xml">
+<link rel="alternate" type="application/rss+xml" href="https://steffenhaeussler.github.io/index.xml" title="rss">
 <link rel="alternate" hreflang="en" href="https://steffenhaeussler.github.io/">
 <noscript>
     <style>
@@ -41,31 +41,40 @@
                 --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
+                color-scheme: dark;
             }
 
             .list {
                 background: var(--theme);
             }
 
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
+            .toc {
+                background: var(--entry);
             }
         }
 
     </style>
 </noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
 <meta property="og:url" content="https://steffenhaeussler.github.io/">
   <meta property="og:site_name" content="About me">
   <meta property="og:title" content="About me">
-  <meta property="og:locale" content="en-us">
+  <meta property="og:locale" content="en_US">
   <meta property="og:type" content="website">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="About me">
-<meta name="twitter:description" content="">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="About me">
 
 <script type="application/ld+json">
 {
@@ -81,31 +90,19 @@
 }
 </script>
 </head>
-
 <body class="list" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
-</script>
-
-<header class="header">
-    <nav class="nav">
+    <header class="header">
+    <nav class="header-nav">
         <div class="logo">
             <a href="https://steffenhaeussler.github.io/" accesskey="h" title="About me (Alt + H)">About me</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
@@ -119,11 +116,9 @@
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
-                <ul class="lang-switch"><li>|</li>
-                </ul>
             </div>
         </div>
-        <ul id="menu">
+        <ul id="menu" class="menu">
             <li>
                 <a href="https://steffenhaeussler.github.io/posts/" title="Posts">
                     <span>Posts</span>
@@ -147,7 +142,8 @@
     <header class="entry-header">
         <h1>Welcome</h1>
     </header>
-    <div class="entry-content">
+    <div class="entry-content md-content">
+        
         <ul>
 <li>Hi, this is Steffen. I enjoy building machine learning systems including model development. Followed by <del>playing</del> experimenting to get a better understanding 💤💤</li>
 <li>In my previous life, I ran numerical simulation to understand the chemical interactions between water and our environment. 🌍🌊🌻</li>
@@ -188,6 +184,22 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Engineering with AI agents II
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Hi,
+Four weeks ago, I looked into Temporal.io as a platform for building and orchestration reliable workflows. I looked at it through the lens of distributed systems, combining it with concepts from Martin Kleppmann’s Designing Data-Intensive Applications (for reference, DDIA). In this post, I team up with Claude Code and Codex to rebuild these core architectural ideas using LangGraph and Postgres. LangGraph is built specifically for stateful, multi-agent systems. My goal here is to dig deeper into orchestration patterns and gain a clearer understanding of what it takes to run agentic systems in production. My long-term goal is exploring the fault-tolerant guarantees of Temporal with the agentic flexibility of LangGraph as a combination for modern enterprise workflows.
+...</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2026-07-12 10:20:58 +0100 +0100'>July 12, 2026</span>&nbsp;·&nbsp;<span>19 min</span></footer>
+  <a class="entry-link" aria-label="post link to Engineering with AI agents II" href="https://steffenhaeussler.github.io/posts/2026-06-28-engineering_ai_2/engineering/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Engineering with AI agents
     </h2>
   </header>
@@ -196,7 +208,9 @@
 For more than a year, I have been using coding agents, mostly Claude Code. During that time, I have barely written code myself. Instead, my role has shifted toward planning, reviewing and understanding code. I also use these agents for studying, brainstorming and problem-solving. I definitely struggle with the blurred boundary of my own work and orchestrated LLM work. I feel like a Code DJ by using and mixing ideas and samples from someone else.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2026-06-13 10:20:58 +0100 +0100'>June 13, 2026</span>&nbsp;·&nbsp;16 min</footer>
+  <footer class="entry-footer">
+
+<span title='2026-06-13 10:20:58 +0100 +0100'>June 13, 2026</span>&nbsp;·&nbsp;<span>16 min</span></footer>
   <a class="entry-link" aria-label="post link to Engineering with AI agents" href="https://steffenhaeussler.github.io/posts/2026-06-14-engineering_ai/engineering/"></a>
 </article>
 
@@ -211,7 +225,9 @@ In this post I want to outline Agentic AI. I’ve spent the last two years build
 Nowadays, the term “agent” is used loosely for almost any system involving an LLM. As an introduction, I want to draw a clear distinction between an agent and a workflow. An agent operates in an open environment and autonomously figures out how to solve a problem (e.g. a chatbot for data analysis). In contrast, a workflow is a predefined sequence of steps in which an LLM is used to execute specific tasks (e.g. extracting text to fill out a form).
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2026-06-01 10:30:58 +0100 +0100'>June 1, 2026</span>&nbsp;·&nbsp;12 min</footer>
+  <footer class="entry-footer">
+
+<span title='2026-06-01 10:30:58 +0100 +0100'>June 1, 2026</span>&nbsp;·&nbsp;<span>12 min</span></footer>
   <a class="entry-link" aria-label="post link to Overview of Agentic AI" href="https://steffenhaeussler.github.io/posts/2026-06-01-overview_agents-/agents/"></a>
 </article>
 
@@ -226,7 +242,9 @@ This post is written by AI as an experiment. I put much effort into guidelines a
 I see this as a proxy for the current state of agentic coding. Everyone uses it, but if you look at the outcome it is often shallow. If you mention your concerns about quality, responsibility and ownership, you will be always ignored because of the productivity gain.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2026-05-05 10:30:58 +0100 +0100'>May 5, 2026</span>&nbsp;·&nbsp;7 min</footer>
+  <footer class="entry-footer">
+
+<span title='2026-05-05 10:30:58 +0100 +0100'>May 5, 2026</span>&nbsp;·&nbsp;<span>7 min</span></footer>
   <a class="entry-link" aria-label="post link to Agentic Design Patterns" href="https://steffenhaeussler.github.io/posts/2026-05-05-agentic-design-patterns/agentic_patterns/"></a>
 </article>
 
@@ -242,7 +260,9 @@ For the records, I looked into search, ANN Algorithms, fine-tuning embedding mod
 In RAG, the retrieval step provides the facts. The fine-tuning is about model behavior to prevent that a base model hallucinate or ignore the provided data. As a rule of thumb, retrieval gives the model its memory and fine-tuning gives it its instructions.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2026-04-01 10:30:58 +0100 +0100'>April 1, 2026</span>&nbsp;·&nbsp;4 min</footer>
+  <footer class="entry-footer">
+
+<span title='2026-04-01 10:30:58 +0100 +0100'>April 1, 2026</span>&nbsp;·&nbsp;<span>4 min</span></footer>
   <a class="entry-link" aria-label="post link to Fine-tuning the generative part of a RAG" href="https://steffenhaeussler.github.io/posts/2026-04-01-generative/gen_llm/"></a>
 </article>
 
@@ -258,7 +278,9 @@ Therefor I looked into four different approaches to fine-tune a cross-encoder fo
 BCE loss BCE loss with hard negatives InfoNCE loss Margin MSE loss BCE loss The simplest approach is to use binary cross-entropy loss to train the model. Here we have two labels, 1 for a positive pair and 0 for a negative pair and treat the relevance as a binary classification problem Passage Re-Ranking with BERT by Nogueira and Cho 2020. This can also be called a pointwise approach. For every query-document pair we calculate the logit, then apply a sigmoid activation twhich will represent the probability of relevance.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2026-03-20 10:30:58 +0100 CET'>March 20, 2026</span>&nbsp;·&nbsp;5 min</footer>
+  <footer class="entry-footer">
+
+<span title='2026-03-20 10:30:58 +0100 CET'>March 20, 2026</span>&nbsp;·&nbsp;<span>5 min</span></footer>
   <a class="entry-link" aria-label="post link to Fine-tuning a ReRanker" href="https://steffenhaeussler.github.io/posts/2026-03-20-reranker/reranker/"></a>
 </article>
 
@@ -275,7 +297,9 @@ Please look at my notebook for the full code and details.
 The main reason you should not use raw embeddings from pre-trained models is the anisotropy problem. The paper How Contextual are Contextualized Word Representations? from Ethayarajh et al. 2019 shows that the embeddings are clustered in a narrow cone of the vector space, making them almost useless for differentiation. So, if you calculate the cosine similarity between two completely different sentences, the result will be around 0.80.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2026-01-09 10:30:58 +0100 CET'>January 9, 2026</span>&nbsp;·&nbsp;4 min</footer>
+  <footer class="entry-footer">
+
+<span title='2026-01-09 10:30:58 +0100 CET'>January 9, 2026</span>&nbsp;·&nbsp;<span>4 min</span></footer>
   <a class="entry-link" aria-label="post link to Training an embedding model" href="https://steffenhaeussler.github.io/posts/2026-01-09-contrastive/contrastive/"></a>
 </article>
 
@@ -289,7 +313,9 @@ The main reason you should not use raw embeddings from pre-trained models is the
 I decided to add another post to this year’s recap. After I described my three key learnings from my failed startup endeavor, I wasn’t feeling finished or satisfied. Overall I’m not satisfied with what I learned this year. It feels very shallow without any hard skills behind it. In every year of my life, I learned a lot, independent of the later usefulness, but at least I can say, that I moved forward. This year, I don’t feel like this. As Confucius said: “By three methods we may learn wisdom: First, by reflection, which is noblest; Second, by imitation, which is easiest; and third by experience, which is the bitterest.” My learnings weren’t helpful at all and they came from experience. To sum it up, the ratio of effort and outcome was very low and I definitely can do better.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2025-12-29 10:30:58 +0100 CET'>December 29, 2025</span>&nbsp;·&nbsp;3 min</footer>
+  <footer class="entry-footer">
+
+<span title='2025-12-29 10:30:58 +0100 CET'>December 29, 2025</span>&nbsp;·&nbsp;<span>3 min</span></footer>
   <a class="entry-link" aria-label="post link to This year&#39;s recap v2" href="https://steffenhaeussler.github.io/posts/2025-12-29-recap/recapv2/"></a>
 </article>
 
@@ -303,7 +329,9 @@ I decided to add another post to this year’s recap. After I described my three
 This year was an interesting learning experience. I tried to commercialize a product, which in the end was much harder than expected. As a short summary, the first attempt failed, because I couldn’t figure out how to sell the product. The pivot failed, because multiple big corporates released a similar product. Also the goal was to get 1-2 customers to build a MVP before looking for funding and so on. So I never incorporated the idea into a company. Basically, I failed already on the first meter, but this saved a lot of time. So I only invested 7 months. 🥲
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2025-12-12 10:30:58 +0100 CET'>December 12, 2025</span>&nbsp;·&nbsp;3 min</footer>
+  <footer class="entry-footer">
+
+<span title='2025-12-12 10:30:58 +0100 CET'>December 12, 2025</span>&nbsp;·&nbsp;<span>3 min</span></footer>
   <a class="entry-link" aria-label="post link to This year&#39;s recap" href="https://steffenhaeussler.github.io/posts/2025-12-12-recap/recap/"></a>
 </article>
 
@@ -317,23 +345,10 @@ This year was an interesting learning experience. I tried to commercialize a pro
 Over the last three months, I’ve been working on Agents and LLM workflows. I had the opportunity to do this as part of a residency program at Merantix. I’m deeply thankful for the opportunity and would highly recommend the program to others. Being surrounded by people with shared goals was incredibly motivating and inspiring. I already miss the discussions and the knowledge exchange. Unlike typical work environments, here the participants were truly aligned, and everyone learned from each other.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2025-07-30 10:30:58 +0100 +0100'>July 30, 2025</span>&nbsp;·&nbsp;2 min</footer>
-  <a class="entry-link" aria-label="post link to Building Agents & LLM Workflows" href="https://steffenhaeussler.github.io/posts/2025-07-30-hackerroom/hackerroom/"></a>
-</article>
+  <footer class="entry-footer">
 
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Evaluation of RAG Systems
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Hi,
-The implementation of this article is here.
-RAGs are complex systems. This is obvious, when you try to evaluate them. There are multiple aspects, which need to be checked. Here, I try to look into different approaches to get a better understanding and problems, when facing RAG systems. RAG system evaluation involves two distinct parts: retrieval and generation part. For retrieval, context relevance and noise robustness are key factors in assessing quality, while for generation part, key factors like answer faithfulness, answer relevance, negative rejection, information integration, and counterfactual robustness are important (Gao et al. 2024).
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2025-04-30 10:30:58 +0100 +0100'>April 30, 2025</span>&nbsp;·&nbsp;6 min</footer>
-  <a class="entry-link" aria-label="post link to Evaluation of RAG Systems" href="https://steffenhaeussler.github.io/posts/2025-04-30-metrics/metrics/"></a>
+<span title='2025-07-30 10:30:58 +0100 +0100'>July 30, 2025</span>&nbsp;·&nbsp;<span>2 min</span></footer>
+  <a class="entry-link" aria-label="post link to Building Agents & LLM Workflows" href="https://steffenhaeussler.github.io/posts/2025-07-30-hackerroom/hackerroom/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
@@ -346,22 +361,31 @@ RAGs are complex systems. This is obvious, when you try to evaluate them. There 
 <footer class="footer">
         <span>&copy; 2026 <a href="https://steffenhaeussler.github.io/">About me</a></span> · 
 
+    
+    
     <span>
         Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
         <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
     </span>
 </footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
     </svg>
 </a>
 
 <script>
-    let menu = document.getElementById('menu')
+    let menu = document.getElementById('menu');
     if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
         menu.onscroll = function () {
             localStorage.setItem("menu-scroll-position", menu.scrollLeft);
         }
@@ -388,25 +412,25 @@ RAGs are complex systems. This is obvious, when you try to evaluate them. There 
 
 </script>
 <script>
-    var mybutton = document.getElementById("top-link");
+    var toplink = document.getElementById("top-link");
     window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
         } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
+            toplink.classList.add("hidden");
         }
     };
 
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
             localStorage.setItem("pref-theme", 'light');
         } else {
-            document.body.classList.add('dark');
+            html.dataset.theme = 'dark';
             localStorage.setItem("pref-theme", 'dark');
         }
     })
